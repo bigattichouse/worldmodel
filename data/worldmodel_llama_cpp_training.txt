@@ -1,0 +1,2505 @@
+User: Analyze the following text: 'Hello world, this is a test sentence with several words.'. Count the number of vowels
+
+Assistant: <think>I need to analyze the text 'Hello world, this is a test sentence with several words.' and count vowels.</think>
+<model>
+text = "Hello world, this is a test sentence with several words."
+vowels = "aeiouAEIOU"
+count = sum(1 for char in text if char in vowels)
+print(f"Number of vowels: {count}")
+</model>
+<requires>python:text</requires>
+
+User: Calculate 10 + 46
+
+Assistant: <think>I need to calculate 10 + 46. Let me compute this step by step.</think>
+<model>
+result = 10 + 46
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Calculate 17 + 52
+
+Assistant: <think>I need to calculate 17 + 52. Let me compute this step by step.</think>
+<model>
+result = 17 + 52
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Find the roots of the quadratic equation 1x² + -2x + 7 = 0
+
+Assistant: <think>I need to find roots of 1x² + -2x + 7 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 1, -2, 7
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Analyze the following text: 'The quick brown fox jumps over the lazy dog.'. Count the number of words
+
+Assistant: <think>I need to analyze the text 'The quick brown fox jumps over the lazy dog.' and count words.</think>
+<model>
+text = "The quick brown fox jumps over the lazy dog."
+words = text.split()
+count = len(words)
+print(f"Number of words: {count}")
+</model>
+<requires>python:text</requires>
+
+User: Evaluate the boolean expression: True or True and True
+
+Assistant: <think>I need to solve: Evaluate the boolean expression: True or True and True</think>
+<model>
+# Solution for: Evaluate the boolean expression: True or True and True
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Calculate the mean of the following numbers: item
+
+Assistant: <think>I need to calculate the mean of these numbers: item</think>
+<model>
+numbers = [item]
+mean = sum(numbers) / len(numbers)
+print(f"Mean: {mean:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: Take the string 'Data Science' and convert to uppercase
+
+Assistant: <think>I need to solve: Take the string 'Data Science' and convert to uppercase</think>
+<model>
+# Solution for: Take the string 'Data Science' and convert to uppercase
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: What are the benefits of learning Python?
+
+Assistant: Learning Python offers many benefits: it has simple, readable syntax that's beginner-friendly; extensive libraries for data science, web development, and automation; strong community support; and high demand in the job market across many industries.
+
+User: Calculate 51 - 84
+
+Assistant: <think>I need to calculate 51 - 84. Let me compute this step by step.</think>
+<model>
+result = 51 - 84
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Analyze the following text: 'Hello world, this is a test sentence with several words.'. Count the number of consonants
+
+Assistant: <think>I need to analyze the text 'Hello world, this is a test sentence with several words.' and count consonants.</think>
+<model>
+text = "Hello world, this is a test sentence with several words."
+consonants = sum(1 for char in text if char.isalpha() and char not in "aeiouAEIOU")
+print(f"Number of consonants: {consonants}")
+</model>
+<requires>python:text</requires>
+
+User: Write a function to check if 98 is a prime number
+
+Assistant: <think>I need to check if 98 is prime. A prime number is only divisible by 1 and itself.</think>
+<model>
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+number = 98
+result = is_prime(number)
+print(f"{number} is {'prime' if result else 'not prime'}")
+</model>
+<requires>python:math</requires>
+
+User: Calculate the mean of the following numbers: item
+
+Assistant: <think>I need to calculate the mean of these numbers: item</think>
+<model>
+numbers = [item]
+mean = sum(numbers) / len(numbers)
+print(f"Mean: {mean:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: Find the roots of the quadratic equation 2x² + 3x + -1 = 0
+
+Assistant: <think>I need to find roots of 2x² + 3x + -1 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 2, 3, -1
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Generate the first 7 numbers in the Fibonacci sequence
+
+Assistant: <think>I need to generate the first 7 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>
+<model>
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+result = fibonacci(7)
+print(result)
+</model>
+<requires>python:computation</requires>
+
+User: Calculate the mean of the following numbers: item
+
+Assistant: <think>I need to calculate the mean of these numbers: item</think>
+<model>
+numbers = [item]
+mean = sum(numbers) / len(numbers)
+print(f"Mean: {mean:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: Calculate compound interest: $1000 at 5% for 3 years
+
+Assistant: <think>Compound interest formula: A = P(1 + r)^t where P=1000, r=0.05, t=3</think>
+<model>
+principal = 1000
+rate = 0.05
+time = 3
+amount = principal * (1 + rate) ** time
+interest = amount - principal
+print(f"Final amount: ${amount:.2f}")
+print(f"Interest earned: ${interest:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: Evaluate the boolean expression: False or False or True
+
+Assistant: <think>I need to solve: Evaluate the boolean expression: False or False or True</think>
+<model>
+# Solution for: Evaluate the boolean expression: False or False or True
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Find the roots of the quadratic equation 3x² + 3x + 9 = 0
+
+Assistant: <think>I need to find roots of 3x² + 3x + 9 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 3, 3, 9
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Find the roots of the quadratic equation 1x² + -1x + 5 = 0
+
+Assistant: <think>I need to find roots of 1x² + -1x + 5 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 1, -1, 5
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: If I buy 3 books for $12 each and 2 notebooks for $4 each, how much change do I get from $50?
+
+Assistant: <think>I need to calculate total cost: (3 × $12) + (2 × $4) = $36 + $8 = $44. Change from $50 = $50 - $44 = $6.</think>
+<model>
+books = 3 * 12
+notebooks = 2 * 4
+total_cost = books + notebooks
+money_given = 50
+change = money_given - total_cost
+print(f"Books: ${books}")
+print(f"Notebooks: ${notebooks}")
+print(f"Total cost: ${total_cost}")
+print(f"Change: ${change}")
+</model>
+<requires>python:math</requires>
+
+User: Calculate 42 - 10
+
+Assistant: <think>I need to calculate 42 - 10. Let me compute this step by step.</think>
+<model>
+result = 42 - 10
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Find the roots of the quadratic equation 3x² + 6x + -7 = 0
+
+Assistant: <think>I need to find roots of 3x² + 6x + -7 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 3, 6, -7
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Calculate 22 * 44
+
+Assistant: <think>I need to calculate 22 * 44. Let me compute this step by step.</think>
+<model>
+result = 22 * 44
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Evaluate the boolean expression: False and True or False
+
+Assistant: <think>I need to solve: Evaluate the boolean expression: False and True or False</think>
+<model>
+# Solution for: Evaluate the boolean expression: False and True or False
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Take the string 'Python Programming' and reverse the string
+
+Assistant: <think>I need to solve: Take the string 'Python Programming' and reverse the string</think>
+<model>
+# Solution for: Take the string 'Python Programming' and reverse the string
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Calculate the mean of the following numbers: item
+
+Assistant: <think>I need to calculate the mean of these numbers: item</think>
+<model>
+numbers = [item]
+mean = sum(numbers) / len(numbers)
+print(f"Mean: {mean:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: Calculate the mean of the following numbers: item
+
+Assistant: <think>I need to calculate the mean of these numbers: item</think>
+<model>
+numbers = [item]
+mean = sum(numbers) / len(numbers)
+print(f"Mean: {mean:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: Generate the first 11 numbers in the Fibonacci sequence
+
+Assistant: <think>I need to generate the first 11 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>
+<model>
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+result = fibonacci(11)
+print(result)
+</model>
+<requires>python:computation</requires>
+
+User: Find the roots of the quadratic equation 3x² + -6x + -5 = 0
+
+Assistant: <think>I need to find roots of 3x² + -6x + -5 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 3, -6, -5
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Explain what machine learning is
+
+Assistant: Machine learning is a subset of artificial intelligence that enables computers to learn and improve from experience without being explicitly programmed. It uses algorithms to analyze data, identify patterns, and make predictions or decisions based on that analysis.
+
+User: Analyze the following text: 'The quick brown fox jumps over the lazy dog.'. Count the number of words
+
+Assistant: <think>I need to analyze the text 'The quick brown fox jumps over the lazy dog.' and count words.</think>
+<model>
+text = "The quick brown fox jumps over the lazy dog."
+words = text.split()
+count = len(words)
+print(f"Number of words: {count}")
+</model>
+<requires>python:text</requires>
+
+User: Evaluate the boolean expression: True or True or True
+
+Assistant: <think>I need to solve: Evaluate the boolean expression: True or True or True</think>
+<model>
+# Solution for: Evaluate the boolean expression: True or True or True
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Write a function to check if 22 is a prime number
+
+Assistant: <think>I need to check if 22 is prime. A prime number is only divisible by 1 and itself.</think>
+<model>
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+number = 22
+result = is_prime(number)
+print(f"{number} is {'prime' if result else 'not prime'}")
+</model>
+<requires>python:math</requires>
+
+User: Find the roots of the quadratic equation 3x² + -5x + 1 = 0
+
+Assistant: <think>I need to find roots of 3x² + -5x + 1 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 3, -5, 1
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Generate the first 6 numbers in the Fibonacci sequence
+
+Assistant: <think>I need to generate the first 6 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>
+<model>
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+result = fibonacci(6)
+print(result)
+</model>
+<requires>python:computation</requires>
+
+User: Find the roots of the quadratic equation 2x² + -3x + -9 = 0
+
+Assistant: <think>I need to find roots of 2x² + -3x + -9 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 2, -3, -9
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Find the roots of the quadratic equation 5x² + -2x + -4 = 0
+
+Assistant: <think>I need to find roots of 5x² + -2x + -4 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 5, -2, -4
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Analyze the following text: 'Python is a powerful programming language for data science.'. Count the number of words
+
+Assistant: <think>I need to analyze the text 'Python is a powerful programming language for data science.' and count words.</think>
+<model>
+text = "Python is a powerful programming language for data science."
+words = text.split()
+count = len(words)
+print(f"Number of words: {count}")
+</model>
+<requires>python:text</requires>
+
+User: Write a function to check if 12 is a prime number
+
+Assistant: <think>I need to check if 12 is prime. A prime number is only divisible by 1 and itself.</think>
+<model>
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+number = 12
+result = is_prime(number)
+print(f"{number} is {'prime' if result else 'not prime'}")
+</model>
+<requires>python:math</requires>
+
+User: Write a function to check if 74 is a prime number
+
+Assistant: <think>I need to check if 74 is prime. A prime number is only divisible by 1 and itself.</think>
+<model>
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+number = 74
+result = is_prime(number)
+print(f"{number} is {'prime' if result else 'not prime'}")
+</model>
+<requires>python:math</requires>
+
+User: Create a list of 10 strings and count unique items
+
+Assistant: <think>I need to solve: Create a list of 10 strings and count unique items</think>
+<model>
+# Solution for: Create a list of 10 strings and count unique items
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Calculate the mean of the following numbers: item
+
+Assistant: <think>I need to calculate the mean of these numbers: item</think>
+<model>
+numbers = [item]
+mean = sum(numbers) / len(numbers)
+print(f"Mean: {mean:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: Generate the first 10 numbers in the Fibonacci sequence
+
+Assistant: <think>I need to generate the first 10 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>
+<model>
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+result = fibonacci(10)
+print(result)
+</model>
+<requires>python:computation</requires>
+
+User: Take the string 'Python Programming' and replace spaces with underscores
+
+Assistant: <think>I need to solve: Take the string 'Python Programming' and replace spaces with underscores</think>
+<model>
+# Solution for: Take the string 'Python Programming' and replace spaces with underscores
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Write a function to check if 36 is a prime number
+
+Assistant: <think>I need to check if 36 is prime. A prime number is only divisible by 1 and itself.</think>
+<model>
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+number = 36
+result = is_prime(number)
+print(f"{number} is {'prime' if result else 'not prime'}")
+</model>
+<requires>python:math</requires>
+
+User: What does CPU stand for?
+
+Assistant: CPU stands for Central Processing Unit.
+
+User: Create a list of 6 numbers and count unique items
+
+Assistant: <think>I need to solve: Create a list of 6 numbers and count unique items</think>
+<model>
+# Solution for: Create a list of 6 numbers and count unique items
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Generate the first 12 numbers in the Fibonacci sequence
+
+Assistant: <think>I need to generate the first 12 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>
+<model>
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+result = fibonacci(12)
+print(result)
+</model>
+<requires>python:computation</requires>
+
+User: Calculate 46 - 49
+
+Assistant: <think>I need to calculate 46 - 49. Let me compute this step by step.</think>
+<model>
+result = 46 - 49
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Evaluate the boolean expression: True and False or False
+
+Assistant: <think>I need to solve: Evaluate the boolean expression: True and False or False</think>
+<model>
+# Solution for: Evaluate the boolean expression: True and False or False
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Take the string 'hello world' and remove all vowels
+
+Assistant: <think>I need to solve: Take the string 'hello world' and remove all vowels</think>
+<model>
+# Solution for: Take the string 'hello world' and remove all vowels
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Calculate the mean of the following numbers: item
+
+Assistant: <think>I need to calculate the mean of these numbers: item</think>
+<model>
+numbers = [item]
+mean = sum(numbers) / len(numbers)
+print(f"Mean: {mean:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: Take the string 'Data Science' and convert to uppercase
+
+Assistant: <think>I need to solve: Take the string 'Data Science' and convert to uppercase</think>
+<model>
+# Solution for: Take the string 'Data Science' and convert to uppercase
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Create a list of 8 items and reverse the order
+
+Assistant: <think>I need to solve: Create a list of 8 items and reverse the order</think>
+<model>
+# Solution for: Create a list of 8 items and reverse the order
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Evaluate the boolean expression: True and False or False
+
+Assistant: <think>I need to solve: Evaluate the boolean expression: True and False or False</think>
+<model>
+# Solution for: Evaluate the boolean expression: True and False or False
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Find the roots of the quadratic equation 2x² + 5x + 0 = 0
+
+Assistant: <think>I need to find roots of 2x² + 5x + 0 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 2, 5, 0
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Convert 100 degrees Fahrenheit to Celsius
+
+Assistant: <think>To convert Fahrenheit to Celsius: C = (F - 32) × 5/9</think>
+<model>
+fahrenheit = 100
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:math</requires>
+
+User: Calculate 19 + 13
+
+Assistant: <think>I need to calculate 19 + 13. Let me compute this step by step.</think>
+<model>
+result = 19 + 13
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Generate the first 14 numbers in the Fibonacci sequence
+
+Assistant: <think>I need to generate the first 14 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>
+<model>
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+result = fibonacci(14)
+print(result)
+</model>
+<requires>python:computation</requires>
+
+User: Calculate 43 + 83
+
+Assistant: <think>I need to calculate 43 + 83. Let me compute this step by step.</think>
+<model>
+result = 43 + 83
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Create a list of 8 strings and find the maximum
+
+Assistant: <think>I need to solve: Create a list of 8 strings and find the maximum</think>
+<model>
+# Solution for: Create a list of 8 strings and find the maximum
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Generate the first 7 numbers in the Fibonacci sequence
+
+Assistant: <think>I need to generate the first 7 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>
+<model>
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+result = fibonacci(7)
+print(result)
+</model>
+<requires>python:computation</requires>
+
+User: Analyze the following text: 'Hello world, this is a test sentence with several words.'. Count the number of vowels
+
+Assistant: <think>I need to analyze the text 'Hello world, this is a test sentence with several words.' and count vowels.</think>
+<model>
+text = "Hello world, this is a test sentence with several words."
+vowels = "aeiouAEIOU"
+count = sum(1 for char in text if char in vowels)
+print(f"Number of vowels: {count}")
+</model>
+<requires>python:text</requires>
+
+User: Find the roots of the quadratic equation 5x² + 9x + -4 = 0
+
+Assistant: <think>I need to find roots of 5x² + 9x + -4 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 5, 9, -4
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Calculate the mean of the following numbers: item
+
+Assistant: <think>I need to calculate the mean of these numbers: item</think>
+<model>
+numbers = [item]
+mean = sum(numbers) / len(numbers)
+print(f"Mean: {mean:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: Write a function to check if 89 is a prime number
+
+Assistant: <think>I need to check if 89 is prime. A prime number is only divisible by 1 and itself.</think>
+<model>
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+number = 89
+result = is_prime(number)
+print(f"{number} is {'prime' if result else 'not prime'}")
+</model>
+<requires>python:math</requires>
+
+User: Find the roots of the quadratic equation 2x² + 3x + 2 = 0
+
+Assistant: <think>I need to find roots of 2x² + 3x + 2 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 2, 3, 2
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Write a function to check if 98 is a prime number
+
+Assistant: <think>I need to check if 98 is prime. A prime number is only divisible by 1 and itself.</think>
+<model>
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+number = 98
+result = is_prime(number)
+print(f"{number} is {'prime' if result else 'not prime'}")
+</model>
+<requires>python:math</requires>
+
+User: Generate the first 8 numbers in the Fibonacci sequence
+
+Assistant: <think>I need to generate the first 8 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>
+<model>
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+result = fibonacci(8)
+print(result)
+</model>
+<requires>python:computation</requires>
+
+User: Find the factorial of 6
+
+Assistant: <think>I need to calculate 6! = 6 × 5 × 4 × 3 × 2 × 1.</think>
+<model>
+import math
+result = math.factorial(6)
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Find the median of: [1, 3, 5, 7, 9, 11, 13]
+
+Assistant: <think>To find the median of an odd number of elements, I take the middle value.</think>
+<model>
+data = [1, 3, 5, 7, 9, 11, 13]
+data.sort()
+n = len(data)
+median = data[n // 2]
+print(f"Median: {median}")
+</model>
+<requires>python:data_processing</requires>
+
+User: Create a list of 8 numbers and sort them
+
+Assistant: <think>I need to solve: Create a list of 8 numbers and sort them</think>
+<model>
+# Solution for: Create a list of 8 numbers and sort them
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Calculate the mean of the following numbers: item
+
+Assistant: <think>I need to calculate the mean of these numbers: item</think>
+<model>
+numbers = [item]
+mean = sum(numbers) / len(numbers)
+print(f"Mean: {mean:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: Find the roots of the quadratic equation 2x² + -10x + 5 = 0
+
+Assistant: <think>I need to find roots of 2x² + -10x + 5 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 2, -10, 5
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Generate the first 7 numbers in the Fibonacci sequence
+
+Assistant: <think>I need to generate the first 7 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>
+<model>
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+result = fibonacci(7)
+print(result)
+</model>
+<requires>python:computation</requires>
+
+User: Create a list of 10 items and reverse the order
+
+Assistant: <think>I need to solve: Create a list of 10 items and reverse the order</think>
+<model>
+# Solution for: Create a list of 10 items and reverse the order
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Write a function to check if 14 is a prime number
+
+Assistant: <think>I need to check if 14 is prime. A prime number is only divisible by 1 and itself.</think>
+<model>
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+number = 14
+result = is_prime(number)
+print(f"{number} is {'prime' if result else 'not prime'}")
+</model>
+<requires>python:math</requires>
+
+User: Calculate 87 + 8
+
+Assistant: <think>I need to calculate 87 + 8. Let me compute this step by step.</think>
+<model>
+result = 87 + 8
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Find the roots of the quadratic equation 5x² + -8x + 9 = 0
+
+Assistant: <think>I need to find roots of 5x² + -8x + 9 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 5, -8, 9
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: A train travels 120 miles in 2 hours. How fast was it going in mph? Then calculate how far it would travel in 5 hours at that speed.
+
+Assistant: <think>First I need to find the speed: speed = distance/time = 120/2 = 60 mph. Then calculate distance in 5 hours: distance = speed × time = 60 × 5 = 300 miles.</think>
+<model>
+# Step 1: Calculate speed
+distance1 = 120  # miles
+time1 = 2  # hours
+speed = distance1 / time1
+print(f"Speed: {speed} mph")
+
+# Step 2: Calculate distance in 5 hours
+time2 = 5  # hours
+distance2 = speed * time2
+print(f"Distance in {time2} hours: {distance2} miles")
+</model>
+<requires>python:math</requires>
+
+User: Find the roots of the quadratic equation 4x² + -3x + -3 = 0
+
+Assistant: <think>I need to find roots of 4x² + -3x + -3 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 4, -3, -3
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Implement binary search to find 7 in [1, 3, 5, 7, 9, 11]
+
+Assistant: <think>I need to implement binary search to efficiently find 7 in the sorted array.</think>
+<model>
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+arr = [1, 3, 5, 7, 9, 11]
+target = 7
+result = binary_search(arr, target)
+print(f"Found {target} at index {result}")
+</model>
+<requires>python:algorithms</requires>
+
+User: Generate the first 6 numbers in the Fibonacci sequence
+
+Assistant: <think>I need to generate the first 6 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>
+<model>
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+result = fibonacci(6)
+print(result)
+</model>
+<requires>python:computation</requires>
+
+User: Calculate 42 - 9
+
+Assistant: <think>I need to calculate 42 - 9. Let me compute this step by step.</think>
+<model>
+result = 42 - 9
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Calculate the mean of the following numbers: item
+
+Assistant: <think>I need to calculate the mean of these numbers: item</think>
+<model>
+numbers = [item]
+mean = sum(numbers) / len(numbers)
+print(f"Mean: {mean:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: What is the capital of Japan?
+
+Assistant: Tokyo is the capital of Japan.
+
+User: Evaluate the boolean expression: False and False and True
+
+Assistant: <think>I need to solve: Evaluate the boolean expression: False and False and True</think>
+<model>
+# Solution for: Evaluate the boolean expression: False and False and True
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: What is the bubble sort algorithm?
+
+Assistant: Bubble sort is a simple sorting algorithm that repeatedly steps through a list, compares adjacent elements, and swaps them if they're in the wrong order. This process repeats until no more swaps are needed. While easy to understand, it's inefficient for large datasets with O(n²) time complexity.
+
+User: Write a function to check if 93 is a prime number
+
+Assistant: <think>I need to check if 93 is prime. A prime number is only divisible by 1 and itself.</think>
+<model>
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+number = 93
+result = is_prime(number)
+print(f"{number} is {'prime' if result else 'not prime'}")
+</model>
+<requires>python:math</requires>
+
+User: Analyze the following text: 'Hello world, this is a test sentence with several words.'. Count the number of consonants
+
+Assistant: <think>I need to analyze the text 'Hello world, this is a test sentence with several words.' and count consonants.</think>
+<model>
+text = "Hello world, this is a test sentence with several words."
+consonants = sum(1 for char in text if char.isalpha() and char not in "aeiouAEIOU")
+print(f"Number of consonants: {consonants}")
+</model>
+<requires>python:text</requires>
+
+User: What year did World War II end?
+
+Assistant: World War II ended in 1945.
+
+User: What is the difference between HTTP and HTTPS?
+
+Assistant: HTTP (HyperText Transfer Protocol) is the foundation of data communication on the web, while HTTPS (HTTP Secure) is the secure version that encrypts data transmission using SSL/TLS protocols. HTTPS protects against eavesdropping and man-in-the-middle attacks.
+
+User: Analyze the following text: 'The quick brown fox jumps over the lazy dog.'. Count the number of characters
+
+Assistant: <think>I need to analyze the text 'The quick brown fox jumps over the lazy dog.' and count characters.</think>
+<model>
+text = "The quick brown fox jumps over the lazy dog."
+count = len(text)
+print(f"Number of characters: {count}")
+</model>
+<requires>python:text</requires>
+
+User: Find the roots of the quadratic equation 4x² + 7x + 5 = 0
+
+Assistant: <think>I need to find roots of 4x² + 7x + 5 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 4, 7, 5
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Find the roots of the quadratic equation 4x² + 5x + -9 = 0
+
+Assistant: <think>I need to find roots of 4x² + 5x + -9 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 4, 5, -9
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Analyze the following text: 'Machine learning and artificial intelligence are transforming technology.'. Count the number of consonants
+
+Assistant: <think>I need to analyze the text 'Machine learning and artificial intelligence are transforming technology.' and count consonants.</think>
+<model>
+text = "Machine learning and artificial intelligence are transforming technology."
+consonants = sum(1 for char in text if char.isalpha() and char not in "aeiouAEIOU")
+print(f"Number of consonants: {consonants}")
+</model>
+<requires>python:text</requires>
+
+User: Analyze the following text: 'The quick brown fox jumps over the lazy dog.'. Count the number of characters
+
+Assistant: <think>I need to analyze the text 'The quick brown fox jumps over the lazy dog.' and count characters.</think>
+<model>
+text = "The quick brown fox jumps over the lazy dog."
+count = len(text)
+print(f"Number of characters: {count}")
+</model>
+<requires>python:text</requires>
+
+User: Create a list of 7 strings and count unique items
+
+Assistant: <think>I need to solve: Create a list of 7 strings and count unique items</think>
+<model>
+# Solution for: Create a list of 7 strings and count unique items
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Create a list of 5 numbers and reverse the order
+
+Assistant: <think>I need to solve: Create a list of 5 numbers and reverse the order</think>
+<model>
+# Solution for: Create a list of 5 numbers and reverse the order
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Write a function to check if 61 is a prime number
+
+Assistant: <think>I need to check if 61 is prime. A prime number is only divisible by 1 and itself.</think>
+<model>
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+number = 61
+result = is_prime(number)
+print(f"{number} is {'prime' if result else 'not prime'}")
+</model>
+<requires>python:math</requires>
+
+User: Calculate 24 - 33
+
+Assistant: <think>I need to calculate 24 - 33. Let me compute this step by step.</think>
+<model>
+result = 24 - 33
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Take the string 'Python Programming' and replace spaces with underscores
+
+Assistant: <think>I need to solve: Take the string 'Python Programming' and replace spaces with underscores</think>
+<model>
+# Solution for: Take the string 'Python Programming' and replace spaces with underscores
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Create a list of 5 numbers and sort them
+
+Assistant: <think>I need to solve: Create a list of 5 numbers and sort them</think>
+<model>
+# Solution for: Create a list of 5 numbers and sort them
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Generate the first 11 numbers in the Fibonacci sequence
+
+Assistant: <think>I need to generate the first 11 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>
+<model>
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+result = fibonacci(11)
+print(result)
+</model>
+<requires>python:computation</requires>
+
+User: Generate the first 5 numbers in the Fibonacci sequence
+
+Assistant: <think>I need to generate the first 5 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>
+<model>
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+result = fibonacci(5)
+print(result)
+</model>
+<requires>python:computation</requires>
+
+User: Calculate the mean of the following numbers: item
+
+Assistant: <think>I need to calculate the mean of these numbers: item</think>
+<model>
+numbers = [item]
+mean = sum(numbers) / len(numbers)
+print(f"Mean: {mean:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: Calculate 30 * 83
+
+Assistant: <think>I need to calculate 30 * 83. Let me compute this step by step.</think>
+<model>
+result = 30 * 83
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Evaluate the boolean expression: False and True or False
+
+Assistant: <think>I need to solve: Evaluate the boolean expression: False and True or False</think>
+<model>
+# Solution for: Evaluate the boolean expression: False and True or False
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Find the roots of the quadratic equation 1x² + 7x + -3 = 0
+
+Assistant: <think>I need to find roots of 1x² + 7x + -3 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 1, 7, -3
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Calculate the mean of the following numbers: item
+
+Assistant: <think>I need to calculate the mean of these numbers: item</think>
+<model>
+numbers = [item]
+mean = sum(numbers) / len(numbers)
+print(f"Mean: {mean:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: Calculate 19 - 88
+
+Assistant: <think>I need to calculate 19 - 88. Let me compute this step by step.</think>
+<model>
+result = 19 - 88
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Take the string 'machine learning' and reverse the string
+
+Assistant: <think>I need to solve: Take the string 'machine learning' and reverse the string</think>
+<model>
+# Solution for: Take the string 'machine learning' and reverse the string
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Find the roots of the quadratic equation 1x² + -2x + 6 = 0
+
+Assistant: <think>I need to find roots of 1x² + -2x + 6 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 1, -2, 6
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Create a list of 7 strings and reverse the order
+
+Assistant: <think>I need to solve: Create a list of 7 strings and reverse the order</think>
+<model>
+# Solution for: Create a list of 7 strings and reverse the order
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Calculate the mean of the following numbers: item
+
+Assistant: <think>I need to calculate the mean of these numbers: item</think>
+<model>
+numbers = [item]
+mean = sum(numbers) / len(numbers)
+print(f"Mean: {mean:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: Write a short poem about coding
+
+Assistant: Lines of code flow like a river,\nLogic dancing in the night,\nBugs and features, give and take,\nUntil solutions shine so bright.
+
+User: Analyze the following text: 'The quick brown fox jumps over the lazy dog.'. Count the number of words
+
+Assistant: <think>I need to analyze the text 'The quick brown fox jumps over the lazy dog.' and count words.</think>
+<model>
+text = "The quick brown fox jumps over the lazy dog."
+words = text.split()
+count = len(words)
+print(f"Number of words: {count}")
+</model>
+<requires>python:text</requires>
+
+User: Calculate the mean of the following numbers: item
+
+Assistant: <think>I need to calculate the mean of these numbers: item</think>
+<model>
+numbers = [item]
+mean = sum(numbers) / len(numbers)
+print(f"Mean: {mean:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: Generate all permutations of [1, 2, 3]
+
+Assistant: <think>I need to generate all possible permutations of the list [1, 2, 3].</think>
+<model>
+from itertools import permutations
+
+items = [1, 2, 3]
+perms = list(permutations(items))
+for perm in perms:
+    print(list(perm))
+</model>
+<requires>python:algorithms</requires>
+
+User: How do I calculate the area of a circle?
+
+Assistant: To calculate the area of a circle, use the formula A = πr², where A is the area, π (pi) is approximately 3.14159, and r is the radius of the circle.
+
+User: Calculate the mean of the following numbers: item
+
+Assistant: <think>I need to calculate the mean of these numbers: item</think>
+<model>
+numbers = [item]
+mean = sum(numbers) / len(numbers)
+print(f"Mean: {mean:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: Sort this list of numbers: [64, 34, 25, 12, 22, 11, 90]
+
+Assistant: <think>I need to sort the given list of numbers in ascending order.</think>
+<model>
+numbers = [64, 34, 25, 12, 22, 11, 90]
+sorted_numbers = sorted(numbers)
+print(sorted_numbers)
+</model>
+<requires>python:data_processing</requires>
+
+User: What is the largest planet in our solar system?
+
+Assistant: Jupiter is the largest planet in our solar system.
+
+User: Write a function to check if 9 is a prime number
+
+Assistant: <think>I need to check if 9 is prime. A prime number is only divisible by 1 and itself.</think>
+<model>
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+number = 9
+result = is_prime(number)
+print(f"{number} is {'prime' if result else 'not prime'}")
+</model>
+<requires>python:math</requires>
+
+User: Find the roots of the quadratic equation 1x² + -9x + -2 = 0
+
+Assistant: <think>I need to find roots of 1x² + -9x + -2 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 1, -9, -2
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Calculate 72 * 46
+
+Assistant: <think>I need to calculate 72 * 46. Let me compute this step by step.</think>
+<model>
+result = 72 * 46
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Calculate the mean of the following numbers: item
+
+Assistant: <think>I need to calculate the mean of these numbers: item</think>
+<model>
+numbers = [item]
+mean = sum(numbers) / len(numbers)
+print(f"Mean: {mean:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: Take the string 'Data Science' and replace spaces with underscores
+
+Assistant: <think>I need to solve: Take the string 'Data Science' and replace spaces with underscores</think>
+<model>
+# Solution for: Take the string 'Data Science' and replace spaces with underscores
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Calculate the mean of the following numbers: item
+
+Assistant: <think>I need to calculate the mean of these numbers: item</think>
+<model>
+numbers = [item]
+mean = sum(numbers) / len(numbers)
+print(f"Mean: {mean:.2f}")
+</model>
+<requires>python:math</requires>
+
+User: Find the roots of the quadratic equation 2x² + -3x + -10 = 0
+
+Assistant: <think>I need to find roots of 2x² + -3x + -10 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 2, -3, -10
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Calculate the square root of 144
+
+Assistant: <think>I need to find the square root of 144.</think>
+<model>
+import math
+result = math.sqrt(144)
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Take the string 'machine learning' and reverse the string
+
+Assistant: <think>I need to solve: Take the string 'machine learning' and reverse the string</think>
+<model>
+# Solution for: Take the string 'machine learning' and reverse the string
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Evaluate the boolean expression: True or True or True
+
+Assistant: <think>I need to solve: Evaluate the boolean expression: True or True or True</think>
+<model>
+# Solution for: Evaluate the boolean expression: True or True or True
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Create a list of 5 strings and sort them
+
+Assistant: <think>I need to solve: Create a list of 5 strings and sort them</think>
+<model>
+# Solution for: Create a list of 5 strings and sort them
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Write a function to check if 82 is a prime number
+
+Assistant: <think>I need to check if 82 is prime. A prime number is only divisible by 1 and itself.</think>
+<model>
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+number = 82
+result = is_prime(number)
+print(f"{number} is {'prime' if result else 'not prime'}")
+</model>
+<requires>python:math</requires>
+
+User: What is compound interest?
+
+Assistant: Compound interest is interest calculated on the initial principal and the accumulated interest from previous periods. It grows exponentially over time, making it more powerful than simple interest.
+
+User: Describe what a database is
+
+Assistant: A database is an organized collection of structured information or data, typically stored electronically in a computer system. It's managed by a database management system (DBMS) that allows users to create, read, update, and delete data efficiently.
+
+User: Find the roots of the quadratic equation 3x² + 5x + -3 = 0
+
+Assistant: <think>I need to find roots of 3x² + 5x + -3 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 3, 5, -3
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Generate the first 5 numbers in the Fibonacci sequence
+
+Assistant: <think>I need to generate the first 5 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>
+<model>
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+result = fibonacci(5)
+print(result)
+</model>
+<requires>python:computation</requires>
+
+User: Write a function to check if 41 is a prime number
+
+Assistant: <think>I need to check if 41 is prime. A prime number is only divisible by 1 and itself.</think>
+<model>
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+number = 41
+result = is_prime(number)
+print(f"{number} is {'prime' if result else 'not prime'}")
+</model>
+<requires>python:math</requires>
+
+User: Take the string 'machine learning' and convert to uppercase
+
+Assistant: <think>I need to solve: Take the string 'machine learning' and convert to uppercase</think>
+<model>
+# Solution for: Take the string 'machine learning' and convert to uppercase
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Take the string 'Python Programming' and remove all vowels
+
+Assistant: <think>I need to solve: Take the string 'Python Programming' and remove all vowels</think>
+<model>
+# Solution for: Take the string 'Python Programming' and remove all vowels
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Generate the first 13 numbers in the Fibonacci sequence
+
+Assistant: <think>I need to generate the first 13 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>
+<model>
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+result = fibonacci(13)
+print(result)
+</model>
+<requires>python:computation</requires>
+
+User: Calculate 76 * 14
+
+Assistant: <think>I need to calculate 76 * 14. Let me compute this step by step.</think>
+<model>
+result = 76 * 14
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Find the roots of the quadratic equation 1x² + 8x + 1 = 0
+
+Assistant: <think>I need to find roots of 1x² + 8x + 1 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 1, 8, 1
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Create a list of 5 strings and find the maximum
+
+Assistant: <think>I need to solve: Create a list of 5 strings and find the maximum</think>
+<model>
+# Solution for: Create a list of 5 strings and find the maximum
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Who invented the telephone?
+
+Assistant: Alexander Graham Bell invented the telephone in 1876.
+
+User: Find the roots of the quadratic equation 4x² + 0x + -4 = 0
+
+Assistant: <think>I need to find roots of 4x² + 0x + -4 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 4, 0, -4
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Calculate 48 - 90
+
+Assistant: <think>I need to calculate 48 - 90. Let me compute this step by step.</think>
+<model>
+result = 48 - 90
+print(result)
+</model>
+<requires>python:math</requires>
+
+User: Find the roots of the quadratic equation 5x² + 0x + 1 = 0
+
+Assistant: <think>I need to find roots of 5x² + 0x + 1 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 5, 0, 1
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Evaluate the boolean expression: False or False and True
+
+Assistant: <think>I need to solve: Evaluate the boolean expression: False or False and True</think>
+<model>
+# Solution for: Evaluate the boolean expression: False or False and True
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Analyze the following text: 'Machine learning and artificial intelligence are transforming technology.'. Count the number of consonants
+
+Assistant: <think>I need to analyze the text 'Machine learning and artificial intelligence are transforming technology.' and count consonants.</think>
+<model>
+text = "Machine learning and artificial intelligence are transforming technology."
+consonants = sum(1 for char in text if char.isalpha() and char not in "aeiouAEIOU")
+print(f"Number of consonants: {consonants}")
+</model>
+<requires>python:text</requires>
+
+User: Create a list of 9 strings and find the maximum
+
+Assistant: <think>I need to solve: Create a list of 9 strings and find the maximum</think>
+<model>
+# Solution for: Create a list of 9 strings and find the maximum
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Generate the first 9 numbers in the Fibonacci sequence
+
+Assistant: <think>I need to generate the first 9 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>
+<model>
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+result = fibonacci(9)
+print(result)
+</model>
+<requires>python:computation</requires>
+
+User: Generate the first 13 numbers in the Fibonacci sequence
+
+Assistant: <think>I need to generate the first 13 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>
+<model>
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+result = fibonacci(13)
+print(result)
+</model>
+<requires>python:computation</requires>
+
+User: Take the string 'Python Programming' and reverse the string
+
+Assistant: <think>I need to solve: Take the string 'Python Programming' and reverse the string</think>
+<model>
+# Solution for: Take the string 'Python Programming' and reverse the string
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Evaluate the boolean expression: False or False or True
+
+Assistant: <think>I need to solve: Evaluate the boolean expression: False or False or True</think>
+<model>
+# Solution for: Evaluate the boolean expression: False or False or True
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Analyze the following text: 'Python is a powerful programming language for data science.'. Count the number of consonants
+
+Assistant: <think>I need to analyze the text 'Python is a powerful programming language for data science.' and count consonants.</think>
+<model>
+text = "Python is a powerful programming language for data science."
+consonants = sum(1 for char in text if char.isalpha() and char not in "aeiouAEIOU")
+print(f"Number of consonants: {consonants}")
+</model>
+<requires>python:text</requires>
+
+User: Take the string 'hello world' and convert to uppercase
+
+Assistant: <think>I need to solve: Take the string 'hello world' and convert to uppercase</think>
+<model>
+# Solution for: Take the string 'hello world' and convert to uppercase
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Take the string 'Data Science' and remove all vowels
+
+Assistant: <think>I need to solve: Take the string 'Data Science' and remove all vowels</think>
+<model>
+# Solution for: Take the string 'Data Science' and remove all vowels
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Create a list of 9 strings and reverse the order
+
+Assistant: <think>I need to solve: Create a list of 9 strings and reverse the order</think>
+<model>
+# Solution for: Create a list of 9 strings and reverse the order
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Find the roots of the quadratic equation 5x² + -9x + 7 = 0
+
+Assistant: <think>I need to find roots of 5x² + -9x + 7 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 5, -9, 7
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Evaluate the boolean expression: True and True and True
+
+Assistant: <think>I need to solve: Evaluate the boolean expression: True and True and True</think>
+<model>
+# Solution for: Evaluate the boolean expression: True and True and True
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Evaluate the boolean expression: True and False and False
+
+Assistant: <think>I need to solve: Evaluate the boolean expression: True and False and False</think>
+<model>
+# Solution for: Evaluate the boolean expression: True and False and False
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Take the string 'machine learning' and convert to uppercase
+
+Assistant: <think>I need to solve: Take the string 'machine learning' and convert to uppercase</think>
+<model>
+# Solution for: Take the string 'machine learning' and convert to uppercase
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Create a list of 10 items and sort them
+
+Assistant: <think>I need to solve: Create a list of 10 items and sort them</think>
+<model>
+# Solution for: Create a list of 10 items and sort them
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Evaluate the boolean expression: True or False or True
+
+Assistant: <think>I need to solve: Evaluate the boolean expression: True or False or True</think>
+<model>
+# Solution for: Evaluate the boolean expression: True or False or True
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Create a list of 5 items and sort them
+
+Assistant: <think>I need to solve: Create a list of 5 items and sort them</think>
+<model>
+# Solution for: Create a list of 5 items and sort them
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Find the roots of the quadratic equation 2x² + -2x + 3 = 0
+
+Assistant: <think>I need to find roots of 2x² + -2x + 3 = 0 using the quadratic formula.</think>
+<model>
+import math
+
+a, b, c = 2, -2, 3
+discriminant = b**2 - 4*a*c
+
+if discriminant > 0:
+    root1 = (-b + math.sqrt(discriminant)) / (2*a)
+    root2 = (-b - math.sqrt(discriminant)) / (2*a)
+    print(f"Two real roots: {root1:.2f}, {root2:.2f}")
+elif discriminant == 0:
+    root = -b / (2*a)
+    print(f"One real root: {root:.2f}")
+else:
+    real_part = -b / (2*a)
+    imag_part = math.sqrt(-discriminant) / (2*a)
+    print(f"Complex roots: {real_part:.2f} ± {imag_part:.2f}i")
+</model>
+<requires>python:math</requires>
+
+User: Create a list of 10 items and count unique items
+
+Assistant: <think>I need to solve: Create a list of 10 items and count unique items</think>
+<model>
+# Solution for: Create a list of 10 items and count unique items
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Take the string 'hello world' and remove all vowels
+
+Assistant: <think>I need to solve: Take the string 'hello world' and remove all vowels</think>
+<model>
+# Solution for: Take the string 'hello world' and remove all vowels
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Take the string 'machine learning' and remove all vowels
+
+Assistant: <think>I need to solve: Take the string 'machine learning' and remove all vowels</think>
+<model>
+# Solution for: Take the string 'machine learning' and remove all vowels
+print('Solution implementation needed')
+</model>
+<requires>python:general</requires>
+
+User: Calculate the energy required to melt 250g of paraffin wax (latent heat of fusion = 200 kJ/kg)
+
+Assistant: <think>To calculate energy required for phase change, I use Q = m × Lf where Q is energy, m is mass in kg, and Lf is latent heat of fusion. Mass = 250g = 0.25kg, Lf = 200 kJ/kg.</think>
+<model>
+mass_kg = 0.25  # 250g converted to kg
+latent_heat_fusion = 200  # kJ/kg
+energy_required = mass_kg * latent_heat_fusion
+print(f"Energy required to melt {mass_kg*1000}g of paraffin: {energy_required} kJ")
+</model>
+<requires>python:physics</requires>
+
+User: A PCM has a melting point of 28°C. If 500g of this material at 25°C absorbs 15 kJ of energy, calculate its final temperature (specific heat = 2.1 kJ/kg·K, latent heat = 180 kJ/kg)
+
+Assistant: <think>First, calculate energy to heat from 25°C to 28°C using Q = mcΔT. Then check if remaining energy can complete phase change. If not, material stays at 28°C partially melted.</think>
+<model>
+m = 0.5  # kg
+c = 2.1  # kJ/kg·K
+Lf = 180  # kJ/kg
+T_initial = 25  # °C
+T_melt = 28  # °C
+Q_total = 15  # kJ
+
+# Energy to reach melting point
+Q_sensible = m * c * (T_melt - T_initial)
+print(f"Energy to reach melting point: {Q_sensible} kJ")
+
+# Remaining energy for phase change
+Q_remaining = Q_total - Q_sensible
+print(f"Remaining energy: {Q_remaining} kJ")
+
+# Energy needed for complete melting
+Q_phase_change = m * Lf
+print(f"Energy for complete melting: {Q_phase_change} kJ")
+
+if Q_remaining >= Q_phase_change:
+    print("Material completely melts and temperature rises above 28°C")
+else:
+    fraction_melted = Q_remaining / Q_phase_change
+    print(f"Material partially melts: {fraction_melted:.2%} melted at 28°C")
+</model>
+<requires>python:physics</requires>
+
+User: Calculate the molarity of a solution containing 58.5g of NaCl dissolved in 500mL of water (MW of NaCl = 58.5 g/mol)
+
+Assistant: <think>Molarity = moles of solute / liters of solution. First convert mass to moles using MW, then convert volume to liters.</think>
+<model>
+mass_NaCl = 58.5  # grams
+molar_mass_NaCl = 58.5  # g/mol
+volume_L = 0.5  # 500mL = 0.5L
+
+moles_NaCl = mass_NaCl / molar_mass_NaCl
+molarity = moles_NaCl / volume_L
+
+print(f"Moles of NaCl: {moles_NaCl} mol")
+print(f"Molarity: {molarity} M")
+</model>
+<requires>python:chemistry</requires>
+
+User: For the reaction 2H₂ + O₂ → 2H₂O, if 5 moles of H₂ react completely, how many moles of H₂O are produced?
+
+Assistant: <think>From the balanced equation, 2 moles H₂ produce 2 moles H₂O. The molar ratio is 1:1. So 5 moles H₂ will produce 5 moles H₂O.</think>
+<model>
+# Balanced equation: 2H₂ + O₂ → 2H₂O
+# Molar ratio H₂:H₂O = 2:2 = 1:1
+
+moles_H2 = 5
+molar_ratio = 1  # 1 mole H₂O per 1 mole H₂
+moles_H2O = moles_H2 * molar_ratio
+
+print(f"Moles of H₂ reacting: {moles_H2}")
+print(f"Moles of H₂O produced: {moles_H2O}")
+</model>
+<requires>python:chemistry</requires>
+
+User: A spring with constant k = 200 N/m is compressed by 0.15m. Calculate the elastic potential energy stored
+
+Assistant: <think>Elastic potential energy is given by U = (1/2)kx² where k is spring constant and x is compression distance.</think>
+<model>
+k = 200  # N/m
+x = 0.15  # m
+
+elastic_energy = 0.5 * k * x**2
+
+print(f"Spring constant: {k} N/m")
+print(f"Compression: {x} m")
+print(f"Elastic potential energy: {elastic_energy} J")
+</model>
+<requires>python:physics</requires>
+
+User: Calculate the orbital velocity of a satellite 400km above Earth's surface (Earth radius = 6371 km, g = 9.81 m/s²)
+
+Assistant: <think>Orbital velocity v = √(GM/r) where r is distance from Earth's center. Since GM = gR² for Earth's surface, I can use v = √(gR²/r) where R is Earth's radius.</think>
+<model>
+import math
+
+R_earth = 6371000  # Earth radius in meters
+altitude = 400000  # 400 km in meters
+g = 9.81  # m/s²
+
+r_orbit = R_earth + altitude  # distance from Earth's center
+GM = g * R_earth**2  # GM for Earth
+
+orbital_velocity = math.sqrt(GM / r_orbit)
+
+print(f"Altitude: {altitude/1000} km")
+print(f"Orbital radius: {r_orbit/1000} km")
+print(f"Orbital velocity: {orbital_velocity:.0f} m/s = {orbital_velocity/1000:.2f} km/s")
+</model>
+<requires>python:physics</requires>
+
+User: Find the derivative of f(x) = 3x⁴ - 2x³ + 5x - 7
+
+Assistant: <think>To find the derivative, I apply the power rule: d/dx(axⁿ) = naxⁿ⁻¹. For each term: d/dx(3x⁴) = 12x³, d/dx(-2x³) = -6x², d/dx(5x) = 5, d/dx(-7) = 0.</think>
+<model>
+import sympy as sp
+
+x = sp.Symbol('x')
+f = 3*x**4 - 2*x**3 + 5*x - 7
+
+derivative = sp.diff(f, x)
+
+print(f"Original function: f(x) = {f}")
+print(f"Derivative: f'(x) = {derivative}")
+
+# Manual verification
+manual_derivative = 12*x**3 - 6*x**2 + 5
+print(f"Manual calculation: f'(x) = {manual_derivative}")
+print(f"Verification: {sp.simplify(derivative - manual_derivative) == 0}")
+</model>
+<requires>python:math</requires>
+
+User: Solve the quadratic equation 2x² + 5x - 3 = 0
+
+Assistant: <think>I can use the quadratic formula: x = (-b ± √(b² - 4ac)) / 2a where a=2, b=5, c=-3. I'll calculate the discriminant first.</think>
+<model>
+import math
+
+a = 2
+b = 5 
+c = -3
+
+# Calculate discriminant
+discriminant = b**2 - 4*a*c
+print(f"Discriminant: {discriminant}")
+
+if discriminant >= 0:
+    x1 = (-b + math.sqrt(discriminant)) / (2*a)
+    x2 = (-b - math.sqrt(discriminant)) / (2*a)
+    
+    print(f"Solutions:")
+    print(f"x₁ = {x1}")
+    print(f"x₂ = {x2}")
+    
+    # Verify solutions
+    def f(x):
+        return 2*x**2 + 5*x - 3
+    
+    print(f"Verification:")
+    print(f"f({x1}) = {f(x1)}")
+    print(f"f({x2}) = {f(x2)}")
+else:
+    print("No real solutions")
+</model>
+<requires>python:math</requires>
+
+User: Count the number of R's in the word 'strawberry'
+
+Assistant: <think>I need to count each occurrence of the letter 'R' (both uppercase and lowercase) in the word 'strawberry'. I'll iterate through each character and count matches.</think>
+<model>
+word = "strawberry"
+letter_to_count = "r"
+
+# Count both uppercase and lowercase R
+count = word.lower().count(letter_to_count.lower())
+
+print(f"Word: '{word}'")
+print(f"Letter to count: '{letter_to_count}'")
+print(f"Number of R's: {count}")
+
+# Show each character for verification
+print("\nCharacter breakdown:")
+for i, char in enumerate(word):
+    is_r = char.lower() == letter_to_count.lower()
+    print(f"Position {i+1}: '{char}' -> {'R found!' if is_r else 'not R'}")
+</model>
+<requires>python:string_processing</requires>
+
+User: How many times does the letter 'e' appear in 'eleven'?
+
+Assistant: <think>I need to count occurrences of 'e' in 'eleven'. I'll check each character position to count both uppercase and lowercase 'e'.</think>
+<model>
+word = "eleven"
+letter = "e"
+
+count = word.lower().count(letter.lower())
+
+print(f"Word: '{word}'")
+print(f"Counting letter: '{letter}'")
+print(f"Total count: {count}")
+
+# Show positions where 'e' appears
+positions = [i+1 for i, char in enumerate(word) if char.lower() == letter.lower()]
+print(f"Letter 'e' appears at positions: {positions}")
+</model>
+<requires>python:string_processing</requires>
+
+User: Count the number of words in this sentence: 'The quick brown fox jumps over the lazy dog'
+
+Assistant: <think>To count words, I can split the sentence by whitespace and count the resulting elements. I need to handle multiple spaces and strip whitespace.</think>
+<model>
+sentence = "The quick brown fox jumps over the lazy dog"
+
+# Split by whitespace and filter out empty strings
+words = sentence.split()
+word_count = len(words)
+
+print(f"Sentence: '{sentence}'")
+print(f"Number of words: {word_count}")
+print(f"Words: {words}")
+
+# Alternative method using regular expressions for complex cases
+import re
+words_regex = re.findall(r'\b\w+\b', sentence)
+print(f"Using regex count: {len(words_regex)}")
+print(f"Words found: {words_regex}")
+</model>
+<requires>python:string_processing</requires>
+
