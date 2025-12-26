@@ -6,9 +6,8 @@ set -e
 echo "🔥 Starting Qwen2.5 WorldModel Fine-tuning with ROCm"
 echo "=================================================="
 
-# Activate virtual environment
-echo "📦 Activating virtual environment..."
-source venv/bin/activate
+# Skip venv activation (using system Python)
+echo "📦 Using system Python environment..."
 
 # Setup ROCm environment
 echo "🚀 Setting up ROCm 7.1.1 environment..."
