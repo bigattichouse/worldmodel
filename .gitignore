@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+
+# Training outputs
+training_output/
+sft_checkpoints/
+logs/
+*.log
+checkpoints/
+
+# Model files (too large for git)
+*.gguf
+*.bin
+*.safetensors
+
+# Cache
+.pytest_cache/
+.cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary
+tmp/
+temp/
+debug_*
+test_*
+quick_test/
+*_test/
+*_finetuned/
+
+# ROCm specific
+rocblas_*
+.rocm/
