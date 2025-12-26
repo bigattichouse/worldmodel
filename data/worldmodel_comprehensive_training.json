@@ -1,0 +1,269 @@
+{
+  "metadata": {
+    "total_examples": 23,
+    "created_at": "2025-12-26T16:28:07.443619+00:00",
+    "generator_version": "2.0",
+    "description": "Comprehensive WorldModel training dataset with computational and non-computational examples",
+    "categories": {
+      "computational": 8,
+      "non_computational": 10,
+      "boundary": 3,
+      "reasoning": 2
+    }
+  },
+  "examples": [
+    {
+      "input_text": "Calculate the square root of 144",
+      "target_output": "<think>I need to find the square root of 144.</think>\n<model>\nimport math\nresult = math.sqrt(144)\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "calculation"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:07.443562+00:00"
+    },
+    {
+      "input_text": "What is the bubble sort algorithm?",
+      "target_output": "Bubble sort is a simple sorting algorithm that repeatedly steps through a list, compares adjacent elements, and swaps them if they're in the wrong order. This process repeats until no more swaps are needed. While easy to understand, it's inefficient for large datasets with O(n\u00b2) time complexity.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "conceptual"
+      },
+      "difficulty": "medium",
+      "category": "boundary",
+      "created_at": "2025-12-26T16:28:07.443604+00:00"
+    },
+    {
+      "input_text": "Describe what a database is",
+      "target_output": "A database is an organized collection of structured information or data, typically stored electronically in a computer system. It's managed by a database management system (DBMS) that allows users to create, read, update, and delete data efficiently.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "explanation"
+      },
+      "difficulty": "medium",
+      "category": "explanation",
+      "created_at": "2025-12-26T16:28:07.443593+00:00"
+    },
+    {
+      "input_text": "If I buy 3 books for $12 each and 2 notebooks for $4 each, how much change do I get from $50?",
+      "target_output": "<think>I need to calculate total cost: (3 \u00d7 $12) + (2 \u00d7 $4) = $36 + $8 = $44. Change from $50 = $50 - $44 = $6.</think>\n<model>\nbooks = 3 * 12\nnotebooks = 2 * 4\ntotal_cost = books + notebooks\nmoney_given = 50\nchange = money_given - total_cost\nprint(f\"Books: ${books}\")\nprint(f\"Notebooks: ${notebooks}\")\nprint(f\"Total cost: ${total_cost}\")\nprint(f\"Change: ${change}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "multi_step_reasoning"
+      },
+      "difficulty": "hard",
+      "category": "reasoning",
+      "created_at": "2025-12-26T16:28:07.443608+00:00"
+    },
+    {
+      "input_text": "What year did World War II end?",
+      "target_output": "World War II ended in 1945.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "direct_answer"
+      },
+      "difficulty": "easy",
+      "category": "factual",
+      "created_at": "2025-12-26T16:28:07.443589+00:00"
+    },
+    {
+      "input_text": "Convert 100 degrees Fahrenheit to Celsius",
+      "target_output": "<think>To convert Fahrenheit to Celsius: C = (F - 32) \u00d7 5/9</think>\n<model>\nfahrenheit = 100\ncelsius = (fahrenheit - 32) * 5/9\nprint(f\"{fahrenheit}\u00b0F = {celsius:.2f}\u00b0C\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "calculation"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:07.443573+00:00"
+    },
+    {
+      "input_text": "Explain what machine learning is",
+      "target_output": "Machine learning is a subset of artificial intelligence that enables computers to learn and improve from experience without being explicitly programmed. It uses algorithms to analyze data, identify patterns, and make predictions or decisions based on that analysis.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "explanation"
+      },
+      "difficulty": "medium",
+      "category": "explanation",
+      "created_at": "2025-12-26T16:28:07.443590+00:00"
+    },
+    {
+      "input_text": "Write a short poem about coding",
+      "target_output": "Lines of code flow like a river,\\nLogic dancing in the night,\\nBugs and features, give and take,\\nUntil solutions shine so bright.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "creative"
+      },
+      "difficulty": "easy",
+      "category": "creative",
+      "created_at": "2025-12-26T16:28:07.443595+00:00"
+    },
+    {
+      "input_text": "A train travels 120 miles in 2 hours. How fast was it going in mph? Then calculate how far it would travel in 5 hours at that speed.",
+      "target_output": "<think>First I need to find the speed: speed = distance/time = 120/2 = 60 mph. Then calculate distance in 5 hours: distance = speed \u00d7 time = 60 \u00d7 5 = 300 miles.</think>\n<model>\n# Step 1: Calculate speed\ndistance1 = 120  # miles\ntime1 = 2  # hours\nspeed = distance1 / time1\nprint(f\"Speed: {speed} mph\")\n\n# Step 2: Calculate distance in 5 hours\ntime2 = 5  # hours\ndistance2 = speed * time2\nprint(f\"Distance in {time2} hours: {distance2} miles\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "multi_step_reasoning"
+      },
+      "difficulty": "hard",
+      "category": "reasoning",
+      "created_at": "2025-12-26T16:28:07.443607+00:00"
+    },
+    {
+      "input_text": "What is the capital of Japan?",
+      "target_output": "Tokyo is the capital of Japan.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "direct_answer"
+      },
+      "difficulty": "easy",
+      "category": "factual",
+      "created_at": "2025-12-26T16:28:07.443583+00:00"
+    },
+    {
+      "input_text": "What are the benefits of learning Python?",
+      "target_output": "Learning Python offers many benefits: it has simple, readable syntax that's beginner-friendly; extensive libraries for data science, web development, and automation; strong community support; and high demand in the job market across many industries.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "creative"
+      },
+      "difficulty": "easy",
+      "category": "creative",
+      "created_at": "2025-12-26T16:28:07.443598+00:00"
+    },
+    {
+      "input_text": "What is the largest planet in our solar system?",
+      "target_output": "Jupiter is the largest planet in our solar system.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "direct_answer"
+      },
+      "difficulty": "easy",
+      "category": "factual",
+      "created_at": "2025-12-26T16:28:07.443586+00:00"
+    },
+    {
+      "input_text": "What is the difference between HTTP and HTTPS?",
+      "target_output": "HTTP (HyperText Transfer Protocol) is the foundation of data communication on the web, while HTTPS (HTTP Secure) is the secure version that encrypts data transmission using SSL/TLS protocols. HTTPS protects against eavesdropping and man-in-the-middle attacks.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "explanation"
+      },
+      "difficulty": "medium",
+      "category": "explanation",
+      "created_at": "2025-12-26T16:28:07.443592+00:00"
+    },
+    {
+      "input_text": "Sort this list of numbers: [64, 34, 25, 12, 22, 11, 90]",
+      "target_output": "<think>I need to sort the given list of numbers in ascending order.</think>\n<model>\nnumbers = [64, 34, 25, 12, 22, 11, 90]\nsorted_numbers = sorted(numbers)\nprint(sorted_numbers)\n</model>\n<requires>python:data_processing</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "data_analysis"
+      },
+      "difficulty": "medium",
+      "category": "data_processing",
+      "created_at": "2025-12-26T16:28:07.443576+00:00"
+    },
+    {
+      "input_text": "Implement binary search to find 7 in [1, 3, 5, 7, 9, 11]",
+      "target_output": "<think>I need to implement binary search to efficiently find 7 in the sorted array.</think>\n<model>\ndef binary_search(arr, target):\n    left, right = 0, len(arr) - 1\n    \n    while left <= right:\n        mid = (left + right) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\narr = [1, 3, 5, 7, 9, 11]\ntarget = 7\nresult = binary_search(arr, target)\nprint(f\"Found {target} at index {result}\")\n</model>\n<requires>python:algorithms</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "algorithm"
+      },
+      "difficulty": "hard",
+      "category": "algorithms",
+      "created_at": "2025-12-26T16:28:07.443580+00:00"
+    },
+    {
+      "input_text": "What is compound interest?",
+      "target_output": "Compound interest is interest calculated on the initial principal and the accumulated interest from previous periods. It grows exponentially over time, making it more powerful than simple interest.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "conceptual"
+      },
+      "difficulty": "medium",
+      "category": "boundary",
+      "created_at": "2025-12-26T16:28:07.443600+00:00"
+    },
+    {
+      "input_text": "Find the factorial of 6",
+      "target_output": "<think>I need to calculate 6! = 6 \u00d7 5 \u00d7 4 \u00d7 3 \u00d7 2 \u00d7 1.</think>\n<model>\nimport math\nresult = math.factorial(6)\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "calculation"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:07.443570+00:00"
+    },
+    {
+      "input_text": "Who invented the telephone?",
+      "target_output": "Alexander Graham Bell invented the telephone in 1876.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "direct_answer"
+      },
+      "difficulty": "easy",
+      "category": "factual",
+      "created_at": "2025-12-26T16:28:07.443585+00:00"
+    },
+    {
+      "input_text": "What does CPU stand for?",
+      "target_output": "CPU stands for Central Processing Unit.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "direct_answer"
+      },
+      "difficulty": "easy",
+      "category": "factual",
+      "created_at": "2025-12-26T16:28:07.443588+00:00"
+    },
+    {
+      "input_text": "Find the median of: [1, 3, 5, 7, 9, 11, 13]",
+      "target_output": "<think>To find the median of an odd number of elements, I take the middle value.</think>\n<model>\ndata = [1, 3, 5, 7, 9, 11, 13]\ndata.sort()\nn = len(data)\nmedian = data[n // 2]\nprint(f\"Median: {median}\")\n</model>\n<requires>python:data_processing</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "data_analysis"
+      },
+      "difficulty": "medium",
+      "category": "data_processing",
+      "created_at": "2025-12-26T16:28:07.443578+00:00"
+    },
+    {
+      "input_text": "Generate all permutations of [1, 2, 3]",
+      "target_output": "<think>I need to generate all possible permutations of the list [1, 2, 3].</think>\n<model>\nfrom itertools import permutations\n\nitems = [1, 2, 3]\nperms = list(permutations(items))\nfor perm in perms:\n    print(list(perm))\n</model>\n<requires>python:algorithms</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "algorithm"
+      },
+      "difficulty": "hard",
+      "category": "algorithms",
+      "created_at": "2025-12-26T16:28:07.443581+00:00"
+    },
+    {
+      "input_text": "Calculate compound interest: $1000 at 5% for 3 years",
+      "target_output": "<think>Compound interest formula: A = P(1 + r)^t where P=1000, r=0.05, t=3</think>\n<model>\nprincipal = 1000\nrate = 0.05\ntime = 3\namount = principal * (1 + rate) ** time\ninterest = amount - principal\nprint(f\"Final amount: ${amount:.2f}\")\nprint(f\"Interest earned: ${interest:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "calculation"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:07.443574+00:00"
+    },
+    {
+      "input_text": "How do I calculate the area of a circle?",
+      "target_output": "To calculate the area of a circle, use the formula A = \u03c0r\u00b2, where A is the area, \u03c0 (pi) is approximately 3.14159, and r is the radius of the circle.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "conceptual"
+      },
+      "difficulty": "medium",
+      "category": "boundary",
+      "created_at": "2025-12-26T16:28:07.443602+00:00"
+    }
+  ]
+}
