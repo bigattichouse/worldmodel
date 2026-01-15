@@ -1,6 +1,33 @@
 # WorldModel: LLM Training for Structured Reasoning
 
-A system that trains language models to perform computational tasks using structured `<think>`, `<model>`, and `<requires>` tags for systematic reasoning and code execution.
+A comprehensive system that trains language models to perform computational tasks using structured reasoning. Instead of generating free-form text, trained models produce systematic responses with `<think>` tags for reasoning, `<model>` tags for executable code, and `<requires>` tags for dependencies. The system then safely executes the generated code and returns verified results, bridging natural language understanding with reliable computation.
+
+This approach makes AI reasoning transparent, verifiable, and practically useful for mathematical calculations, data analysis, system tasks, and complex problem-solving.
+
+## 🧠 How It Works
+
+The system teaches models to generate structured responses that combine reasoning with executable code:
+
+**Input**: "What's 15% of 200?"
+
+**Model Output**:
+```
+<think>I need to calculate 15% of 200...</think>
+<model>
+result = 0.15 * 200
+print(f"15% of 200 = {result}")
+</model>
+<requires>python:math</requires>
+
+15% of 200 equals 30.
+```
+
+**System Response**:
+1. **Parses** the structured output (`<think>`, `<model>`, `<requires>`)
+2. **Executes** the generated code safely in a sandboxed environment
+3. **Returns** results with explanation and verification
+
+This creates AI that doesn't just "know" the answer, but can **show its work** and **prove its calculations** through executable code.
 
 ## 🛠️ Installation & Setup
 
@@ -101,29 +128,6 @@ python3 run_worldmodel_inference.py --interactive
 # Single query
 python3 run_worldmodel_inference.py "Calculate 25% of 400"
 ```
-
-## 🧠 How It Works
-
-The system teaches models to generate structured responses:
-
-**Input**: "What's 15% of 200?"
-
-**Model Output**:
-```
-<think>I need to calculate 15% of 200...</think>
-<model>
-result = 0.15 * 200
-print(f"15% of 200 = {result}")
-</model>
-<requires>python:math</requires>
-
-15% of 200 equals 30.
-```
-
-**System Response**:
-1. Parses the structured output
-2. Safely executes the generated code
-3. Returns results with explanation
 
 ## 📁 Structure
 
