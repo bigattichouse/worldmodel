@@ -2,9 +2,9 @@
 
 ## Vision
 
-Create a multimodal language model that natively processes WebAssembly (WASM) as an internal representation, similar to how vision/audio models work with their respective modalities. Instead of generating textual code that gets compiled externally, the model would maintain WASM bytecode as part of its internal state and reasoning process.
+Create a language model that processes WebAssembly (WASM) as an internal representation alongside natural language. Instead of generating textual code that gets compiled externally, the model maintains WASM bytecode as part of its internal state and reasoning process.
 
-The model builds deterministic computational models of the world (physics, mathematics, logic) as executable WASM code embedded directly in its attention mechanism. When reasoning about quantitative problems, the model constructs and executes precise simulations rather than relying solely on pattern matching.
+The model builds computational representations (mathematics, logic, algorithms) as executable WASM code within its attention mechanism. When reasoning about quantitative problems, the model constructs and executes precise computations rather than relying solely on pattern matching.
 
 ## Current State vs. Proposed Architecture
 

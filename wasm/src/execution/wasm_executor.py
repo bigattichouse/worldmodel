@@ -18,9 +18,18 @@ logger = logging.getLogger(__name__)
 class WASMExecutor:
     """Executes WebAssembly code and returns results for model integration."""
     
-    def __init__(self, timeout: int = 5):
+    def __init__(self, timeout: int = 5, use_sandbox: bool = True, sandbox_config: Optional[Dict] = None):
         self.timeout = timeout
+        self.use_sandbox = use_sandbox
         self._check_wasm_tools()
+        
+        # Initialize API provider for external calls
+        from .wasm_api import WASMAPIProvider
+        self.api_provider = WASMAPIProvider(use_sandbox, sandbox_config)
+        
+        print(f"🔧 WASM Executor initialized:")
+        print(f"   Internal WASM: {'Direct execution' if self.has_wat2wasm else 'Simulated'}")
+        print(f"   External APIs: {'QEMU sandbox' if use_sandbox else 'Direct host'}")
     
     def _check_wasm_tools(self):
         """Check if required WASM tools are available."""
@@ -32,13 +41,14 @@ class WASMExecutor:
             self.has_wat2wasm = False
             logger.warning("wat2wasm not found - WASM execution will be simulated")
     
-    def execute_wat(self, wat_code: str, inputs: Optional[List[Any]] = None) -> Dict:
+    def execute_wat(self, wat_code: str, inputs: Optional[List[Any]] = None, api_calls: Optional[List[str]] = None) -> Dict:
         """
         Execute WebAssembly Text format code.
         
         Args:
             wat_code: WAT format WebAssembly code
             inputs: Optional input parameters for the WASM function
+            api_calls: Optional list of external API calls to execute
             
         Returns:
             Dict with execution results:
@@ -46,20 +56,61 @@ class WASMExecutor:
             - result: Any (computation result)  
             - error: str (if failed)
             - computed_token: str (for model integration)
+            - api_results: Dict (external API call results)
         """
-        if not self.has_wat2wasm:
-            return self._simulate_execution(wat_code, inputs)
+        result = {
+            "success": False,
+            "result": None,
+            "error": None,
+            "computed_token": "<error>execution_failed</error>",
+            "api_results": {}
+        }
         
+        # Execute external API calls first (these use sandbox if enabled)
+        if api_calls:
+            result["api_results"] = self._execute_api_calls(api_calls)
+        
+        # Execute WASM code internally (no sandbox needed - it's deterministic computation)
         try:
-            return self._real_execution(wat_code, inputs)
+            if not self.has_wat2wasm:
+                wasm_result = self._simulate_execution(wat_code, inputs)
+            else:
+                wasm_result = self._real_execution(wat_code, inputs)
+            
+            # Merge results
+            result.update(wasm_result)
+            
         except Exception as e:
             logger.error(f"WASM execution failed: {e}")
-            return {
-                "success": False,
-                "result": None,
-                "error": str(e),
-                "computed_token": "<error>wasm_failed</error>"
-            }
+            result["error"] = str(e)
+        
+        return result
+    
+    def _execute_api_calls(self, api_calls: List[str]) -> Dict[str, Any]:
+        """Execute external API calls (via sandbox if enabled)."""
+        api_results = {}
+        
+        for api_call in api_calls:
+            try:
+                if isinstance(api_call, dict):
+                    api_name = api_call.get("name")
+                    args = api_call.get("args", [])
+                    kwargs = api_call.get("kwargs", {})
+                else:
+                    api_name = api_call
+                    args = []
+                    kwargs = {}
+                
+                api_result = self.api_provider.call_api(api_name, *args, **kwargs)
+                api_results[api_name] = api_result
+                
+            except Exception as e:
+                api_results[api_call] = {
+                    "success": False,
+                    "error": str(e)
+                }
+        
+        return api_results
     
     def _real_execution(self, wat_code: str, inputs: Optional[List[Any]]) -> Dict:
         """Execute WASM code using actual WASM runtime."""

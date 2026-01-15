@@ -116,7 +116,10 @@ class MultiHeadCrossAttention(nn.Module):
         K = K.view(batch_size, -1, self.num_heads, self.head_dim).transpose(1, 2)
         V = V.view(batch_size, -1, self.num_heads, self.head_dim).transpose(1, 2)
         
-        # Compute attention
+        # Compute attention (convert mask to correct type if needed)
+        if key_mask is not None and key_mask.dtype not in [torch.bool, torch.float16, torch.float32]:
+            key_mask = key_mask.to(torch.bool)
+        
         attention_output = F.scaled_dot_product_attention(
             Q, K, V,
             attn_mask=key_mask,

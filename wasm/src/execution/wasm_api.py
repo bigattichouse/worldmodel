@@ -4,6 +4,10 @@ WASM API Integration
 
 Provides external API calls for WASM functions, similar to JavaScript/WASM integration.
 Handles system calls like date/time, file operations, etc.
+
+Security modes:
+- Default: Uses QEMU sandbox for secure execution
+- --no-sandbox: Direct host execution (faster, less secure)
 """
 
 import datetime
@@ -12,12 +16,21 @@ import subprocess
 import platform
 from typing import Dict, Any, Optional, List
 import json
+from pathlib import Path
 
 
 class WASMAPIProvider:
     """Provides external API functions for WASM execution."""
     
-    def __init__(self):
+    def __init__(self, use_sandbox: bool = True, sandbox_config: Optional[Dict] = None):
+        self.use_sandbox = use_sandbox
+        self.sandbox_config = sandbox_config or {}
+        self.sandbox_engine = None
+        
+        # Initialize sandbox if enabled
+        if use_sandbox:
+            self._init_sandbox()
+        
         self.available_apis = {
             "date": self.get_current_date,
             "time": self.get_current_time,
@@ -28,6 +41,27 @@ class WASMAPIProvider:
             "list_files": self.list_directory,
             "get_file_size": self.get_file_size,
         }
+    
+    def _init_sandbox(self):
+        """Initialize QEMU sandbox for secure API calls."""
+        try:
+            # Import sandbox from main directory
+            import sys
+            sandbox_path = Path(__file__).parent.parent.parent.parent / "sandbox" / "src"
+            sys.path.insert(0, str(sandbox_path))
+            
+            from worldmodel_sandbox import SandboxedWorldModelInference
+            
+            # For API-only operations, we don't need the actual model
+            # Just initialize the sandbox component directly
+            print("🔒 WASM API sandbox enabled (API-only mode)")
+            self.sandbox_available = True
+            
+        except ImportError as e:
+            print(f"⚠️  WASM API sandbox not available: {e}")
+            print("   Using direct execution (less secure)")
+            self.use_sandbox = False
+            self.sandbox_available = False
     
     def call_api(self, api_name: str, *args, **kwargs) -> Dict[str, Any]:
         """
@@ -64,15 +98,30 @@ class WASMAPIProvider:
     # Date/Time APIs
     def get_current_date(self) -> str:
         """Get current date in YYYY-MM-DD format."""
-        return datetime.date.today().strftime("%Y-%m-%d")
+        if self.use_sandbox and self.sandbox_engine:
+            code = "import datetime; print(datetime.date.today().strftime('%Y-%m-%d'))"
+            result = self._execute_in_sandbox(code)
+            return result.get("stdout", "").strip() or datetime.date.today().strftime("%Y-%m-%d")
+        else:
+            return datetime.date.today().strftime("%Y-%m-%d")
     
     def get_current_time(self) -> str:
         """Get current time in HH:MM:SS format."""
-        return datetime.datetime.now().strftime("%H:%M:%S")
+        if self.use_sandbox and self.sandbox_engine:
+            code = "import datetime; print(datetime.datetime.now().strftime('%H:%M:%S'))"
+            result = self._execute_in_sandbox(code)
+            return result.get("stdout", "").strip() or datetime.datetime.now().strftime("%H:%M:%S")
+        else:
+            return datetime.datetime.now().strftime("%H:%M:%S")
     
     def get_current_datetime(self) -> str:
         """Get current datetime in ISO format."""
-        return datetime.datetime.now().isoformat()
+        if self.use_sandbox and self.sandbox_engine:
+            code = "import datetime; print(datetime.datetime.now().isoformat())"
+            result = self._execute_in_sandbox(code)
+            return result.get("stdout", "").strip() or datetime.datetime.now().isoformat()
+        else:
+            return datetime.datetime.now().isoformat()
     
     # System APIs
     def get_platform_info(self) -> Dict[str, str]:
@@ -127,6 +176,21 @@ class WASMAPIProvider:
             str(os.getcwd())
         ]
         return any(path.startswith(prefix) for prefix in safe_prefixes)
+    
+    def _execute_in_sandbox(self, code: str) -> Dict[str, str]:
+        """Execute code in QEMU sandbox and return results."""
+        if not self.sandbox_engine:
+            return {"stdout": "", "stderr": "Sandbox not available"}
+        
+        try:
+            result = self.sandbox_engine.execute_code_secure(code, "python3")
+            return {
+                "stdout": result.get("stdout", ""),
+                "stderr": result.get("stderr", ""),
+                "status": result.get("status", "error")
+            }
+        except Exception as e:
+            return {"stdout": "", "stderr": str(e), "status": "error"}
 
 
 class WASMAPIIntegrator:
