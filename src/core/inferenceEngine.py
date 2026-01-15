@@ -84,18 +84,25 @@ class WorldModelStoppingCriteria(StoppingCriteria):
     def __init__(self, tokenizer, stop_sequences: List[str] = None):
         self.tokenizer = tokenizer
         self.stop_sequences = stop_sequences or ["</model>", "</think>", "</requires>"]
-        # Encode stop sequences
-        self.stop_token_ids = []
+        # Encode stop sequences as complete sequences
+        self.stop_token_sequences = []
         for seq in self.stop_sequences:
             tokens = tokenizer.encode(seq, add_special_tokens=False)
             if tokens:
-                self.stop_token_ids.extend(tokens)
+                self.stop_token_sequences.append(tokens)
     
     def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs) -> bool:
-        # Check if any stop sequence appears in the generated text
-        for stop_id in self.stop_token_ids:
-            if len(input_ids[0]) > 0 and input_ids[0][-1] == stop_id:
-                return True
+        # Check if any complete stop sequence appears at the end of generated text
+        if len(input_ids[0]) == 0:
+            return False
+            
+        generated_tokens = input_ids[0].tolist()
+        
+        for stop_sequence in self.stop_token_sequences:
+            if len(generated_tokens) >= len(stop_sequence):
+                # Check if the stop sequence matches the end of generated tokens
+                if generated_tokens[-len(stop_sequence):] == stop_sequence:
+                    return True
         return False
 
 
@@ -330,7 +337,7 @@ class InferenceEngine:
                 top_k=config.top_k,
                 repetition_penalty=config.repetition_penalty,
                 do_sample=config.do_sample,
-                early_stopping=config.early_stopping,
+                early_stopping=False,  # Disable early stopping for WorldModel generation
                 stopping_criteria=stopping_criteria_list,
                 pad_token_id=self.tokenizer.pad_token_id,
                 eos_token_id=self.tokenizer.eos_token_id
@@ -381,9 +388,26 @@ class InferenceEngine:
                 
                 # Execute code
                 if self.vm_interface:
-                    exec_result = asyncio.run(
-                        self.vm_interface.execute_model_tag(model_tag)
-                    )
+                    # Handle execution in async context
+                    try:
+                        # Try to get running loop
+                        loop = asyncio.get_running_loop()
+                        # We are in an async context, but this function is sync
+                        # Use run_in_executor to run the async function
+                        import concurrent.futures
+                        executor = concurrent.futures.ThreadPoolExecutor()
+                        
+                        def run_async_in_thread():
+                            return asyncio.run(self.vm_interface.execute_model_tag(model_tag))
+                        
+                        future = executor.submit(run_async_in_thread)
+                        exec_result = future.result()
+                        
+                    except RuntimeError:
+                        # No event loop running, can use asyncio.run directly
+                        exec_result = asyncio.run(
+                            self.vm_interface.execute_model_tag(model_tag)
+                        )
                     
                     execution_results.append({
                         'status': exec_result.status.value,
@@ -396,17 +420,15 @@ class InferenceEngine:
                     
                     # Validate requirements if available
                     if result.parsed_tags.requires_tags and self.requirement_validator:
-                        requirements = result.parsed_tags.get_all_requirements()
                         validation_result = self.requirement_validator.validate_execution(
-                            code=model_tag.code,
-                            language=model_tag.language,
-                            execution_result=exec_result,
-                            requirements=requirements
+                            exec_result,
+                            model_tag,
+                            result.parsed_tags.requires_tags
                         )
                         
                         execution_results[-1]['validation'] = {
                             'accuracy': validation_result.accuracy_score,
-                            'violations': [v.__dict__ for v in validation_result.violations]
+                            'violations': [v.__dict__ for v in validation_result.safety_violations]
                         }
                     
                     # Append execution output to generated text

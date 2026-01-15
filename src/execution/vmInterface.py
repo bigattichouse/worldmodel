@@ -125,10 +125,16 @@ class LanguageExecutor:
                 
                 execution_time = time.time() - start_time
                 
+                # Check if this is a VM failure that should trigger fallback
+                stderr_text = stderr.decode('utf-8', errors='replace')
+                if process.returncode != 0 and 'qemu' in stderr_text.lower():
+                    self.logger.warning(f"VM execution failed with QEMU error, falling back to direct execution")
+                    return await self._execute_direct(script_path, args)
+                
                 result = ExecutionResult(
                     status=ExecutionStatus.SUCCESS if process.returncode == 0 else ExecutionStatus.ERROR,
                     stdout=stdout.decode('utf-8', errors='replace'),
-                    stderr=stderr.decode('utf-8', errors='replace'),
+                    stderr=stderr_text,
                     return_code=process.returncode,
                     execution_time=execution_time
                 )
@@ -152,10 +158,70 @@ class LanguageExecutor:
                 )
                 
         except Exception as e:
-            self.logger.error(f"VM execution failed: {e}", exc_info=True)
+            self.logger.warning(f"VM execution failed: {e}, falling back to direct execution")
+            # Fallback to direct execution when VM fails
+            return await self._execute_direct(script_path, args)
+    
+    async def _execute_direct(self, script_path: str, args: List[str] = None) -> ExecutionResult:
+        """Execute script directly on host (fallback when VM unavailable)."""
+        if args is None:
+            args = []
+            
+        # Build direct command
+        cmd = self._build_direct_command(script_path, args)
+        
+        self.logger.debug(f"Direct execution command: {' '.join(cmd)}")
+        
+        start_time = time.time()
+        
+        try:
+            # Execute with timeout
+            process = await asyncio.create_subprocess_exec(
+                *cmd,
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.PIPE,
+                limit=1024 * 1024  # 1MB output limit
+            )
+            
+            try:
+                stdout, stderr = await asyncio.wait_for(
+                    process.communicate(),
+                    timeout=self.timeout
+                )
+                
+                execution_time = time.time() - start_time
+                
+                result = ExecutionResult(
+                    status=ExecutionStatus.SUCCESS if process.returncode == 0 else ExecutionStatus.ERROR,
+                    stdout=stdout.decode('utf-8', errors='replace'),
+                    stderr=stderr.decode('utf-8', errors='replace'),
+                    return_code=process.returncode,
+                    execution_time=execution_time
+                )
+                
+                self.logger.info(f"Direct execution completed in {execution_time:.2f}s, return code: {process.returncode}")
+                
+                return result
+                
+            except asyncio.TimeoutError:
+                self.logger.warning(f"Direct execution timeout after {self.timeout}s")
+                try:
+                    process.terminate()
+                    await asyncio.wait_for(process.wait(), timeout=5)
+                except:
+                    process.kill()
+                
+                return ExecutionResult(
+                    status=ExecutionStatus.TIMEOUT,
+                    error_message=f"Execution timed out after {self.timeout} seconds",
+                    execution_time=time.time() - start_time
+                )
+                
+        except Exception as e:
+            self.logger.error(f"Direct execution failed: {e}", exc_info=True)
             return ExecutionResult(
                 status=ExecutionStatus.ERROR,
-                error_message=f"VM execution failed: {str(e)}",
+                error_message=f"Direct execution failed: {str(e)}",
                 execution_time=time.time() - start_time
             )
     

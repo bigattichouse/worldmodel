@@ -1,3 +1,10 @@
+worldmodel_rocm_output
+worldmodel_rocm_output/*
+worldmodel_production_training
+worldmodel_production_training/*
+qwen3_0.6b_rocm_conservative
+qwen3_0.6b_rocm_conservative/*
+
 # Python
 __pycache__/
 *.py[cod]

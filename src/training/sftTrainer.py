@@ -47,26 +47,26 @@ from ..training.dataGenerator import TrainingExample, DataGenerator
 
 @dataclass
 class SFTConfig:
-    model_name: str = "../model/phi-4-mini-instruct"  # Use Phi-4-mini path
-    max_sequence_length: int = 4096  # Phi-4 supports longer contexts
-    learning_rate: float = 1e-4  # Conservative learning rate for fine-tuning
-    batch_size: int = 2  # Smaller batch for 3.8B model
-    gradient_accumulation_steps: int = 8  # Compensate with more accumulation
-    num_epochs: int = 2  # Fewer epochs for fine-tuning
-    warmup_steps: int = 50  # Shorter warmup
+    model_name: str = "../model/Qwen2.5-3B-Instruct"  # Use Qwen2.5-3B-Instruct path
+    max_sequence_length: int = 2048  # Reduced for memory efficiency on ROCm
+    learning_rate: float = 5e-5  # Conservative learning rate for fine-tuning
+    batch_size: int = 1  # Very small batch for ROCm MI50
+    gradient_accumulation_steps: int = 16  # Compensate with more accumulation
+    num_epochs: int = 1  # Single epoch for ROCm testing
+    warmup_steps: int = 10  # Minimal warmup
     weight_decay: float = 0.01
     max_grad_norm: float = 1.0
-    save_steps: int = 100  # Save more frequently
-    eval_steps: int = 50   # Evaluate more frequently
+    save_steps: int = 50  # Save more frequently
+    eval_steps: int = 25   # Evaluate more frequently
     logging_steps: int = 5   # More frequent logging
-    output_dir: str = "./phi4_sft_checkpoints"
+    output_dir: str = "./qwen2.5_sft_checkpoints"
     use_wandb: bool = False
-    wandb_project: str = "worldmodel_phi4_sft"
+    wandb_project: str = "worldmodel_qwen2.5_sft"
     
     # LoRA configuration
     use_lora: bool = True
-    lora_rank: int = 16
-    lora_alpha: int = 32
+    lora_rank: int = 8  # Reduced rank for memory efficiency
+    lora_alpha: int = 16
     lora_dropout: float = 0.1
     lora_target_modules: List[str] = None
     
@@ -79,8 +79,8 @@ class SFTConfig:
     
     def __post_init__(self):
         if self.lora_target_modules is None:
-            # Default LoRA targets for Phi-4 models  
-            self.lora_target_modules = ["qkv_proj", "out_proj", "fc1", "fc2"]
+            # Default LoRA targets for Qwen2.5 models  
+            self.lora_target_modules = ["q_proj", "v_proj", "k_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
     
     def to_training_args(self) -> TrainingArguments:
         """Convert to HuggingFace TrainingArguments."""
@@ -103,10 +103,15 @@ class SFTConfig:
             metric_for_best_model="eval_loss",
             greater_is_better=False,
             report_to="wandb" if self.use_wandb else None,
-            dataloader_num_workers=4,
+            dataloader_num_workers=0,  # Disable multiprocessing for ROCm stability
             fp16=False,  # Disable FP16 to avoid gradient scaling issues
+            bf16=False,  # Disable BF16 for ROCm compatibility
             gradient_checkpointing=True,
-            remove_unused_columns=False
+            remove_unused_columns=False,
+            dataloader_pin_memory=False,  # Disable pin memory for ROCm
+            max_steps=-1,  # No step limit
+            push_to_hub=False,  # Disable hub operations
+            hub_model_id=None
         )
 
 @dataclass
@@ -240,6 +245,15 @@ class SFTTrainer:
     def _setup_model_and_tokenizer(self):
         """Initialize the model and tokenizer."""
         try:
+            # Initialize CUDA/ROCm context first
+            if torch.cuda.is_available():
+                torch.cuda.init()
+                torch.cuda.empty_cache()
+                # Force GPU context creation
+                dummy = torch.zeros(1).cuda()
+                del dummy
+                torch.cuda.empty_cache()
+            
             self.logger.info(f"Loading model: {self.config.model_name}")
             
             # Load tokenizer
@@ -253,8 +267,8 @@ class SFTTrainer:
             if self.tokenizer.pad_token is None:
                 self.tokenizer.pad_token = self.tokenizer.eos_token
             
-            # Add special tokens for our format
-            special_tokens = ["<user>", "</user>", "<assistant>", "</assistant>"]
+            # Add special tokens for our format - use Qwen2.5 compatible tokens
+            special_tokens = ["<|user|>", "<|assistant|>", "<|end|>"]
             new_tokens = []
             for token in special_tokens:
                 if token not in self.tokenizer.get_vocab():
@@ -276,13 +290,16 @@ class SFTTrainer:
             elif self.config.use_8bit and BNBCONFIG_AVAILABLE:
                 quantization_config = BitsAndBytesConfig(load_in_8bit=True)
             
-            # Load model
+            # Load model with ROCm-specific optimizations
             self.model = AutoModelForCausalLM.from_pretrained(
                 self.config.model_name,
                 trust_remote_code=True,
-                torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
-                device_map="auto" if torch.cuda.is_available() else None,
-                quantization_config=quantization_config
+                torch_dtype=torch.float32,  # Use float32 for ROCm stability
+                device_map={"": 0} if torch.cuda.is_available() else None,
+                quantization_config=quantization_config,
+                low_cpu_mem_usage=True,  # Reduce CPU memory usage
+                use_cache=False,  # Disable KV cache for training
+                attn_implementation="eager"  # Use eager attention for ROCm compatibility
             )
             
             # Resize embeddings if we added tokens
@@ -505,8 +522,9 @@ class SFTTrainer:
             self.model = AutoModelForCausalLM.from_pretrained(
                 model_path,
                 trust_remote_code=True,
-                torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
-                device_map="auto" if torch.cuda.is_available() else None
+                torch_dtype=torch.float32,  # Use float32 for ROCm stability
+                device_map={"": 0} if torch.cuda.is_available() else None,  # Force single GPU
+                low_cpu_mem_usage=True
             )
             
             self.logger.info("Model loaded successfully")

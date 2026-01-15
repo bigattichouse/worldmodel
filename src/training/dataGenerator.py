@@ -18,7 +18,7 @@ from ..execution.vmInterface import VMInterface, ExecutionResult
 class TrainingExample:
     input_text: str
     target_output: str
-    metadata: Dict[str, Any]
+    metadata: Dict[str, Any] = None
     difficulty: str = "medium"  # easy, medium, hard
     category: str = "general"
     created_at: Optional[datetime] = None
@@ -26,6 +26,8 @@ class TrainingExample:
     def __post_init__(self):
         if self.created_at is None:
             self.created_at = datetime.now(timezone.utc)
+        if self.metadata is None:
+            self.metadata = {}
     
     def to_dict(self) -> Dict[str, Any]:
         data = asdict(self)
