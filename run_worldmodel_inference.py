@@ -229,16 +229,31 @@ class WorldModelInference:
 
 def main():
     """Main CLI interface."""
-    parser = argparse.ArgumentParser(description="WorldModel Inference Engine")
+    parser = argparse.ArgumentParser(
+        description="WorldModel Inference Engine with secure code execution",
+        epilog="By default, code runs in isolated QEMU VMs for security. Use --no-sandbox to disable."
+    )
     parser.add_argument('query', nargs='?', help='Query to process')
     parser.add_argument('--model', default='./worldmodel_rocm_output/final_model', 
                        help='Path to trained model')
     parser.add_argument('--interactive', action='store_true', 
                        help='Start interactive session')
+    parser.add_argument('--no-sandbox', action='store_true', 
+                       help='Disable QEMU sandbox (use direct execution - less secure)')
+    parser.add_argument('--sandbox-memory', default='512M',
+                       help='Memory allocation for sandbox VM (default: 512M)')
+    parser.add_argument('--sandbox-timeout', type=int, default=30,
+                       help='Sandbox execution timeout in seconds (default: 30)')
     
     args = parser.parse_args()
     
-    print("🚀 WorldModel Inference Engine")
+    # Determine sandbox mode (default: enabled)
+    use_sandbox = not args.no_sandbox
+    
+    if use_sandbox:
+        print("🚀 WorldModel Inference Engine (Secure Mode)")
+    else:
+        print("🚀 WorldModel Inference Engine (Direct Mode)")
     print("=" * 50)
     
     # Check if model exists
@@ -250,9 +265,36 @@ def main():
             print(f"  {model_dir}")
         return 1
     
-    # Initialize inference engine
+    # Initialize inference engine (with or without sandbox)
     try:
-        engine = WorldModelInference(str(model_path))
+        if use_sandbox:
+            # Try to import and use sandbox
+            try:
+                import sys
+                sys.path.insert(0, str(Path(__file__).parent / "sandbox" / "src"))
+                from worldmodel_sandbox import SandboxedWorldModelInference
+                
+                sandbox_config = {
+                    'vm_name': 'worldmodel-inference',
+                    'memory': args.sandbox_memory,
+                    'timeout': args.sandbox_timeout,
+                    'persistent': False
+                }
+                
+                engine = SandboxedWorldModelInference(str(model_path), sandbox_config)
+                print(f"🔒 Sandbox enabled: VM memory={args.sandbox_memory}, timeout={args.sandbox_timeout}s")
+                print("   Use --no-sandbox to disable secure execution")
+                
+            except ImportError as e:
+                print(f"⚠️  Sandbox not available: {e}")
+                print("   To enable secure execution, run: ./sandbox/setup.sh")
+                print("   Falling back to direct execution...")
+                engine = WorldModelInference(str(model_path))
+        else:
+            print("⚠️  Running in direct execution mode (less secure)")
+            print("   Remove --no-sandbox flag for secure execution")
+            engine = WorldModelInference(str(model_path))
+            
     except Exception as e:
         print(f"❌ Failed to load model: {e}")
         return 1

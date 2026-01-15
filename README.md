@@ -122,11 +122,14 @@ python3 train_worldmodel_rocm.py
 
 ### Inference
 ```bash
-# Interactive session
+# Interactive session (secure by default)
 python3 run_worldmodel_inference.py --interactive
 
-# Single query
+# Single query (secure by default)
 python3 run_worldmodel_inference.py "Calculate 25% of 400"
+
+# Direct execution mode (less secure)
+python3 run_worldmodel_inference.py --no-sandbox "What's today's date?"
 ```
 
 ## 📁 Structure
@@ -138,6 +141,7 @@ worldmodel/
 ├── complete_workflow.sh        # One-command training + testing
 ├── requirements.txt            # Dependencies
 ├── data/                       # Training datasets (1000+ examples)
+├── sandbox/                    # QEMU sandbox for secure code execution
 ├── docs/                       # Documentation and guides
 └── archive/                    # Development scripts and variants
 ```
@@ -150,6 +154,27 @@ worldmodel/
 - **System Tasks**: Date/time, file operations, environment info
 - **Data Processing**: Statistics, JSON/CSV parsing
 - **Advanced Math**: Trigonometry, linear algebra, number theory
+
+## 🔒 Security Features
+
+**QEMU Sandbox Integration** (Enabled by Default):
+- **Complete Isolation**: AI-generated code runs in QEMU virtual machines
+- **No Host Impact**: Malicious or buggy code cannot affect your system
+- **Resource Limits**: CPU, memory, and execution time constraints
+- **Ephemeral Execution**: VMs reset after each code execution
+- **Easy Setup**: One-command installation via git submodule
+- **Automatic Fallback**: Falls back to direct execution if sandbox unavailable
+
+```bash
+# Set up secure sandbox (one-time setup)
+cd sandbox && ./setup.sh
+
+# Normal usage (secure by default)
+python3 run_worldmodel_inference.py "Run any code safely"
+
+# Disable sandbox if needed (not recommended)
+python3 run_worldmodel_inference.py --no-sandbox "Direct execution"
+```
 
 ## ⚙️ Requirements
 

@@ -1,0 +1,3 @@
+[submodule "sandbox/scratchpad"]
+	path = sandbox/scratchpad
+	url = https://github.com/bigattichouse/scratchpad.git
