@@ -10,6 +10,7 @@ import re
 import ast
 from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass
+from ..execution.wasm_api import WASMAPIIntegrator
 
 
 @dataclass
@@ -31,6 +32,17 @@ class PythonToWATConverter:
             ast.Sub: {"i32": "i32.sub", "f32": "f32.sub", "f64": "f64.sub"}, 
             ast.Mult: {"i32": "i32.mul", "f32": "f32.mul", "f64": "f64.mul"},
             ast.Div: {"i32": "i32.div_s", "f32": "f32.div", "f64": "f64.div"},
+        }
+        self.api_integrator = WASMAPIIntegrator()
+        
+        # System function mappings
+        self.system_functions = {
+            "datetime.now": ("datetime", "get_current_datetime"),
+            "datetime.date.today": ("date", "get_current_date"),
+            "time.time": ("time", "get_current_time"),
+            "os.listdir": ("file", "list_directory"),
+            "os.path.exists": ("file", "check_file_exists"),
+            "platform.system": ("platform", "get_platform_info"),
         }
     
     def convert_training_example(self, example_text: str) -> ConversionResult:
@@ -101,6 +113,11 @@ class PythonToWATConverter:
             # Parse Python code
             tree = ast.parse(python_code.strip())
             
+            # Check for system function calls first
+            system_call_result = self._handle_system_calls(tree, python_code)
+            if system_call_result:
+                return system_call_result
+            
             # Find the main computation
             computation_node = self._find_computation_node(tree)
             if not computation_node:
@@ -115,6 +132,62 @@ class PythonToWATConverter:
             return ConversionResult("", False, f"Python syntax error: {e}")
         except Exception as e:
             return ConversionResult("", False, f"Conversion failed: {e}")
+    
+    def _handle_system_calls(self, tree: ast.AST, python_code: str) -> Optional[ConversionResult]:
+        """Handle system function calls like datetime.now(), os.listdir(), etc."""
+        # Look for system function patterns
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Call):
+                # Handle attribute calls like datetime.now()
+                if isinstance(node.func, ast.Attribute):
+                    call_name = self._get_call_name(node)
+                    if call_name in self.system_functions:
+                        return self._create_api_wat(call_name, python_code)
+                
+                # Handle direct function calls
+                elif isinstance(node.func, ast.Name):
+                    func_name = node.func.id
+                    if any(func_name in pattern for pattern in self.system_functions.keys()):
+                        return self._create_api_wat(func_name, python_code)
+        
+        return None
+    
+    def _get_call_name(self, call_node: ast.Call) -> str:
+        """Extract full call name from AST node."""
+        if isinstance(call_node.func, ast.Attribute):
+            if isinstance(call_node.func.value, ast.Name):
+                return f"{call_node.func.value.id}.{call_node.func.attr}"
+            elif isinstance(call_node.func.value, ast.Attribute):
+                # Handle nested attributes like datetime.date.today
+                base = self._get_call_name_recursive(call_node.func.value)
+                return f"{base}.{call_node.func.attr}"
+        return ""
+    
+    def _get_call_name_recursive(self, node: ast.Attribute) -> str:
+        """Recursively build call name for nested attributes."""
+        if isinstance(node.value, ast.Name):
+            return f"{node.value.id}.{node.attr}"
+        elif isinstance(node.value, ast.Attribute):
+            return f"{self._get_call_name_recursive(node.value)}.{node.attr}"
+        return node.attr
+    
+    def _create_api_wat(self, call_name: str, python_code: str) -> ConversionResult:
+        """Create WAT code for API function call."""
+        if call_name in self.system_functions:
+            api_category, api_function = self.system_functions[call_name]
+            
+            # Create WAT module with API import
+            wat_code = f"""(module
+  ;; Import API function for {call_name}
+  (import "api" "{api_function}" (func $api_call (result i64)))
+  
+  (func $main (export "main") (result i64)
+    call $api_call
+  ))"""
+            
+            return ConversionResult(wat_code, True)
+        
+        return ConversionResult("", False, f"Unknown system function: {call_name}")
     
     def _find_computation_node(self, tree: ast.AST) -> Optional[ast.AST]:
         """Find the main arithmetic computation in the AST."""

@@ -1,0 +1,5583 @@
+User: Sort this array using bubble sort: [4, 20, 32, 43, 46, 2, 42, 27]
+Assistant: <think>Bubble sort repeatedly steps through the list, compares adjacent elements and swaps them if they're in wrong order.</think>
+<model>
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+arr = [4, 20, 32, 43, 46, 2, 42, 27]
+print(f"Original: {arr}")
+sorted_arr = bubble_sort(arr.copy())
+print(f"Sorted: {sorted_arr}")
+</model>
+<requires>python:algorithms</requires>
+
+Bubble sort implementation for the given array.
+
+User: Calculate flight time for projectile launched at 39.5 m/s at 66° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 39.5 m/s, θ = 66°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 39.5        # m/s
+angle_deg = 66   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 7.37 seconds.
+
+User: Find the median of: [33, 29, 94, 89, 33, 38, 5, 25, 62, 15, 31, 14]
+Assistant: <think>To find median, I need to sort the data and find the middle value(s). For 12 values, median is the middle value.</think>
+<model>
+data = [33, 29, 94, 89, 33, 38, 5, 25, 62, 15, 31, 14]
+sorted_data = sorted(data)
+n = len(sorted_data)
+if n % 2 == 1:
+    median = sorted_data[n // 2]
+else:
+    median = (sorted_data[n // 2 - 1] + sorted_data[n // 2]) / 2
+print(f"Original data: {data}")
+print(f"Sorted data: {sorted_data}")
+print(f"Median = {median}")
+</model>
+<requires>python:statistics</requires>
+
+The median is 32.0.
+
+User: How many moles are in 82.7 g of CaCO3 (calcium carbonate)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of CaCO3 is 100.09 g/mol. So moles = 82.7 g / 100.09 g/mol.</think>
+<model>
+mass_g = 82.7
+molar_mass = 100.09  # g/mol for CaCO3
+moles = mass_g / molar_mass
+print(f"Moles of CaCO3 = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+82.7 g of CaCO3 contains 0.8261 moles.
+
+User: Implement binary search to find 90 in sorted array [11, 11, 14, 16, 21, 27, 44, 53, 77, 90]
+Assistant: <think>Binary search repeatedly divides the search space in half. Compare target with middle element and eliminate half the array.</think>
+<model>
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+arr = [11, 11, 14, 16, 21, 27, 44, 53, 77, 90]
+target = 90
+result = binary_search(arr, target)
+if result != -1:
+    print(f"Found {target} at index {result}")
+else:
+    print(f"{target} not found in array")
+</model>
+<requires>python:algorithms</requires>
+
+Binary search for 90 in the array.
+
+User: How long does it take for an object dropped from 33.0 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 33.0 / 9.81).</think>
+<model>
+import math
+height = 33.0  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 2.59 seconds to fall from 33.0 m.
+
+User: Sort this array using bubble sort: [26, 6, 25, 9, 26, 15, 23, 38]
+Assistant: <think>Bubble sort repeatedly steps through the list, compares adjacent elements and swaps them if they're in wrong order.</think>
+<model>
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+arr = [26, 6, 25, 9, 26, 15, 23, 38]
+print(f"Original: {arr}")
+sorted_arr = bubble_sort(arr.copy())
+print(f"Sorted: {sorted_arr}")
+</model>
+<requires>python:algorithms</requires>
+
+Bubble sort implementation for the given array.
+
+User: Find the median of: [28, 5, 15, 80, 72, 90, 70, 25]
+Assistant: <think>To find median, I need to sort the data and find the middle value(s). For 8 values, median is the middle value.</think>
+<model>
+data = [28, 5, 15, 80, 72, 90, 70, 25]
+sorted_data = sorted(data)
+n = len(sorted_data)
+if n % 2 == 1:
+    median = sorted_data[n // 2]
+else:
+    median = (sorted_data[n // 2 - 1] + sorted_data[n // 2]) / 2
+print(f"Original data: {data}")
+print(f"Sorted data: {sorted_data}")
+print(f"Median = {median}")
+</model>
+<requires>python:statistics</requires>
+
+The median is 49.0.
+
+User: Convert 100°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (100 × 9/5) + 32.</think>
+<model>
+celsius = 100
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+100°C equals 212.0°F.
+
+User: Calculate the molarity of a solution with 4.32 moles of solute in 0.65 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 4.32 mol / 0.65 L.</think>
+<model>
+moles = 4.32
+volume_l = 0.65
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 6.630 M.
+
+User: Count the number of 'e' characters in the word "strawberry"
+Assistant: <think>I need to count how many times the character 'e' appears in "strawberry". I'll iterate through each character and count matches.</think>
+<model>
+word = "strawberry"
+char = 'e'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'e' appears {count} times in 'strawberry'")
+</model>
+<requires>python:text</requires>
+
+The character 'e' appears 1 times in the word "strawberry".
+
+User: Convert 95°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (95 × 9/5) + 32.</think>
+<model>
+celsius = 95
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+95°C equals 203.0°F.
+
+User: Convert 86°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (86 × 9/5) + 32.</think>
+<model>
+celsius = 86
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+86°C equals 186.8°F.
+
+User: Calculate moles of gas at 4.64 atm, 30.2 L, and 375 K
+Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Where R = 0.0821 L·atm/(mol·K).</think>
+<model>
+P = 4.64  # atm
+V = 30.2     # L
+T = 375     # K
+R = 0.0821    # L·atm/(mol·K)
+n = (P * V) / (R * T)
+print(f"Moles = ({P} × {V}) / ({R} × {T}) = {n:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+The gas contains 4.5528 moles.
+
+User: Calculate quarter-wave antenna length for 433 MHz
+Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then divide by 4. λ = 3×10⁸ / 4e+08.</think>
+<model>
+frequency = 4e+08  # Hz
+c = 3e8               # speed of light
+wavelength = c / frequency
+quarter_wave = wavelength / 4
+print(f"Wavelength = {wavelength:.3f} m")
+print(f"Quarter-wave length = {quarter_wave:.3f} m")
+if quarter_wave >= 0.01:
+    print(f"Quarter-wave = {quarter_wave*100:.1f} cm")
+else:
+    print(f"Quarter-wave = {quarter_wave*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+Quarter-wave antenna for 433 MHz is 0.173 m (17.3 cm).
+
+User: Reverse the string "winter"
+Assistant: <think>I need to reverse the string "winter" by reading it backwards.</think>
+<model>
+text = "winter"
+reversed_text = text[::-1]
+print(f"Original: {text}")
+print(f"Reversed: {reversed_text}")
+</model>
+<requires>python:text</requires>
+
+The string "winter" reversed is "retniw".
+
+User: Convert 15°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (15 × 9/5) + 32.</think>
+<model>
+celsius = 15
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+15°C equals 59.0°F.
+
+User: Sort these words alphabetically: ['summer', 'spring', 'autumn', 'winter']
+Assistant: <think>I need to sort the list ['summer', 'spring', 'autumn', 'winter'] in alphabetical order.</think>
+<model>
+words = ['summer', 'spring', 'autumn', 'winter']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['autumn', 'spring', 'summer', 'winter'].
+
+User: Implement binary search to find 93 in sorted array [22, 26, 44, 54, 59, 71, 77, 81, 89, 93]
+Assistant: <think>Binary search repeatedly divides the search space in half. Compare target with middle element and eliminate half the array.</think>
+<model>
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+arr = [22, 26, 44, 54, 59, 71, 77, 81, 89, 93]
+target = 93
+result = binary_search(arr, target)
+if result != -1:
+    print(f"Found {target} at index {result}")
+else:
+    print(f"{target} not found in array")
+</model>
+<requires>python:algorithms</requires>
+
+Binary search for 93 in the array.
+
+User: Convert 132°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (132 - 32) × 5/9.</think>
+<model>
+fahrenheit = 132
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+132°F equals 55.56°C.
+
+User: How many moles are in 30.3 g of H2O (water)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of H2O is 18.015 g/mol. So moles = 30.3 g / 18.015 g/mol.</think>
+<model>
+mass_g = 30.3
+molar_mass = 18.015  # g/mol for H2O
+moles = mass_g / molar_mass
+print(f"Moles of H2O = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+30.3 g of H2O contains 1.6846 moles.
+
+User: Convert 192°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (192 - 32) × 5/9.</think>
+<model>
+fahrenheit = 192
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+192°F equals 88.89°C.
+
+User: Convert -13°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (-13 × 9/5) + 32.</think>
+<model>
+celsius = -13
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+-13°C equals 8.600000000000001°F.
+
+User: Calculate moles of gas at 2.19 atm, 27.9 L, and 329 K
+Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Where R = 0.0821 L·atm/(mol·K).</think>
+<model>
+P = 2.19  # atm
+V = 27.9     # L
+T = 329     # K
+R = 0.0821    # L·atm/(mol·K)
+n = (P * V) / (R * T)
+print(f"Moles = ({P} × {V}) / ({R} × {T}) = {n:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+The gas contains 2.2711 moles.
+
+User: Sort these words alphabetically: ['south', 'west', 'east', 'north']
+Assistant: <think>I need to sort the list ['south', 'west', 'east', 'north'] in alphabetical order.</think>
+<model>
+words = ['south', 'west', 'east', 'north']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['east', 'north', 'south', 'west'].
+
+User: How many moles are in 58.7 g of NaCl (sodium chloride)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of NaCl is 58.44 g/mol. So moles = 58.7 g / 58.44 g/mol.</think>
+<model>
+mass_g = 58.7
+molar_mass = 58.44  # g/mol for NaCl
+moles = mass_g / molar_mass
+print(f"Moles of NaCl = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+58.7 g of NaCl contains 1.0050 moles.
+
+User: Sort this array using bubble sort: [6, 39, 4, 6, 42, 37, 35, 13]
+Assistant: <think>Bubble sort repeatedly steps through the list, compares adjacent elements and swaps them if they're in wrong order.</think>
+<model>
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+arr = [6, 39, 4, 6, 42, 37, 35, 13]
+print(f"Original: {arr}")
+sorted_arr = bubble_sort(arr.copy())
+print(f"Sorted: {sorted_arr}")
+</model>
+<requires>python:algorithms</requires>
+
+Bubble sort implementation for the given array.
+
+User: Calculate standard deviation of: [93, 52, 40, 99, 52, 64, 44, 93, 73]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [93, 52, 40, 99, 52, 64, 44, 93, 73]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 21.405.
+
+User: Calculate resonant frequency of LC circuit with L = 9.71e-04 H and C = 9.07e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 9.71e-04 H and C = 9.07e-07 F.</think>
+<model>
+import math
+L = 9.71e-04  # Inductance in Henries
+C = 9.07e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 5.36e+03 Hz (5.4 kHz).
+
+User: Count the number of 'g' characters in the word "knowledge"
+Assistant: <think>I need to count how many times the character 'g' appears in "knowledge". I'll iterate through each character and count matches.</think>
+<model>
+word = "knowledge"
+char = 'g'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'g' appears {count} times in 'knowledge'")
+</model>
+<requires>python:text</requires>
+
+The character 'g' appears 1 times in the word "knowledge".
+
+User: Reverse the string "winter"
+Assistant: <think>I need to reverse the string "winter" by reading it backwards.</think>
+<model>
+text = "winter"
+reversed_text = text[::-1]
+print(f"Original: {text}")
+print(f"Reversed: {reversed_text}")
+</model>
+<requires>python:text</requires>
+
+The string "winter" reversed is "retniw".
+
+User: Calculate resistance when voltage is 9.1 V and current is 2.10 A
+Assistant: <think>Using Ohm's law: R = V / I. R = 9.1 V / 2.10 A.</think>
+<model>
+voltage = 9.1    # Volts
+current = 2.10    # Amperes
+resistance = voltage / current
+print(f"Resistance = {voltage} V / {current} A = {resistance:.1f} Ω")
+</model>
+<requires>python:electrical</requires>
+
+The resistance is 4.3 Ω.
+
+User: Calculate wavelength for 5.8 GHz (WiFi) radio frequency
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s. For f = 6e+09 Hz, λ = 3×10⁸ / 6e+09.</think>
+<model>
+frequency = 6e+09  # Hz
+c = 3e8               # speed of light m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.3f} m")
+if wavelength >= 1:
+    print(f"Wavelength = {wavelength:.2f} meters")
+elif wavelength >= 0.01:
+    print(f"Wavelength = {wavelength*100:.1f} cm")
+else:
+    print(f"Wavelength = {wavelength*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+The wavelength for 5.8 GHz is 0.052 m.
+
+User: Implement binary search to find 84 in sorted array [27, 33, 42, 43, 48, 49, 57, 84, 86, 91]
+Assistant: <think>Binary search repeatedly divides the search space in half. Compare target with middle element and eliminate half the array.</think>
+<model>
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+arr = [27, 33, 42, 43, 48, 49, 57, 84, 86, 91]
+target = 84
+result = binary_search(arr, target)
+if result != -1:
+    print(f"Found {target} at index {result}")
+else:
+    print(f"{target} not found in array")
+</model>
+<requires>python:algorithms</requires>
+
+Binary search for 84 in the array.
+
+User: Convert 24°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (24 - 32) × 5/9.</think>
+<model>
+fahrenheit = 24
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+24°F equals -4.44°C.
+
+User: How long does it take for an object dropped from 14.1 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 14.1 / 9.81).</think>
+<model>
+import math
+height = 14.1  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 1.69 seconds to fall from 14.1 m.
+
+User: Calculate flight time for projectile launched at 16.4 m/s at 37° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 16.4 m/s, θ = 37°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 16.4        # m/s
+angle_deg = 37   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 2.04 seconds.
+
+User: Find the median of: [31, 45, 47, 54, 68, 49, 38, 13, 25, 62, 75]
+Assistant: <think>To find median, I need to sort the data and find the middle value(s). For 11 values, median is the middle value.</think>
+<model>
+data = [31, 45, 47, 54, 68, 49, 38, 13, 25, 62, 75]
+sorted_data = sorted(data)
+n = len(sorted_data)
+if n % 2 == 1:
+    median = sorted_data[n // 2]
+else:
+    median = (sorted_data[n // 2 - 1] + sorted_data[n // 2]) / 2
+print(f"Original data: {data}")
+print(f"Sorted data: {sorted_data}")
+print(f"Median = {median}")
+</model>
+<requires>python:statistics</requires>
+
+The median is 47.
+
+User: Convert 67°C to Kelvin
+Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = 67 + 273.15.</think>
+<model>
+celsius = 67
+kelvin = celsius + 273.15
+print(f"{celsius}°C = {kelvin}K")
+</model>
+<requires>python:conversion</requires>
+
+67°C equals 340.15K.
+
+User: Convert 93°C to Kelvin
+Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = 93 + 273.15.</think>
+<model>
+celsius = 93
+kelvin = celsius + 273.15
+print(f"{celsius}°C = {kelvin}K")
+</model>
+<requires>python:conversion</requires>
+
+93°C equals 366.15K.
+
+User: Calculate resonant frequency of LC circuit with L = 6.81e-04 H and C = 2.90e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 6.81e-04 H and C = 2.90e-07 F.</think>
+<model>
+import math
+L = 6.81e-04  # Inductance in Henries
+C = 2.90e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 1.13e+04 Hz (11.3 kHz).
+
+User: Reverse the string "summer"
+Assistant: <think>I need to reverse the string "summer" by reading it backwards.</think>
+<model>
+text = "summer"
+reversed_text = text[::-1]
+print(f"Original: {text}")
+print(f"Reversed: {reversed_text}")
+</model>
+<requires>python:text</requires>
+
+The string "summer" reversed is "remmus".
+
+User: Calculate flight time for projectile launched at 32.2 m/s at 68° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 32.2 m/s, θ = 68°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 32.2        # m/s
+angle_deg = 68   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 6.12 seconds.
+
+User: Count the number of 'm' characters in the word "laboratory"
+Assistant: <think>I need to count how many times the character 'm' appears in "laboratory". I'll iterate through each character and count matches.</think>
+<model>
+word = "laboratory"
+char = 'm'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'm' appears {count} times in 'laboratory'")
+</model>
+<requires>python:text</requires>
+
+The character 'm' appears 0 times in the word "laboratory".
+
+User: Calculate wavelength for 24 GHz (K-band) radio frequency
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s. For f = 2e+10 Hz, λ = 3×10⁸ / 2e+10.</think>
+<model>
+frequency = 2e+10  # Hz
+c = 3e8               # speed of light m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.3f} m")
+if wavelength >= 1:
+    print(f"Wavelength = {wavelength:.2f} meters")
+elif wavelength >= 0.01:
+    print(f"Wavelength = {wavelength*100:.1f} cm")
+else:
+    print(f"Wavelength = {wavelength*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+The wavelength for 24 GHz is 0.013 m.
+
+User: Calculate flight time for projectile launched at 39.6 m/s at 69° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 39.6 m/s, θ = 69°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 39.6        # m/s
+angle_deg = 69   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 7.53 seconds.
+
+User: Calculate the molarity of a solution with 2.51 moles of solute in 0.87 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 2.51 mol / 0.87 L.</think>
+<model>
+moles = 2.51
+volume_l = 0.87
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 2.889 M.
+
+User: Sort these words alphabetically: ['javascript', 'java', 'python', 'rust']
+Assistant: <think>I need to sort the list ['javascript', 'java', 'python', 'rust'] in alphabetical order.</think>
+<model>
+words = ['javascript', 'java', 'python', 'rust']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['java', 'javascript', 'python', 'rust'].
+
+User: Convert 524K to Celsius
+Assistant: <think>To convert Kelvin to Celsius, I subtract 273.15. So C = 524 - 273.15.</think>
+<model>
+kelvin = 524
+celsius = kelvin - 273.15
+print(f"{kelvin}K = {celsius}°C")
+</model>
+<requires>python:conversion</requires>
+
+524K equals 250.85000000000002°C.
+
+User: Convert 81°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (81 - 32) × 5/9.</think>
+<model>
+fahrenheit = 81
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+81°F equals 27.22°C.
+
+User: Calculate standard deviation of: [91, 92, 12, 69, 83, 63, 50, 40, 24, 22, 44]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [91, 92, 12, 69, 83, 63, 50, 40, 24, 22, 44]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 26.898.
+
+User: Convert 158°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (158 - 32) × 5/9.</think>
+<model>
+fahrenheit = 158
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+158°F equals 70.00°C.
+
+User: How long does it take for an object dropped from 18.3 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 18.3 / 9.81).</think>
+<model>
+import math
+height = 18.3  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 1.93 seconds to fall from 18.3 m.
+
+User: Calculate current when voltage is 27.9 V and resistance is 362 Ω
+Assistant: <think>Using Ohm's law: I = V / R. I = 27.9 V / 362 Ω.</think>
+<model>
+voltage = 27.9      # Volts
+resistance = 362   # Ohms
+current = voltage / resistance
+print(f"Current = {voltage} V / {resistance} Ω = {current:.4f} A")
+</model>
+<requires>python:electrical</requires>
+
+The current is 0.0771 A.
+
+User: Count the number of 'a' characters in the word "algorithm"
+Assistant: <think>I need to count how many times the character 'a' appears in "algorithm". I'll iterate through each character and count matches.</think>
+<model>
+word = "algorithm"
+char = 'a'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'a' appears {count} times in 'algorithm'")
+</model>
+<requires>python:text</requires>
+
+The character 'a' appears 1 times in the word "algorithm".
+
+User: Find the median of: [54, 93, 79, 59, 22, 26, 54, 50, 28, 41, 100, 8, 42]
+Assistant: <think>To find median, I need to sort the data and find the middle value(s). For 13 values, median is the middle value.</think>
+<model>
+data = [54, 93, 79, 59, 22, 26, 54, 50, 28, 41, 100, 8, 42]
+sorted_data = sorted(data)
+n = len(sorted_data)
+if n % 2 == 1:
+    median = sorted_data[n // 2]
+else:
+    median = (sorted_data[n // 2 - 1] + sorted_data[n // 2]) / 2
+print(f"Original data: {data}")
+print(f"Sorted data: {sorted_data}")
+print(f"Median = {median}")
+</model>
+<requires>python:statistics</requires>
+
+The median is 50.
+
+User: Calculate the molarity of a solution with 4.15 moles of solute in 1.15 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 4.15 mol / 1.15 L.</think>
+<model>
+moles = 4.15
+volume_l = 1.15
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 3.597 M.
+
+User: Calculate power consumption for device at 213 V drawing 8.2 A
+Assistant: <think>Power P = V × I. P = 213 V × 8.2 A. Energy in 1 hour = P × 1h.</think>
+<model>
+voltage = 213  # Volts
+current = 8.2  # Amperes
+power = voltage * current
+energy_1h = power / 1000  # kWh for 1 hour
+print(f"Power = {voltage} V × {current} A = {power:.0f} W")
+print(f"Energy in 1 hour = {energy_1h:.2f} kWh")
+</model>
+<requires>python:electrical</requires>
+
+The power consumption is 1738 W (1.74 kWh per hour).
+
+User: How long does it take for an object dropped from 31.4 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 31.4 / 9.81).</think>
+<model>
+import math
+height = 31.4  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 2.53 seconds to fall from 31.4 m.
+
+User: How long does it take for an object dropped from 17.6 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 17.6 / 9.81).</think>
+<model>
+import math
+height = 17.6  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 1.89 seconds to fall from 17.6 m.
+
+User: Sort these words alphabetically: ['north', 'east', 'south', 'west']
+Assistant: <think>I need to sort the list ['north', 'east', 'south', 'west'] in alphabetical order.</think>
+<model>
+words = ['north', 'east', 'south', 'west']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['east', 'north', 'south', 'west'].
+
+User: Convert 26°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (26 - 32) × 5/9.</think>
+<model>
+fahrenheit = 26
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+26°F equals -3.33°C.
+
+User: Calculate resonant frequency of LC circuit with L = 8.32e-04 H and C = 2.26e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 8.32e-04 H and C = 2.26e-07 F.</think>
+<model>
+import math
+L = 8.32e-04  # Inductance in Henries
+C = 2.26e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 1.16e+04 Hz (11.6 kHz).
+
+User: How long does it take for an object dropped from 65.3 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 65.3 / 9.81).</think>
+<model>
+import math
+height = 65.3  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 3.65 seconds to fall from 65.3 m.
+
+User: Calculate the molarity of a solution with 0.42 moles of solute in 1.63 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 0.42 mol / 1.63 L.</think>
+<model>
+moles = 0.42
+volume_l = 1.63
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 0.257 M.
+
+User: Convert 559K to Celsius
+Assistant: <think>To convert Kelvin to Celsius, I subtract 273.15. So C = 559 - 273.15.</think>
+<model>
+kelvin = 559
+celsius = kelvin - 273.15
+print(f"{kelvin}K = {celsius}°C")
+</model>
+<requires>python:conversion</requires>
+
+559K equals 285.85°C.
+
+User: Calculate resonant frequency of LC circuit with L = 3.87e-04 H and C = 7.79e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 3.87e-04 H and C = 7.79e-07 F.</think>
+<model>
+import math
+L = 3.87e-04  # Inductance in Henries
+C = 7.79e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 9.17e+03 Hz (9.2 kHz).
+
+User: Calculate standard deviation of: [55, 89, 70, 27, 50, 74, 65, 64, 30]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [55, 89, 70, 27, 50, 74, 65, 64, 30]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 19.043.
+
+User: Convert 63°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (63 × 9/5) + 32.</think>
+<model>
+celsius = 63
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+63°C equals 145.4°F.
+
+User: Calculate the molarity of a solution with 3.55 moles of solute in 0.85 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.55 mol / 0.85 L.</think>
+<model>
+moles = 3.55
+volume_l = 0.85
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 4.156 M.
+
+User: Calculate moles of gas at 0.73 atm, 45.6 L, and 295 K
+Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Where R = 0.0821 L·atm/(mol·K).</think>
+<model>
+P = 0.73  # atm
+V = 45.6     # L
+T = 295     # K
+R = 0.0821    # L·atm/(mol·K)
+n = (P * V) / (R * T)
+print(f"Moles = ({P} × {V}) / ({R} × {T}) = {n:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+The gas contains 1.3692 moles.
+
+User: Reverse the string "spring"
+Assistant: <think>I need to reverse the string "spring" by reading it backwards.</think>
+<model>
+text = "spring"
+reversed_text = text[::-1]
+print(f"Original: {text}")
+print(f"Reversed: {reversed_text}")
+</model>
+<requires>python:text</requires>
+
+The string "spring" reversed is "gnirps".
+
+User: Calculate resistance when voltage is 24.2 V and current is 0.19 A
+Assistant: <think>Using Ohm's law: R = V / I. R = 24.2 V / 0.19 A.</think>
+<model>
+voltage = 24.2    # Volts
+current = 0.19    # Amperes
+resistance = voltage / current
+print(f"Resistance = {voltage} V / {current} A = {resistance:.1f} Ω")
+</model>
+<requires>python:electrical</requires>
+
+The resistance is 125.9 Ω.
+
+User: Convert 107°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (107 - 32) × 5/9.</think>
+<model>
+fahrenheit = 107
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+107°F equals 41.67°C.
+
+User: Calculate moles of gas at 2.08 atm, 41.5 L, and 276 K
+Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Where R = 0.0821 L·atm/(mol·K).</think>
+<model>
+P = 2.08  # atm
+V = 41.5     # L
+T = 276     # K
+R = 0.0821    # L·atm/(mol·K)
+n = (P * V) / (R * T)
+print(f"Moles = ({P} × {V}) / ({R} × {T}) = {n:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+The gas contains 3.8108 moles.
+
+User: How many moles are in 31.5 g of CO2 (carbon dioxide)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of CO2 is 44.01 g/mol. So moles = 31.5 g / 44.01 g/mol.</think>
+<model>
+mass_g = 31.5
+molar_mass = 44.01  # g/mol for CO2
+moles = mass_g / molar_mass
+print(f"Moles of CO2 = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+31.5 g of CO2 contains 0.7159 moles.
+
+User: How long does it take for an object dropped from 13.8 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 13.8 / 9.81).</think>
+<model>
+import math
+height = 13.8  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 1.68 seconds to fall from 13.8 m.
+
+User: Calculate wavelength for electromagnetic wave with frequency 2991 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 2991 Hz. So λ = 3×10⁸ / 2991.</think>
+<model>
+frequency = 2991  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 100316.923078 m or 100316923.078 mm.
+
+User: Calculate current when voltage is 24.0 V and resistance is 810 Ω
+Assistant: <think>Using Ohm's law: I = V / R. I = 24.0 V / 810 Ω.</think>
+<model>
+voltage = 24.0      # Volts
+resistance = 810   # Ohms
+current = voltage / resistance
+print(f"Current = {voltage} V / {resistance} Ω = {current:.4f} A")
+</model>
+<requires>python:electrical</requires>
+
+The current is 0.0297 A.
+
+User: Calculate moles of gas at 1.53 atm, 43.5 L, and 283 K
+Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Where R = 0.0821 L·atm/(mol·K).</think>
+<model>
+P = 1.53  # atm
+V = 43.5     # L
+T = 283     # K
+R = 0.0821    # L·atm/(mol·K)
+n = (P * V) / (R * T)
+print(f"Moles = ({P} × {V}) / ({R} × {T}) = {n:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+The gas contains 2.8715 moles.
+
+User: Calculate power consumption for device at 232 V drawing 1.3 A
+Assistant: <think>Power P = V × I. P = 232 V × 1.3 A. Energy in 1 hour = P × 1h.</think>
+<model>
+voltage = 232  # Volts
+current = 1.3  # Amperes
+power = voltage * current
+energy_1h = power / 1000  # kWh for 1 hour
+print(f"Power = {voltage} V × {current} A = {power:.0f} W")
+print(f"Energy in 1 hour = {energy_1h:.2f} kWh")
+</model>
+<requires>python:electrical</requires>
+
+The power consumption is 297 W (0.30 kWh per hour).
+
+User: Find the median of: [45, 14, 51, 69, 3, 12, 72, 22]
+Assistant: <think>To find median, I need to sort the data and find the middle value(s). For 8 values, median is the middle value.</think>
+<model>
+data = [45, 14, 51, 69, 3, 12, 72, 22]
+sorted_data = sorted(data)
+n = len(sorted_data)
+if n % 2 == 1:
+    median = sorted_data[n // 2]
+else:
+    median = (sorted_data[n // 2 - 1] + sorted_data[n // 2]) / 2
+print(f"Original data: {data}")
+print(f"Sorted data: {sorted_data}")
+print(f"Median = {median}")
+</model>
+<requires>python:statistics</requires>
+
+The median is 33.5.
+
+User: Sort these words alphabetically: ['python', 'rust', 'javascript', 'java']
+Assistant: <think>I need to sort the list ['python', 'rust', 'javascript', 'java'] in alphabetical order.</think>
+<model>
+words = ['python', 'rust', 'javascript', 'java']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['java', 'javascript', 'python', 'rust'].
+
+User: Calculate quarter-wave antenna length for 915 MHz
+Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then divide by 4. λ = 3×10⁸ / 9e+08.</think>
+<model>
+frequency = 9e+08  # Hz
+c = 3e8               # speed of light
+wavelength = c / frequency
+quarter_wave = wavelength / 4
+print(f"Wavelength = {wavelength:.3f} m")
+print(f"Quarter-wave length = {quarter_wave:.3f} m")
+if quarter_wave >= 0.01:
+    print(f"Quarter-wave = {quarter_wave*100:.1f} cm")
+else:
+    print(f"Quarter-wave = {quarter_wave*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+Quarter-wave antenna for 915 MHz is 0.082 m (8.2 cm).
+
+User: Convert 42°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (42 × 9/5) + 32.</think>
+<model>
+celsius = 42
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+42°C equals 107.6°F.
+
+User: How many moles are in 57.7 g of H2SO4 (sulfuric acid)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of H2SO4 is 98.08 g/mol. So moles = 57.7 g / 98.08 g/mol.</think>
+<model>
+mass_g = 57.7
+molar_mass = 98.08  # g/mol for H2SO4
+moles = mass_g / molar_mass
+print(f"Moles of H2SO4 = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+57.7 g of H2SO4 contains 0.5887 moles.
+
+User: Sort these words alphabetically: ['javascript', 'rust', 'python', 'java']
+Assistant: <think>I need to sort the list ['javascript', 'rust', 'python', 'java'] in alphabetical order.</think>
+<model>
+words = ['javascript', 'rust', 'python', 'java']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['java', 'javascript', 'python', 'rust'].
+
+User: Convert 85°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (85 - 32) × 5/9.</think>
+<model>
+fahrenheit = 85
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+85°F equals 29.44°C.
+
+User: Reverse the string "summer"
+Assistant: <think>I need to reverse the string "summer" by reading it backwards.</think>
+<model>
+text = "summer"
+reversed_text = text[::-1]
+print(f"Original: {text}")
+print(f"Reversed: {reversed_text}")
+</model>
+<requires>python:text</requires>
+
+The string "summer" reversed is "remmus".
+
+User: Calculate the molarity of a solution with 1.06 moles of solute in 1.47 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 1.06 mol / 1.47 L.</think>
+<model>
+moles = 1.06
+volume_l = 1.47
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 0.718 M.
+
+User: Sort these words alphabetically: ['green', 'blue', 'red', 'yellow']
+Assistant: <think>I need to sort the list ['green', 'blue', 'red', 'yellow'] in alphabetical order.</think>
+<model>
+words = ['green', 'blue', 'red', 'yellow']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['blue', 'green', 'red', 'yellow'].
+
+User: How long does it take for an object dropped from 34.0 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 34.0 / 9.81).</think>
+<model>
+import math
+height = 34.0  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 2.63 seconds to fall from 34.0 m.
+
+User: Sort these words alphabetically: ['java', 'python', 'rust', 'javascript']
+Assistant: <think>I need to sort the list ['java', 'python', 'rust', 'javascript'] in alphabetical order.</think>
+<model>
+words = ['java', 'python', 'rust', 'javascript']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['java', 'javascript', 'python', 'rust'].
+
+User: Calculate standard deviation of: [72, 87, 71, 40, 89, 59]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [72, 87, 71, 40, 89, 59]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 16.710.
+
+User: How long does it take for an object dropped from 90.7 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 90.7 / 9.81).</think>
+<model>
+import math
+height = 90.7  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 4.30 seconds to fall from 90.7 m.
+
+User: Convert 73°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (73 - 32) × 5/9.</think>
+<model>
+fahrenheit = 73
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+73°F equals 22.78°C.
+
+User: Calculate current when voltage is 40.3 V and resistance is 514 Ω
+Assistant: <think>Using Ohm's law: I = V / R. I = 40.3 V / 514 Ω.</think>
+<model>
+voltage = 40.3      # Volts
+resistance = 514   # Ohms
+current = voltage / resistance
+print(f"Current = {voltage} V / {resistance} Ω = {current:.4f} A")
+</model>
+<requires>python:electrical</requires>
+
+The current is 0.0785 A.
+
+User: Calculate resonant frequency of LC circuit with L = 2.42e-05 H and C = 7.90e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 2.42e-05 H and C = 7.90e-07 F.</think>
+<model>
+import math
+L = 2.42e-05  # Inductance in Henries
+C = 7.90e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 3.64e+04 Hz (36.4 kHz).
+
+User: Calculate flight time for projectile launched at 24.1 m/s at 68° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 24.1 m/s, θ = 68°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 24.1        # m/s
+angle_deg = 68   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 4.55 seconds.
+
+User: Calculate moles of gas at 1.76 atm, 7.9 L, and 273 K
+Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Where R = 0.0821 L·atm/(mol·K).</think>
+<model>
+P = 1.76  # atm
+V = 7.9     # L
+T = 273     # K
+R = 0.0821    # L·atm/(mol·K)
+n = (P * V) / (R * T)
+print(f"Moles = ({P} × {V}) / ({R} × {T}) = {n:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+The gas contains 0.6203 moles.
+
+User: Count the number of 'i' characters in the word "mathematics"
+Assistant: <think>I need to count how many times the character 'i' appears in "mathematics". I'll iterate through each character and count matches.</think>
+<model>
+word = "mathematics"
+char = 'i'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'i' appears {count} times in 'mathematics'")
+</model>
+<requires>python:text</requires>
+
+The character 'i' appears 1 times in the word "mathematics".
+
+User: Calculate the molarity of a solution with 4.68 moles of solute in 1.85 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 4.68 mol / 1.85 L.</think>
+<model>
+moles = 4.68
+volume_l = 1.85
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 2.527 M.
+
+User: Calculate wavelength for 400 MHz (UHF) radio frequency
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s. For f = 4e+08 Hz, λ = 3×10⁸ / 4e+08.</think>
+<model>
+frequency = 4e+08  # Hz
+c = 3e8               # speed of light m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.3f} m")
+if wavelength >= 1:
+    print(f"Wavelength = {wavelength:.2f} meters")
+elif wavelength >= 0.01:
+    print(f"Wavelength = {wavelength*100:.1f} cm")
+else:
+    print(f"Wavelength = {wavelength*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+The wavelength for 400 MHz is 0.750 m.
+
+User: Reverse the string "winter"
+Assistant: <think>I need to reverse the string "winter" by reading it backwards.</think>
+<model>
+text = "winter"
+reversed_text = text[::-1]
+print(f"Original: {text}")
+print(f"Reversed: {reversed_text}")
+</model>
+<requires>python:text</requires>
+
+The string "winter" reversed is "retniw".
+
+User: Reverse the string "spring"
+Assistant: <think>I need to reverse the string "spring" by reading it backwards.</think>
+<model>
+text = "spring"
+reversed_text = text[::-1]
+print(f"Original: {text}")
+print(f"Reversed: {reversed_text}")
+</model>
+<requires>python:text</requires>
+
+The string "spring" reversed is "gnirps".
+
+User: Reverse the string "spring"
+Assistant: <think>I need to reverse the string "spring" by reading it backwards.</think>
+<model>
+text = "spring"
+reversed_text = text[::-1]
+print(f"Original: {text}")
+print(f"Reversed: {reversed_text}")
+</model>
+<requires>python:text</requires>
+
+The string "spring" reversed is "gnirps".
+
+User: Calculate flight time for projectile launched at 12.7 m/s at 21° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 12.7 m/s, θ = 21°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 12.7        # m/s
+angle_deg = 21   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 0.94 seconds.
+
+User: Sort these words alphabetically: ['north', 'south', 'west', 'east']
+Assistant: <think>I need to sort the list ['north', 'south', 'west', 'east'] in alphabetical order.</think>
+<model>
+words = ['north', 'south', 'west', 'east']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['east', 'north', 'south', 'west'].
+
+User: Calculate power consumption for device at 182 V drawing 13.8 A
+Assistant: <think>Power P = V × I. P = 182 V × 13.8 A. Energy in 1 hour = P × 1h.</think>
+<model>
+voltage = 182  # Volts
+current = 13.8  # Amperes
+power = voltage * current
+energy_1h = power / 1000  # kWh for 1 hour
+print(f"Power = {voltage} V × {current} A = {power:.0f} W")
+print(f"Energy in 1 hour = {energy_1h:.2f} kWh")
+</model>
+<requires>python:electrical</requires>
+
+The power consumption is 2511 W (2.51 kWh per hour).
+
+User: How long does it take for an object dropped from 95.5 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 95.5 / 9.81).</think>
+<model>
+import math
+height = 95.5  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 4.41 seconds to fall from 95.5 m.
+
+User: Convert -15°C to Kelvin
+Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = -15 + 273.15.</think>
+<model>
+celsius = -15
+kelvin = celsius + 273.15
+print(f"{celsius}°C = {kelvin}K")
+</model>
+<requires>python:conversion</requires>
+
+-15°C equals 258.15K.
+
+User: Count the number of 'i' characters in the word "computer"
+Assistant: <think>I need to count how many times the character 'i' appears in "computer". I'll iterate through each character and count matches.</think>
+<model>
+word = "computer"
+char = 'i'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'i' appears {count} times in 'computer'")
+</model>
+<requires>python:text</requires>
+
+The character 'i' appears 0 times in the word "computer".
+
+User: How long does it take for an object dropped from 13.4 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 13.4 / 9.81).</think>
+<model>
+import math
+height = 13.4  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 1.65 seconds to fall from 13.4 m.
+
+User: Convert 79°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (79 × 9/5) + 32.</think>
+<model>
+celsius = 79
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+79°C equals 174.2°F.
+
+User: Calculate voltage when current is 9.61 A and resistance is 621 Ω
+Assistant: <think>Using Ohm's law: V = I × R. V = 9.61 A × 621 Ω.</think>
+<model>
+current = 9.61    # Amperes
+resistance = 621 # Ohms
+voltage = current * resistance
+print(f"Voltage = {current} A × {resistance} Ω = {voltage:.1f} V")
+</model>
+<requires>python:electrical</requires>
+
+The voltage is 5971.1 V.
+
+User: Convert 1°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (1 × 9/5) + 32.</think>
+<model>
+celsius = 1
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+1°C equals 33.8°F.
+
+User: Convert 30°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (30 - 32) × 5/9.</think>
+<model>
+fahrenheit = 30
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+30°F equals -1.11°C.
+
+User: Find the median of: [61, 80, 45, 93, 8, 85, 33, 47, 99]
+Assistant: <think>To find median, I need to sort the data and find the middle value(s). For 9 values, median is the middle value.</think>
+<model>
+data = [61, 80, 45, 93, 8, 85, 33, 47, 99]
+sorted_data = sorted(data)
+n = len(sorted_data)
+if n % 2 == 1:
+    median = sorted_data[n // 2]
+else:
+    median = (sorted_data[n // 2 - 1] + sorted_data[n // 2]) / 2
+print(f"Original data: {data}")
+print(f"Sorted data: {sorted_data}")
+print(f"Median = {median}")
+</model>
+<requires>python:statistics</requires>
+
+The median is 61.
+
+User: Calculate voltage when current is 2.86 A and resistance is 543 Ω
+Assistant: <think>Using Ohm's law: V = I × R. V = 2.86 A × 543 Ω.</think>
+<model>
+current = 2.86    # Amperes
+resistance = 543 # Ohms
+voltage = current * resistance
+print(f"Voltage = {current} A × {resistance} Ω = {voltage:.1f} V")
+</model>
+<requires>python:electrical</requires>
+
+The voltage is 1551.0 V.
+
+User: Calculate quarter-wave antenna length for 433 MHz
+Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then divide by 4. λ = 3×10⁸ / 4e+08.</think>
+<model>
+frequency = 4e+08  # Hz
+c = 3e8               # speed of light
+wavelength = c / frequency
+quarter_wave = wavelength / 4
+print(f"Wavelength = {wavelength:.3f} m")
+print(f"Quarter-wave length = {quarter_wave:.3f} m")
+if quarter_wave >= 0.01:
+    print(f"Quarter-wave = {quarter_wave*100:.1f} cm")
+else:
+    print(f"Quarter-wave = {quarter_wave*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+Quarter-wave antenna for 433 MHz is 0.173 m (17.3 cm).
+
+User: Implement binary search to find 48 in sorted array [22, 42, 42, 47, 48, 63, 65, 71, 76, 86]
+Assistant: <think>Binary search repeatedly divides the search space in half. Compare target with middle element and eliminate half the array.</think>
+<model>
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+arr = [22, 42, 42, 47, 48, 63, 65, 71, 76, 86]
+target = 48
+result = binary_search(arr, target)
+if result != -1:
+    print(f"Found {target} at index {result}")
+else:
+    print(f"{target} not found in array")
+</model>
+<requires>python:algorithms</requires>
+
+Binary search for 48 in the array.
+
+User: Calculate quarter-wave antenna length for 2 GHz
+Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then divide by 4. λ = 3×10⁸ / 2e+09.</think>
+<model>
+frequency = 2e+09  # Hz
+c = 3e8               # speed of light
+wavelength = c / frequency
+quarter_wave = wavelength / 4
+print(f"Wavelength = {wavelength:.3f} m")
+print(f"Quarter-wave length = {quarter_wave:.3f} m")
+if quarter_wave >= 0.01:
+    print(f"Quarter-wave = {quarter_wave*100:.1f} cm")
+else:
+    print(f"Quarter-wave = {quarter_wave*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+Quarter-wave antenna for 2 GHz is 0.031 m (3.1 cm).
+
+User: Convert 20°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (20 - 32) × 5/9.</think>
+<model>
+fahrenheit = 20
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+20°F equals -6.67°C.
+
+User: Calculate quarter-wave antenna length for 27 MHz
+Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then divide by 4. λ = 3×10⁸ / 3e+07.</think>
+<model>
+frequency = 3e+07  # Hz
+c = 3e8               # speed of light
+wavelength = c / frequency
+quarter_wave = wavelength / 4
+print(f"Wavelength = {wavelength:.3f} m")
+print(f"Quarter-wave length = {quarter_wave:.3f} m")
+if quarter_wave >= 0.01:
+    print(f"Quarter-wave = {quarter_wave*100:.1f} cm")
+else:
+    print(f"Quarter-wave = {quarter_wave*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+Quarter-wave antenna for 27 MHz is 2.778 m (277.8 cm).
+
+User: How many moles are in 36.6 g of CaCO3 (calcium carbonate)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of CaCO3 is 100.09 g/mol. So moles = 36.6 g / 100.09 g/mol.</think>
+<model>
+mass_g = 36.6
+molar_mass = 100.09  # g/mol for CaCO3
+moles = mass_g / molar_mass
+print(f"Moles of CaCO3 = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+36.6 g of CaCO3 contains 0.3660 moles.
+
+User: Convert -10°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (-10 × 9/5) + 32.</think>
+<model>
+celsius = -10
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+-10°C equals 14.0°F.
+
+User: Calculate quarter-wave antenna length for 915 MHz
+Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then divide by 4. λ = 3×10⁸ / 9e+08.</think>
+<model>
+frequency = 9e+08  # Hz
+c = 3e8               # speed of light
+wavelength = c / frequency
+quarter_wave = wavelength / 4
+print(f"Wavelength = {wavelength:.3f} m")
+print(f"Quarter-wave length = {quarter_wave:.3f} m")
+if quarter_wave >= 0.01:
+    print(f"Quarter-wave = {quarter_wave*100:.1f} cm")
+else:
+    print(f"Quarter-wave = {quarter_wave*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+Quarter-wave antenna for 915 MHz is 0.082 m (8.2 cm).
+
+User: Convert 40°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (40 × 9/5) + 32.</think>
+<model>
+celsius = 40
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+40°C equals 104.0°F.
+
+User: Convert 130°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (130 - 32) × 5/9.</think>
+<model>
+fahrenheit = 130
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+130°F equals 54.44°C.
+
+User: Sort these words alphabetically: ['winter', 'spring', 'autumn', 'summer']
+Assistant: <think>I need to sort the list ['winter', 'spring', 'autumn', 'summer'] in alphabetical order.</think>
+<model>
+words = ['winter', 'spring', 'autumn', 'summer']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['autumn', 'spring', 'summer', 'winter'].
+
+User: Calculate the molarity of a solution with 3.86 moles of solute in 0.17 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.86 mol / 0.17 L.</think>
+<model>
+moles = 3.86
+volume_l = 0.17
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 22.454 M.
+
+User: Calculate quarter-wave antenna length for 2 GHz
+Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then divide by 4. λ = 3×10⁸ / 2e+09.</think>
+<model>
+frequency = 2e+09  # Hz
+c = 3e8               # speed of light
+wavelength = c / frequency
+quarter_wave = wavelength / 4
+print(f"Wavelength = {wavelength:.3f} m")
+print(f"Quarter-wave length = {quarter_wave:.3f} m")
+if quarter_wave >= 0.01:
+    print(f"Quarter-wave = {quarter_wave*100:.1f} cm")
+else:
+    print(f"Quarter-wave = {quarter_wave*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+Quarter-wave antenna for 2 GHz is 0.031 m (3.1 cm).
+
+User: Calculate the molarity of a solution with 3.26 moles of solute in 1.32 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.26 mol / 1.32 L.</think>
+<model>
+moles = 3.26
+volume_l = 1.32
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 2.466 M.
+
+User: Calculate quarter-wave antenna length for 50 MHz
+Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then divide by 4. λ = 3×10⁸ / 5e+07.</think>
+<model>
+frequency = 5e+07  # Hz
+c = 3e8               # speed of light
+wavelength = c / frequency
+quarter_wave = wavelength / 4
+print(f"Wavelength = {wavelength:.3f} m")
+print(f"Quarter-wave length = {quarter_wave:.3f} m")
+if quarter_wave >= 0.01:
+    print(f"Quarter-wave = {quarter_wave*100:.1f} cm")
+else:
+    print(f"Quarter-wave = {quarter_wave*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+Quarter-wave antenna for 50 MHz is 1.500 m (150.0 cm).
+
+User: Calculate wavelength for 50 MHz (VHF) radio frequency
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s. For f = 5e+07 Hz, λ = 3×10⁸ / 5e+07.</think>
+<model>
+frequency = 5e+07  # Hz
+c = 3e8               # speed of light m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.3f} m")
+if wavelength >= 1:
+    print(f"Wavelength = {wavelength:.2f} meters")
+elif wavelength >= 0.01:
+    print(f"Wavelength = {wavelength*100:.1f} cm")
+else:
+    print(f"Wavelength = {wavelength*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+The wavelength for 50 MHz is 6.000 m.
+
+User: Calculate current when voltage is 18.3 V and resistance is 247 Ω
+Assistant: <think>Using Ohm's law: I = V / R. I = 18.3 V / 247 Ω.</think>
+<model>
+voltage = 18.3      # Volts
+resistance = 247   # Ohms
+current = voltage / resistance
+print(f"Current = {voltage} V / {resistance} Ω = {current:.4f} A")
+</model>
+<requires>python:electrical</requires>
+
+The current is 0.0744 A.
+
+User: Convert 49°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (49 - 32) × 5/9.</think>
+<model>
+fahrenheit = 49
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+49°F equals 9.44°C.
+
+User: Calculate resonant frequency of LC circuit with L = 7.40e-04 H and C = 3.45e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 7.40e-04 H and C = 3.45e-07 F.</think>
+<model>
+import math
+L = 7.40e-04  # Inductance in Henries
+C = 3.45e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 9.96e+03 Hz (10.0 kHz).
+
+User: Calculate power consumption for device at 175 V drawing 17.9 A
+Assistant: <think>Power P = V × I. P = 175 V × 17.9 A. Energy in 1 hour = P × 1h.</think>
+<model>
+voltage = 175  # Volts
+current = 17.9  # Amperes
+power = voltage * current
+energy_1h = power / 1000  # kWh for 1 hour
+print(f"Power = {voltage} V × {current} A = {power:.0f} W")
+print(f"Energy in 1 hour = {energy_1h:.2f} kWh")
+</model>
+<requires>python:electrical</requires>
+
+The power consumption is 3128 W (3.13 kWh per hour).
+
+User: Calculate wavelength for 100 MHz (FM radio) radio frequency
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s. For f = 1e+08 Hz, λ = 3×10⁸ / 1e+08.</think>
+<model>
+frequency = 1e+08  # Hz
+c = 3e8               # speed of light m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.3f} m")
+if wavelength >= 1:
+    print(f"Wavelength = {wavelength:.2f} meters")
+elif wavelength >= 0.01:
+    print(f"Wavelength = {wavelength*100:.1f} cm")
+else:
+    print(f"Wavelength = {wavelength*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+The wavelength for 100 MHz is 3.000 m.
+
+User: Calculate flight time for projectile launched at 42.9 m/s at 40° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 42.9 m/s, θ = 40°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 42.9        # m/s
+angle_deg = 40   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 5.68 seconds.
+
+User: Count the number of 'm' characters in the word "computer"
+Assistant: <think>I need to count how many times the character 'm' appears in "computer". I'll iterate through each character and count matches.</think>
+<model>
+word = "computer"
+char = 'm'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'm' appears {count} times in 'computer'")
+</model>
+<requires>python:text</requires>
+
+The character 'm' appears 1 times in the word "computer".
+
+User: Convert 18°C to Kelvin
+Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = 18 + 273.15.</think>
+<model>
+celsius = 18
+kelvin = celsius + 273.15
+print(f"{celsius}°C = {kelvin}K")
+</model>
+<requires>python:conversion</requires>
+
+18°C equals 291.15K.
+
+User: Calculate wavelength for electromagnetic wave with frequency 2025 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 2025 Hz. So λ = 3×10⁸ / 2025.</think>
+<model>
+frequency = 2025  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 148159.317157 m or 148159317.157 mm.
+
+User: How long does it take for an object dropped from 47.8 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 47.8 / 9.81).</think>
+<model>
+import math
+height = 47.8  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 3.12 seconds to fall from 47.8 m.
+
+User: Sort these words alphabetically: ['green', 'yellow', 'red', 'blue']
+Assistant: <think>I need to sort the list ['green', 'yellow', 'red', 'blue'] in alphabetical order.</think>
+<model>
+words = ['green', 'yellow', 'red', 'blue']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['blue', 'green', 'red', 'yellow'].
+
+User: Calculate moles of gas at 1.16 atm, 12.6 L, and 255 K
+Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Where R = 0.0821 L·atm/(mol·K).</think>
+<model>
+P = 1.16  # atm
+V = 12.6     # L
+T = 255     # K
+R = 0.0821    # L·atm/(mol·K)
+n = (P * V) / (R * T)
+print(f"Moles = ({P} × {V}) / ({R} × {T}) = {n:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+The gas contains 0.6996 moles.
+
+User: Calculate resistance when voltage is 48.6 V and current is 0.97 A
+Assistant: <think>Using Ohm's law: R = V / I. R = 48.6 V / 0.97 A.</think>
+<model>
+voltage = 48.6    # Volts
+current = 0.97    # Amperes
+resistance = voltage / current
+print(f"Resistance = {voltage} V / {current} A = {resistance:.1f} Ω")
+</model>
+<requires>python:electrical</requires>
+
+The resistance is 50.3 Ω.
+
+User: Calculate voltage when current is 6.19 A and resistance is 103 Ω
+Assistant: <think>Using Ohm's law: V = I × R. V = 6.19 A × 103 Ω.</think>
+<model>
+current = 6.19    # Amperes
+resistance = 103 # Ohms
+voltage = current * resistance
+print(f"Voltage = {current} A × {resistance} Ω = {voltage:.1f} V")
+</model>
+<requires>python:electrical</requires>
+
+The voltage is 639.7 V.
+
+User: Calculate voltage when current is 9.64 A and resistance is 578 Ω
+Assistant: <think>Using Ohm's law: V = I × R. V = 9.64 A × 578 Ω.</think>
+<model>
+current = 9.64    # Amperes
+resistance = 578 # Ohms
+voltage = current * resistance
+print(f"Voltage = {current} A × {resistance} Ω = {voltage:.1f} V")
+</model>
+<requires>python:electrical</requires>
+
+The voltage is 5572.9 V.
+
+User: Calculate the molarity of a solution with 0.93 moles of solute in 1.50 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 0.93 mol / 1.50 L.</think>
+<model>
+moles = 0.93
+volume_l = 1.50
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 0.622 M.
+
+User: How long does it take for an object dropped from 19.0 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 19.0 / 9.81).</think>
+<model>
+import math
+height = 19.0  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 1.97 seconds to fall from 19.0 m.
+
+User: Calculate wavelength for electromagnetic wave with frequency 3414 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 3414 Hz. So λ = 3×10⁸ / 3414.</think>
+<model>
+frequency = 3414  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 87877.828211 m or 87877828.211 mm.
+
+User: How long does it take for an object dropped from 99.4 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 99.4 / 9.81).</think>
+<model>
+import math
+height = 99.4  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 4.50 seconds to fall from 99.4 m.
+
+User: Find the median of: [21, 10, 30, 24, 100, 62, 73, 51, 28]
+Assistant: <think>To find median, I need to sort the data and find the middle value(s). For 9 values, median is the middle value.</think>
+<model>
+data = [21, 10, 30, 24, 100, 62, 73, 51, 28]
+sorted_data = sorted(data)
+n = len(sorted_data)
+if n % 2 == 1:
+    median = sorted_data[n // 2]
+else:
+    median = (sorted_data[n // 2 - 1] + sorted_data[n // 2]) / 2
+print(f"Original data: {data}")
+print(f"Sorted data: {sorted_data}")
+print(f"Median = {median}")
+</model>
+<requires>python:statistics</requires>
+
+The median is 30.
+
+User: Calculate moles of gas at 2.65 atm, 21.4 L, and 285 K
+Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Where R = 0.0821 L·atm/(mol·K).</think>
+<model>
+P = 2.65  # atm
+V = 21.4     # L
+T = 285     # K
+R = 0.0821    # L·atm/(mol·K)
+n = (P * V) / (R * T)
+print(f"Moles = ({P} × {V}) / ({R} × {T}) = {n:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+The gas contains 2.4233 moles.
+
+User: Calculate resonant frequency of LC circuit with L = 9.66e-04 H and C = 1.89e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 9.66e-04 H and C = 1.89e-07 F.</think>
+<model>
+import math
+L = 9.66e-04  # Inductance in Henries
+C = 1.89e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 1.18e+04 Hz (11.8 kHz).
+
+User: Calculate the molarity of a solution with 1.14 moles of solute in 1.58 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 1.14 mol / 1.58 L.</think>
+<model>
+moles = 1.14
+volume_l = 1.58
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 0.722 M.
+
+User: Convert 393K to Celsius
+Assistant: <think>To convert Kelvin to Celsius, I subtract 273.15. So C = 393 - 273.15.</think>
+<model>
+kelvin = 393
+celsius = kelvin - 273.15
+print(f"{kelvin}K = {celsius}°C")
+</model>
+<requires>python:conversion</requires>
+
+393K equals 119.85000000000002°C.
+
+User: Calculate resonant frequency of LC circuit with L = 8.86e-04 H and C = 6.05e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 8.86e-04 H and C = 6.05e-07 F.</think>
+<model>
+import math
+L = 8.86e-04  # Inductance in Henries
+C = 6.05e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 6.87e+03 Hz (6.9 kHz).
+
+User: Count the number of 'i' characters in the word "chemistry"
+Assistant: <think>I need to count how many times the character 'i' appears in "chemistry". I'll iterate through each character and count matches.</think>
+<model>
+word = "chemistry"
+char = 'i'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'i' appears {count} times in 'chemistry'")
+</model>
+<requires>python:text</requires>
+
+The character 'i' appears 1 times in the word "chemistry".
+
+User: Calculate the molarity of a solution with 1.54 moles of solute in 1.52 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 1.54 mol / 1.52 L.</think>
+<model>
+moles = 1.54
+volume_l = 1.52
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 1.017 M.
+
+User: Calculate the molarity of a solution with 3.74 moles of solute in 1.89 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.74 mol / 1.89 L.</think>
+<model>
+moles = 3.74
+volume_l = 1.89
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 1.983 M.
+
+User: Calculate moles of gas at 4.81 atm, 20.7 L, and 256 K
+Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Where R = 0.0821 L·atm/(mol·K).</think>
+<model>
+P = 4.81  # atm
+V = 20.7     # L
+T = 256     # K
+R = 0.0821    # L·atm/(mol·K)
+n = (P * V) / (R * T)
+print(f"Moles = ({P} × {V}) / ({R} × {T}) = {n:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+The gas contains 4.7325 moles.
+
+User: Calculate resonant frequency of LC circuit with L = 5.66e-04 H and C = 8.19e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 5.66e-04 H and C = 8.19e-07 F.</think>
+<model>
+import math
+L = 5.66e-04  # Inductance in Henries
+C = 8.19e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 7.39e+03 Hz (7.4 kHz).
+
+User: Calculate power consumption for device at 156 V drawing 2.1 A
+Assistant: <think>Power P = V × I. P = 156 V × 2.1 A. Energy in 1 hour = P × 1h.</think>
+<model>
+voltage = 156  # Volts
+current = 2.1  # Amperes
+power = voltage * current
+energy_1h = power / 1000  # kWh for 1 hour
+print(f"Power = {voltage} V × {current} A = {power:.0f} W")
+print(f"Energy in 1 hour = {energy_1h:.2f} kWh")
+</model>
+<requires>python:electrical</requires>
+
+The power consumption is 335 W (0.33 kWh per hour).
+
+User: Calculate resonant frequency of LC circuit with L = 7.46e-04 H and C = 8.59e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 7.46e-04 H and C = 8.59e-07 F.</think>
+<model>
+import math
+L = 7.46e-04  # Inductance in Henries
+C = 8.59e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 6.29e+03 Hz (6.3 kHz).
+
+User: Calculate standard deviation of: [78, 80, 13, 29, 43, 80, 87, 63, 24, 71]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [78, 80, 13, 29, 43, 80, 87, 63, 24, 71]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 25.760.
+
+User: Count the number of 'g' characters in the word "physics"
+Assistant: <think>I need to count how many times the character 'g' appears in "physics". I'll iterate through each character and count matches.</think>
+<model>
+word = "physics"
+char = 'g'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'g' appears {count} times in 'physics'")
+</model>
+<requires>python:text</requires>
+
+The character 'g' appears 0 times in the word "physics".
+
+User: Convert 138°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (138 - 32) × 5/9.</think>
+<model>
+fahrenheit = 138
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+138°F equals 58.89°C.
+
+User: Calculate power consumption for device at 228 V drawing 18.4 A
+Assistant: <think>Power P = V × I. P = 228 V × 18.4 A. Energy in 1 hour = P × 1h.</think>
+<model>
+voltage = 228  # Volts
+current = 18.4  # Amperes
+power = voltage * current
+energy_1h = power / 1000  # kWh for 1 hour
+print(f"Power = {voltage} V × {current} A = {power:.0f} W")
+print(f"Energy in 1 hour = {energy_1h:.2f} kWh")
+</model>
+<requires>python:electrical</requires>
+
+The power consumption is 4206 W (4.21 kWh per hour).
+
+User: Calculate the molarity of a solution with 3.75 moles of solute in 1.47 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.75 mol / 1.47 L.</think>
+<model>
+moles = 3.75
+volume_l = 1.47
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 2.551 M.
+
+User: Calculate the molarity of a solution with 3.13 moles of solute in 0.23 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.13 mol / 0.23 L.</think>
+<model>
+moles = 3.13
+volume_l = 0.23
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 13.372 M.
+
+User: Convert 1°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (1 × 9/5) + 32.</think>
+<model>
+celsius = 1
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+1°C equals 33.8°F.
+
+User: Calculate power consumption for device at 129 V drawing 4.0 A
+Assistant: <think>Power P = V × I. P = 129 V × 4.0 A. Energy in 1 hour = P × 1h.</think>
+<model>
+voltage = 129  # Volts
+current = 4.0  # Amperes
+power = voltage * current
+energy_1h = power / 1000  # kWh for 1 hour
+print(f"Power = {voltage} V × {current} A = {power:.0f} W")
+print(f"Energy in 1 hour = {energy_1h:.2f} kWh")
+</model>
+<requires>python:electrical</requires>
+
+The power consumption is 513 W (0.51 kWh per hour).
+
+User: How many moles are in 16.1 g of CaCO3 (calcium carbonate)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of CaCO3 is 100.09 g/mol. So moles = 16.1 g / 100.09 g/mol.</think>
+<model>
+mass_g = 16.1
+molar_mass = 100.09  # g/mol for CaCO3
+moles = mass_g / molar_mass
+print(f"Moles of CaCO3 = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+16.1 g of CaCO3 contains 0.1606 moles.
+
+User: Calculate flight time for projectile launched at 34.3 m/s at 52° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 34.3 m/s, θ = 52°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 34.3        # m/s
+angle_deg = 52   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 5.54 seconds.
+
+User: Convert 11°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (11 × 9/5) + 32.</think>
+<model>
+celsius = 11
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+11°C equals 51.8°F.
+
+User: Reverse the string "autumn"
+Assistant: <think>I need to reverse the string "autumn" by reading it backwards.</think>
+<model>
+text = "autumn"
+reversed_text = text[::-1]
+print(f"Original: {text}")
+print(f"Reversed: {reversed_text}")
+</model>
+<requires>python:text</requires>
+
+The string "autumn" reversed is "nmutua".
+
+User: Calculate power consumption for device at 202 V drawing 18.1 A
+Assistant: <think>Power P = V × I. P = 202 V × 18.1 A. Energy in 1 hour = P × 1h.</think>
+<model>
+voltage = 202  # Volts
+current = 18.1  # Amperes
+power = voltage * current
+energy_1h = power / 1000  # kWh for 1 hour
+print(f"Power = {voltage} V × {current} A = {power:.0f} W")
+print(f"Energy in 1 hour = {energy_1h:.2f} kWh")
+</model>
+<requires>python:electrical</requires>
+
+The power consumption is 3669 W (3.67 kWh per hour).
+
+User: Convert -35°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (-35 × 9/5) + 32.</think>
+<model>
+celsius = -35
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+-35°C equals -31.0°F.
+
+User: Calculate current when voltage is 5.9 V and resistance is 929 Ω
+Assistant: <think>Using Ohm's law: I = V / R. I = 5.9 V / 929 Ω.</think>
+<model>
+voltage = 5.9      # Volts
+resistance = 929   # Ohms
+current = voltage / resistance
+print(f"Current = {voltage} V / {resistance} Ω = {current:.4f} A")
+</model>
+<requires>python:electrical</requires>
+
+The current is 0.0063 A.
+
+User: Implement binary search to find 27 in sorted array [11, 25, 27, 59, 60, 66, 88, 90, 97, 100]
+Assistant: <think>Binary search repeatedly divides the search space in half. Compare target with middle element and eliminate half the array.</think>
+<model>
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+arr = [11, 25, 27, 59, 60, 66, 88, 90, 97, 100]
+target = 27
+result = binary_search(arr, target)
+if result != -1:
+    print(f"Found {target} at index {result}")
+else:
+    print(f"{target} not found in array")
+</model>
+<requires>python:algorithms</requires>
+
+Binary search for 27 in the array.
+
+User: Calculate power consumption for device at 171 V drawing 16.1 A
+Assistant: <think>Power P = V × I. P = 171 V × 16.1 A. Energy in 1 hour = P × 1h.</think>
+<model>
+voltage = 171  # Volts
+current = 16.1  # Amperes
+power = voltage * current
+energy_1h = power / 1000  # kWh for 1 hour
+print(f"Power = {voltage} V × {current} A = {power:.0f} W")
+print(f"Energy in 1 hour = {energy_1h:.2f} kWh")
+</model>
+<requires>python:electrical</requires>
+
+The power consumption is 2748 W (2.75 kWh per hour).
+
+User: Sort this array using bubble sort: [42, 13, 25, 48, 8, 21, 3, 37]
+Assistant: <think>Bubble sort repeatedly steps through the list, compares adjacent elements and swaps them if they're in wrong order.</think>
+<model>
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+arr = [42, 13, 25, 48, 8, 21, 3, 37]
+print(f"Original: {arr}")
+sorted_arr = bubble_sort(arr.copy())
+print(f"Sorted: {sorted_arr}")
+</model>
+<requires>python:algorithms</requires>
+
+Bubble sort implementation for the given array.
+
+User: Count the number of 'e' characters in the word "programming"
+Assistant: <think>I need to count how many times the character 'e' appears in "programming". I'll iterate through each character and count matches.</think>
+<model>
+word = "programming"
+char = 'e'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'e' appears {count} times in 'programming'")
+</model>
+<requires>python:text</requires>
+
+The character 'e' appears 0 times in the word "programming".
+
+User: Convert 74°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (74 - 32) × 5/9.</think>
+<model>
+fahrenheit = 74
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+74°F equals 23.33°C.
+
+User: Calculate power consumption for device at 216 V drawing 3.2 A
+Assistant: <think>Power P = V × I. P = 216 V × 3.2 A. Energy in 1 hour = P × 1h.</think>
+<model>
+voltage = 216  # Volts
+current = 3.2  # Amperes
+power = voltage * current
+energy_1h = power / 1000  # kWh for 1 hour
+print(f"Power = {voltage} V × {current} A = {power:.0f} W")
+print(f"Energy in 1 hour = {energy_1h:.2f} kWh")
+</model>
+<requires>python:electrical</requires>
+
+The power consumption is 700 W (0.70 kWh per hour).
+
+User: Calculate standard deviation of: [78, 74, 74, 59, 38, 12, 99, 93, 21]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [78, 74, 74, 59, 38, 12, 99, 93, 21]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 29.115.
+
+User: Convert -14°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (-14 × 9/5) + 32.</think>
+<model>
+celsius = -14
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+-14°C equals 6.800000000000001°F.
+
+User: Calculate wavelength for electromagnetic wave with frequency 8945 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 8945 Hz. So λ = 3×10⁸ / 8945.</think>
+<model>
+frequency = 8945  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 33539.358930 m or 33539358.930 mm.
+
+User: Calculate resonant frequency of LC circuit with L = 4.13e-04 H and C = 3.05e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 4.13e-04 H and C = 3.05e-07 F.</think>
+<model>
+import math
+L = 4.13e-04  # Inductance in Henries
+C = 3.05e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 1.42e+04 Hz (14.2 kHz).
+
+User: Calculate wavelength for electromagnetic wave with frequency 9614 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 9614 Hz. So λ = 3×10⁸ / 9614.</think>
+<model>
+frequency = 9614  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 31203.263253 m or 31203263.253 mm.
+
+User: How many moles are in 30.4 g of NaCl (sodium chloride)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of NaCl is 58.44 g/mol. So moles = 30.4 g / 58.44 g/mol.</think>
+<model>
+mass_g = 30.4
+molar_mass = 58.44  # g/mol for NaCl
+moles = mass_g / molar_mass
+print(f"Moles of NaCl = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+30.4 g of NaCl contains 0.5202 moles.
+
+User: Calculate the molarity of a solution with 3.43 moles of solute in 1.90 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.43 mol / 1.90 L.</think>
+<model>
+moles = 3.43
+volume_l = 1.90
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 1.805 M.
+
+User: Count the number of 'l' characters in the word "programming"
+Assistant: <think>I need to count how many times the character 'l' appears in "programming". I'll iterate through each character and count matches.</think>
+<model>
+word = "programming"
+char = 'l'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'l' appears {count} times in 'programming'")
+</model>
+<requires>python:text</requires>
+
+The character 'l' appears 0 times in the word "programming".
+
+User: Convert 35°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (35 × 9/5) + 32.</think>
+<model>
+celsius = 35
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+35°C equals 95.0°F.
+
+User: Convert -15°C to Kelvin
+Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = -15 + 273.15.</think>
+<model>
+celsius = -15
+kelvin = celsius + 273.15
+print(f"{celsius}°C = {kelvin}K")
+</model>
+<requires>python:conversion</requires>
+
+-15°C equals 258.15K.
+
+User: Calculate resistance when voltage is 22.3 V and current is 1.47 A
+Assistant: <think>Using Ohm's law: R = V / I. R = 22.3 V / 1.47 A.</think>
+<model>
+voltage = 22.3    # Volts
+current = 1.47    # Amperes
+resistance = voltage / current
+print(f"Resistance = {voltage} V / {current} A = {resistance:.1f} Ω")
+</model>
+<requires>python:electrical</requires>
+
+The resistance is 15.2 Ω.
+
+User: How many moles are in 46.3 g of NaCl (sodium chloride)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of NaCl is 58.44 g/mol. So moles = 46.3 g / 58.44 g/mol.</think>
+<model>
+mass_g = 46.3
+molar_mass = 58.44  # g/mol for NaCl
+moles = mass_g / molar_mass
+print(f"Moles of NaCl = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+46.3 g of NaCl contains 0.7926 moles.
+
+User: Calculate moles of gas at 2.11 atm, 1.6 L, and 329 K
+Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Where R = 0.0821 L·atm/(mol·K).</think>
+<model>
+P = 2.11  # atm
+V = 1.6     # L
+T = 329     # K
+R = 0.0821    # L·atm/(mol·K)
+n = (P * V) / (R * T)
+print(f"Moles = ({P} × {V}) / ({R} × {T}) = {n:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+The gas contains 0.1218 moles.
+
+User: How many moles are in 94.2 g of CaCO3 (calcium carbonate)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of CaCO3 is 100.09 g/mol. So moles = 94.2 g / 100.09 g/mol.</think>
+<model>
+mass_g = 94.2
+molar_mass = 100.09  # g/mol for CaCO3
+moles = mass_g / molar_mass
+print(f"Moles of CaCO3 = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+94.2 g of CaCO3 contains 0.9416 moles.
+
+User: How long does it take for an object dropped from 94.2 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 94.2 / 9.81).</think>
+<model>
+import math
+height = 94.2  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 4.38 seconds to fall from 94.2 m.
+
+User: Sort these words alphabetically: ['java', 'javascript', 'rust', 'python']
+Assistant: <think>I need to sort the list ['java', 'javascript', 'rust', 'python'] in alphabetical order.</think>
+<model>
+words = ['java', 'javascript', 'rust', 'python']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['java', 'javascript', 'python', 'rust'].
+
+User: Calculate resonant frequency of LC circuit with L = 2.29e-04 H and C = 6.79e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 2.29e-04 H and C = 6.79e-07 F.</think>
+<model>
+import math
+L = 2.29e-04  # Inductance in Henries
+C = 6.79e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 1.28e+04 Hz (12.8 kHz).
+
+User: Calculate moles of gas at 4.61 atm, 12.4 L, and 280 K
+Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Where R = 0.0821 L·atm/(mol·K).</think>
+<model>
+P = 4.61  # atm
+V = 12.4     # L
+T = 280     # K
+R = 0.0821    # L·atm/(mol·K)
+n = (P * V) / (R * T)
+print(f"Moles = ({P} × {V}) / ({R} × {T}) = {n:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+The gas contains 2.4883 moles.
+
+User: Calculate wavelength for electromagnetic wave with frequency 8555 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 8555 Hz. So λ = 3×10⁸ / 8555.</think>
+<model>
+frequency = 8555  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 35065.983102 m or 35065983.102 mm.
+
+User: Convert 65°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (65 × 9/5) + 32.</think>
+<model>
+celsius = 65
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+65°C equals 149.0°F.
+
+User: Calculate moles of gas at 2.00 atm, 10.1 L, and 337 K
+Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Where R = 0.0821 L·atm/(mol·K).</think>
+<model>
+P = 2.00  # atm
+V = 10.1     # L
+T = 337     # K
+R = 0.0821    # L·atm/(mol·K)
+n = (P * V) / (R * T)
+print(f"Moles = ({P} × {V}) / ({R} × {T}) = {n:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+The gas contains 0.7338 moles.
+
+User: Calculate standard deviation of: [54, 26, 50, 41, 14, 43, 17, 93, 35]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [54, 26, 50, 41, 14, 43, 17, 93, 35]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 22.416.
+
+User: How many moles are in 31.4 g of CaCO3 (calcium carbonate)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of CaCO3 is 100.09 g/mol. So moles = 31.4 g / 100.09 g/mol.</think>
+<model>
+mass_g = 31.4
+molar_mass = 100.09  # g/mol for CaCO3
+moles = mass_g / molar_mass
+print(f"Moles of CaCO3 = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+31.4 g of CaCO3 contains 0.3137 moles.
+
+User: Find the median of: [88, 51, 22, 2, 39, 7, 78, 47, 11, 80, 63, 23, 34, 32, 18]
+Assistant: <think>To find median, I need to sort the data and find the middle value(s). For 15 values, median is the middle value.</think>
+<model>
+data = [88, 51, 22, 2, 39, 7, 78, 47, 11, 80, 63, 23, 34, 32, 18]
+sorted_data = sorted(data)
+n = len(sorted_data)
+if n % 2 == 1:
+    median = sorted_data[n // 2]
+else:
+    median = (sorted_data[n // 2 - 1] + sorted_data[n // 2]) / 2
+print(f"Original data: {data}")
+print(f"Sorted data: {sorted_data}")
+print(f"Median = {median}")
+</model>
+<requires>python:statistics</requires>
+
+The median is 34.
+
+User: Convert 163°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (163 - 32) × 5/9.</think>
+<model>
+fahrenheit = 163
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+163°F equals 72.78°C.
+
+User: Sort this array using bubble sort: [37, 30, 20, 21, 13, 6, 27, 11]
+Assistant: <think>Bubble sort repeatedly steps through the list, compares adjacent elements and swaps them if they're in wrong order.</think>
+<model>
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+arr = [37, 30, 20, 21, 13, 6, 27, 11]
+print(f"Original: {arr}")
+sorted_arr = bubble_sort(arr.copy())
+print(f"Sorted: {sorted_arr}")
+</model>
+<requires>python:algorithms</requires>
+
+Bubble sort implementation for the given array.
+
+User: Calculate resonant frequency of LC circuit with L = 3.21e-04 H and C = 3.70e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 3.21e-04 H and C = 3.70e-07 F.</think>
+<model>
+import math
+L = 3.21e-04  # Inductance in Henries
+C = 3.70e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 1.46e+04 Hz (14.6 kHz).
+
+User: Count the number of 'n' characters in the word "strawberry"
+Assistant: <think>I need to count how many times the character 'n' appears in "strawberry". I'll iterate through each character and count matches.</think>
+<model>
+word = "strawberry"
+char = 'n'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'n' appears {count} times in 'strawberry'")
+</model>
+<requires>python:text</requires>
+
+The character 'n' appears 0 times in the word "strawberry".
+
+User: How long does it take for an object dropped from 69.3 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 69.3 / 9.81).</think>
+<model>
+import math
+height = 69.3  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 3.76 seconds to fall from 69.3 m.
+
+User: Calculate resistance when voltage is 35.0 V and current is 1.35 A
+Assistant: <think>Using Ohm's law: R = V / I. R = 35.0 V / 1.35 A.</think>
+<model>
+voltage = 35.0    # Volts
+current = 1.35    # Amperes
+resistance = voltage / current
+print(f"Resistance = {voltage} V / {current} A = {resistance:.1f} Ω")
+</model>
+<requires>python:electrical</requires>
+
+The resistance is 26.0 Ω.
+
+User: Calculate voltage when current is 1.28 A and resistance is 936 Ω
+Assistant: <think>Using Ohm's law: V = I × R. V = 1.28 A × 936 Ω.</think>
+<model>
+current = 1.28    # Amperes
+resistance = 936 # Ohms
+voltage = current * resistance
+print(f"Voltage = {current} A × {resistance} Ω = {voltage:.1f} V")
+</model>
+<requires>python:electrical</requires>
+
+The voltage is 1201.1 V.
+
+User: How long does it take for an object dropped from 63.4 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 63.4 / 9.81).</think>
+<model>
+import math
+height = 63.4  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 3.59 seconds to fall from 63.4 m.
+
+User: How long does it take for an object dropped from 92.7 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 92.7 / 9.81).</think>
+<model>
+import math
+height = 92.7  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 4.35 seconds to fall from 92.7 m.
+
+User: Implement binary search to find 64 in sorted array [5, 10, 23, 24, 27, 29, 38, 51, 58, 64]
+Assistant: <think>Binary search repeatedly divides the search space in half. Compare target with middle element and eliminate half the array.</think>
+<model>
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+arr = [5, 10, 23, 24, 27, 29, 38, 51, 58, 64]
+target = 64
+result = binary_search(arr, target)
+if result != -1:
+    print(f"Found {target} at index {result}")
+else:
+    print(f"{target} not found in array")
+</model>
+<requires>python:algorithms</requires>
+
+Binary search for 64 in the array.
+
+User: Convert 16°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (16 - 32) × 5/9.</think>
+<model>
+fahrenheit = 16
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+16°F equals -8.89°C.
+
+User: Convert 28°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (28 × 9/5) + 32.</think>
+<model>
+celsius = 28
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+28°C equals 82.4°F.
+
+User: Calculate standard deviation of: [95, 58, 52, 35, 63, 23, 95]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [95, 58, 52, 35, 63, 23, 95]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 25.413.
+
+User: Calculate wavelength for electromagnetic wave with frequency 7863 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 7863 Hz. So λ = 3×10⁸ / 7863.</think>
+<model>
+frequency = 7863  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 38154.165819 m or 38154165.819 mm.
+
+User: Convert 135°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (135 - 32) × 5/9.</think>
+<model>
+fahrenheit = 135
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+135°F equals 57.22°C.
+
+User: Calculate wavelength for 2.4 GHz (WiFi) radio frequency
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s. For f = 2e+09 Hz, λ = 3×10⁸ / 2e+09.</think>
+<model>
+frequency = 2e+09  # Hz
+c = 3e8               # speed of light m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.3f} m")
+if wavelength >= 1:
+    print(f"Wavelength = {wavelength:.2f} meters")
+elif wavelength >= 0.01:
+    print(f"Wavelength = {wavelength*100:.1f} cm")
+else:
+    print(f"Wavelength = {wavelength*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+The wavelength for 2.4 GHz is 0.125 m.
+
+User: Find the median of: [57, 33, 100, 84, 10, 57, 31, 3, 71, 83]
+Assistant: <think>To find median, I need to sort the data and find the middle value(s). For 10 values, median is the middle value.</think>
+<model>
+data = [57, 33, 100, 84, 10, 57, 31, 3, 71, 83]
+sorted_data = sorted(data)
+n = len(sorted_data)
+if n % 2 == 1:
+    median = sorted_data[n // 2]
+else:
+    median = (sorted_data[n // 2 - 1] + sorted_data[n // 2]) / 2
+print(f"Original data: {data}")
+print(f"Sorted data: {sorted_data}")
+print(f"Median = {median}")
+</model>
+<requires>python:statistics</requires>
+
+The median is 57.0.
+
+User: How many moles are in 33.9 g of NaCl (sodium chloride)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of NaCl is 58.44 g/mol. So moles = 33.9 g / 58.44 g/mol.</think>
+<model>
+mass_g = 33.9
+molar_mass = 58.44  # g/mol for NaCl
+moles = mass_g / molar_mass
+print(f"Moles of NaCl = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+33.9 g of NaCl contains 0.5798 moles.
+
+User: Calculate power consumption for device at 188 V drawing 16.0 A
+Assistant: <think>Power P = V × I. P = 188 V × 16.0 A. Energy in 1 hour = P × 1h.</think>
+<model>
+voltage = 188  # Volts
+current = 16.0  # Amperes
+power = voltage * current
+energy_1h = power / 1000  # kWh for 1 hour
+print(f"Power = {voltage} V × {current} A = {power:.0f} W")
+print(f"Energy in 1 hour = {energy_1h:.2f} kWh")
+</model>
+<requires>python:electrical</requires>
+
+The power consumption is 3008 W (3.01 kWh per hour).
+
+User: Calculate flight time for projectile launched at 43.7 m/s at 45° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 43.7 m/s, θ = 45°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 43.7        # m/s
+angle_deg = 45   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 6.26 seconds.
+
+User: Count the number of 'a' characters in the word "university"
+Assistant: <think>I need to count how many times the character 'a' appears in "university". I'll iterate through each character and count matches.</think>
+<model>
+word = "university"
+char = 'a'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'a' appears {count} times in 'university'")
+</model>
+<requires>python:text</requires>
+
+The character 'a' appears 0 times in the word "university".
+
+User: Calculate flight time for projectile launched at 41.4 m/s at 34° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 41.4 m/s, θ = 34°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 41.4        # m/s
+angle_deg = 34   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 4.73 seconds.
+
+User: Count the number of 'n' characters in the word "knowledge"
+Assistant: <think>I need to count how many times the character 'n' appears in "knowledge". I'll iterate through each character and count matches.</think>
+<model>
+word = "knowledge"
+char = 'n'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'n' appears {count} times in 'knowledge'")
+</model>
+<requires>python:text</requires>
+
+The character 'n' appears 1 times in the word "knowledge".
+
+User: Calculate resistance when voltage is 10.7 V and current is 2.45 A
+Assistant: <think>Using Ohm's law: R = V / I. R = 10.7 V / 2.45 A.</think>
+<model>
+voltage = 10.7    # Volts
+current = 2.45    # Amperes
+resistance = voltage / current
+print(f"Resistance = {voltage} V / {current} A = {resistance:.1f} Ω")
+</model>
+<requires>python:electrical</requires>
+
+The resistance is 4.4 Ω.
+
+User: Implement binary search to find 64 in sorted array [21, 30, 31, 52, 63, 64, 65, 66, 79, 95]
+Assistant: <think>Binary search repeatedly divides the search space in half. Compare target with middle element and eliminate half the array.</think>
+<model>
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+arr = [21, 30, 31, 52, 63, 64, 65, 66, 79, 95]
+target = 64
+result = binary_search(arr, target)
+if result != -1:
+    print(f"Found {target} at index {result}")
+else:
+    print(f"{target} not found in array")
+</model>
+<requires>python:algorithms</requires>
+
+Binary search for 64 in the array.
+
+User: Calculate resistance when voltage is 41.7 V and current is 3.69 A
+Assistant: <think>Using Ohm's law: R = V / I. R = 41.7 V / 3.69 A.</think>
+<model>
+voltage = 41.7    # Volts
+current = 3.69    # Amperes
+resistance = voltage / current
+print(f"Resistance = {voltage} V / {current} A = {resistance:.1f} Ω")
+</model>
+<requires>python:electrical</requires>
+
+The resistance is 11.3 Ω.
+
+User: How long does it take for an object dropped from 9.4 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 9.4 / 9.81).</think>
+<model>
+import math
+height = 9.4  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 1.38 seconds to fall from 9.4 m.
+
+User: Calculate the molarity of a solution with 1.48 moles of solute in 0.81 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 1.48 mol / 0.81 L.</think>
+<model>
+moles = 1.48
+volume_l = 0.81
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 1.824 M.
+
+User: Reverse the string "spring"
+Assistant: <think>I need to reverse the string "spring" by reading it backwards.</think>
+<model>
+text = "spring"
+reversed_text = text[::-1]
+print(f"Original: {text}")
+print(f"Reversed: {reversed_text}")
+</model>
+<requires>python:text</requires>
+
+The string "spring" reversed is "gnirps".
+
+User: Calculate wavelength for electromagnetic wave with frequency 5252 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 5252 Hz. So λ = 3×10⁸ / 5252.</think>
+<model>
+frequency = 5252  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 57126.346518 m or 57126346.518 mm.
+
+User: Convert 194°C to Kelvin
+Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = 194 + 273.15.</think>
+<model>
+celsius = 194
+kelvin = celsius + 273.15
+print(f"{celsius}°C = {kelvin}K")
+</model>
+<requires>python:conversion</requires>
+
+194°C equals 467.15K.
+
+User: Count the number of 'm' characters in the word "university"
+Assistant: <think>I need to count how many times the character 'm' appears in "university". I'll iterate through each character and count matches.</think>
+<model>
+word = "university"
+char = 'm'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'm' appears {count} times in 'university'")
+</model>
+<requires>python:text</requires>
+
+The character 'm' appears 0 times in the word "university".
+
+User: Calculate wavelength for 900 MHz (GSM) radio frequency
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s. For f = 9e+08 Hz, λ = 3×10⁸ / 9e+08.</think>
+<model>
+frequency = 9e+08  # Hz
+c = 3e8               # speed of light m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.3f} m")
+if wavelength >= 1:
+    print(f"Wavelength = {wavelength:.2f} meters")
+elif wavelength >= 0.01:
+    print(f"Wavelength = {wavelength*100:.1f} cm")
+else:
+    print(f"Wavelength = {wavelength*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+The wavelength for 900 MHz is 0.333 m.
+
+User: Convert 88°C to Kelvin
+Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = 88 + 273.15.</think>
+<model>
+celsius = 88
+kelvin = celsius + 273.15
+print(f"{celsius}°C = {kelvin}K")
+</model>
+<requires>python:conversion</requires>
+
+88°C equals 361.15K.
+
+User: Calculate wavelength for electromagnetic wave with frequency 821 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 821 Hz. So λ = 3×10⁸ / 821.</think>
+<model>
+frequency = 821  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 365573.983722 m or 365573983.722 mm.
+
+User: Count the number of 'g' characters in the word "frequency"
+Assistant: <think>I need to count how many times the character 'g' appears in "frequency". I'll iterate through each character and count matches.</think>
+<model>
+word = "frequency"
+char = 'g'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'g' appears {count} times in 'frequency'")
+</model>
+<requires>python:text</requires>
+
+The character 'g' appears 0 times in the word "frequency".
+
+User: Calculate resonant frequency of LC circuit with L = 7.48e-04 H and C = 8.33e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 7.48e-04 H and C = 8.33e-07 F.</think>
+<model>
+import math
+L = 7.48e-04  # Inductance in Henries
+C = 8.33e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 6.38e+03 Hz (6.4 kHz).
+
+User: Convert 52°C to Kelvin
+Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = 52 + 273.15.</think>
+<model>
+celsius = 52
+kelvin = celsius + 273.15
+print(f"{celsius}°C = {kelvin}K")
+</model>
+<requires>python:conversion</requires>
+
+52°C equals 325.15K.
+
+User: Find the median of: [24, 76, 63, 74, 84, 58, 77, 78, 40]
+Assistant: <think>To find median, I need to sort the data and find the middle value(s). For 9 values, median is the middle value.</think>
+<model>
+data = [24, 76, 63, 74, 84, 58, 77, 78, 40]
+sorted_data = sorted(data)
+n = len(sorted_data)
+if n % 2 == 1:
+    median = sorted_data[n // 2]
+else:
+    median = (sorted_data[n // 2 - 1] + sorted_data[n // 2]) / 2
+print(f"Original data: {data}")
+print(f"Sorted data: {sorted_data}")
+print(f"Median = {median}")
+</model>
+<requires>python:statistics</requires>
+
+The median is 74.
+
+User: Calculate standard deviation of: [41, 42, 31, 36, 34, 66, 70]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [41, 42, 31, 36, 34, 66, 70]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 14.567.
+
+User: Find the median of: [73, 92, 78, 77, 94, 92, 13, 65, 99, 71, 39, 99]
+Assistant: <think>To find median, I need to sort the data and find the middle value(s). For 12 values, median is the middle value.</think>
+<model>
+data = [73, 92, 78, 77, 94, 92, 13, 65, 99, 71, 39, 99]
+sorted_data = sorted(data)
+n = len(sorted_data)
+if n % 2 == 1:
+    median = sorted_data[n // 2]
+else:
+    median = (sorted_data[n // 2 - 1] + sorted_data[n // 2]) / 2
+print(f"Original data: {data}")
+print(f"Sorted data: {sorted_data}")
+print(f"Median = {median}")
+</model>
+<requires>python:statistics</requires>
+
+The median is 77.5.
+
+User: Calculate power consumption for device at 151 V drawing 8.6 A
+Assistant: <think>Power P = V × I. P = 151 V × 8.6 A. Energy in 1 hour = P × 1h.</think>
+<model>
+voltage = 151  # Volts
+current = 8.6  # Amperes
+power = voltage * current
+energy_1h = power / 1000  # kWh for 1 hour
+print(f"Power = {voltage} V × {current} A = {power:.0f} W")
+print(f"Energy in 1 hour = {energy_1h:.2f} kWh")
+</model>
+<requires>python:electrical</requires>
+
+The power consumption is 1294 W (1.29 kWh per hour).
+
+User: Sort these words alphabetically: ['yellow', 'red', 'blue', 'green']
+Assistant: <think>I need to sort the list ['yellow', 'red', 'blue', 'green'] in alphabetical order.</think>
+<model>
+words = ['yellow', 'red', 'blue', 'green']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['blue', 'green', 'red', 'yellow'].
+
+User: Sort these words alphabetically: ['java', 'javascript', 'python', 'rust']
+Assistant: <think>I need to sort the list ['java', 'javascript', 'python', 'rust'] in alphabetical order.</think>
+<model>
+words = ['java', 'javascript', 'python', 'rust']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['java', 'javascript', 'python', 'rust'].
+
+User: Convert 8°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (8 × 9/5) + 32.</think>
+<model>
+celsius = 8
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+8°C equals 46.4°F.
+
+User: Count the number of 'l' characters in the word "chemistry"
+Assistant: <think>I need to count how many times the character 'l' appears in "chemistry". I'll iterate through each character and count matches.</think>
+<model>
+word = "chemistry"
+char = 'l'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'l' appears {count} times in 'chemistry'")
+</model>
+<requires>python:text</requires>
+
+The character 'l' appears 0 times in the word "chemistry".
+
+User: Calculate quarter-wave antenna length for 433 MHz
+Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then divide by 4. λ = 3×10⁸ / 4e+08.</think>
+<model>
+frequency = 4e+08  # Hz
+c = 3e8               # speed of light
+wavelength = c / frequency
+quarter_wave = wavelength / 4
+print(f"Wavelength = {wavelength:.3f} m")
+print(f"Quarter-wave length = {quarter_wave:.3f} m")
+if quarter_wave >= 0.01:
+    print(f"Quarter-wave = {quarter_wave*100:.1f} cm")
+else:
+    print(f"Quarter-wave = {quarter_wave*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+Quarter-wave antenna for 433 MHz is 0.173 m (17.3 cm).
+
+User: Count the number of 'e' characters in the word "professor"
+Assistant: <think>I need to count how many times the character 'e' appears in "professor". I'll iterate through each character and count matches.</think>
+<model>
+word = "professor"
+char = 'e'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'e' appears {count} times in 'professor'")
+</model>
+<requires>python:text</requires>
+
+The character 'e' appears 1 times in the word "professor".
+
+User: Calculate resonant frequency of LC circuit with L = 4.31e-04 H and C = 9.48e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 4.31e-04 H and C = 9.48e-07 F.</think>
+<model>
+import math
+L = 4.31e-04  # Inductance in Henries
+C = 9.48e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 7.87e+03 Hz (7.9 kHz).
+
+User: Calculate wavelength for electromagnetic wave with frequency 1577 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 1577 Hz. So λ = 3×10⁸ / 1577.</think>
+<model>
+frequency = 1577  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 190212.731798 m or 190212731.798 mm.
+
+User: Calculate resonant frequency of LC circuit with L = 5.51e-04 H and C = 5.95e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 5.51e-04 H and C = 5.95e-07 F.</think>
+<model>
+import math
+L = 5.51e-04  # Inductance in Henries
+C = 5.95e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 8.79e+03 Hz (8.8 kHz).
+
+User: Calculate quarter-wave antenna length for 915 MHz
+Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then divide by 4. λ = 3×10⁸ / 9e+08.</think>
+<model>
+frequency = 9e+08  # Hz
+c = 3e8               # speed of light
+wavelength = c / frequency
+quarter_wave = wavelength / 4
+print(f"Wavelength = {wavelength:.3f} m")
+print(f"Quarter-wave length = {quarter_wave:.3f} m")
+if quarter_wave >= 0.01:
+    print(f"Quarter-wave = {quarter_wave*100:.1f} cm")
+else:
+    print(f"Quarter-wave = {quarter_wave*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+Quarter-wave antenna for 915 MHz is 0.082 m (8.2 cm).
+
+User: Calculate voltage when current is 6.07 A and resistance is 354 Ω
+Assistant: <think>Using Ohm's law: V = I × R. V = 6.07 A × 354 Ω.</think>
+<model>
+current = 6.07    # Amperes
+resistance = 354 # Ohms
+voltage = current * resistance
+print(f"Voltage = {current} A × {resistance} Ω = {voltage:.1f} V")
+</model>
+<requires>python:electrical</requires>
+
+The voltage is 2151.1 V.
+
+User: Calculate flight time for projectile launched at 23.4 m/s at 25° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 23.4 m/s, θ = 25°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 23.4        # m/s
+angle_deg = 25   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 2.05 seconds.
+
+User: Calculate wavelength for electromagnetic wave with frequency 9181 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 9181 Hz. So λ = 3×10⁸ / 9181.</think>
+<model>
+frequency = 9181  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 32674.826984 m or 32674826.984 mm.
+
+User: Calculate resistance when voltage is 5.7 V and current is 3.05 A
+Assistant: <think>Using Ohm's law: R = V / I. R = 5.7 V / 3.05 A.</think>
+<model>
+voltage = 5.7    # Volts
+current = 3.05    # Amperes
+resistance = voltage / current
+print(f"Resistance = {voltage} V / {current} A = {resistance:.1f} Ω")
+</model>
+<requires>python:electrical</requires>
+
+The resistance is 1.9 Ω.
+
+User: Calculate resistance when voltage is 5.3 V and current is 4.51 A
+Assistant: <think>Using Ohm's law: R = V / I. R = 5.3 V / 4.51 A.</think>
+<model>
+voltage = 5.3    # Volts
+current = 4.51    # Amperes
+resistance = voltage / current
+print(f"Resistance = {voltage} V / {current} A = {resistance:.1f} Ω")
+</model>
+<requires>python:electrical</requires>
+
+The resistance is 1.2 Ω.
+
+User: Convert 45°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (45 - 32) × 5/9.</think>
+<model>
+fahrenheit = 45
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+45°F equals 7.22°C.
+
+User: Sort these words alphabetically: ['winter', 'summer', 'autumn', 'spring']
+Assistant: <think>I need to sort the list ['winter', 'summer', 'autumn', 'spring'] in alphabetical order.</think>
+<model>
+words = ['winter', 'summer', 'autumn', 'spring']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['autumn', 'spring', 'summer', 'winter'].
+
+User: Reverse the string "summer"
+Assistant: <think>I need to reverse the string "summer" by reading it backwards.</think>
+<model>
+text = "summer"
+reversed_text = text[::-1]
+print(f"Original: {text}")
+print(f"Reversed: {reversed_text}")
+</model>
+<requires>python:text</requires>
+
+The string "summer" reversed is "remmus".
+
+User: Convert 19°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (19 × 9/5) + 32.</think>
+<model>
+celsius = 19
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+19°C equals 66.2°F.
+
+User: Calculate flight time for projectile launched at 19.8 m/s at 48° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 19.8 m/s, θ = 48°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 19.8        # m/s
+angle_deg = 48   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 2.98 seconds.
+
+User: Count the number of 'm' characters in the word "physics"
+Assistant: <think>I need to count how many times the character 'm' appears in "physics". I'll iterate through each character and count matches.</think>
+<model>
+word = "physics"
+char = 'm'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'm' appears {count} times in 'physics'")
+</model>
+<requires>python:text</requires>
+
+The character 'm' appears 0 times in the word "physics".
+
+User: Calculate resonant frequency of LC circuit with L = 8.01e-04 H and C = 2.51e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 8.01e-04 H and C = 2.51e-07 F.</think>
+<model>
+import math
+L = 8.01e-04  # Inductance in Henries
+C = 2.51e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 1.12e+04 Hz (11.2 kHz).
+
+User: Sort this array using bubble sort: [45, 20, 1, 11, 1, 28, 2, 30]
+Assistant: <think>Bubble sort repeatedly steps through the list, compares adjacent elements and swaps them if they're in wrong order.</think>
+<model>
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+arr = [45, 20, 1, 11, 1, 28, 2, 30]
+print(f"Original: {arr}")
+sorted_arr = bubble_sort(arr.copy())
+print(f"Sorted: {sorted_arr}")
+</model>
+<requires>python:algorithms</requires>
+
+Bubble sort implementation for the given array.
+
+User: Find the median of: [50, 31, 43, 68, 64, 91, 98, 55, 81, 59]
+Assistant: <think>To find median, I need to sort the data and find the middle value(s). For 10 values, median is the middle value.</think>
+<model>
+data = [50, 31, 43, 68, 64, 91, 98, 55, 81, 59]
+sorted_data = sorted(data)
+n = len(sorted_data)
+if n % 2 == 1:
+    median = sorted_data[n // 2]
+else:
+    median = (sorted_data[n // 2 - 1] + sorted_data[n // 2]) / 2
+print(f"Original data: {data}")
+print(f"Sorted data: {sorted_data}")
+print(f"Median = {median}")
+</model>
+<requires>python:statistics</requires>
+
+The median is 61.5.
+
+User: Calculate standard deviation of: [35, 89, 74, 54, 68, 97, 15]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [35, 89, 74, 54, 68, 97, 15]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 27.086.
+
+User: Sort these words alphabetically: ['banana', 'cherry', 'date', 'apple']
+Assistant: <think>I need to sort the list ['banana', 'cherry', 'date', 'apple'] in alphabetical order.</think>
+<model>
+words = ['banana', 'cherry', 'date', 'apple']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['apple', 'banana', 'cherry', 'date'].
+
+User: How long does it take for an object dropped from 43.9 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 43.9 / 9.81).</think>
+<model>
+import math
+height = 43.9  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 2.99 seconds to fall from 43.9 m.
+
+User: Calculate moles of gas at 3.86 atm, 26.6 L, and 342 K
+Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Where R = 0.0821 L·atm/(mol·K).</think>
+<model>
+P = 3.86  # atm
+V = 26.6     # L
+T = 342     # K
+R = 0.0821    # L·atm/(mol·K)
+n = (P * V) / (R * T)
+print(f"Moles = ({P} × {V}) / ({R} × {T}) = {n:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+The gas contains 3.6592 moles.
+
+User: How long does it take for an object dropped from 14.1 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 14.1 / 9.81).</think>
+<model>
+import math
+height = 14.1  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 1.69 seconds to fall from 14.1 m.
+
+User: Sort this array using bubble sort: [1, 10, 3, 45, 46, 23, 7, 31]
+Assistant: <think>Bubble sort repeatedly steps through the list, compares adjacent elements and swaps them if they're in wrong order.</think>
+<model>
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+arr = [1, 10, 3, 45, 46, 23, 7, 31]
+print(f"Original: {arr}")
+sorted_arr = bubble_sort(arr.copy())
+print(f"Sorted: {sorted_arr}")
+</model>
+<requires>python:algorithms</requires>
+
+Bubble sort implementation for the given array.
+
+User: Find the median of: [7, 69, 46, 97, 32, 4, 43, 97, 50, 80, 14, 5, 77, 46, 51]
+Assistant: <think>To find median, I need to sort the data and find the middle value(s). For 15 values, median is the middle value.</think>
+<model>
+data = [7, 69, 46, 97, 32, 4, 43, 97, 50, 80, 14, 5, 77, 46, 51]
+sorted_data = sorted(data)
+n = len(sorted_data)
+if n % 2 == 1:
+    median = sorted_data[n // 2]
+else:
+    median = (sorted_data[n // 2 - 1] + sorted_data[n // 2]) / 2
+print(f"Original data: {data}")
+print(f"Sorted data: {sorted_data}")
+print(f"Median = {median}")
+</model>
+<requires>python:statistics</requires>
+
+The median is 46.
+
+User: Convert 121°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (121 - 32) × 5/9.</think>
+<model>
+fahrenheit = 121
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+121°F equals 49.44°C.
+
+User: Calculate wavelength for electromagnetic wave with frequency 8297 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 8297 Hz. So λ = 3×10⁸ / 8297.</think>
+<model>
+frequency = 8297  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 36158.273191 m or 36158273.191 mm.
+
+User: Calculate standard deviation of: [51, 93, 94, 97, 42, 84, 99, 70, 55, 62, 42]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [51, 93, 94, 97, 42, 84, 99, 70, 55, 62, 42]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 21.440.
+
+User: Calculate the molarity of a solution with 0.32 moles of solute in 1.26 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 0.32 mol / 1.26 L.</think>
+<model>
+moles = 0.32
+volume_l = 1.26
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 0.254 M.
+
+User: Count the number of 'o' characters in the word "laboratory"
+Assistant: <think>I need to count how many times the character 'o' appears in "laboratory". I'll iterate through each character and count matches.</think>
+<model>
+word = "laboratory"
+char = 'o'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'o' appears {count} times in 'laboratory'")
+</model>
+<requires>python:text</requires>
+
+The character 'o' appears 2 times in the word "laboratory".
+
+User: Calculate resonant frequency of LC circuit with L = 2.56e-04 H and C = 9.93e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 2.56e-04 H and C = 9.93e-07 F.</think>
+<model>
+import math
+L = 2.56e-04  # Inductance in Henries
+C = 9.93e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 9.98e+03 Hz (10.0 kHz).
+
+User: Count the number of 'r' characters in the word "physics"
+Assistant: <think>I need to count how many times the character 'r' appears in "physics". I'll iterate through each character and count matches.</think>
+<model>
+word = "physics"
+char = 'r'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'r' appears {count} times in 'physics'")
+</model>
+<requires>python:text</requires>
+
+The character 'r' appears 0 times in the word "physics".
+
+User: Sort this array using bubble sort: [18, 40, 30, 6, 43, 2, 16, 25]
+Assistant: <think>Bubble sort repeatedly steps through the list, compares adjacent elements and swaps them if they're in wrong order.</think>
+<model>
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+arr = [18, 40, 30, 6, 43, 2, 16, 25]
+print(f"Original: {arr}")
+sorted_arr = bubble_sort(arr.copy())
+print(f"Sorted: {sorted_arr}")
+</model>
+<requires>python:algorithms</requires>
+
+Bubble sort implementation for the given array.
+
+User: Calculate the molarity of a solution with 2.97 moles of solute in 0.79 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 2.97 mol / 0.79 L.</think>
+<model>
+moles = 2.97
+volume_l = 0.79
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 3.751 M.
+
+User: Convert 19°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (19 - 32) × 5/9.</think>
+<model>
+fahrenheit = 19
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+19°F equals -7.22°C.
+
+User: How many moles are in 19.1 g of CaCO3 (calcium carbonate)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of CaCO3 is 100.09 g/mol. So moles = 19.1 g / 100.09 g/mol.</think>
+<model>
+mass_g = 19.1
+molar_mass = 100.09  # g/mol for CaCO3
+moles = mass_g / molar_mass
+print(f"Moles of CaCO3 = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+19.1 g of CaCO3 contains 0.1908 moles.
+
+User: Calculate resistance when voltage is 11.5 V and current is 2.96 A
+Assistant: <think>Using Ohm's law: R = V / I. R = 11.5 V / 2.96 A.</think>
+<model>
+voltage = 11.5    # Volts
+current = 2.96    # Amperes
+resistance = voltage / current
+print(f"Resistance = {voltage} V / {current} A = {resistance:.1f} Ω")
+</model>
+<requires>python:electrical</requires>
+
+The resistance is 3.9 Ω.
+
+User: Calculate resonant frequency of LC circuit with L = 5.48e-04 H and C = 7.63e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 5.48e-04 H and C = 7.63e-07 F.</think>
+<model>
+import math
+L = 5.48e-04  # Inductance in Henries
+C = 7.63e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 7.78e+03 Hz (7.8 kHz).
+
+User: Find the median of: [27, 53, 85, 57, 81, 68, 79, 79]
+Assistant: <think>To find median, I need to sort the data and find the middle value(s). For 8 values, median is the middle value.</think>
+<model>
+data = [27, 53, 85, 57, 81, 68, 79, 79]
+sorted_data = sorted(data)
+n = len(sorted_data)
+if n % 2 == 1:
+    median = sorted_data[n // 2]
+else:
+    median = (sorted_data[n // 2 - 1] + sorted_data[n // 2]) / 2
+print(f"Original data: {data}")
+print(f"Sorted data: {sorted_data}")
+print(f"Median = {median}")
+</model>
+<requires>python:statistics</requires>
+
+The median is 73.5.
+
+User: Calculate wavelength for electromagnetic wave with frequency 8029 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 8029 Hz. So λ = 3×10⁸ / 8029.</think>
+<model>
+frequency = 8029  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 37365.985384 m or 37365985.384 mm.
+
+User: Calculate quarter-wave antenna length for 433 MHz
+Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then divide by 4. λ = 3×10⁸ / 4e+08.</think>
+<model>
+frequency = 4e+08  # Hz
+c = 3e8               # speed of light
+wavelength = c / frequency
+quarter_wave = wavelength / 4
+print(f"Wavelength = {wavelength:.3f} m")
+print(f"Quarter-wave length = {quarter_wave:.3f} m")
+if quarter_wave >= 0.01:
+    print(f"Quarter-wave = {quarter_wave*100:.1f} cm")
+else:
+    print(f"Quarter-wave = {quarter_wave*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+Quarter-wave antenna for 433 MHz is 0.173 m (17.3 cm).
+
+User: Calculate flight time for projectile launched at 40.2 m/s at 66° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 40.2 m/s, θ = 66°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 40.2        # m/s
+angle_deg = 66   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 7.50 seconds.
+
+User: How many moles are in 10.4 g of H2O (water)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of H2O is 18.015 g/mol. So moles = 10.4 g / 18.015 g/mol.</think>
+<model>
+mass_g = 10.4
+molar_mass = 18.015  # g/mol for H2O
+moles = mass_g / molar_mass
+print(f"Moles of H2O = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+10.4 g of H2O contains 0.5792 moles.
+
+User: How many moles are in 19.5 g of C6H12O6 (glucose)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of C6H12O6 is 180.16 g/mol. So moles = 19.5 g / 180.16 g/mol.</think>
+<model>
+mass_g = 19.5
+molar_mass = 180.16  # g/mol for C6H12O6
+moles = mass_g / molar_mass
+print(f"Moles of C6H12O6 = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+19.5 g of C6H12O6 contains 0.1080 moles.
+
+User: How many moles are in 22.3 g of C6H12O6 (glucose)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of C6H12O6 is 180.16 g/mol. So moles = 22.3 g / 180.16 g/mol.</think>
+<model>
+mass_g = 22.3
+molar_mass = 180.16  # g/mol for C6H12O6
+moles = mass_g / molar_mass
+print(f"Moles of C6H12O6 = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+22.3 g of C6H12O6 contains 0.1238 moles.
+
+User: Convert -40°C to Kelvin
+Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = -40 + 273.15.</think>
+<model>
+celsius = -40
+kelvin = celsius + 273.15
+print(f"{celsius}°C = {kelvin}K")
+</model>
+<requires>python:conversion</requires>
+
+-40°C equals 233.14999999999998K.
+
+User: Calculate flight time for projectile launched at 39.5 m/s at 35° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 39.5 m/s, θ = 35°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 39.5        # m/s
+angle_deg = 35   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 4.64 seconds.
+
+User: Calculate flight time for projectile launched at 35.2 m/s at 24° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 35.2 m/s, θ = 24°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 35.2        # m/s
+angle_deg = 24   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 2.90 seconds.
+
+User: How long does it take for an object dropped from 58.3 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 58.3 / 9.81).</think>
+<model>
+import math
+height = 58.3  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 3.45 seconds to fall from 58.3 m.
+
+User: How long does it take for an object dropped from 88.0 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 88.0 / 9.81).</think>
+<model>
+import math
+height = 88.0  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 4.24 seconds to fall from 88.0 m.
+
+User: Implement binary search to find 30 in sorted array [2, 13, 30, 35, 40, 44, 61, 66, 72, 98]
+Assistant: <think>Binary search repeatedly divides the search space in half. Compare target with middle element and eliminate half the array.</think>
+<model>
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+arr = [2, 13, 30, 35, 40, 44, 61, 66, 72, 98]
+target = 30
+result = binary_search(arr, target)
+if result != -1:
+    print(f"Found {target} at index {result}")
+else:
+    print(f"{target} not found in array")
+</model>
+<requires>python:algorithms</requires>
+
+Binary search for 30 in the array.
+
+User: Convert 1°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (1 - 32) × 5/9.</think>
+<model>
+fahrenheit = 1
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+1°F equals -17.22°C.
+
+User: Count the number of 'a' characters in the word "strawberry"
+Assistant: <think>I need to count how many times the character 'a' appears in "strawberry". I'll iterate through each character and count matches.</think>
+<model>
+word = "strawberry"
+char = 'a'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'a' appears {count} times in 'strawberry'")
+</model>
+<requires>python:text</requires>
+
+The character 'a' appears 1 times in the word "strawberry".
+
+User: Calculate power consumption for device at 215 V drawing 4.2 A
+Assistant: <think>Power P = V × I. P = 215 V × 4.2 A. Energy in 1 hour = P × 1h.</think>
+<model>
+voltage = 215  # Volts
+current = 4.2  # Amperes
+power = voltage * current
+energy_1h = power / 1000  # kWh for 1 hour
+print(f"Power = {voltage} V × {current} A = {power:.0f} W")
+print(f"Energy in 1 hour = {energy_1h:.2f} kWh")
+</model>
+<requires>python:electrical</requires>
+
+The power consumption is 909 W (0.91 kWh per hour).
+
+User: Count the number of 'i' characters in the word "strawberry"
+Assistant: <think>I need to count how many times the character 'i' appears in "strawberry". I'll iterate through each character and count matches.</think>
+<model>
+word = "strawberry"
+char = 'i'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'i' appears {count} times in 'strawberry'")
+</model>
+<requires>python:text</requires>
+
+The character 'i' appears 0 times in the word "strawberry".
+
+User: Calculate wavelength for 10 GHz (X-band) radio frequency
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s. For f = 1e+10 Hz, λ = 3×10⁸ / 1e+10.</think>
+<model>
+frequency = 1e+10  # Hz
+c = 3e8               # speed of light m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.3f} m")
+if wavelength >= 1:
+    print(f"Wavelength = {wavelength:.2f} meters")
+elif wavelength >= 0.01:
+    print(f"Wavelength = {wavelength*100:.1f} cm")
+else:
+    print(f"Wavelength = {wavelength*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+The wavelength for 10 GHz is 0.030 m.
+
+User: Calculate the molarity of a solution with 2.26 moles of solute in 0.77 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 2.26 mol / 0.77 L.</think>
+<model>
+moles = 2.26
+volume_l = 0.77
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 2.946 M.
+
+User: Convert -3°C to Kelvin
+Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = -3 + 273.15.</think>
+<model>
+celsius = -3
+kelvin = celsius + 273.15
+print(f"{celsius}°C = {kelvin}K")
+</model>
+<requires>python:conversion</requires>
+
+-3°C equals 270.15K.
+
+User: Convert 43°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (43 × 9/5) + 32.</think>
+<model>
+celsius = 43
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+43°C equals 109.4°F.
+
+User: How long does it take for an object dropped from 100.0 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 100.0 / 9.81).</think>
+<model>
+import math
+height = 100.0  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 4.51 seconds to fall from 100.0 m.
+
+User: Calculate standard deviation of: [88, 93, 76, 80, 33, 57]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [88, 93, 76, 80, 33, 57]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 20.489.
+
+User: Reverse the string "spring"
+Assistant: <think>I need to reverse the string "spring" by reading it backwards.</think>
+<model>
+text = "spring"
+reversed_text = text[::-1]
+print(f"Original: {text}")
+print(f"Reversed: {reversed_text}")
+</model>
+<requires>python:text</requires>
+
+The string "spring" reversed is "gnirps".
+
+User: How many moles are in 71.2 g of CO2 (carbon dioxide)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of CO2 is 44.01 g/mol. So moles = 71.2 g / 44.01 g/mol.</think>
+<model>
+mass_g = 71.2
+molar_mass = 44.01  # g/mol for CO2
+moles = mass_g / molar_mass
+print(f"Moles of CO2 = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+71.2 g of CO2 contains 1.6171 moles.
+
+User: Calculate standard deviation of: [43, 59, 36, 41, 91, 53, 69, 34, 88, 64]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [43, 59, 36, 41, 91, 53, 69, 34, 88, 64]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 19.354.
+
+User: Calculate current when voltage is 17.9 V and resistance is 64 Ω
+Assistant: <think>Using Ohm's law: I = V / R. I = 17.9 V / 64 Ω.</think>
+<model>
+voltage = 17.9      # Volts
+resistance = 64   # Ohms
+current = voltage / resistance
+print(f"Current = {voltage} V / {resistance} Ω = {current:.4f} A")
+</model>
+<requires>python:electrical</requires>
+
+The current is 0.2806 A.
+
+User: Count the number of 'l' characters in the word "university"
+Assistant: <think>I need to count how many times the character 'l' appears in "university". I'll iterate through each character and count matches.</think>
+<model>
+word = "university"
+char = 'l'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'l' appears {count} times in 'university'")
+</model>
+<requires>python:text</requires>
+
+The character 'l' appears 0 times in the word "university".
+
+User: Convert 150°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (150 - 32) × 5/9.</think>
+<model>
+fahrenheit = 150
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+150°F equals 65.56°C.
+
+User: Convert 68°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (68 × 9/5) + 32.</think>
+<model>
+celsius = 68
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+68°C equals 154.4°F.
+
+User: Count the number of 's' characters in the word "laboratory"
+Assistant: <think>I need to count how many times the character 's' appears in "laboratory". I'll iterate through each character and count matches.</think>
+<model>
+word = "laboratory"
+char = 's'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 's' appears {count} times in 'laboratory'")
+</model>
+<requires>python:text</requires>
+
+The character 's' appears 0 times in the word "laboratory".
+
+User: Reverse the string "autumn"
+Assistant: <think>I need to reverse the string "autumn" by reading it backwards.</think>
+<model>
+text = "autumn"
+reversed_text = text[::-1]
+print(f"Original: {text}")
+print(f"Reversed: {reversed_text}")
+</model>
+<requires>python:text</requires>
+
+The string "autumn" reversed is "nmutua".
+
+User: Calculate voltage when current is 1.92 A and resistance is 583 Ω
+Assistant: <think>Using Ohm's law: V = I × R. V = 1.92 A × 583 Ω.</think>
+<model>
+current = 1.92    # Amperes
+resistance = 583 # Ohms
+voltage = current * resistance
+print(f"Voltage = {current} A × {resistance} Ω = {voltage:.1f} V")
+</model>
+<requires>python:electrical</requires>
+
+The voltage is 1122.3 V.
+
+User: Calculate the molarity of a solution with 2.66 moles of solute in 0.91 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 2.66 mol / 0.91 L.</think>
+<model>
+moles = 2.66
+volume_l = 0.91
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 2.921 M.
+
+User: Calculate wavelength for electromagnetic wave with frequency 9280 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 9280 Hz. So λ = 3×10⁸ / 9280.</think>
+<model>
+frequency = 9280  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 32327.807753 m or 32327807.753 mm.
+
+User: Implement binary search to find 59 in sorted array [9, 11, 40, 46, 50, 57, 59, 73, 79, 96]
+Assistant: <think>Binary search repeatedly divides the search space in half. Compare target with middle element and eliminate half the array.</think>
+<model>
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+arr = [9, 11, 40, 46, 50, 57, 59, 73, 79, 96]
+target = 59
+result = binary_search(arr, target)
+if result != -1:
+    print(f"Found {target} at index {result}")
+else:
+    print(f"{target} not found in array")
+</model>
+<requires>python:algorithms</requires>
+
+Binary search for 59 in the array.
+
+User: How many moles are in 53.5 g of H2SO4 (sulfuric acid)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of H2SO4 is 98.08 g/mol. So moles = 53.5 g / 98.08 g/mol.</think>
+<model>
+mass_g = 53.5
+molar_mass = 98.08  # g/mol for H2SO4
+moles = mass_g / molar_mass
+print(f"Moles of H2SO4 = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+53.5 g of H2SO4 contains 0.5453 moles.
+
+User: Count the number of 'e' characters in the word "professor"
+Assistant: <think>I need to count how many times the character 'e' appears in "professor". I'll iterate through each character and count matches.</think>
+<model>
+word = "professor"
+char = 'e'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'e' appears {count} times in 'professor'")
+</model>
+<requires>python:text</requires>
+
+The character 'e' appears 1 times in the word "professor".
+
+User: Calculate wavelength for electromagnetic wave with frequency 3462 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 3462 Hz. So λ = 3×10⁸ / 3462.</think>
+<model>
+frequency = 3462  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 86649.166611 m or 86649166.611 mm.
+
+User: Count the number of 't' characters in the word "analysis"
+Assistant: <think>I need to count how many times the character 't' appears in "analysis". I'll iterate through each character and count matches.</think>
+<model>
+word = "analysis"
+char = 't'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 't' appears {count} times in 'analysis'")
+</model>
+<requires>python:text</requires>
+
+The character 't' appears 0 times in the word "analysis".
+
+User: Calculate power consumption for device at 148 V drawing 10.0 A
+Assistant: <think>Power P = V × I. P = 148 V × 10.0 A. Energy in 1 hour = P × 1h.</think>
+<model>
+voltage = 148  # Volts
+current = 10.0  # Amperes
+power = voltage * current
+energy_1h = power / 1000  # kWh for 1 hour
+print(f"Power = {voltage} V × {current} A = {power:.0f} W")
+print(f"Energy in 1 hour = {energy_1h:.2f} kWh")
+</model>
+<requires>python:electrical</requires>
+
+The power consumption is 1472 W (1.47 kWh per hour).
+
+User: Convert 81°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (81 × 9/5) + 32.</think>
+<model>
+celsius = 81
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+81°C equals 177.8°F.
+
+User: Convert 148°C to Kelvin
+Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = 148 + 273.15.</think>
+<model>
+celsius = 148
+kelvin = celsius + 273.15
+print(f"{celsius}°C = {kelvin}K")
+</model>
+<requires>python:conversion</requires>
+
+148°C equals 421.15K.
+
+User: Sort these words alphabetically: ['spring', 'summer', 'autumn', 'winter']
+Assistant: <think>I need to sort the list ['spring', 'summer', 'autumn', 'winter'] in alphabetical order.</think>
+<model>
+words = ['spring', 'summer', 'autumn', 'winter']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['autumn', 'spring', 'summer', 'winter'].
+
+User: Convert 52°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (52 - 32) × 5/9.</think>
+<model>
+fahrenheit = 52
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+52°F equals 11.11°C.
+
+User: Calculate the molarity of a solution with 3.33 moles of solute in 0.21 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.33 mol / 0.21 L.</think>
+<model>
+moles = 3.33
+volume_l = 0.21
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 16.054 M.
+
+User: Calculate the molarity of a solution with 2.37 moles of solute in 0.66 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 2.37 mol / 0.66 L.</think>
+<model>
+moles = 2.37
+volume_l = 0.66
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 3.574 M.
+
+User: Calculate the molarity of a solution with 2.91 moles of solute in 1.39 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 2.91 mol / 1.39 L.</think>
+<model>
+moles = 2.91
+volume_l = 1.39
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 2.096 M.
+
+User: Calculate standard deviation of: [98, 56, 85, 68, 24, 78, 54, 47, 39, 10]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [98, 56, 85, 68, 24, 78, 54, 47, 39, 10]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 25.975.
+
+User: Calculate standard deviation of: [59, 87, 29, 51, 80, 92, 73, 54, 15, 41, 44, 64]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [59, 87, 29, 51, 80, 92, 73, 54, 15, 41, 44, 64]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 22.321.
+
+User: Calculate wavelength for electromagnetic wave with frequency 2521 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 2521 Hz. So λ = 3×10⁸ / 2521.</think>
+<model>
+frequency = 2521  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 118987.851777 m or 118987851.777 mm.
+
+User: Convert 61°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (61 × 9/5) + 32.</think>
+<model>
+celsius = 61
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+61°C equals 141.8°F.
+
+User: Calculate quarter-wave antenna length for 433 MHz
+Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then divide by 4. λ = 3×10⁸ / 4e+08.</think>
+<model>
+frequency = 4e+08  # Hz
+c = 3e8               # speed of light
+wavelength = c / frequency
+quarter_wave = wavelength / 4
+print(f"Wavelength = {wavelength:.3f} m")
+print(f"Quarter-wave length = {quarter_wave:.3f} m")
+if quarter_wave >= 0.01:
+    print(f"Quarter-wave = {quarter_wave*100:.1f} cm")
+else:
+    print(f"Quarter-wave = {quarter_wave*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+Quarter-wave antenna for 433 MHz is 0.173 m (17.3 cm).
+
+User: Calculate the molarity of a solution with 0.55 moles of solute in 1.64 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 0.55 mol / 1.64 L.</think>
+<model>
+moles = 0.55
+volume_l = 1.64
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 0.337 M.
+
+User: Reverse the string "summer"
+Assistant: <think>I need to reverse the string "summer" by reading it backwards.</think>
+<model>
+text = "summer"
+reversed_text = text[::-1]
+print(f"Original: {text}")
+print(f"Reversed: {reversed_text}")
+</model>
+<requires>python:text</requires>
+
+The string "summer" reversed is "remmus".
+
+User: Sort these words alphabetically: ['summer', 'winter', 'spring', 'autumn']
+Assistant: <think>I need to sort the list ['summer', 'winter', 'spring', 'autumn'] in alphabetical order.</think>
+<model>
+words = ['summer', 'winter', 'spring', 'autumn']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['autumn', 'spring', 'summer', 'winter'].
+
+User: How many moles are in 67.4 g of NaCl (sodium chloride)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of NaCl is 58.44 g/mol. So moles = 67.4 g / 58.44 g/mol.</think>
+<model>
+mass_g = 67.4
+molar_mass = 58.44  # g/mol for NaCl
+moles = mass_g / molar_mass
+print(f"Moles of NaCl = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+67.4 g of NaCl contains 1.1527 moles.
+
+User: Calculate wavelength for electromagnetic wave with frequency 2627 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 2627 Hz. So λ = 3×10⁸ / 2627.</think>
+<model>
+frequency = 2627  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 114215.944534 m or 114215944.534 mm.
+
+User: Calculate quarter-wave antenna length for 433 MHz
+Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then divide by 4. λ = 3×10⁸ / 4e+08.</think>
+<model>
+frequency = 4e+08  # Hz
+c = 3e8               # speed of light
+wavelength = c / frequency
+quarter_wave = wavelength / 4
+print(f"Wavelength = {wavelength:.3f} m")
+print(f"Quarter-wave length = {quarter_wave:.3f} m")
+if quarter_wave >= 0.01:
+    print(f"Quarter-wave = {quarter_wave*100:.1f} cm")
+else:
+    print(f"Quarter-wave = {quarter_wave*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+Quarter-wave antenna for 433 MHz is 0.173 m (17.3 cm).
+
+User: Reverse the string "autumn"
+Assistant: <think>I need to reverse the string "autumn" by reading it backwards.</think>
+<model>
+text = "autumn"
+reversed_text = text[::-1]
+print(f"Original: {text}")
+print(f"Reversed: {reversed_text}")
+</model>
+<requires>python:text</requires>
+
+The string "autumn" reversed is "nmutua".
+
+User: Calculate standard deviation of: [81, 84, 96, 18, 18, 87]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [81, 84, 96, 18, 18, 87]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 32.848.
+
+User: Count the number of 'a' characters in the word "learning"
+Assistant: <think>I need to count how many times the character 'a' appears in "learning". I'll iterate through each character and count matches.</think>
+<model>
+word = "learning"
+char = 'a'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'a' appears {count} times in 'learning'")
+</model>
+<requires>python:text</requires>
+
+The character 'a' appears 1 times in the word "learning".
+
+User: Sort these words alphabetically: ['red', 'yellow', 'blue', 'green']
+Assistant: <think>I need to sort the list ['red', 'yellow', 'blue', 'green'] in alphabetical order.</think>
+<model>
+words = ['red', 'yellow', 'blue', 'green']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['blue', 'green', 'red', 'yellow'].
+
+User: Count the number of 'g' characters in the word "science"
+Assistant: <think>I need to count how many times the character 'g' appears in "science". I'll iterate through each character and count matches.</think>
+<model>
+word = "science"
+char = 'g'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'g' appears {count} times in 'science'")
+</model>
+<requires>python:text</requires>
+
+The character 'g' appears 0 times in the word "science".
+
+User: Convert -6°C to Fahrenheit
+Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C × 9/5) + 32. So F = (-6 × 9/5) + 32.</think>
+<model>
+celsius = -6
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")
+</model>
+<requires>python:conversion</requires>
+
+-6°C equals 21.2°F.
+
+User: Calculate moles of gas at 3.77 atm, 47.5 L, and 387 K
+Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Where R = 0.0821 L·atm/(mol·K).</think>
+<model>
+P = 3.77  # atm
+V = 47.5     # L
+T = 387     # K
+R = 0.0821    # L·atm/(mol·K)
+n = (P * V) / (R * T)
+print(f"Moles = ({P} × {V}) / ({R} × {T}) = {n:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+The gas contains 5.6387 moles.
+
+User: Calculate flight time for projectile launched at 16.8 m/s at 43° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 16.8 m/s, θ = 43°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 16.8        # m/s
+angle_deg = 43   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 2.36 seconds.
+
+User: Calculate the molarity of a solution with 0.92 moles of solute in 0.61 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 0.92 mol / 0.61 L.</think>
+<model>
+moles = 0.92
+volume_l = 0.61
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 1.517 M.
+
+User: Calculate flight time for projectile launched at 19.2 m/s at 37° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 19.2 m/s, θ = 37°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 19.2        # m/s
+angle_deg = 37   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 2.37 seconds.
+
+User: Calculate flight time for projectile launched at 23.6 m/s at 61° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 23.6 m/s, θ = 61°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 23.6        # m/s
+angle_deg = 61   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 4.20 seconds.
+
+User: Calculate resistance when voltage is 42.3 V and current is 2.15 A
+Assistant: <think>Using Ohm's law: R = V / I. R = 42.3 V / 2.15 A.</think>
+<model>
+voltage = 42.3    # Volts
+current = 2.15    # Amperes
+resistance = voltage / current
+print(f"Resistance = {voltage} V / {current} A = {resistance:.1f} Ω")
+</model>
+<requires>python:electrical</requires>
+
+The resistance is 19.6 Ω.
+
+User: How many moles are in 29.6 g of H2SO4 (sulfuric acid)?
+Assistant: <think>Number of moles = mass / molar mass. Molar mass of H2SO4 is 98.08 g/mol. So moles = 29.6 g / 98.08 g/mol.</think>
+<model>
+mass_g = 29.6
+molar_mass = 98.08  # g/mol for H2SO4
+moles = mass_g / molar_mass
+print(f"Moles of H2SO4 = {mass_g} g / {molar_mass} g/mol = {moles:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+29.6 g of H2SO4 contains 0.3015 moles.
+
+User: Calculate wavelength for electromagnetic wave with frequency 1902 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 1902 Hz. So λ = 3×10⁸ / 1902.</think>
+<model>
+frequency = 1902  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 157718.779714 m or 157718779.714 mm.
+
+User: Convert 125°F to Celsius
+Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 32) × 5/9. So C = (125 - 32) × 5/9.</think>
+<model>
+fahrenheit = 125
+celsius = (fahrenheit - 32) * 5/9
+print(f"{fahrenheit}°F = {celsius:.2f}°C")
+</model>
+<requires>python:conversion</requires>
+
+125°F equals 51.67°C.
+
+User: Calculate moles of gas at 1.20 atm, 17.6 L, and 331 K
+Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Where R = 0.0821 L·atm/(mol·K).</think>
+<model>
+P = 1.20  # atm
+V = 17.6     # L
+T = 331     # K
+R = 0.0821    # L·atm/(mol·K)
+n = (P * V) / (R * T)
+print(f"Moles = ({P} × {V}) / ({R} × {T}) = {n:.4f} mol")
+</model>
+<requires>python:chemistry</requires>
+
+The gas contains 0.7785 moles.
+
+User: Calculate standard deviation of: [76, 58, 54, 19, 60, 16, 72, 33, 22, 81]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [76, 58, 54, 19, 60, 16, 72, 33, 22, 81]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 23.416.
+
+User: Implement binary search to find 78 in sorted array [6, 8, 23, 24, 38, 51, 60, 68, 92, 94]
+Assistant: <think>Binary search repeatedly divides the search space in half. Compare target with middle element and eliminate half the array.</think>
+<model>
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+arr = [6, 8, 23, 24, 38, 51, 60, 68, 92, 94]
+target = 78
+result = binary_search(arr, target)
+if result != -1:
+    print(f"Found {target} at index {result}")
+else:
+    print(f"{target} not found in array")
+</model>
+<requires>python:algorithms</requires>
+
+Binary search for 78 in the array.
+
+User: Calculate the molarity of a solution with 3.06 moles of solute in 1.40 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.06 mol / 1.40 L.</think>
+<model>
+moles = 3.06
+volume_l = 1.40
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 2.178 M.
+
+User: Calculate the molarity of a solution with 3.67 moles of solute in 0.84 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.67 mol / 0.84 L.</think>
+<model>
+moles = 3.67
+volume_l = 0.84
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 4.395 M.
+
+User: Calculate standard deviation of: [44, 12, 82, 25, 15, 10, 90, 100, 83]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [44, 12, 82, 25, 15, 10, 90, 100, 83]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 35.166.
+
+User: Calculate quarter-wave antenna length for 433 MHz
+Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then divide by 4. λ = 3×10⁸ / 4e+08.</think>
+<model>
+frequency = 4e+08  # Hz
+c = 3e8               # speed of light
+wavelength = c / frequency
+quarter_wave = wavelength / 4
+print(f"Wavelength = {wavelength:.3f} m")
+print(f"Quarter-wave length = {quarter_wave:.3f} m")
+if quarter_wave >= 0.01:
+    print(f"Quarter-wave = {quarter_wave*100:.1f} cm")
+else:
+    print(f"Quarter-wave = {quarter_wave*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+Quarter-wave antenna for 433 MHz is 0.173 m (17.3 cm).
+
+User: Calculate quarter-wave antenna length for 144 MHz
+Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then divide by 4. λ = 3×10⁸ / 1e+08.</think>
+<model>
+frequency = 1e+08  # Hz
+c = 3e8               # speed of light
+wavelength = c / frequency
+quarter_wave = wavelength / 4
+print(f"Wavelength = {wavelength:.3f} m")
+print(f"Quarter-wave length = {quarter_wave:.3f} m")
+if quarter_wave >= 0.01:
+    print(f"Quarter-wave = {quarter_wave*100:.1f} cm")
+else:
+    print(f"Quarter-wave = {quarter_wave*1000:.1f} mm")
+</model>
+<requires>python:rf</requires>
+
+Quarter-wave antenna for 144 MHz is 0.521 m (52.1 cm).
+
+User: Convert 190°C to Kelvin
+Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = 190 + 273.15.</think>
+<model>
+celsius = 190
+kelvin = celsius + 273.15
+print(f"{celsius}°C = {kelvin}K")
+</model>
+<requires>python:conversion</requires>
+
+190°C equals 463.15K.
+
+User: Calculate the molarity of a solution with 1.30 moles of solute in 1.82 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 1.30 mol / 1.82 L.</think>
+<model>
+moles = 1.30
+volume_l = 1.82
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 0.717 M.
+
+User: Count the number of 'r' characters in the word "learning"
+Assistant: <think>I need to count how many times the character 'r' appears in "learning". I'll iterate through each character and count matches.</think>
+<model>
+word = "learning"
+char = 'r'
+count = 0
+for c in word.lower():
+    if c == char:
+        count += 1
+print(f"The character 'r' appears {count} times in 'learning'")
+</model>
+<requires>python:text</requires>
+
+The character 'r' appears 1 times in the word "learning".
+
+User: Calculate flight time for projectile launched at 36.6 m/s at 27° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 36.6 m/s, θ = 27°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 36.6        # m/s
+angle_deg = 27   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 3.44 seconds.
+
+User: Calculate flight time for projectile launched at 46.9 m/s at 24° angle
+Assistant: <think>Flight time for projectile: t = 2v₀sin(θ)/g. With v₀ = 46.9 m/s, θ = 24°, g = 9.81 m/s².</think>
+<model>
+import math
+v0 = 46.9        # m/s
+angle_deg = 24   # degrees
+g = 9.81          # m/s²
+
+angle_rad = math.radians(angle_deg)
+flight_time = 2 * v0 * math.sin(angle_rad) / g
+print(f"Flight time = 2 × {v0} × sin({angle_deg}°) / {g} = {flight_time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+The projectile flight time is 3.85 seconds.
+
+User: Calculate current when voltage is 6.6 V and resistance is 868 Ω
+Assistant: <think>Using Ohm's law: I = V / R. I = 6.6 V / 868 Ω.</think>
+<model>
+voltage = 6.6      # Volts
+resistance = 868   # Ohms
+current = voltage / resistance
+print(f"Current = {voltage} V / {resistance} Ω = {current:.4f} A")
+</model>
+<requires>python:electrical</requires>
+
+The current is 0.0076 A.
+
+User: Calculate standard deviation of: [20, 14, 43, 71, 100, 36, 27, 84, 95, 22]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [20, 14, 43, 71, 100, 36, 27, 84, 95, 22]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 31.403.
+
+User: Calculate power consumption for device at 134 V drawing 8.2 A
+Assistant: <think>Power P = V × I. P = 134 V × 8.2 A. Energy in 1 hour = P × 1h.</think>
+<model>
+voltage = 134  # Volts
+current = 8.2  # Amperes
+power = voltage * current
+energy_1h = power / 1000  # kWh for 1 hour
+print(f"Power = {voltage} V × {current} A = {power:.0f} W")
+print(f"Energy in 1 hour = {energy_1h:.2f} kWh")
+</model>
+<requires>python:electrical</requires>
+
+The power consumption is 1103 W (1.10 kWh per hour).
+
+User: Find the median of: [82, 48, 71, 7, 4, 46, 4, 92, 19]
+Assistant: <think>To find median, I need to sort the data and find the middle value(s). For 9 values, median is the middle value.</think>
+<model>
+data = [82, 48, 71, 7, 4, 46, 4, 92, 19]
+sorted_data = sorted(data)
+n = len(sorted_data)
+if n % 2 == 1:
+    median = sorted_data[n // 2]
+else:
+    median = (sorted_data[n // 2 - 1] + sorted_data[n // 2]) / 2
+print(f"Original data: {data}")
+print(f"Sorted data: {sorted_data}")
+print(f"Median = {median}")
+</model>
+<requires>python:statistics</requires>
+
+The median is 46.
+
+User: Calculate standard deviation of: [38, 61, 12, 59, 56, 54, 97, 21, 72]
+Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, then calculate variance, then square root.</think>
+<model>
+import math
+data = [38, 61, 12, 59, 56, 54, 97, 21, 72]
+n = len(data)
+mean = sum(data) / n
+variance = sum((x - mean)**2 for x in data) / n
+std_dev = math.sqrt(variance)
+print(f"Data: {data}")
+print(f"Mean = {mean:.2f}")
+print(f"Variance = {variance:.2f}")
+print(f"Standard deviation = {std_dev:.3f}")
+</model>
+<requires>python:statistics</requires>
+
+The standard deviation is 24.339.
+
+User: Sort these words alphabetically: ['blue', 'green', 'red', 'yellow']
+Assistant: <think>I need to sort the list ['blue', 'green', 'red', 'yellow'] in alphabetical order.</think>
+<model>
+words = ['blue', 'green', 'red', 'yellow']
+sorted_words = sorted(words)
+print(f"Original: {words}")
+print(f"Sorted: {sorted_words}")
+</model>
+<requires>python:data</requires>
+
+Sorted alphabetically: ['blue', 'green', 'red', 'yellow'].
+
+User: Calculate the molarity of a solution with 3.85 moles of solute in 1.69 L of solution
+Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.85 mol / 1.69 L.</think>
+<model>
+moles = 3.85
+volume_l = 1.69
+molarity = moles / volume_l
+print(f"Molarity = {moles} mol / {volume_l} L = {molarity:.3f} M")
+</model>
+<requires>python:chemistry</requires>
+
+The molarity is 2.272 M.
+
+User: Calculate wavelength for electromagnetic wave with frequency 4409 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 4409 Hz. So λ = 3×10⁸ / 4409.</think>
+<model>
+frequency = 4409  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 68048.825950 m or 68048825.950 mm.
+
+User: How long does it take for an object dropped from 90.1 m to hit the ground?
+Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81 m/s². So t = √(2 × 90.1 / 9.81).</think>
+<model>
+import math
+height = 90.1  # meters
+g = 9.81        # m/s²
+time = math.sqrt(2 * height / g)
+print(f"Time to fall {height} m = √(2 × {height} / {g}) = {time:.2f} seconds")
+</model>
+<requires>python:physics</requires>
+
+It takes 4.29 seconds to fall from 90.1 m.
+
+User: Calculate wavelength for electromagnetic wave with frequency 6362 Hz
+Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 6362 Hz. So λ = 3×10⁸ / 6362.</think>
+<model>
+frequency = 6362  # Hz
+c = 3e8           # speed of light in m/s
+wavelength = c / frequency
+print(f"Wavelength = {c} / {frequency} = {wavelength:.6f} m")
+print(f"Wavelength = {wavelength*1000:.3f} mm")
+</model>
+<requires>python:physics</requires>
+
+The wavelength is 47151.635048 m or 47151635.048 mm.
+
+User: Calculate resonant frequency of LC circuit with L = 3.94e-04 H and C = 4.70e-07 F
+Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 3.94e-04 H and C = 4.70e-07 F.</think>
+<model>
+import math
+L = 3.94e-04  # Inductance in Henries
+C = 4.70e-07  # Capacitance in Farads
+f = 1 / (2 * math.pi * math.sqrt(L * C))
+print(f"Resonant frequency = 1 / (2π√(LC))")
+print(f"f = 1 / (2π√({L:.2e} × {C:.2e})) = {f:.2e} Hz")
+print(f"f = {f/1000:.1f} kHz")
+</model>
+<requires>python:electrical</requires>
+
+The resonant frequency is 1.17e+04 Hz (11.7 kHz).
