@@ -303,9 +303,9 @@ def main():
     )
     
     # Training arguments optimized for long training runs
-    # Adaptive save frequency based on dataset size
-    save_frequency = max(100, len(train_dataset) // (args.batch_size * 10))  # Save ~10 times per epoch
-    eval_frequency = max(50, save_frequency // 2)  # Eval twice as often as saving
+    # Adaptive save frequency based on dataset size (conservative for stability)
+    save_frequency = max(200, len(train_dataset) // (args.batch_size * 5))  # Save ~5 times per epoch  
+    eval_frequency = save_frequency  # Eval as often as saving (not more frequent)
     
     training_args = TrainingArguments(
         output_dir=OUTPUT_DIR,
@@ -334,10 +334,10 @@ def main():
         # Long training stability
         save_total_limit=5,  # Keep more checkpoints for long runs
         
-        # Same ROCm optimizations from successful training
-        dataloader_num_workers=4,           # Parallel loading
+        # ROCm optimizations with file descriptor leak prevention
+        dataloader_num_workers=2,           # Reduced to prevent fd leaks
         dataloader_pin_memory=True,         # Memory efficiency  
-        dataloader_persistent_workers=True, # Reuse workers
+        dataloader_persistent_workers=False, # Disable to prevent fd leaks during evaluation
         
         # Same stable precision settings
         fp16=False,                         # FP32 for stability
