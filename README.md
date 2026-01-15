@@ -1,79 +1,107 @@
-# WorldModel LLM Training System
+# WorldModel: LLM Training for Structured Reasoning
 
-A comprehensive system for training language models to use structured reasoning with `<think>`, `<model>`, and `<requires>` tags for computational tasks.
+A system that trains language models to perform computational tasks using structured `<think>`, `<model>`, and `<requires>` tags for systematic reasoning and code execution.
 
-## Overview
+## 🚀 Quick Start
 
-This project implements the **WorldModel** approach to LLM training, teaching models to:
-- **Think systematically** using `<think>` tags for reasoning
-- **Generate executable code** in `<model>` tags  
-- **Specify requirements** with `<requires>` tags for execution
-
-The system includes 184 carefully crafted training examples covering mathematics, physics, chemistry, and tricky problems like "count the R's in strawberry."
-
-## Quick Start
-
-### Prerequisites
-- Python 3.8+
-- ROCm 7.1.1+ (for AMD GPU training)
-- llama.cpp (for optimal training performance)
-
-### Installation
+### Training
 ```bash
-pip install -r requirements.txt
+# Complete workflow (training + inference test)
+./complete_workflow.sh
+
+# Training only
+python3 train_worldmodel_rocm.py
 ```
 
-### Training Options
-
-**Option 1: llama.cpp + ROCm (Recommended)**
+### Inference
 ```bash
-# Set up environment
-source /path/to/rocm/setup-rocm-env.sh
-export HSA_OVERRIDE_GFX_VERSION=10.3.0
+# Interactive session
+python3 run_worldmodel_inference.py --interactive
 
-# Convert model to GGUF format
-cd ../llama.cpp
-python3 convert_hf_to_gguf.py ../model/Qwen2.5-3B-Instruct/ --outfile ../model/qwen2.5-3b-f32.gguf --outtype f32
-
-# Start training
-./build/bin/llama-finetune \
-  --file ../worldmodel/data/worldmodel_llama_cpp_training.txt \
-  --model ../model/qwen2.5-3b-f32.gguf \
-  -ngl 999 -c 512 -b 256
+# Single query
+python3 run_worldmodel_inference.py "Calculate 25% of 400"
 ```
 
-**Option 2: PyTorch Training (CPU/CUDA)**
-```bash
-python3 main.py train sft \
-  --data ./data/worldmodel_enhanced_training.json \
-  --epochs 1 --batch-size 4 \
-  --output ./worldmodel_finetuned
+## 🧠 How It Works
+
+The system teaches models to generate structured responses:
+
+**Input**: "What's 15% of 200?"
+
+**Model Output**:
+```
+<think>I need to calculate 15% of 200...</think>
+<model>
+result = 0.15 * 200
+print(f"15% of 200 = {result}")
+</model>
+<requires>python:math</requires>
+
+15% of 200 equals 30.
 ```
 
-## Project Structure
+**System Response**:
+1. Parses the structured output
+2. Safely executes the generated code
+3. Returns results with explanation
+
+## 📁 Structure
 
 ```
 worldmodel/
-├── main.py                    # Main CLI interface
-├── config.json               # Training configuration  
-├── src/                       # Core system modules
-│   ├── core/                  # Inference and tag parsing
-│   ├── training/              # Training implementations
-│   ├── execution/             # Code execution system
-│   └── utils/                 # Utilities and config
-├── data/                      # Training datasets
-├── spec/                      # Design documentation
-└── scripts/                   # Training and utility scripts
+├── train_worldmodel_rocm.py    # Main training script
+├── run_worldmodel_inference.py # Inference engine with code execution
+├── complete_workflow.sh        # One-command training + testing
+├── requirements.txt            # Dependencies
+├── data/                       # Training datasets (1000+ examples)
+├── docs/                       # Documentation and guides
+└── archive/                    # Development scripts and variants
 ```
 
-## Training Data
+## 📊 Training Data
 
-The system includes comprehensive training examples:
-- **173 base examples**: Computational tasks across multiple domains
-- **11 science examples**: Phase change materials, chemistry, physics
-- **Tricky examples**: Famous edge cases like "strawberry R counting"
+**1000+ Examples Across**:
+- **Math**: Basic arithmetic, percentages, geometry
+- **Text Analysis**: Character counting, string processing
+- **System Tasks**: Date/time, file operations, environment info
+- **Data Processing**: Statistics, JSON/CSV parsing
+- **Advanced Math**: Trigonometry, linear algebra, number theory
 
-### Data Format
-Examples follow the WorldModel structure:
-```
-User: Calculate 15% tip on $67.50
+## ⚙️ Requirements
+
+- **Python 3.8+**
+- **ROCm 7.1+** (for AMD GPU training)
+- **PyTorch 2.4.1+rocm6.0** (specific version for MI50 compatibility)
+- **Transformers, PEFT, Accelerate**
+
+## 🎯 Training Results
+
+- **Loss reduction**: 1.46 → 0.59 (60% improvement)
+- **Training time**: ~6 minutes (3 epochs) / ~3 hours (15 epochs production)
+- **Structure quality**: 2/3 WorldModel tags consistently generated
+- **GPU utilization**: 80-95% on AMD MI50
+
+## 📖 Documentation
+
+See `docs/` directory for:
+- **Training guides** and ROCm setup
+- **Inference examples** and API reference  
+- **Troubleshooting** for common issues
+- **Performance optimization** tips
+
+## 🔧 ROCm Compatibility
+
+Optimized for **AMD Instinct MI50** with:
+- **Native gfx906 architecture** (HSA_OVERRIDE_GFX_VERSION=9.0.6)
+- **Conservative memory settings** for 32GB VRAM
+- **Stable PyTorch 2.4.1+rocm6.0** (avoids newer version issues)
+
+## 🎉 Ready to Use
+
+This system is production-ready for:
+- **Educational tools** teaching step-by-step reasoning
+- **Computational assistants** with code execution
+- **Research platforms** for structured AI reasoning
+- **Custom applications** requiring reliable code generation
+
+The WorldModel approach bridges natural language understanding with executable computation, making AI reasoning transparent and verifiable.

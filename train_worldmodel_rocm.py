@@ -309,7 +309,7 @@ def train_worldmodel():
     # Training arguments - Conservative for ROCm MI50
     training_args = TrainingArguments(
         output_dir=OUTPUT_DIR,
-        num_train_epochs=3,  # Start with fewer epochs
+        num_train_epochs=30,  # Comprehensive training for better fine-tuning
         per_device_train_batch_size=2,  # Small batch for MI50
         per_device_eval_batch_size=2,
         gradient_accumulation_steps=4,  # Effective batch size of 8
