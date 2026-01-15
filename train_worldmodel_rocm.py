@@ -268,7 +268,7 @@ def train_worldmodel():
     
     # Configuration
     MODEL_NAME = "/home/bigattichouse/workspace/model/Qwen3-0.6B"
-    DATA_FILE = "/home/bigattichouse/workspace/worldmodel/data/worldmodel_training.txt"
+    DATA_FILE = "/home/bigattichouse/workspace/worldmodel/data/worldmodel_training_combined.txt"
     OUTPUT_DIR = "./worldmodel_rocm_output"
     
     # Create output directory
