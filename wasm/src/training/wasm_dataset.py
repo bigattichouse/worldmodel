@@ -307,3 +307,11 @@ class WASMCurriculumDataset:
         
         print(f"✅ Combined dataset: {len(all_examples)} examples from stages: {', '.join(stages)}")
         return combined_dataset
+    
+    def __len__(self):
+        """Return total number of examples across all stages."""
+        total = 0
+        for stage_dataset in self.stages.values():
+            if stage_dataset:
+                total += len(stage_dataset)
+        return total

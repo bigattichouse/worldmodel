@@ -28,7 +28,7 @@ import logging
 # WASM components
 from src.models.qwen_wasm_adapter import QwenWASMAdapter
 from src.tokenization.wat_tokenizer import WATTokenizer
-from src.training.wasm_dataset import WASMCurriculumDataset
+from src.training.wasm_dataset import WASMCurriculumDataset, WASMModalDataset
 from src.training.wasm_data_collator import WASMDataCollator
 
 # Setup logging
@@ -121,7 +121,7 @@ class WASMTrainer(Trainer):
         self.wasm_adapter = wasm_adapter
         super().__init__(*args, **kwargs)
     
-    def compute_loss(self, model, inputs, return_outputs=False):
+    def compute_loss(self, model, inputs, return_outputs=False, num_items_in_batch=None):
         """Compute loss for both text and WASM streams."""
         # Extract inputs
         input_ids = inputs["input_ids"]
@@ -167,10 +167,10 @@ class WASMTrainer(Trainer):
         # Combined loss (text is primary, WASM execution is auxiliary)
         total_loss = text_loss + 0.1 * execution_loss  # Weighted combination
         
-        # Track WASM executions for monitoring
-        if hasattr(self, "log_metrics"):
-            self.log_metrics = getattr(self, "log_metrics", {})
-            self.log_metrics["wasm_executions"] = wasm_executions
+        # Track WASM executions for monitoring (store in state)
+        if not hasattr(self, "_custom_metrics"):
+            self._custom_metrics = {}
+        self._custom_metrics["wasm_executions"] = wasm_executions
         
         return (total_loss, outputs) if return_outputs else total_loss
 
@@ -280,7 +280,7 @@ def main():
     
     # Create small eval dataset from first stage
     eval_size = min(50, len(train_dataset) // 10)
-    eval_dataset = WASMCurriculumDataset.__new__(WASMCurriculumDataset)
+    eval_dataset = WASMModalDataset.__new__(WASMModalDataset)
     eval_dataset.examples = train_dataset.examples[:eval_size]
     eval_dataset.text_tokenizer = text_tokenizer
     eval_dataset.wasm_tokenizer = wasm_tokenizer
