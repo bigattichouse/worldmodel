@@ -342,19 +342,25 @@ class QwenWASMAdapter(nn.Module):
         batch_size, seq_len, hidden_dim = text_hidden.shape
         
         # Create a simple projection (in real training, this would be learned)
-        # For now, use last token's hidden state as WASM context
-        last_token_hidden = text_hidden[:, -1:, :]  # Shape: [batch, 1, hidden]
+        # Use last few tokens as WASM context for better compatibility
+        # Make WASM sequence proportional to text sequence but smaller
+        wasm_seq_len = min(32, max(8, seq_len // 8))  # Adaptive length, 8-32 range
         
-        # Expand to create a small WASM sequence for processing
-        wasm_seq_len = 8  # Small sequence for arithmetic operations
-        wasm_hidden = last_token_hidden.expand(batch_size, wasm_seq_len, hidden_dim)
+        if seq_len >= wasm_seq_len:
+            # Use distributed tokens from the text sequence
+            indices = torch.linspace(0, seq_len-1, wasm_seq_len, dtype=torch.long)
+            wasm_hidden = text_hidden[:, indices, :]  # Shape: [batch, wasm_seq_len, hidden]
+        else:
+            # If text is very short, repeat the last token
+            last_token_hidden = text_hidden[:, -1:, :]  # Shape: [batch, 1, hidden]
+            wasm_hidden = last_token_hidden.expand(batch_size, wasm_seq_len, hidden_dim)
         
-        # Add some variation to different positions
+        # Add some variation to different positions for WASM processing
         position_offsets = torch.linspace(0.0, 1.0, wasm_seq_len).unsqueeze(0).unsqueeze(-1)
         if text_hidden.is_cuda:
             position_offsets = position_offsets.cuda()
         
-        wasm_hidden = wasm_hidden + 0.1 * position_offsets * torch.randn_like(wasm_hidden)
+        wasm_hidden = wasm_hidden + 0.05 * position_offsets * torch.randn_like(wasm_hidden)
         
         return wasm_hidden
     
