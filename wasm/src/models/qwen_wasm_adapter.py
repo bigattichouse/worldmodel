@@ -300,7 +300,8 @@ class QwenWASMAdapter(nn.Module):
             if self.wasm_tokenizer is not None:
                 try:
                     wat_code = self.wasm_tokenizer.decode_wat(tokens)
-                    if wat_code and wat_code.strip():
+                    # Check if decoded code contains valid WAT tokens (not just [UNK])
+                    if wat_code and wat_code.strip() and not all('[UNK]' in part for part in wat_code.split()):
                         return wat_code
                 except Exception as e:
                     print(f"Warning: Tokenizer decode failed: {e}")
