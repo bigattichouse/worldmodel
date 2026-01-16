@@ -1,0 +1,239 @@
+User: Calculate the compound interest: principal 1000, rate 0.05, time 3 years
+Assistant: <think>I need to calculate compound interest using A = P(1 + r)^t. First I'll calculate (1 + 0.05) = 1.05.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.add))
+</wat_model>
+<computed>1.05</computed>
+<requires>wasm:math</requires>
+
+User: Find the area of a circle with radius 5
+Assistant: <think>I need to calculate the area of a circle using A = π * r². First I'll calculate r² = 5 * 5.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>25</computed>
+<requires>wasm:math</requires>
+
+User: Calculate the slope between points (2,3) and (8,7)
+Assistant: <think>I need to calculate slope using (y2-y1)/(x2-x1). First I'll calculate y2-y1 = 7-3.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.sub))
+</wat_model>
+<computed>4</computed>
+<requires>wasm:math</requires>
+
+User: What is the hypotenuse of a right triangle with sides 3 and 4?
+Assistant: <think>I need to use Pythagorean theorem: c² = a² + b². First I'll calculate a² = 3 * 3.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>9</computed>
+<requires>wasm:math</requires>
+
+User: Calculate the volume of a sphere with radius 6
+Assistant: <think>I need to calculate volume using V = (4/3)πr³. First I'll calculate r³ by computing r² = 6 * 6.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>36</computed>
+<requires>wasm:math</requires>
+
+User: Find the distance between points (1,2) and (4,6)
+Assistant: <think>I need to calculate distance using √[(x2-x1)² + (y2-y1)²]. First I'll calculate x2-x1 = 4-1.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.sub))
+</wat_model>
+<computed>3</computed>
+<requires>wasm:math</requires>
+
+User: Calculate the quadratic discriminant for a=1, b=-5, c=6
+Assistant: <think>I need to calculate discriminant using b² - 4ac. First I'll calculate b² = (-5) * (-5).</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>25</computed>
+<requires>wasm:math</requires>
+
+User: What is the surface area of a cube with side length 7?
+Assistant: <think>I need to calculate surface area using SA = 6s². First I'll calculate s² = 7 * 7.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>49</computed>
+<requires>wasm:math</requires>
+
+User: Calculate the geometric mean of 8 and 18
+Assistant: <think>I need to calculate geometric mean using √(a×b). First I'll calculate a×b = 8 * 18.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>144</computed>
+<requires>wasm:math</requires>
+
+User: Find the circumference of a circle with radius 12
+Assistant: <think>I need to calculate circumference using C = 2πr. First I'll calculate 2 * 12.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>24</computed>
+<requires>wasm:math</requires>
+
+User: Calculate the arithmetic mean of 15, 20, and 25
+Assistant: <think>I need to calculate the arithmetic mean. First I'll add 15 + 20.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.add))
+</wat_model>
+<computed>35</computed>
+<requires>wasm:math</requires>
+
+User: What is the volume of a cylinder with radius 4 and height 10?
+Assistant: <think>I need to calculate volume using V = πr²h. First I'll calculate r² = 4 * 4.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>16</computed>
+<requires>wasm:math</requires>
+
+User: Calculate the perimeter of a rectangle with length 15 and width 8
+Assistant: <think>I need to calculate perimeter using P = 2(l+w). First I'll calculate l + w = 15 + 8.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.add))
+</wat_model>
+<computed>23</computed>
+<requires>wasm:math</requires>
+
+User: Find the diagonal of a rectangle with sides 9 and 12
+Assistant: <think>I need to find the diagonal using d = √(a² + b²). First I'll calculate a² = 9 * 9.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>81</computed>
+<requires>wasm:math</requires>
+
+User: Calculate the simple interest: principal 2000, rate 0.08, time 5 years
+Assistant: <think>I need to calculate simple interest using I = PRT. First I'll calculate P * R = 2000 * 0.08.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>160</computed>
+<requires>wasm:math</requires>
+
+User: What is the area of a triangle with base 14 and height 6?
+Assistant: <think>I need to calculate area using A = (1/2) * base * height. First I'll calculate base * height = 14 * 6.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>84</computed>
+<requires>wasm:math</requires>
+
+User: Calculate the percentage change from 80 to 96
+Assistant: <think>I need to calculate percentage change using ((new-old)/old)*100. First I'll calculate new - old = 96 - 80.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.sub))
+</wat_model>
+<computed>16</computed>
+<requires>wasm:math</requires>
+
+User: Find the midpoint between coordinates (6,8) and (10,12)
+Assistant: <think>I need to find the midpoint using ((x1+x2)/2, (y1+y2)/2). First I'll calculate x1 + x2 = 6 + 10.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.add))
+</wat_model>
+<computed>16</computed>
+<requires>wasm:math</requires>
+
+User: Calculate the standard deviation variance for values 4, 8, 12
+Assistant: <think>I need to calculate variance. First I'll find the mean by adding the first two values: 4 + 8.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.add))
+</wat_model>
+<computed>12</computed>
+<requires>wasm:math</requires>
+
+User: What is the area of a parallelogram with base 11 and height 7?
+Assistant: <think>I need to calculate area using A = base * height = 11 * 7.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>77</computed>
+<requires>wasm:math</requires>

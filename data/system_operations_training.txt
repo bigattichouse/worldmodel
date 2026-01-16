@@ -1,0 +1,139 @@
+User: What is the current date and time?
+Assistant: <think>I need to get the current date and time using the system API.</think>
+<wat_model>
+(module
+  ;; Import API function for datetime.now
+  (import "api" "get_current_datetime" (func $api_call (result i64)))
+  
+  (func $main (export "main") (result i64)
+    call $api_call
+  ))
+</wat_model>
+<computed>System API Call</computed>
+<requires>wasm:system</requires>
+
+User: Get today's date
+Assistant: <think>I need to get today's date using the date API.</think>
+<wat_model>
+(module
+  ;; Import API function for datetime.date.today
+  (import "api" "get_current_date" (func $api_call (result i64)))
+  
+  (func $main (export "main") (result i64)
+    call $api_call
+  ))
+</wat_model>
+<computed>System API Call</computed>
+<requires>wasm:system</requires>
+
+User: What is the current timestamp?
+Assistant: <think>I need to get the current time using the time API.</think>
+<wat_model>
+(module
+  ;; Import API function for time.time
+  (import "api" "get_current_time" (func $api_call (result i64)))
+  
+  (func $main (export "main") (result i64)
+    call $api_call
+  ))
+</wat_model>
+<computed>System API Call</computed>
+<requires>wasm:system</requires>
+
+User: List the files in the current directory
+Assistant: <think>I need to list directory contents using the file system API.</think>
+<wat_model>
+(module
+  ;; Import API function for os.listdir
+  (import "api" "list_directory" (func $api_call (result i64)))
+  
+  (func $main (export "main") (result i64)
+    call $api_call
+  ))
+</wat_model>
+<computed>System API Call</computed>
+<requires>wasm:system</requires>
+
+User: Check if a file exists
+Assistant: <think>I need to check file existence using the file system API.</think>
+<wat_model>
+(module
+  ;; Import API function for os.path.exists
+  (import "api" "check_file_exists" (func $api_call (result i64)))
+  
+  (func $main (export "main") (result i64)
+    call $api_call
+  ))
+</wat_model>
+<computed>System API Call</computed>
+<requires>wasm:system</requires>
+
+User: What operating system is this?
+Assistant: <think>I need to get platform information using the system API.</think>
+<wat_model>
+(module
+  ;; Import API function for platform.system
+  (import "api" "get_platform_info" (func $api_call (result i64)))
+  
+  (func $main (export "main") (result i64)
+    call $api_call
+  ))
+</wat_model>
+<computed>System API Call</computed>
+<requires>wasm:system</requires>
+
+User: Show me the current working directory
+Assistant: <think>I need to get directory information using the file system API.</think>
+<wat_model>
+(module
+  ;; Import API function for file operations
+  (import "api" "list_directory" (func $api_call (result i64)))
+  
+  (func $main (export "main") (result i64)
+    call $api_call
+  ))
+</wat_model>
+<computed>System API Call</computed>
+<requires>wasm:system</requires>
+
+User: Get the current time in milliseconds
+Assistant: <think>I need to get the current time using the time API.</think>
+<wat_model>
+(module
+  ;; Import API function for time.time
+  (import "api" "get_current_time" (func $api_call (result i64)))
+  
+  (func $main (export "main") (result i64)
+    call $api_call
+  ))
+</wat_model>
+<computed>System API Call</computed>
+<requires>wasm:system</requires>
+
+User: Check if config.json exists
+Assistant: <think>I need to check if a specific file exists using the file system API.</think>
+<wat_model>
+(module
+  ;; Import API function for os.path.exists
+  (import "api" "check_file_exists" (func $api_call (result i64)))
+  
+  (func $main (export "main") (result i64)
+    call $api_call
+  ))
+</wat_model>
+<computed>System API Call</computed>
+<requires>wasm:system</requires>
+
+User: What platform am I running on?
+Assistant: <think>I need to get platform information using the system API.</think>
+<wat_model>
+(module
+  ;; Import API function for platform.system
+  (import "api" "get_platform_info" (func $api_call (result i64)))
+  
+  (func $main (export "main") (result i64)
+    call $api_call
+  ))
+</wat_model>
+<computed>System API Call</computed>
+<requires>wasm:system</requires>
