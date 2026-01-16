@@ -141,6 +141,9 @@ class QwenWASMAdapter(nn.Module):
         else:
             # Bootstrap WASM stream from text context for mathematical queries
             wasm_hidden = self._bootstrap_wasm_from_text(text_final_hidden)
+            # Create attention mask for bootstrapped WASM sequence
+            batch_size, wasm_seq_len, _ = wasm_hidden.shape
+            wasm_attention_mask = torch.ones(batch_size, wasm_seq_len, dtype=torch.long, device=wasm_hidden.device)
             
             # Process through WASM layers with cross-modal attention
             wasm_layer_idx = 0
