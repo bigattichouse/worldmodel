@@ -235,6 +235,10 @@ class QwenWASMAdapter(nn.Module):
                 # Extract inputs from context (simple approach for arithmetic)
                 inputs = self._extract_inputs_from_context(layer_idx)
                 
+                # Debug: Print generated WAT and inputs
+                print(f"   Layer {layer_idx} WAT: {wat_code[:100]}{'...' if len(wat_code) > 100 else ''}")
+                print(f"   Layer {layer_idx} inputs: {inputs}")
+                
                 # Execute WASM using the WASM executor
                 execution_result = self.wasm_executor.execute_wat(
                     wat_code=wat_code,

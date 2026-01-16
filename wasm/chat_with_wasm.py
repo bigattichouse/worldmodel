@@ -19,6 +19,11 @@ class WASMChat:
     def __init__(self):
         print("🔧 Loading WASM WorldModel...")
         
+        print("Loading Qwen model from /home/bigattichouse/workspace/model/Qwen3-0.6B")
+        print("🔧 WASM Executor initialized:")
+        print("   Internal WASM: Direct execution")  
+        print("   External APIs: Direct host")
+        
         # Initialize model
         self.model = QwenWASMAdapter(
             model_path="/home/bigattichouse/workspace/model/Qwen3-0.6B",
@@ -26,9 +31,10 @@ class WASMChat:
             use_sandbox=False
         )
         
-        # Load trained weights
-        state_dict = torch.load("./wasm_worldmodel_final_trained/pytorch_model.bin", 
-                               map_location="cpu", weights_only=False)
+        # Load trained weights from latest checkpoint
+        checkpoint_path = "./wasm_worldmodel_output/checkpoint-1890/pytorch_model.bin"
+        print(f"🔄 Loading weights from: {checkpoint_path}")
+        state_dict = torch.load(checkpoint_path, map_location="cpu", weights_only=False)
         self.model.load_state_dict(state_dict, strict=False)
         self.model.eval()
         
@@ -54,6 +60,9 @@ class WASMChat:
             truncation=True
         )
         
+        # Set the current input text for the model to use in WASM context extraction
+        self.model._current_input_text = question
+        
         # Forward pass with WASM execution
         print("🔄 Running forward pass with WASM execution...")
         
@@ -76,10 +85,17 @@ class WASMChat:
                 
                 if result and result.get('success'):
                     computed = result.get('result')
-                    print(f"   Layer {layer:2}: {computed:12.6f}")
+                    if computed is not None:
+                        if isinstance(computed, (int, float)):
+                            print(f"   Layer {layer:2}: {float(computed):12.6f}")
+                        else:
+                            print(f"   Layer {layer:2}: {str(computed)[:20]}")
+                    else:
+                        print(f"   Layer {layer:2}: SUCCESS - None result")
                 else:
                     error = result.get('error', 'Failed') if result else 'No result'
-                    print(f"   Layer {layer:2}: ERROR - {error[:50]}...")
+                    error_str = str(error)[:50] if error else 'Unknown error'
+                    print(f"   Layer {layer:2}: ERROR - {error_str}...")
             
             print("-" * 40)
             
@@ -168,13 +184,28 @@ class WASMChat:
 
 def main():
     """Main function."""
-    try:
-        chat = WASMChat()
-        chat.chat_loop()
-    except Exception as e:
-        print(f"❌ Failed to start chat: {e}")
-        import traceback
-        traceback.print_exc()
+    import sys
+    
+    # Check for command line arguments for non-interactive mode
+    if len(sys.argv) > 1:
+        # Non-interactive mode: process single question
+        question = " ".join(sys.argv[1:])
+        try:
+            chat = WASMChat()
+            chat.process_question(question)
+        except Exception as e:
+            print(f"❌ Failed to process question: {e}")
+            import traceback
+            traceback.print_exc()
+    else:
+        # Interactive mode
+        try:
+            chat = WASMChat()
+            chat.chat_loop()
+        except Exception as e:
+            print(f"❌ Failed to start chat: {e}")
+            import traceback
+            traceback.print_exc()
 
 if __name__ == "__main__":
     main()

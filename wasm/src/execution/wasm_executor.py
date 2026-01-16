@@ -139,17 +139,21 @@ class WASMExecutor:
             # Execute WASM using wasmtime Python runtime
             try:
                 result = self._execute_with_wasmtime(wasm_file, inputs)
+                return {
+                    "success": True,
+                    "result": result,
+                    "error": None,
+                    "computed_token": f"<computed>{result}</computed>"
+                }
             except Exception as e:
-                # Fallback to pattern matching if wasmtime fails
-                print(f"Warning: wasmtime execution failed ({e}), falling back to pattern matching")
-                result = self._extract_simple_computation(wat_code, inputs)
-            
-            return {
-                "success": True,
-                "result": result,
-                "error": None,
-                "computed_token": f"<computed>{result}</computed>"
-            }
+                # Don't fallback - show the actual error
+                print(f"Error: wasmtime execution failed: {e}")
+                return {
+                    "success": False,
+                    "result": None,
+                    "error": f"WASM execution failed: {e}",
+                    "computed_token": f"<error>{e}</error>"
+                }
     
     def _simulate_execution(self, wat_code: str, inputs: Optional[List[Any]]) -> Dict:
         """Simulate WASM execution for development/testing."""
@@ -233,16 +237,24 @@ class WASMExecutor:
             if not compute_func:
                 raise RuntimeError("No exported function found in WASM module")
             
-            # Execute with inputs
-            if inputs and len(inputs) >= 2:
-                # Binary operations (most common)
+            # Check function signature to determine parameter count
+            func_type = compute_func.type(store)
+            param_count = len(func_type.params)
+            
+            print(f"      Function expects {param_count} parameters, got {len(inputs) if inputs else 0}")
+            
+            # Execute with appropriate number of parameters
+            if param_count == 2 and inputs and len(inputs) >= 2:
+                # Binary operations
                 result = compute_func(store, float(inputs[0]), float(inputs[1]))
-            elif inputs and len(inputs) == 1:
-                # Unary operations
+            elif param_count == 1 and inputs and len(inputs) >= 1:
+                # Unary operations (use first input)
                 result = compute_func(store, float(inputs[0]))
-            else:
-                # No inputs - execute anyway (might be constants)
+            elif param_count == 0:
+                # No parameters
                 result = compute_func(store)
+            else:
+                raise RuntimeError(f"Parameter mismatch: function expects {param_count}, but got {len(inputs) if inputs else 0} inputs")
             
             return float(result) if result is not None else None
             

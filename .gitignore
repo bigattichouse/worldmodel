@@ -4,7 +4,12 @@ worldmodel_production_training
 worldmodel_production_training/*
 qwen3_0.6b_rocm_conservative
 qwen3_0.6b_rocm_conservative/*
-
+wasm/wasm_worldmodel_output
+wasm/wasm_worldmodel_output/*
+worldmodel_rocm_output_stable
+worldmodel_rocm_output_stable/
+wasm/wasm_worldmodel_final_trained
+wasm/wasm_worldmodel_final_trained/*
 # Python
 __pycache__/
 *.py[cod]
