@@ -2,6 +2,11 @@
 
 Multimodal LLM with integrated WebAssembly execution during reasoning.
 
+## Summary
+
+This project adapts a Qwen language model to be multi-modal, allowing it to process natural language and WebAssembly code simultaneously. When it identifies a computational task in a user’s prompt, it uses a Flamingo-style cross-attention mechanism to generate the appropriate .wat code. This code is then intelligently scored, compiled, and securely executed in a wasmtime sandbox. The final numerical result from the execution is then seamlessly injected back into the model’s context, enabling it to produce a final text answer that is backed by actual computation.
+
+
 ## Architecture
 
 - **Text Stream**: Standard language modeling with Qwen3-0.6B
