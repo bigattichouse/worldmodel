@@ -50,9 +50,92 @@ Curriculum learning approach:
 
 This emergent behavior actually provides robustness - if one layer generates the wrong operation, others may generate the correct one.  
 
+## Setup & Installation
+
+### 1. Prerequisites
+- **Python 3.8-3.12** (avoid Python 3.13)
+- **ROCm 7.1+** (AMD) or **CUDA 11.8+** (NVIDIA) 
+- **16GB+ VRAM** recommended
+- **Git and Git LFS**
+
+### 2. Clone Repository
+```bash
+git clone <repository-url>
+cd worldmodel
+```
+
+### 3. Automatic Setup (Recommended)
+```bash
+# One-command setup (Linux/Mac)
+./setup.sh
+```
+
+### 3. Manual Setup (Alternative)
+
+**Create Virtual Environment:**
+```bash
+# Create new virtual environment
+python3 -m venv venv
+
+# Activate virtual environment
+source venv/bin/activate  # Linux/Mac
+# OR
+venv\Scripts\activate     # Windows
+```
+
+**Install Dependencies:**
+
+**For AMD ROCm (Recommended)**:
+```bash
+# Install PyTorch with ROCm support
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.0
+
+# Install other dependencies
+pip install -r requirements.txt
+```
+
+**For NVIDIA CUDA**:
+```bash
+# Install PyTorch with CUDA support  
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+# Install other dependencies
+pip install -r requirements.txt
+```
+
+**For CPU-Only (Slower)**:
+```bash
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+pip install -r requirements.txt
+```
+
+### 5. Download Base Model
+```bash
+# Create model directory
+mkdir -p ../model
+
+# Download Qwen3-0.6B model (recommended for testing)
+cd ../model
+git clone https://huggingface.co/Qwen/Qwen3-0.6B
+
+cd ../worldmodel
+```
+
+### 6. Verify Installation
+```bash
+# Test GPU detection
+python3 -c "import torch; print(f'GPU Available: {torch.cuda.is_available()}'); print(f'GPU Name: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"None\"}')"
+
+# Test WASM runtime
+python3 -c "import wasmtime; print('✅ WASM runtime ready')"
+```
+
 ## Quick Start
 
 ```bash
+# Activate virtual environment (if not already active)
+source venv/bin/activate
+
 # Train WASM model
 python train_worldmodel.py
 
