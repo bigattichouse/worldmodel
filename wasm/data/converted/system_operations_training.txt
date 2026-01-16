@@ -301,4 +301,3 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
-

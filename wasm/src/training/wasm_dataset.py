@@ -203,8 +203,10 @@ class WASMModalDataset(Dataset):
         if example["wat_code"]:
             assistant_parts.append(f"<wat_model>\n{example['wat_code']}\n</wat_model>")
         
-        if example["computed_result"]:
-            assistant_parts.append(f"<computed>{example['computed_result']}</computed>")
+        # REMOVED: Do not include computed result in training to prevent data leakage
+        # The model must learn to compute the result, not copy it
+        # if example["computed_result"]:
+        #     assistant_parts.append(f"<computed>{example['computed_result']}</computed>")
         
         if example["requires"]:
             assistant_parts.append(f"<requires>{example['requires']}</requires>")

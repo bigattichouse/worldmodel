@@ -7,7 +7,7 @@ Assistant: <think>I need to add 699 and 327.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>699.0</computed>
+<computed>1026</computed>
 <requires>python:math</requires>
 
 User: Calculate 755 + 69
@@ -19,7 +19,7 @@ Assistant: <think>I need to add 755 and 69.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>755.0</computed>
+<computed>824</computed>
 <requires>python:math</requires>
 
 User: Calculate 431 + 889
@@ -31,7 +31,7 @@ Assistant: <think>I need to add 431 and 889.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>431.0</computed>
+<computed>1320</computed>
 <requires>python:math</requires>
 
 User: Calculate 827 + 629
@@ -43,7 +43,7 @@ Assistant: <think>I need to add 827 and 629.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>827.0</computed>
+<computed>1456</computed>
 <requires>python:math</requires>
 
 User: Calculate 584 + 189
@@ -55,7 +55,7 @@ Assistant: <think>I need to add 584 and 189.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>584.0</computed>
+<computed>773</computed>
 <requires>python:math</requires>
 
 User: Calculate 516 + 890
@@ -67,7 +67,7 @@ Assistant: <think>I need to add 516 and 890.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>516.0</computed>
+<computed>1406</computed>
 <requires>python:math</requires>
 
 User: Calculate 948 + 880
@@ -79,7 +79,7 @@ Assistant: <think>I need to add 948 and 880.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>948.0</computed>
+<computed>1828</computed>
 <requires>python:math</requires>
 
 User: Calculate 237 + 947
@@ -91,7 +91,7 @@ Assistant: <think>I need to add 237 and 947.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>237.0</computed>
+<computed>1184</computed>
 <requires>python:math</requires>
 
 User: Calculate 820 + 493
@@ -103,7 +103,7 @@ Assistant: <think>I need to add 820 and 493.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>820.0</computed>
+<computed>1313</computed>
 <requires>python:math</requires>
 
 User: Calculate 867 + 184
@@ -115,7 +115,7 @@ Assistant: <think>I need to add 867 and 184.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>867.0</computed>
+<computed>1051</computed>
 <requires>python:math</requires>
 
 User: Calculate 716 + 156
@@ -127,7 +127,7 @@ Assistant: <think>I need to add 716 and 156.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>716.0</computed>
+<computed>872</computed>
 <requires>python:math</requires>
 
 User: Calculate 302 + 151
@@ -139,7 +139,7 @@ Assistant: <think>I need to add 302 and 151.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>302.0</computed>
+<computed>453</computed>
 <requires>python:math</requires>
 
 User: Calculate 595 + 378
@@ -151,7 +151,7 @@ Assistant: <think>I need to add 595 and 378.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>595.0</computed>
+<computed>973</computed>
 <requires>python:math</requires>
 
 User: Calculate 514 + 553
@@ -163,7 +163,7 @@ Assistant: <think>I need to add 514 and 553.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>514.0</computed>
+<computed>1067</computed>
 <requires>python:math</requires>
 
 User: Calculate 584 + 257
@@ -175,7 +175,7 @@ Assistant: <think>I need to add 584 and 257.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>584.0</computed>
+<computed>841</computed>
 <requires>python:math</requires>
 
 User: Calculate 144 + 746
@@ -187,7 +187,7 @@ Assistant: <think>I need to add 144 and 746.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>144.0</computed>
+<computed>890</computed>
 <requires>python:math</requires>
 
 User: Calculate 307 + 475
@@ -199,7 +199,7 @@ Assistant: <think>I need to add 307 and 475.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>307.0</computed>
+<computed>782</computed>
 <requires>python:math</requires>
 
 User: Calculate 238 + 873
@@ -211,7 +211,7 @@ Assistant: <think>I need to add 238 and 873.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>238.0</computed>
+<computed>1111</computed>
 <requires>python:math</requires>
 
 User: Calculate 847 + 906
@@ -223,7 +223,7 @@ Assistant: <think>I need to add 847 and 906.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>847.0</computed>
+<computed>1753</computed>
 <requires>python:math</requires>
 
 User: Calculate 139 + 761
@@ -235,7 +235,7 @@ Assistant: <think>I need to add 139 and 761.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>139.0</computed>
+<computed>900</computed>
 <requires>python:math</requires>
 
 User: Calculate 781 + 696
@@ -247,7 +247,7 @@ Assistant: <think>I need to add 781 and 696.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>781.0</computed>
+<computed>1477</computed>
 <requires>python:math</requires>
 
 User: Calculate 347 + 534
@@ -259,7 +259,7 @@ Assistant: <think>I need to add 347 and 534.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>347.0</computed>
+<computed>881</computed>
 <requires>python:math</requires>
 
 User: Calculate 287 + 222
@@ -271,7 +271,7 @@ Assistant: <think>I need to add 287 and 222.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>287.0</computed>
+<computed>509</computed>
 <requires>python:math</requires>
 
 User: Calculate 239 + 499
@@ -283,7 +283,7 @@ Assistant: <think>I need to add 239 and 499.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>239.0</computed>
+<computed>738</computed>
 <requires>python:math</requires>
 
 User: Calculate 859 + 619
@@ -295,7 +295,7 @@ Assistant: <think>I need to add 859 and 619.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>859.0</computed>
+<computed>1478</computed>
 <requires>python:math</requires>
 
 User: Calculate 944 + 196
@@ -307,7 +307,7 @@ Assistant: <think>I need to add 944 and 196.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>944.0</computed>
+<computed>1140</computed>
 <requires>python:math</requires>
 
 User: Calculate 123 + 242
@@ -319,7 +319,7 @@ Assistant: <think>I need to add 123 and 242.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>123.0</computed>
+<computed>365</computed>
 <requires>python:math</requires>
 
 User: Calculate 480 + 997
@@ -331,7 +331,7 @@ Assistant: <think>I need to add 480 and 997.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>480.0</computed>
+<computed>1477</computed>
 <requires>python:math</requires>
 
 User: Calculate 139 + 295
@@ -343,7 +343,7 @@ Assistant: <think>I need to add 139 and 295.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>139.0</computed>
+<computed>434</computed>
 <requires>python:math</requires>
 
 User: Calculate 770 + 804
@@ -355,7 +355,7 @@ Assistant: <think>I need to add 770 and 804.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>770.0</computed>
+<computed>1574</computed>
 <requires>python:math</requires>
 
 User: Calculate 109 + 407
@@ -367,7 +367,7 @@ Assistant: <think>I need to add 109 and 407.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>109.0</computed>
+<computed>516</computed>
 <requires>python:math</requires>
 
 User: Calculate 187 + 843
@@ -379,7 +379,7 @@ Assistant: <think>I need to add 187 and 843.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>187.0</computed>
+<computed>1030</computed>
 <requires>python:math</requires>
 
 User: Calculate 833 + 854
@@ -391,7 +391,7 @@ Assistant: <think>I need to add 833 and 854.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>833.0</computed>
+<computed>1687</computed>
 <requires>python:math</requires>
 
 User: Calculate 848 + 882
@@ -403,7 +403,7 @@ Assistant: <think>I need to add 848 and 882.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>848.0</computed>
+<computed>1730</computed>
 <requires>python:math</requires>
 
 User: Calculate 541 + 746
@@ -415,7 +415,7 @@ Assistant: <think>I need to add 541 and 746.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>541.0</computed>
+<computed>1287</computed>
 <requires>python:math</requires>
 
 User: Calculate 654 + 606
@@ -427,7 +427,7 @@ Assistant: <think>I need to add 654 and 606.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>654.0</computed>
+<computed>1260</computed>
 <requires>python:math</requires>
 
 User: Calculate 351 + 904
@@ -439,7 +439,7 @@ Assistant: <think>I need to add 351 and 904.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>351.0</computed>
+<computed>1255</computed>
 <requires>python:math</requires>
 
 User: Calculate 187 + 478
@@ -451,7 +451,7 @@ Assistant: <think>I need to add 187 and 478.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>187.0</computed>
+<computed>665</computed>
 <requires>python:math</requires>
 
 User: Calculate 155 + 864
@@ -463,7 +463,7 @@ Assistant: <think>I need to add 155 and 864.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>155.0</computed>
+<computed>1019</computed>
 <requires>python:math</requires>
 
 User: Calculate 931 + 455
@@ -475,7 +475,7 @@ Assistant: <think>I need to add 931 and 455.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>931.0</computed>
+<computed>1386</computed>
 <requires>python:math</requires>
 
 User: Calculate 953 + 220
@@ -487,7 +487,7 @@ Assistant: <think>I need to add 953 and 220.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>953.0</computed>
+<computed>1173</computed>
 <requires>python:math</requires>
 
 User: Calculate 481 + 650
@@ -499,7 +499,7 @@ Assistant: <think>I need to add 481 and 650.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>481.0</computed>
+<computed>1131</computed>
 <requires>python:math</requires>
 
 User: Calculate 925 + 836
@@ -511,7 +511,7 @@ Assistant: <think>I need to add 925 and 836.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>925.0</computed>
+<computed>1761</computed>
 <requires>python:math</requires>
 
 User: Calculate 66 + 693
@@ -523,7 +523,7 @@ Assistant: <think>I need to add 66 and 693.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>66.0</computed>
+<computed>759</computed>
 <requires>python:math</requires>
 
 User: Calculate 952 + 723
@@ -535,7 +535,7 @@ Assistant: <think>I need to add 952 and 723.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>952.0</computed>
+<computed>1675</computed>
 <requires>python:math</requires>
 
 User: Calculate 16 + 318
@@ -547,7 +547,7 @@ Assistant: <think>I need to add 16 and 318.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>16.0</computed>
+<computed>334</computed>
 <requires>python:math</requires>
 
 User: Calculate 777 + 640
@@ -559,7 +559,7 @@ Assistant: <think>I need to add 777 and 640.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>777.0</computed>
+<computed>1417</computed>
 <requires>python:math</requires>
 
 User: Calculate 930 + 744
@@ -571,7 +571,7 @@ Assistant: <think>I need to add 930 and 744.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>930.0</computed>
+<computed>1674</computed>
 <requires>python:math</requires>
 
 User: Calculate 466 + 672
@@ -583,7 +583,7 @@ Assistant: <think>I need to add 466 and 672.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>466.0</computed>
+<computed>1138</computed>
 <requires>python:math</requires>
 
 User: Calculate 966 + 172
@@ -595,7 +595,7 @@ Assistant: <think>I need to add 966 and 172.</think>
     local.get 1
     f64.add))
 </wat_model>
-<computed>966.0</computed>
+<computed>1138</computed>
 <requires>python:math</requires>
 
 User: Calculate 271 - 32
@@ -607,7 +607,7 @@ Assistant: <think>I need to subtract 32 from 271.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>32.0</computed>
+<computed>239</computed>
 <requires>python:math</requires>
 
 User: Calculate 345 - 17
@@ -619,7 +619,7 @@ Assistant: <think>I need to subtract 17 from 345.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>17.0</computed>
+<computed>328</computed>
 <requires>python:math</requires>
 
 User: Calculate 251 - 82
@@ -631,7 +631,7 @@ Assistant: <think>I need to subtract 82 from 251.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>82.0</computed>
+<computed>169</computed>
 <requires>python:math</requires>
 
 User: Calculate 933 - 77
@@ -643,7 +643,7 @@ Assistant: <think>I need to subtract 77 from 933.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>77.0</computed>
+<computed>856</computed>
 <requires>python:math</requires>
 
 User: Calculate 926 - 88
@@ -655,7 +655,7 @@ Assistant: <think>I need to subtract 88 from 926.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>88.0</computed>
+<computed>838</computed>
 <requires>python:math</requires>
 
 User: Calculate 472 - 93
@@ -667,7 +667,7 @@ Assistant: <think>I need to subtract 93 from 472.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>93.0</computed>
+<computed>379</computed>
 <requires>python:math</requires>
 
 User: Calculate 101 - 93
@@ -679,7 +679,7 @@ Assistant: <think>I need to subtract 93 from 101.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>93.0</computed>
+<computed>8</computed>
 <requires>python:math</requires>
 
 User: Calculate 384 - 83
@@ -691,7 +691,7 @@ Assistant: <think>I need to subtract 83 from 384.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>83.0</computed>
+<computed>301</computed>
 <requires>python:math</requires>
 
 User: Calculate 456 - 83
@@ -703,7 +703,7 @@ Assistant: <think>I need to subtract 83 from 456.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>83.0</computed>
+<computed>373</computed>
 <requires>python:math</requires>
 
 User: Calculate 382 - 84
@@ -715,7 +715,7 @@ Assistant: <think>I need to subtract 84 from 382.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>84.0</computed>
+<computed>298</computed>
 <requires>python:math</requires>
 
 User: Calculate 583 - 56
@@ -727,7 +727,7 @@ Assistant: <think>I need to subtract 56 from 583.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>56.0</computed>
+<computed>527</computed>
 <requires>python:math</requires>
 
 User: Calculate 643 - 18
@@ -739,7 +739,7 @@ Assistant: <think>I need to subtract 18 from 643.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>18.0</computed>
+<computed>625</computed>
 <requires>python:math</requires>
 
 User: Calculate 293 - 61
@@ -751,7 +751,7 @@ Assistant: <think>I need to subtract 61 from 293.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>61.0</computed>
+<computed>232</computed>
 <requires>python:math</requires>
 
 User: Calculate 941 - 52
@@ -763,7 +763,7 @@ Assistant: <think>I need to subtract 52 from 941.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>52.0</computed>
+<computed>889</computed>
 <requires>python:math</requires>
 
 User: Calculate 553 - 91
@@ -775,7 +775,7 @@ Assistant: <think>I need to subtract 91 from 553.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>91.0</computed>
+<computed>462</computed>
 <requires>python:math</requires>
 
 User: Calculate 283 - 40
@@ -787,7 +787,7 @@ Assistant: <think>I need to subtract 40 from 283.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>40.0</computed>
+<computed>243</computed>
 <requires>python:math</requires>
 
 User: Calculate 643 - 96
@@ -799,7 +799,7 @@ Assistant: <think>I need to subtract 96 from 643.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>96.0</computed>
+<computed>547</computed>
 <requires>python:math</requires>
 
 User: Calculate 988 - 19
@@ -811,7 +811,7 @@ Assistant: <think>I need to subtract 19 from 988.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>19.0</computed>
+<computed>969</computed>
 <requires>python:math</requires>
 
 User: Calculate 984 - 28
@@ -823,7 +823,7 @@ Assistant: <think>I need to subtract 28 from 984.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>28.0</computed>
+<computed>956</computed>
 <requires>python:math</requires>
 
 User: Calculate 700 - 68
@@ -835,7 +835,7 @@ Assistant: <think>I need to subtract 68 from 700.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>68.0</computed>
+<computed>632</computed>
 <requires>python:math</requires>
 
 User: Calculate 697 - 99
@@ -847,7 +847,7 @@ Assistant: <think>I need to subtract 99 from 697.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>99.0</computed>
+<computed>598</computed>
 <requires>python:math</requires>
 
 User: Calculate 322 - 19
@@ -859,7 +859,7 @@ Assistant: <think>I need to subtract 19 from 322.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>19.0</computed>
+<computed>303</computed>
 <requires>python:math</requires>
 
 User: Calculate 511 - 63
@@ -871,7 +871,7 @@ Assistant: <think>I need to subtract 63 from 511.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>63.0</computed>
+<computed>448</computed>
 <requires>python:math</requires>
 
 User: Calculate 582 - 45
@@ -883,7 +883,7 @@ Assistant: <think>I need to subtract 45 from 582.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>45.0</computed>
+<computed>537</computed>
 <requires>python:math</requires>
 
 User: Calculate 459 - 10
@@ -895,7 +895,7 @@ Assistant: <think>I need to subtract 10 from 459.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>10.0</computed>
+<computed>449</computed>
 <requires>python:math</requires>
 
 User: Calculate 212 - 64
@@ -907,7 +907,7 @@ Assistant: <think>I need to subtract 64 from 212.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>64.0</computed>
+<computed>148</computed>
 <requires>python:math</requires>
 
 User: Calculate 724 - 84
@@ -919,7 +919,7 @@ Assistant: <think>I need to subtract 84 from 724.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>84.0</computed>
+<computed>640</computed>
 <requires>python:math</requires>
 
 User: Calculate 780 - 83
@@ -931,7 +931,7 @@ Assistant: <think>I need to subtract 83 from 780.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>83.0</computed>
+<computed>697</computed>
 <requires>python:math</requires>
 
 User: Calculate 649 - 22
@@ -943,7 +943,7 @@ Assistant: <think>I need to subtract 22 from 649.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>22.0</computed>
+<computed>627</computed>
 <requires>python:math</requires>
 
 User: Calculate 770 - 29
@@ -955,7 +955,7 @@ Assistant: <think>I need to subtract 29 from 770.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>29.0</computed>
+<computed>741</computed>
 <requires>python:math</requires>
 
 User: Calculate 146 - 59
@@ -967,7 +967,7 @@ Assistant: <think>I need to subtract 59 from 146.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>59.0</computed>
+<computed>87</computed>
 <requires>python:math</requires>
 
 User: Calculate 462 - 68
@@ -979,7 +979,7 @@ Assistant: <think>I need to subtract 68 from 462.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>68.0</computed>
+<computed>394</computed>
 <requires>python:math</requires>
 
 User: Calculate 782 - 26
@@ -991,7 +991,7 @@ Assistant: <think>I need to subtract 26 from 782.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>26.0</computed>
+<computed>756</computed>
 <requires>python:math</requires>
 
 User: Calculate 517 - 86
@@ -1003,7 +1003,7 @@ Assistant: <think>I need to subtract 86 from 517.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>86.0</computed>
+<computed>431</computed>
 <requires>python:math</requires>
 
 User: Calculate 667 - 41
@@ -1015,7 +1015,7 @@ Assistant: <think>I need to subtract 41 from 667.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>41.0</computed>
+<computed>626</computed>
 <requires>python:math</requires>
 
 User: Calculate 421 - 71
@@ -1027,7 +1027,7 @@ Assistant: <think>I need to subtract 71 from 421.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>71.0</computed>
+<computed>350</computed>
 <requires>python:math</requires>
 
 User: Calculate 871 - 60
@@ -1039,7 +1039,7 @@ Assistant: <think>I need to subtract 60 from 871.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>60.0</computed>
+<computed>811</computed>
 <requires>python:math</requires>
 
 User: Calculate 786 - 37
@@ -1051,7 +1051,7 @@ Assistant: <think>I need to subtract 37 from 786.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>37.0</computed>
+<computed>749</computed>
 <requires>python:math</requires>
 
 User: Calculate 890 - 13
@@ -1063,7 +1063,7 @@ Assistant: <think>I need to subtract 13 from 890.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>13.0</computed>
+<computed>877</computed>
 <requires>python:math</requires>
 
 User: Calculate 302 - 60
@@ -1075,7 +1075,7 @@ Assistant: <think>I need to subtract 60 from 302.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>60.0</computed>
+<computed>242</computed>
 <requires>python:math</requires>
 
 User: Calculate 615 - 60
@@ -1087,7 +1087,7 @@ Assistant: <think>I need to subtract 60 from 615.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>60.0</computed>
+<computed>555</computed>
 <requires>python:math</requires>
 
 User: Calculate 748 - 64
@@ -1099,7 +1099,7 @@ Assistant: <think>I need to subtract 64 from 748.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>64.0</computed>
+<computed>684</computed>
 <requires>python:math</requires>
 
 User: Calculate 172 - 78
@@ -1111,7 +1111,7 @@ Assistant: <think>I need to subtract 78 from 172.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>78.0</computed>
+<computed>94</computed>
 <requires>python:math</requires>
 
 User: Calculate 115 - 42
@@ -1123,7 +1123,7 @@ Assistant: <think>I need to subtract 42 from 115.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>42.0</computed>
+<computed>73</computed>
 <requires>python:math</requires>
 
 User: Calculate 424 - 43
@@ -1135,7 +1135,7 @@ Assistant: <think>I need to subtract 43 from 424.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>43.0</computed>
+<computed>381</computed>
 <requires>python:math</requires>
 
 User: Calculate 744 - 71
@@ -1147,7 +1147,7 @@ Assistant: <think>I need to subtract 71 from 744.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>71.0</computed>
+<computed>673</computed>
 <requires>python:math</requires>
 
 User: Calculate 796 - 80
@@ -1159,7 +1159,7 @@ Assistant: <think>I need to subtract 80 from 796.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>80.0</computed>
+<computed>716</computed>
 <requires>python:math</requires>
 
 User: Calculate 349 - 80
@@ -1171,7 +1171,7 @@ Assistant: <think>I need to subtract 80 from 349.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>80.0</computed>
+<computed>269</computed>
 <requires>python:math</requires>
 
 User: Calculate 830 - 10
@@ -1183,7 +1183,7 @@ Assistant: <think>I need to subtract 10 from 830.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>10.0</computed>
+<computed>820</computed>
 <requires>python:math</requires>
 
 User: Calculate 792 - 11
@@ -1195,7 +1195,7 @@ Assistant: <think>I need to subtract 11 from 792.</think>
     local.get 1
     f64.sub))
 </wat_model>
-<computed>11.0</computed>
+<computed>781</computed>
 <requires>python:math</requires>
 
 User: Calculate 10% of 956
@@ -4723,7 +4723,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 9.71e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>11.6</computed>
 <requires>python:electrical</requires>
 
 User: Calculate resistance when voltage is 9.1 V and current is 2.10 A
@@ -4759,7 +4759,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 6.81e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>14.9</computed>
 <requires>python:electrical</requires>
 
 User: Calculate wavelength for 24 GHz (K-band) radio frequency
@@ -4831,7 +4831,7 @@ Assistant: <think>Power P = V × I. P = 213 V × 8.2 A. Energy in 1 hour = P × 
     local.get 1
     f64.mul))
 </wat_model>
-<computed>213.0</computed>
+<computed>221.2</computed>
 <requires>python:electrical</requires>
 
 User: Calculate resonant frequency of LC circuit with L = 8.32e-04 H and C = 2.26e-07 F
@@ -4843,7 +4843,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 8.32e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>17.1</computed>
 <requires>python:electrical</requires>
 
 User: Calculate the molarity of a solution with 0.42 moles of solute in 1.63 L of solution
@@ -4867,7 +4867,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 3.87e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>7.1</computed>
 <requires>python:electrical</requires>
 
 User: Calculate standard deviation of: [55, 89, 70, 27, 50, 74, 65, 64, 30]
@@ -4975,7 +4975,7 @@ Assistant: <think>Power P = V × I. P = 232 V × 1.3 A. Energy in 1 hour = P × 
     local.get 1
     f64.mul))
 </wat_model>
-<computed>232.0</computed>
+<computed>233.3</computed>
 <requires>python:electrical</requires>
 
 User: Calculate quarter-wave antenna length for 915 MHz
@@ -5035,7 +5035,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 2.42e-05 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>6.5</computed>
 <requires>python:electrical</requires>
 
 User: Calculate moles of gas at 1.76 atm, 7.9 L, and 273 K
@@ -5083,7 +5083,7 @@ Assistant: <think>Power P = V × I. P = 182 V × 13.8 A. Energy in 1 hour = P ×
     local.get 1
     f64.mul))
 </wat_model>
-<computed>182.0</computed>
+<computed>195.8</computed>
 <requires>python:electrical</requires>
 
 User: Calculate voltage when current is 9.61 A and resistance is 621 Ω
@@ -5215,7 +5215,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 7.40e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>14.9</computed>
 <requires>python:electrical</requires>
 
 User: Calculate power consumption for device at 175 V drawing 17.9 A
@@ -5227,7 +5227,7 @@ Assistant: <think>Power P = V × I. P = 175 V × 17.9 A. Energy in 1 hour = P ×
     local.get 1
     f64.mul))
 </wat_model>
-<computed>175.0</computed>
+<computed>192.9</computed>
 <requires>python:electrical</requires>
 
 User: Calculate wavelength for 100 MHz (FM radio) radio frequency
@@ -5347,7 +5347,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 9.66e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>18.8</computed>
 <requires>python:electrical</requires>
 
 User: Calculate the molarity of a solution with 1.14 moles of solute in 1.58 L of solution
@@ -5371,7 +5371,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 8.86e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>13.8</computed>
 <requires>python:electrical</requires>
 
 User: Calculate the molarity of a solution with 1.54 moles of solute in 1.52 L of solution
@@ -5419,7 +5419,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 5.66e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>8.5</computed>
 <requires>python:electrical</requires>
 
 User: Calculate power consumption for device at 156 V drawing 2.1 A
@@ -5431,7 +5431,7 @@ Assistant: <think>Power P = V × I. P = 156 V × 2.1 A. Energy in 1 hour = P × 
     local.get 1
     f64.mul))
 </wat_model>
-<computed>156.0</computed>
+<computed>158.1</computed>
 <requires>python:electrical</requires>
 
 User: Calculate resonant frequency of LC circuit with L = 7.46e-04 H and C = 8.59e-07 F
@@ -5443,7 +5443,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 7.46e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>9.9</computed>
 <requires>python:electrical</requires>
 
 User: Calculate standard deviation of: [78, 80, 13, 29, 43, 80, 87, 63, 24, 71]
@@ -5467,7 +5467,7 @@ Assistant: <think>Power P = V × I. P = 228 V × 18.4 A. Energy in 1 hour = P ×
     local.get 1
     f64.mul))
 </wat_model>
-<computed>228.0</computed>
+<computed>246.4</computed>
 <requires>python:electrical</requires>
 
 User: Calculate the molarity of a solution with 3.75 moles of solute in 1.47 L of solution
@@ -5503,7 +5503,7 @@ Assistant: <think>Power P = V × I. P = 129 V × 4.0 A. Energy in 1 hour = P × 
     local.get 1
     f64.mul))
 </wat_model>
-<computed>129.0</computed>
+<computed>133</computed>
 <requires>python:electrical</requires>
 
 User: Calculate power consumption for device at 202 V drawing 18.1 A
@@ -5515,7 +5515,7 @@ Assistant: <think>Power P = V × I. P = 202 V × 18.1 A. Energy in 1 hour = P ×
     local.get 1
     f64.mul))
 </wat_model>
-<computed>202.0</computed>
+<computed>220.1</computed>
 <requires>python:electrical</requires>
 
 User: Calculate current when voltage is 5.9 V and resistance is 929 Ω
@@ -5539,7 +5539,7 @@ Assistant: <think>Power P = V × I. P = 171 V × 16.1 A. Energy in 1 hour = P ×
     local.get 1
     f64.mul))
 </wat_model>
-<computed>171.0</computed>
+<computed>187.1</computed>
 <requires>python:electrical</requires>
 
 User: Calculate power consumption for device at 216 V drawing 3.2 A
@@ -5551,7 +5551,7 @@ Assistant: <think>Power P = V × I. P = 216 V × 3.2 A. Energy in 1 hour = P × 
     local.get 1
     f64.mul))
 </wat_model>
-<computed>216.0</computed>
+<computed>219.2</computed>
 <requires>python:electrical</requires>
 
 User: Calculate standard deviation of: [78, 74, 74, 59, 38, 12, 99, 93, 21]
@@ -5587,7 +5587,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 4.13e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>12.1</computed>
 <requires>python:electrical</requires>
 
 User: Calculate wavelength for electromagnetic wave with frequency 9614 Hz
@@ -5647,7 +5647,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 2.29e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>6.5</computed>
 <requires>python:electrical</requires>
 
 User: Calculate moles of gas at 4.61 atm, 12.4 L, and 280 K
@@ -5707,7 +5707,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 3.21e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>10.5</computed>
 <requires>python:electrical</requires>
 
 User: Calculate resistance when voltage is 35.0 V and current is 1.35 A
@@ -5779,7 +5779,7 @@ Assistant: <think>Power P = V × I. P = 188 V × 16.0 A. Energy in 1 hour = P ×
     local.get 1
     f64.mul))
 </wat_model>
-<computed>188.0</computed>
+<computed>204</computed>
 <requires>python:electrical</requires>
 
 User: Calculate resistance when voltage is 10.7 V and current is 2.45 A
@@ -5863,7 +5863,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 7.48e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>10.2</computed>
 <requires>python:electrical</requires>
 
 User: Calculate standard deviation of: [41, 42, 31, 36, 34, 66, 70]
@@ -5887,7 +5887,7 @@ Assistant: <think>Power P = V × I. P = 151 V × 8.6 A. Energy in 1 hour = P × 
     local.get 1
     f64.mul))
 </wat_model>
-<computed>151.0</computed>
+<computed>159.6</computed>
 <requires>python:electrical</requires>
 
 User: Calculate quarter-wave antenna length for 433 MHz
@@ -5911,7 +5911,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 4.31e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>5.8</computed>
 <requires>python:electrical</requires>
 
 User: Calculate wavelength for electromagnetic wave with frequency 1577 Hz
@@ -5935,7 +5935,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 5.51e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>10.6</computed>
 <requires>python:electrical</requires>
 
 User: Calculate quarter-wave antenna length for 915 MHz
@@ -6007,7 +6007,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 8.01e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>16.5</computed>
 <requires>python:electrical</requires>
 
 User: Calculate standard deviation of: [35, 89, 74, 54, 68, 97, 15]
@@ -6079,7 +6079,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 2.56e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>3.6</computed>
 <requires>python:electrical</requires>
 
 User: Calculate the molarity of a solution with 2.97 moles of solute in 0.79 L of solution
@@ -6115,7 +6115,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 5.48e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>8.9</computed>
 <requires>python:electrical</requires>
 
 User: Calculate wavelength for electromagnetic wave with frequency 8029 Hz
@@ -6151,7 +6151,7 @@ Assistant: <think>Power P = V × I. P = 215 V × 4.2 A. Energy in 1 hour = P × 
     local.get 1
     f64.mul))
 </wat_model>
-<computed>215.0</computed>
+<computed>219.2</computed>
 <requires>python:electrical</requires>
 
 User: Calculate wavelength for 10 GHz (X-band) radio frequency
@@ -6271,7 +6271,7 @@ Assistant: <think>Power P = V × I. P = 148 V × 10.0 A. Energy in 1 hour = P ×
     local.get 1
     f64.mul))
 </wat_model>
-<computed>148.0</computed>
+<computed>158</computed>
 <requires>python:electrical</requires>
 
 User: Calculate the molarity of a solution with 3.33 moles of solute in 0.21 L of solution
@@ -6583,7 +6583,7 @@ Assistant: <think>Power P = V × I. P = 134 V × 8.2 A. Energy in 1 hour = P × 
     local.get 1
     f64.mul))
 </wat_model>
-<computed>134.0</computed>
+<computed>142.2</computed>
 <requires>python:electrical</requires>
 
 User: Calculate standard deviation of: [38, 61, 12, 59, 56, 54, 97, 21, 72]
@@ -6643,7 +6643,7 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 3.94e-04 H and
     local.get 1
     f64.div))
 </wat_model>
-<computed>1.0</computed>
+<computed>10.2</computed>
 <requires>python:electrical</requires>
 
 User: Calculate moving average of [1,2,3,4,5,6,7,8,9,10]
@@ -6657,4 +6657,3 @@ Assistant: <think>I need to calculate a 3-period moving average.</think>
 </wat_model>
 <computed>3.0</computed>
 <requires>python:math</requires>
-
