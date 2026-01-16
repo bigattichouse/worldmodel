@@ -103,7 +103,8 @@ class QwenWASMAdapter(nn.Module):
         wasm_ids: Optional[torch.Tensor] = None,
         wasm_attention_mask: Optional[torch.Tensor] = None,
         execute_wasm: bool = True,
-        return_dict: bool = True
+        return_dict: bool = True,
+        **kwargs  # Handle additional trainer parameters like 'labels'
     ) -> Dict[str, torch.Tensor]:
         """
         Forward pass with text + WASM processing.
