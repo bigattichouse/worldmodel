@@ -173,6 +173,36 @@ class WASMTrainer(Trainer):
         self._custom_metrics["wasm_executions"] = wasm_executions
         
         return (total_loss, outputs) if return_outputs else total_loss
+    
+    def evaluate(self, eval_dataset=None, ignore_keys=None, metric_key_prefix="eval"):
+        """Override evaluate to ensure eval_loss is returned."""
+        # Call parent evaluate
+        metrics = super().evaluate(eval_dataset, ignore_keys, metric_key_prefix)
+        
+        # Ensure eval_loss is included
+        if 'eval_loss' not in metrics:
+            # Manually compute eval_loss if missing
+            eval_dataloader = self.get_eval_dataloader(eval_dataset)
+            total_loss = 0.0
+            num_samples = 0
+            
+            self.model.eval()
+            with torch.no_grad():
+                for batch in eval_dataloader:
+                    # Move batch to device
+                    batch = {k: v.to(self.args.device) if isinstance(v, torch.Tensor) else v 
+                            for k, v in batch.items()}
+                    
+                    loss = self.compute_loss(self.model, batch, return_outputs=False)
+                    total_loss += loss.item()
+                    num_samples += 1
+            
+            if num_samples > 0:
+                metrics['eval_loss'] = total_loss / num_samples
+            else:
+                metrics['eval_loss'] = 0.0
+        
+        return metrics
 
 def setup_wasm_model_and_tokenizers(model_path: str, use_sandbox: bool = True, sandbox_config: Dict = None):
     """Setup WASM adapter and tokenizers with sandbox configuration."""
