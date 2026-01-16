@@ -1,0 +1,899 @@
+User: Calculate 12 * 7
+Assistant: <think>I need to calculate 12 * 7. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>84.0</computed>
+<requires>wasm:math</requires>
+
+User: What is 3 times 8?
+Assistant: <think>I need to calculate 3 times 8. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>24.0</computed>
+<requires>wasm:math</requires>
+
+User: Find the product of 15 and 6
+Assistant: <think>I need to find the product of 15 and 6. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>90.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 2 × 9
+Assistant: <think>I need to calculate 2 × 9. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>18.0</computed>
+<requires>wasm:math</requires>
+
+User: Multiply 4 by 25
+Assistant: <think>I need to multiply 4 by 25. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>100.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 1 * 37
+Assistant: <think>I need to calculate 1 * 37. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>37.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 10 × 10
+Assistant: <think>I need to calculate 10 × 10. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>100.0</computed>
+<requires>wasm:math</requires>
+
+User: Find the product of 50 and 3
+Assistant: <think>I need to find the product of 50 and 3. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>150.0</computed>
+<requires>wasm:math</requires>
+
+User: Multiply 7 times 11
+Assistant: <think>I need to multiply 7 times 11. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>77.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 6 * 13
+Assistant: <think>I need to calculate 6 * 13. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>78.0</computed>
+<requires>wasm:math</requires>
+
+User: What is 8 × 14?
+Assistant: <think>I need to calculate 8 × 14. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>112.0</computed>
+<requires>wasm:math</requires>
+
+User: Find the product of 9 and 12
+Assistant: <think>I need to find the product of 9 and 12. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>108.0</computed>
+<requires>wasm:math</requires>
+
+User: Multiply 5 by 16
+Assistant: <think>I need to multiply 5 by 16. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>80.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 20 * 4
+Assistant: <think>I need to calculate 20 * 4. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>80.0</computed>
+<requires>wasm:math</requires>
+
+User: What is 100 times 2?
+Assistant: <think>I need to calculate 100 times 2. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>200.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 99 × 3
+Assistant: <think>I need to calculate 99 × 3. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>297.0</computed>
+<requires>wasm:math</requires>
+
+User: Find the product of 17 and 5
+Assistant: <think>I need to find the product of 17 and 5. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>85.0</computed>
+<requires>wasm:math</requires>
+
+User: Multiply 23 by 4
+Assistant: <think>I need to multiply 23 by 4. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>92.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 18 * 6
+Assistant: <think>I need to calculate 18 * 6. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>108.0</computed>
+<requires>wasm:math</requires>
+
+User: What is 14 × 7?
+Assistant: <think>I need to calculate 14 × 7. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>98.0</computed>
+<requires>wasm:math</requires>
+
+User: Find the product of 11 and 9
+Assistant: <think>I need to find the product of 11 and 9. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>99.0</computed>
+<requires>wasm:math</requires>
+
+User: Multiply 13 times 8
+Assistant: <think>I need to multiply 13 times 8. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>104.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 16 * 9
+Assistant: <think>I need to calculate 16 * 9. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>144.0</computed>
+<requires>wasm:math</requires>
+
+User: What is 19 times 5?
+Assistant: <think>I need to calculate 19 times 5. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>95.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 25 × 8
+Assistant: <think>I need to calculate 25 × 8. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>200.0</computed>
+<requires>wasm:math</requires>
+
+User: Find the product of 30 and 12
+Assistant: <think>I need to find the product of 30 and 12. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>360.0</computed>
+<requires>wasm:math</requires>
+
+User: Multiply 35 by 6
+Assistant: <think>I need to multiply 35 by 6. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>210.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 40 * 15
+Assistant: <think>I need to calculate 40 * 15. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>600.0</computed>
+<requires>wasm:math</requires>
+
+User: What is 45 × 10?
+Assistant: <think>I need to calculate 45 × 10. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>450.0</computed>
+<requires>wasm:math</requires>
+
+User: Find the product of 60 and 7
+Assistant: <think>I need to find the product of 60 and 7. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>420.0</computed>
+<requires>wasm:math</requires>
+
+User: Multiply 75 times 4
+Assistant: <think>I need to multiply 75 times 4. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>300.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 88 * 5
+Assistant: <think>I need to calculate 88 * 5. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>440.0</computed>
+<requires>wasm:math</requires>
+
+User: What is 90 × 3?
+Assistant: <think>I need to calculate 90 × 3. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>270.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 125 * 8
+Assistant: <think>I need to calculate 125 * 8. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>1000.0</computed>
+<requires>wasm:math</requires>
+
+User: Find the product of 150 and 6
+Assistant: <think>I need to find the product of 150 and 6. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>900.0</computed>
+<requires>wasm:math</requires>
+
+User: Multiply 200 by 9
+Assistant: <think>I need to multiply 200 by 9. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>1800.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 250 × 4
+Assistant: <think>I need to calculate 250 × 4. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>1000.0</computed>
+<requires>wasm:math</requires>
+
+User: What is 300 times 7?
+Assistant: <think>I need to calculate 300 times 7. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>2100.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 2.5 * 4
+Assistant: <think>I need to calculate 2.5 * 4. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>10.0</computed>
+<requires>wasm:math</requires>
+
+User: Find the product of 3.2 and 5
+Assistant: <think>I need to find the product of 3.2 and 5. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>16.0</computed>
+<requires>wasm:math</requires>
+
+User: Multiply 1.5 times 8
+Assistant: <think>I need to multiply 1.5 times 8. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>12.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 0.75 × 16
+Assistant: <think>I need to calculate 0.75 × 16. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>12.0</computed>
+<requires>wasm:math</requires>
+
+User: What is 6.5 * 12?
+Assistant: <think>I need to calculate 6.5 * 12. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>78.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 8.25 × 4
+Assistant: <think>I need to calculate 8.25 × 4. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>33.0</computed>
+<requires>wasm:math</requires>
+
+User: Find the product of 12.5 and 8
+Assistant: <think>I need to find the product of 12.5 and 8. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>100.0</computed>
+<requires>wasm:math</requires>
+
+User: Multiply 0.5 by 100
+Assistant: <think>I need to multiply 0.5 by 100. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>50.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 0.25 * 64
+Assistant: <think>I need to calculate 0.25 * 64. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>16.0</computed>
+<requires>wasm:math</requires>
+
+User: What is 1.25 times 16?
+Assistant: <think>I need to calculate 1.25 times 16. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>20.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate -3 * 7
+Assistant: <think>I need to calculate -3 * 7. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>21.0</computed>
+<requires>wasm:math</requires>
+
+User: Find the product of -5 and -8
+Assistant: <think>I need to find the product of -5 and -8. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>40.0</computed>
+<requires>wasm:math</requires>
+
+User: Multiply -12 times 4
+Assistant: <think>I need to multiply -12 times 4. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>48.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 9 × (-6)
+Assistant: <think>I need to calculate 9 × (-6). Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>54.0</computed>
+<requires>wasm:math</requires>
+
+User: What is -15 * -2?
+Assistant: <think>I need to calculate -15 * -2. Let me compute this step by step.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>30.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 15% of 200
+Assistant: <think>I need to calculate 15% of 200. 15% means 15/100 = 0.15.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>3000.0</computed>
+<requires>wasm:math</requires>
+
+User: Find 25% of 80
+Assistant: <think>I need to calculate 25% of 80. 25% means 25/100 = 0.25.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>2000.0</computed>
+<requires>wasm:math</requires>
+
+User: What is 10% of 150?
+Assistant: <think>I need to calculate 10% of 150. 10% means 10/100 = 0.10.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>1500.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 50% of 240
+Assistant: <think>I need to calculate 50% of 240. 50% means 50/100 = 0.50.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>12000.0</computed>
+<requires>wasm:math</requires>
+
+User: Find 75% of 64
+Assistant: <think>I need to calculate 75% of 64. 75% means 75/100 = 0.75.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>4800.0</computed>
+<requires>wasm:math</requires>
+
+User: What is 20% of 350?
+Assistant: <think>I need to calculate 20% of 350. 20% means 20/100 = 0.20.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>7000.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 5% of 1000
+Assistant: <think>I need to calculate 5% of 1000. 5% means 5/100 = 0.05.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>5000.0</computed>
+<requires>wasm:math</requires>
+
+User: Find 33% of 300
+Assistant: <think>I need to calculate 33% of 300. 33% means 33/100 = 0.33.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>9900.0</computed>
+<requires>wasm:math</requires>
+
+User: What is 12.5% of 160?
+Assistant: <think>I need to calculate 12.5% of 160. 12.5% means 12.5/100 = 0.125.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>2000.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 87.5% of 48
+Assistant: <think>I need to calculate 87.5% of 48. 87.5% means 87.5/100 = 0.875.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>4200.0</computed>
+<requires>wasm:math</requires>
+
+User: What is 7 to the power of 2?
+Assistant: <think>I need to calculate 7 to the power of 2, which means 7 * 7.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>14.0</computed>
+<requires>wasm:math</requires>
+
+User: What is 6 × 6?
+Assistant: <think>I need to calculate 6 × 6.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>36.0</computed>
+<requires>wasm:math</requires>
+
+User: What is 11 to the power of 2?
+Assistant: <think>I need to calculate 11 to the power of 2, which means 11 * 11.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>22.0</computed>
+<requires>wasm:math</requires>
+
+User: Find 14 × 14
+Assistant: <think>I need to calculate 14 × 14.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>196.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate the area of a rectangle with length 12 and width 8
+Assistant: <think>I need to calculate the area of a rectangle. Area = length × width = 12 × 8.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>96.0</computed>
+<requires>wasm:math</requires>
+
+User: What is the area of a rectangle 15 cm by 6 cm?
+Assistant: <think>I need to calculate the area of a rectangle. Area = length × width = 15 × 6.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>90.0</computed>
+<requires>wasm:math</requires>
+
+User: Calculate the area of a rectangular garden that is 20 meters long and 12 meters wide
+Assistant: <think>I need to calculate the area of a rectangle. Area = length × width = 20 × 12.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>240.0</computed>
+<requires>wasm:math</requires>
+
+User: If I buy 6 packs of gum and each pack costs $3, how much do I spend?
+Assistant: <think>I need to calculate the total cost. Total = number of packs × cost per pack = 6 × 3.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>18.0</computed>
+<requires>wasm:math</requires>
+
+User: A baker makes 24 cookies per batch. How many cookies are in 5 batches?
+Assistant: <think>I need to calculate the total cookies. Total = cookies per batch × number of batches = 24 × 5.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>120.0</computed>
+<requires>wasm:math</requires>
+
+User: There are 8 students in each group. If there are 7 groups, how many students total?
+Assistant: <think>I need to calculate the total students. Total = students per group × number of groups = 8 × 7.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>56.0</computed>
+<requires>wasm:math</requires>
+
+User: A parking lot has 15 rows with 12 spaces each. How many parking spaces are there?
+Assistant: <think>I need to calculate the total spaces. Total = spaces per row × number of rows = 12 × 15.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>180.0</computed>
+<requires>wasm:math</requires>
+
+User: If a train car holds 80 passengers and there are 6 cars, what's the capacity?
+Assistant: <think>I need to calculate the total capacity. Total = passengers per car × number of cars = 80 × 6.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.mul))
+</wat_model>
+<computed>480.0</computed>
+<requires>wasm:math</requires>

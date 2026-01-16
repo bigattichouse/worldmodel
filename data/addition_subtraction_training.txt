@@ -1,0 +1,299 @@
+User: Calculate 145 + 78
+Assistant: <think>I need to calculate 145 + 78. This is addition.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.add))
+</wat_model>
+<computed>223</computed>
+<requires>wasm:math</requires>
+
+User: What is 1234 + 5678?
+Assistant: <think>I need to calculate 1234 + 5678. This is addition of large numbers.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.add))
+</wat_model>
+<computed>6912</computed>
+<requires>wasm:math</requires>
+
+User: Find the sum of 9876 and 1234
+Assistant: <think>I need to find the sum of 9876 and 1234. This is 9876 + 1234.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.add))
+</wat_model>
+<computed>11110</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 25.75 + 14.25
+Assistant: <think>I need to calculate 25.75 + 14.25. This is addition of decimals.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.add))
+</wat_model>
+<computed>40</computed>
+<requires>wasm:math</requires>
+
+User: What is 123.45 + 67.89?
+Assistant: <think>I need to calculate 123.45 + 67.89. This is decimal addition.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.add))
+</wat_model>
+<computed>191.34</computed>
+<requires>wasm:math</requires>
+
+User: Find 3.14 + 2.86
+Assistant: <think>I need to find 3.14 + 2.86. This is decimal addition.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.add))
+</wat_model>
+<computed>6</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 500 - 125
+Assistant: <think>I need to calculate 500 - 125. This is subtraction.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.sub))
+</wat_model>
+<computed>375</computed>
+<requires>wasm:math</requires>
+
+User: What is 1000 - 267?
+Assistant: <think>I need to calculate 1000 - 267. This is subtraction.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.sub))
+</wat_model>
+<computed>733</computed>
+<requires>wasm:math</requires>
+
+User: Find the difference between 5000 and 1234
+Assistant: <think>I need to find the difference between 5000 and 1234. This is 5000 - 1234.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.sub))
+</wat_model>
+<computed>3766</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 8765 - 4321
+Assistant: <think>I need to calculate 8765 - 4321. This is subtraction of large numbers.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.sub))
+</wat_model>
+<computed>4444</computed>
+<requires>wasm:math</requires>
+
+User: What is 99.99 - 25.50?
+Assistant: <think>I need to calculate 99.99 - 25.50. This is decimal subtraction.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.sub))
+</wat_model>
+<computed>74.49</computed>
+<requires>wasm:math</requires>
+
+User: Find 87.6 - 12.3
+Assistant: <think>I need to find 87.6 - 12.3. This is decimal subtraction.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.sub))
+</wat_model>
+<computed>75.3</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 100.0 - 33.33
+Assistant: <think>I need to calculate 100.0 - 33.33. This is decimal subtraction.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.sub))
+</wat_model>
+<computed>66.67</computed>
+<requires>wasm:math</requires>
+
+User: What is 200.5 - 89.75?
+Assistant: <think>I need to calculate 200.5 - 89.75. This is decimal subtraction.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.sub))
+</wat_model>
+<computed>110.75</computed>
+<requires>wasm:math</requires>
+
+User: Find 456.78 - 123.45
+Assistant: <think>I need to find 456.78 - 123.45. This is decimal subtraction.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.sub))
+</wat_model>
+<computed>333.33</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 2500 + 750
+Assistant: <think>I need to calculate 2500 + 750. This is addition.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.add))
+</wat_model>
+<computed>3250</computed>
+<requires>wasm:math</requires>
+
+User: What is 10000 + 2345?
+Assistant: <think>I need to calculate 10000 + 2345. This is large number addition.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.add))
+</wat_model>
+<computed>12345</computed>
+<requires>wasm:math</requires>
+
+User: Find 15000 - 3456
+Assistant: <think>I need to find 15000 - 3456. This is large number subtraction.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.sub))
+</wat_model>
+<computed>11544</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 50000 - 12345
+Assistant: <think>I need to calculate 50000 - 12345. This is large number subtraction.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.sub))
+</wat_model>
+<computed>37655</computed>
+<requires>wasm:math</requires>
+
+User: What is 100000 + 87654?
+Assistant: <think>I need to calculate 100000 + 87654. This is very large number addition.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.add))
+</wat_model>
+<computed>187654</computed>
+<requires>wasm:math</requires>
+
+User: If I have $450 and spend $125, how much money do I have left?
+Assistant: <think>I need to subtract what I spent from what I had. 450 - 125.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.sub))
+</wat_model>
+<computed>325</computed>
+<requires>wasm:math</requires>
+
+User: A store has 1250 items and receives 375 more items. How many items does it have now?
+Assistant: <think>I need to add the new items to the existing items. 1250 + 375.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.add))
+</wat_model>
+<computed>1625</computed>
+<requires>wasm:math</requires>
+
+User: There are 2000 people at an event and 456 people leave. How many people remain?
+Assistant: <think>I need to subtract the people who left from the total. 2000 - 456.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.sub))
+</wat_model>
+<computed>1544</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 0.25 + 0.75
+Assistant: <think>I need to calculate 0.25 + 0.75. This is decimal addition.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.add))
+</wat_model>
+<computed>1</computed>
+<requires>wasm:math</requires>
+
+User: What is 1.5 - 0.75?
+Assistant: <think>I need to calculate 1.5 - 0.75. This is decimal subtraction.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.sub))
+</wat_model>
+<computed>0.75</computed>
+<requires>wasm:math</requires>

@@ -32,7 +32,7 @@ class WASMChat:
         )
         
         # Load trained weights from latest checkpoint
-        checkpoint_path = "./wasm_worldmodel_output/checkpoint-1890/pytorch_model.bin"
+        checkpoint_path = "./wasm_worldmodel_output/final_model/pytorch_model.bin"
         print(f"🔄 Loading weights from: {checkpoint_path}")
         state_dict = torch.load(checkpoint_path, map_location="cpu", weights_only=False)
         self.model.load_state_dict(state_dict, strict=False)

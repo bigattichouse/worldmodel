@@ -1,0 +1,359 @@
+User: Calculate 84 ÷ 7
+Assistant: <think>I need to calculate 84 ÷ 7. This is division.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>12</computed>
+<requires>wasm:math</requires>
+
+User: What is 24 divided by 3?
+Assistant: <think>I need to calculate 24 divided by 3.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>8</computed>
+<requires>wasm:math</requires>
+
+User: Find 100 ÷ 4
+Assistant: <think>I need to find 100 ÷ 4.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>25</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 90 / 6
+Assistant: <think>I need to calculate 90 / 6.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>15</computed>
+<requires>wasm:math</requires>
+
+User: What is 63 divided by 9?
+Assistant: <think>I need to calculate 63 divided by 9.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>7</computed>
+<requires>wasm:math</requires>
+
+User: Find 48 ÷ 8
+Assistant: <think>I need to find 48 ÷ 8.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>6</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 56 / 7
+Assistant: <think>I need to calculate 56 / 7.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>8</computed>
+<requires>wasm:math</requires>
+
+User: What is 72 divided by 8?
+Assistant: <think>I need to calculate 72 divided by 8.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>9</computed>
+<requires>wasm:math</requires>
+
+User: Find 81 ÷ 9
+Assistant: <think>I need to find 81 ÷ 9.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>9</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 144 / 12
+Assistant: <think>I need to calculate 144 / 12.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>12</computed>
+<requires>wasm:math</requires>
+
+User: What is 200 divided by 25?
+Assistant: <think>I need to calculate 200 divided by 25.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>8</computed>
+<requires>wasm:math</requires>
+
+User: Find 150 ÷ 10
+Assistant: <think>I need to find 150 ÷ 10.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>15</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 240 / 16
+Assistant: <think>I need to calculate 240 / 16.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>15</computed>
+<requires>wasm:math</requires>
+
+User: What is 300 divided by 20?
+Assistant: <think>I need to calculate 300 divided by 20.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>15</computed>
+<requires>wasm:math</requires>
+
+User: Find 450 ÷ 18
+Assistant: <think>I need to find 450 ÷ 18.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>25</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 1000 / 25
+Assistant: <think>I need to calculate 1000 / 25.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>40</computed>
+<requires>wasm:math</requires>
+
+User: What is 1500 divided by 30?
+Assistant: <think>I need to calculate 1500 divided by 30.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>50</computed>
+<requires>wasm:math</requires>
+
+User: Find 2400 ÷ 40
+Assistant: <think>I need to find 2400 ÷ 40.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>60</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 3600 / 60
+Assistant: <think>I need to calculate 3600 / 60.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>60</computed>
+<requires>wasm:math</requires>
+
+User: What is 10.5 divided by 3?
+Assistant: <think>I need to calculate 10.5 divided by 3.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>3.5</computed>
+<requires>wasm:math</requires>
+
+User: Find 12.8 ÷ 4
+Assistant: <think>I need to find 12.8 ÷ 4.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>3.2</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 15.6 / 2
+Assistant: <think>I need to calculate 15.6 / 2.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>7.8</computed>
+<requires>wasm:math</requires>
+
+User: What is 22.4 divided by 8?
+Assistant: <think>I need to calculate 22.4 divided by 8.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>2.8</computed>
+<requires>wasm:math</requires>
+
+User: Find 25.5 ÷ 5
+Assistant: <think>I need to find 25.5 ÷ 5.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>5.1</computed>
+<requires>wasm:math</requires>
+
+User: Calculate 100 ÷ 8
+Assistant: <think>I need to calculate 100 ÷ 8.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>12.5</computed>
+<requires>wasm:math</requires>
+
+User: What is 75 divided by 6?
+Assistant: <think>I need to calculate 75 divided by 6.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>12.5</computed>
+<requires>wasm:math</requires>
+
+User: Find 50 ÷ 3
+Assistant: <think>I need to find 50 ÷ 3.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>16.666666666666668</computed>
+<requires>wasm:math</requires>
+
+User: If 24 cookies are shared equally among 6 children, how many cookies does each child get?
+Assistant: <think>I need to divide 24 cookies by 6 children. 24 ÷ 6.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>4</computed>
+<requires>wasm:math</requires>
+
+User: A pizza is cut into 8 slices and there are 32 slices total. How many pizzas are there?
+Assistant: <think>I need to find how many pizzas. Total slices ÷ slices per pizza = 32 ÷ 8.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>4</computed>
+<requires>wasm:math</requires>
+
+User: If $120 is divided equally among 4 people, how much does each person get?
+Assistant: <think>I need to divide $120 by 4 people. 120 ÷ 4.</think>
+<wat_model>
+(module
+  (func $compute (param f64 f64) (result f64)
+    local.get 0
+    local.get 1
+    f64.div))
+</wat_model>
+<computed>30</computed>
+<requires>wasm:math</requires>
