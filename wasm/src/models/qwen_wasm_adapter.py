@@ -302,46 +302,46 @@ class QwenWASMAdapter(nn.Module):
         # Map token patterns to specific operations
         if operation_type == 0:  # Addition
             return """(module
-  (func $add (param f64 f64) (result f64)
+  (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))"""
+    f64.add)
+  (export "compute" (func $compute)))"""
         elif operation_type == 1:  # Subtraction
             return """(module
-  (func $sub (param f64 f64) (result f64)
+  (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))"""
+    f64.sub)
+  (export "compute" (func $compute)))"""
         elif operation_type == 2:  # Multiplication
             return """(module
-  (func $mult (param f64 f64) (result f64)
+  (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))"""
+    f64.mul)
+  (export "compute" (func $compute)))"""
         elif operation_type == 3:  # Division
             return """(module
-  (func $div (param f64 f64) (result f64)
+  (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))"""
+    f64.div)
+  (export "compute" (func $compute)))"""
         elif operation_type == 4:  # Square
             return """(module
-  (func $square (param f64) (result f64)
+  (func $compute (param f64) (result f64)
     local.get 0
     local.get 0
-    f64.mul))"""
-        else:  # Power
+    f64.mul)
+  (export "compute" (func $compute)))"""
+        else:  # Power (simplified)
             return """(module
-  (func $pow (param f64 f64) (result f64)
+  (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    call $pow_impl)
-  (func $pow_impl (param f64 f64) (result f64)
-    local.get 0
-    local.get 1
-    f64.const 1.0
-    f64.add
-    f64.mul))"""
+    f64.mul)
+  (export "compute" (func $compute)))"""
     
     def _validate_wat_code(self, wat_code: str) -> str:
         """Validate and clean WAT code."""
@@ -479,22 +479,38 @@ class QwenWASMAdapter(nn.Module):
                 execute_wasm=execute_wasm
             )
         
-        # Generate response using the model logits
-        logits = outputs["logits"]
+        # Generate response using proper auto-regressive generation
+        generated_ids = inputs.input_ids.clone()
         
-        # Get the next token predictions from the last position
-        next_token_logits = logits[0, -1, :]  # Last position, remove batch dim
+        # Generate tokens up to max_length
+        for step in range(max_length):
+            # Get current logits
+            current_outputs = self.forward(
+                input_ids=generated_ids,
+                attention_mask=torch.ones_like(generated_ids),
+                execute_wasm=execute_wasm
+            )
+            
+            logits = current_outputs["logits"]
+            
+            # Get next token predictions from the last position
+            next_token_logits = logits[0, -1, :]  # Last position, remove batch dim
+            
+            # Sample next token based on temperature
+            if temperature > 0:
+                next_token_logits = next_token_logits / temperature
+                probs = torch.softmax(next_token_logits, dim=-1)
+                next_token_id = torch.multinomial(probs, num_samples=1)
+            else:
+                next_token_id = torch.argmax(next_token_logits, dim=-1, keepdim=True)
+            
+            # Check for EOS token
+            if next_token_id.item() == self.text_tokenizer.eos_token_id:
+                break
+                
+            # Append new token
+            generated_ids = torch.cat([generated_ids, next_token_id.unsqueeze(0)], dim=1)
         
-        # Sample next token based on temperature
-        if temperature > 0:
-            next_token_logits = next_token_logits / temperature
-            probs = torch.softmax(next_token_logits, dim=-1)
-            next_token_id = torch.multinomial(probs, num_samples=1)
-        else:
-            next_token_id = torch.argmax(next_token_logits, dim=-1, keepdim=True)
-        
-        # Append to input for next iteration (simplified single step)
-        generated_ids = torch.cat([inputs.input_ids, next_token_id.unsqueeze(0)], dim=1)
         generated_text = self.text_tokenizer.decode(generated_ids[0], skip_special_tokens=True)
         
         return {

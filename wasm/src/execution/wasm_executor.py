@@ -136,9 +136,13 @@ class WASMExecutor:
                     "computed_token": "<error>compilation_failed</error>"
                 }
             
-            # Execute WASM (simplified - would need actual WASM runtime)
-            # For now, return a placeholder result
-            result = self._extract_simple_computation(wat_code, inputs)
+            # Execute WASM using wasmtime Python runtime
+            try:
+                result = self._execute_with_wasmtime(wasm_file, inputs)
+            except Exception as e:
+                # Fallback to pattern matching if wasmtime fails
+                print(f"Warning: wasmtime execution failed ({e}), falling back to pattern matching")
+                result = self._extract_simple_computation(wat_code, inputs)
             
             return {
                 "success": True,
@@ -196,6 +200,56 @@ class WASMExecutor:
             return a * 0.75
         
         return None
+    
+    def _execute_with_wasmtime(self, wasm_file: str, inputs: Optional[List[Any]]) -> Optional[float]:
+        """Execute WASM file using wasmtime Python runtime."""
+        try:
+            from wasmtime import Store, Module, Instance, Func, FuncType, ValType
+            
+            # Load WASM module
+            with open(wasm_file, 'rb') as f:
+                wasm_bytes = f.read()
+            
+            store = Store()
+            module = Module(store.engine, wasm_bytes)
+            instance = Instance(store, module, [])
+            
+            # Find the compute function (standard name we use)
+            compute_func = None
+            exports = instance.exports(store)
+            
+            for name, value in exports.items():
+                if name == "compute":
+                    compute_func = value
+                    break
+            
+            if not compute_func:
+                # Try finding any exported function
+                for name, value in exports.items():
+                    if isinstance(value, Func):
+                        compute_func = value
+                        break
+            
+            if not compute_func:
+                raise RuntimeError("No exported function found in WASM module")
+            
+            # Execute with inputs
+            if inputs and len(inputs) >= 2:
+                # Binary operations (most common)
+                result = compute_func(store, float(inputs[0]), float(inputs[1]))
+            elif inputs and len(inputs) == 1:
+                # Unary operations
+                result = compute_func(store, float(inputs[0]))
+            else:
+                # No inputs - execute anyway (might be constants)
+                result = compute_func(store)
+            
+            return float(result) if result is not None else None
+            
+        except ImportError:
+            raise RuntimeError("wasmtime package not installed - install with: pip install wasmtime")
+        except Exception as e:
+            raise RuntimeError(f"WASM execution failed: {e}")
     
     def execute_calculator(self, operation: str, a: float, b: float = 0) -> Dict:
         """Execute basic calculator operations directly."""

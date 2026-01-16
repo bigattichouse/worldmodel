@@ -5,7 +5,8 @@ Assistant: <think>I need to add 699 and 327.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1026</computed>
 <requires>python:math</requires>
@@ -17,7 +18,8 @@ Assistant: <think>I need to add 755 and 69.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>824</computed>
 <requires>python:math</requires>
@@ -29,7 +31,8 @@ Assistant: <think>I need to add 431 and 889.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1320</computed>
 <requires>python:math</requires>
@@ -41,7 +44,8 @@ Assistant: <think>I need to add 827 and 629.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1456</computed>
 <requires>python:math</requires>
@@ -53,7 +57,8 @@ Assistant: <think>I need to add 584 and 189.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>773</computed>
 <requires>python:math</requires>
@@ -65,7 +70,8 @@ Assistant: <think>I need to add 516 and 890.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1406</computed>
 <requires>python:math</requires>
@@ -77,7 +83,8 @@ Assistant: <think>I need to add 948 and 880.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1828</computed>
 <requires>python:math</requires>
@@ -89,7 +96,8 @@ Assistant: <think>I need to add 237 and 947.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1184</computed>
 <requires>python:math</requires>
@@ -101,7 +109,8 @@ Assistant: <think>I need to add 820 and 493.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1313</computed>
 <requires>python:math</requires>
@@ -113,7 +122,8 @@ Assistant: <think>I need to add 867 and 184.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1051</computed>
 <requires>python:math</requires>
@@ -125,7 +135,8 @@ Assistant: <think>I need to add 716 and 156.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>872</computed>
 <requires>python:math</requires>
@@ -137,7 +148,8 @@ Assistant: <think>I need to add 302 and 151.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>453</computed>
 <requires>python:math</requires>
@@ -149,7 +161,8 @@ Assistant: <think>I need to add 595 and 378.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>973</computed>
 <requires>python:math</requires>
@@ -161,7 +174,8 @@ Assistant: <think>I need to add 514 and 553.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1067</computed>
 <requires>python:math</requires>
@@ -173,7 +187,8 @@ Assistant: <think>I need to add 584 and 257.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>841</computed>
 <requires>python:math</requires>
@@ -185,7 +200,8 @@ Assistant: <think>I need to add 144 and 746.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>890</computed>
 <requires>python:math</requires>
@@ -197,7 +213,8 @@ Assistant: <think>I need to add 307 and 475.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>782</computed>
 <requires>python:math</requires>
@@ -209,7 +226,8 @@ Assistant: <think>I need to add 238 and 873.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1111</computed>
 <requires>python:math</requires>
@@ -221,7 +239,8 @@ Assistant: <think>I need to add 847 and 906.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1753</computed>
 <requires>python:math</requires>
@@ -233,7 +252,8 @@ Assistant: <think>I need to add 139 and 761.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>900</computed>
 <requires>python:math</requires>
@@ -245,7 +265,8 @@ Assistant: <think>I need to add 781 and 696.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1477</computed>
 <requires>python:math</requires>
@@ -257,7 +278,8 @@ Assistant: <think>I need to add 347 and 534.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>881</computed>
 <requires>python:math</requires>
@@ -269,7 +291,8 @@ Assistant: <think>I need to add 287 and 222.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>509</computed>
 <requires>python:math</requires>
@@ -281,7 +304,8 @@ Assistant: <think>I need to add 239 and 499.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>738</computed>
 <requires>python:math</requires>
@@ -293,7 +317,8 @@ Assistant: <think>I need to add 859 and 619.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1478</computed>
 <requires>python:math</requires>
@@ -305,7 +330,8 @@ Assistant: <think>I need to add 944 and 196.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1140</computed>
 <requires>python:math</requires>
@@ -317,7 +343,8 @@ Assistant: <think>I need to add 123 and 242.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>365</computed>
 <requires>python:math</requires>
@@ -329,7 +356,8 @@ Assistant: <think>I need to add 480 and 997.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1477</computed>
 <requires>python:math</requires>
@@ -341,7 +369,8 @@ Assistant: <think>I need to add 139 and 295.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>434</computed>
 <requires>python:math</requires>
@@ -353,7 +382,8 @@ Assistant: <think>I need to add 770 and 804.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1574</computed>
 <requires>python:math</requires>
@@ -365,7 +395,8 @@ Assistant: <think>I need to add 109 and 407.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>516</computed>
 <requires>python:math</requires>
@@ -377,7 +408,8 @@ Assistant: <think>I need to add 187 and 843.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1030</computed>
 <requires>python:math</requires>
@@ -389,7 +421,8 @@ Assistant: <think>I need to add 833 and 854.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1687</computed>
 <requires>python:math</requires>
@@ -401,7 +434,8 @@ Assistant: <think>I need to add 848 and 882.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1730</computed>
 <requires>python:math</requires>
@@ -413,7 +447,8 @@ Assistant: <think>I need to add 541 and 746.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1287</computed>
 <requires>python:math</requires>
@@ -425,7 +460,8 @@ Assistant: <think>I need to add 654 and 606.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1260</computed>
 <requires>python:math</requires>
@@ -437,7 +473,8 @@ Assistant: <think>I need to add 351 and 904.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1255</computed>
 <requires>python:math</requires>
@@ -449,7 +486,8 @@ Assistant: <think>I need to add 187 and 478.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>665</computed>
 <requires>python:math</requires>
@@ -461,7 +499,8 @@ Assistant: <think>I need to add 155 and 864.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1019</computed>
 <requires>python:math</requires>
@@ -473,7 +512,8 @@ Assistant: <think>I need to add 931 and 455.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1386</computed>
 <requires>python:math</requires>
@@ -485,7 +525,8 @@ Assistant: <think>I need to add 953 and 220.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1173</computed>
 <requires>python:math</requires>
@@ -497,7 +538,8 @@ Assistant: <think>I need to add 481 and 650.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1131</computed>
 <requires>python:math</requires>
@@ -509,7 +551,8 @@ Assistant: <think>I need to add 925 and 836.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1761</computed>
 <requires>python:math</requires>
@@ -521,7 +564,8 @@ Assistant: <think>I need to add 66 and 693.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>759</computed>
 <requires>python:math</requires>
@@ -533,7 +577,8 @@ Assistant: <think>I need to add 952 and 723.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1675</computed>
 <requires>python:math</requires>
@@ -545,7 +590,8 @@ Assistant: <think>I need to add 16 and 318.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>334</computed>
 <requires>python:math</requires>
@@ -557,7 +603,8 @@ Assistant: <think>I need to add 777 and 640.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1417</computed>
 <requires>python:math</requires>
@@ -569,7 +616,8 @@ Assistant: <think>I need to add 930 and 744.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1674</computed>
 <requires>python:math</requires>
@@ -581,7 +629,8 @@ Assistant: <think>I need to add 466 and 672.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1138</computed>
 <requires>python:math</requires>
@@ -593,7 +642,8 @@ Assistant: <think>I need to add 966 and 172.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1138</computed>
 <requires>python:math</requires>
@@ -605,7 +655,8 @@ Assistant: <think>I need to subtract 32 from 271.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>239</computed>
 <requires>python:math</requires>
@@ -617,7 +668,8 @@ Assistant: <think>I need to subtract 17 from 345.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>328</computed>
 <requires>python:math</requires>
@@ -629,7 +681,8 @@ Assistant: <think>I need to subtract 82 from 251.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>169</computed>
 <requires>python:math</requires>
@@ -641,7 +694,8 @@ Assistant: <think>I need to subtract 77 from 933.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>856</computed>
 <requires>python:math</requires>
@@ -653,7 +707,8 @@ Assistant: <think>I need to subtract 88 from 926.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>838</computed>
 <requires>python:math</requires>
@@ -665,7 +720,8 @@ Assistant: <think>I need to subtract 93 from 472.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>379</computed>
 <requires>python:math</requires>
@@ -677,7 +733,8 @@ Assistant: <think>I need to subtract 93 from 101.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>8</computed>
 <requires>python:math</requires>
@@ -689,7 +746,8 @@ Assistant: <think>I need to subtract 83 from 384.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>301</computed>
 <requires>python:math</requires>
@@ -701,7 +759,8 @@ Assistant: <think>I need to subtract 83 from 456.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>373</computed>
 <requires>python:math</requires>
@@ -713,7 +772,8 @@ Assistant: <think>I need to subtract 84 from 382.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>298</computed>
 <requires>python:math</requires>
@@ -725,7 +785,8 @@ Assistant: <think>I need to subtract 56 from 583.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>527</computed>
 <requires>python:math</requires>
@@ -737,7 +798,8 @@ Assistant: <think>I need to subtract 18 from 643.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>625</computed>
 <requires>python:math</requires>
@@ -749,7 +811,8 @@ Assistant: <think>I need to subtract 61 from 293.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>232</computed>
 <requires>python:math</requires>
@@ -761,7 +824,8 @@ Assistant: <think>I need to subtract 52 from 941.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>889</computed>
 <requires>python:math</requires>
@@ -773,7 +837,8 @@ Assistant: <think>I need to subtract 91 from 553.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>462</computed>
 <requires>python:math</requires>
@@ -785,7 +850,8 @@ Assistant: <think>I need to subtract 40 from 283.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>243</computed>
 <requires>python:math</requires>
@@ -797,7 +863,8 @@ Assistant: <think>I need to subtract 96 from 643.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>547</computed>
 <requires>python:math</requires>
@@ -809,7 +876,8 @@ Assistant: <think>I need to subtract 19 from 988.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>969</computed>
 <requires>python:math</requires>
@@ -821,7 +889,8 @@ Assistant: <think>I need to subtract 28 from 984.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>956</computed>
 <requires>python:math</requires>
@@ -833,7 +902,8 @@ Assistant: <think>I need to subtract 68 from 700.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>632</computed>
 <requires>python:math</requires>
@@ -845,7 +915,8 @@ Assistant: <think>I need to subtract 99 from 697.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>598</computed>
 <requires>python:math</requires>
@@ -857,7 +928,8 @@ Assistant: <think>I need to subtract 19 from 322.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>303</computed>
 <requires>python:math</requires>
@@ -869,7 +941,8 @@ Assistant: <think>I need to subtract 63 from 511.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>448</computed>
 <requires>python:math</requires>
@@ -881,7 +954,8 @@ Assistant: <think>I need to subtract 45 from 582.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>537</computed>
 <requires>python:math</requires>
@@ -893,7 +967,8 @@ Assistant: <think>I need to subtract 10 from 459.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>449</computed>
 <requires>python:math</requires>
@@ -905,7 +980,8 @@ Assistant: <think>I need to subtract 64 from 212.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>148</computed>
 <requires>python:math</requires>
@@ -917,7 +993,8 @@ Assistant: <think>I need to subtract 84 from 724.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>640</computed>
 <requires>python:math</requires>
@@ -929,7 +1006,8 @@ Assistant: <think>I need to subtract 83 from 780.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>697</computed>
 <requires>python:math</requires>
@@ -941,7 +1019,8 @@ Assistant: <think>I need to subtract 22 from 649.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>627</computed>
 <requires>python:math</requires>
@@ -953,7 +1032,8 @@ Assistant: <think>I need to subtract 29 from 770.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>741</computed>
 <requires>python:math</requires>
@@ -965,7 +1045,8 @@ Assistant: <think>I need to subtract 59 from 146.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>87</computed>
 <requires>python:math</requires>
@@ -977,7 +1058,8 @@ Assistant: <think>I need to subtract 68 from 462.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>394</computed>
 <requires>python:math</requires>
@@ -989,7 +1071,8 @@ Assistant: <think>I need to subtract 26 from 782.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>756</computed>
 <requires>python:math</requires>
@@ -1001,7 +1084,8 @@ Assistant: <think>I need to subtract 86 from 517.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>431</computed>
 <requires>python:math</requires>
@@ -1013,7 +1097,8 @@ Assistant: <think>I need to subtract 41 from 667.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>626</computed>
 <requires>python:math</requires>
@@ -1025,7 +1110,8 @@ Assistant: <think>I need to subtract 71 from 421.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>350</computed>
 <requires>python:math</requires>
@@ -1037,7 +1123,8 @@ Assistant: <think>I need to subtract 60 from 871.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>811</computed>
 <requires>python:math</requires>
@@ -1049,7 +1136,8 @@ Assistant: <think>I need to subtract 37 from 786.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>749</computed>
 <requires>python:math</requires>
@@ -1061,7 +1149,8 @@ Assistant: <think>I need to subtract 13 from 890.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>877</computed>
 <requires>python:math</requires>
@@ -1073,7 +1162,8 @@ Assistant: <think>I need to subtract 60 from 302.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>242</computed>
 <requires>python:math</requires>
@@ -1085,7 +1175,8 @@ Assistant: <think>I need to subtract 60 from 615.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>555</computed>
 <requires>python:math</requires>
@@ -1097,7 +1188,8 @@ Assistant: <think>I need to subtract 64 from 748.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>684</computed>
 <requires>python:math</requires>
@@ -1109,7 +1201,8 @@ Assistant: <think>I need to subtract 78 from 172.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>94</computed>
 <requires>python:math</requires>
@@ -1121,7 +1214,8 @@ Assistant: <think>I need to subtract 42 from 115.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>73</computed>
 <requires>python:math</requires>
@@ -1133,7 +1227,8 @@ Assistant: <think>I need to subtract 43 from 424.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>381</computed>
 <requires>python:math</requires>
@@ -1145,7 +1240,8 @@ Assistant: <think>I need to subtract 71 from 744.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>673</computed>
 <requires>python:math</requires>
@@ -1157,7 +1253,8 @@ Assistant: <think>I need to subtract 80 from 796.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>716</computed>
 <requires>python:math</requires>
@@ -1169,7 +1266,8 @@ Assistant: <think>I need to subtract 80 from 349.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>269</computed>
 <requires>python:math</requires>
@@ -1181,7 +1279,8 @@ Assistant: <think>I need to subtract 10 from 830.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>820</computed>
 <requires>python:math</requires>
@@ -1193,7 +1292,8 @@ Assistant: <think>I need to subtract 11 from 792.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>781</computed>
 <requires>python:math</requires>
@@ -1205,7 +1305,8 @@ Assistant: <think>I need to calculate 10% of 956. 10% = 0.1, so 0.1 × 956.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>10.0</computed>
 <requires>python:math</requires>
@@ -1217,7 +1318,8 @@ Assistant: <think>I need to calculate 15% of 528. 15% = 0.15, so 0.15 × 528.</t
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>15.0</computed>
 <requires>python:math</requires>
@@ -1229,7 +1331,8 @@ Assistant: <think>I need to calculate 30% of 641. 30% = 0.3, so 0.3 × 641.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>30.0</computed>
 <requires>python:math</requires>
@@ -1241,7 +1344,8 @@ Assistant: <think>I need to calculate 30% of 714. 30% = 0.3, so 0.3 × 714.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>30.0</computed>
 <requires>python:math</requires>
@@ -1253,7 +1357,8 @@ Assistant: <think>I need to calculate 50% of 961. 50% = 0.5, so 0.5 × 961.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>50.0</computed>
 <requires>python:math</requires>
@@ -1265,7 +1370,8 @@ Assistant: <think>I need to calculate 80% of 675. 80% = 0.8, so 0.8 × 675.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>80.0</computed>
 <requires>python:math</requires>
@@ -1277,7 +1383,8 @@ Assistant: <think>I need to calculate 25% of 256. 25% = 0.25, so 0.25 × 256.</t
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>25.0</computed>
 <requires>python:math</requires>
@@ -1289,7 +1396,8 @@ Assistant: <think>I need to calculate 25% of 999. 25% = 0.25, so 0.25 × 999.</t
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>25.0</computed>
 <requires>python:math</requires>
@@ -1301,7 +1409,8 @@ Assistant: <think>I need to calculate 75% of 375. 75% = 0.75, so 0.75 × 375.</t
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>75.0</computed>
 <requires>python:math</requires>
@@ -1313,7 +1422,8 @@ Assistant: <think>I need to calculate 30% of 834. 30% = 0.3, so 0.3 × 834.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>30.0</computed>
 <requires>python:math</requires>
@@ -1325,7 +1435,8 @@ Assistant: <think>I need to calculate 50% of 374. 50% = 0.5, so 0.5 × 374.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>50.0</computed>
 <requires>python:math</requires>
@@ -1337,7 +1448,8 @@ Assistant: <think>I need to calculate 5% of 700. 5% = 0.05, so 0.05 × 700.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5.0</computed>
 <requires>python:math</requires>
@@ -1349,7 +1461,8 @@ Assistant: <think>I need to calculate 60% of 112. 60% = 0.6, so 0.6 × 112.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>60.0</computed>
 <requires>python:math</requires>
@@ -1361,7 +1474,8 @@ Assistant: <think>I need to calculate 60% of 196. 60% = 0.6, so 0.6 × 196.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>60.0</computed>
 <requires>python:math</requires>
@@ -1373,7 +1487,8 @@ Assistant: <think>I need to calculate 75% of 614. 75% = 0.75, so 0.75 × 614.</t
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>75.0</computed>
 <requires>python:math</requires>
@@ -1385,7 +1500,8 @@ Assistant: <think>I need to calculate 90% of 247. 90% = 0.9, so 0.9 × 247.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>90.0</computed>
 <requires>python:math</requires>
@@ -1397,7 +1513,8 @@ Assistant: <think>I need to calculate 5% of 421. 5% = 0.05, so 0.05 × 421.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5.0</computed>
 <requires>python:math</requires>
@@ -1409,7 +1526,8 @@ Assistant: <think>I need to calculate 40% of 116. 40% = 0.4, so 0.4 × 116.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>40.0</computed>
 <requires>python:math</requires>
@@ -1421,7 +1539,8 @@ Assistant: <think>I need to calculate 60% of 772. 60% = 0.6, so 0.6 × 772.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>60.0</computed>
 <requires>python:math</requires>
@@ -1433,7 +1552,8 @@ Assistant: <think>I need to calculate 60% of 175. 60% = 0.6, so 0.6 × 175.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>60.0</computed>
 <requires>python:math</requires>
@@ -1445,7 +1565,8 @@ Assistant: <think>I need to calculate 20% of 516. 20% = 0.2, so 0.2 × 516.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>20.0</computed>
 <requires>python:math</requires>
@@ -1457,7 +1578,8 @@ Assistant: <think>I need to calculate 5% of 145. 5% = 0.05, so 0.05 × 145.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5.0</computed>
 <requires>python:math</requires>
@@ -1469,7 +1591,8 @@ Assistant: <think>I need to calculate 15% of 534. 15% = 0.15, so 0.15 × 534.</t
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>15.0</computed>
 <requires>python:math</requires>
@@ -1481,7 +1604,8 @@ Assistant: <think>I need to calculate 60% of 272. 60% = 0.6, so 0.6 × 272.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>60.0</computed>
 <requires>python:math</requires>
@@ -1493,7 +1617,8 @@ Assistant: <think>I need to calculate 15% of 959. 15% = 0.15, so 0.15 × 959.</t
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>15.0</computed>
 <requires>python:math</requires>
@@ -1505,7 +1630,8 @@ Assistant: <think>I need to calculate 70% of 963. 70% = 0.7, so 0.7 × 963.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>70.0</computed>
 <requires>python:math</requires>
@@ -1517,7 +1643,8 @@ Assistant: <think>I need to calculate 60% of 471. 60% = 0.6, so 0.6 × 471.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>60.0</computed>
 <requires>python:math</requires>
@@ -1529,7 +1656,8 @@ Assistant: <think>I need to calculate 75% of 816. 75% = 0.75, so 0.75 × 816.</t
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>75.0</computed>
 <requires>python:math</requires>
@@ -1541,7 +1669,8 @@ Assistant: <think>I need to calculate 30% of 123. 30% = 0.3, so 0.3 × 123.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>30.0</computed>
 <requires>python:math</requires>
@@ -1553,7 +1682,8 @@ Assistant: <think>I need to calculate 5% of 529. 5% = 0.05, so 0.05 × 529.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5.0</computed>
 <requires>python:math</requires>
@@ -1565,7 +1695,8 @@ Assistant: <think>I need to calculate 60% of 380. 60% = 0.6, so 0.6 × 380.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>60.0</computed>
 <requires>python:math</requires>
@@ -1577,7 +1708,8 @@ Assistant: <think>I need to calculate 25% of 291. 25% = 0.25, so 0.25 × 291.</t
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>25.0</computed>
 <requires>python:math</requires>
@@ -1589,7 +1721,8 @@ Assistant: <think>I need to calculate 40% of 850. 40% = 0.4, so 0.4 × 850.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>40.0</computed>
 <requires>python:math</requires>
@@ -1601,7 +1734,8 @@ Assistant: <think>I need to calculate 5% of 312. 5% = 0.05, so 0.05 × 312.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5.0</computed>
 <requires>python:math</requires>
@@ -1613,7 +1747,8 @@ Assistant: <think>I need to calculate 60% of 337. 60% = 0.6, so 0.6 × 337.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>60.0</computed>
 <requires>python:math</requires>
@@ -1625,7 +1760,8 @@ Assistant: <think>I need to calculate 90% of 373. 90% = 0.9, so 0.9 × 373.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>90.0</computed>
 <requires>python:math</requires>
@@ -1637,7 +1773,8 @@ Assistant: <think>I need to calculate 30% of 762. 30% = 0.3, so 0.3 × 762.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>30.0</computed>
 <requires>python:math</requires>
@@ -1649,7 +1786,8 @@ Assistant: <think>I need to calculate 5% of 146. 5% = 0.05, so 0.05 × 146.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5.0</computed>
 <requires>python:math</requires>
@@ -1661,7 +1799,8 @@ Assistant: <think>I need to calculate 80% of 414. 80% = 0.8, so 0.8 × 414.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>80.0</computed>
 <requires>python:math</requires>
@@ -1673,7 +1812,8 @@ Assistant: <think>I need to calculate 40% of 222. 40% = 0.4, so 0.4 × 222.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>40.0</computed>
 <requires>python:math</requires>
@@ -1685,7 +1825,8 @@ Assistant: <think>I need to calculate 50% of 329. 50% = 0.5, so 0.5 × 329.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>50.0</computed>
 <requires>python:math</requires>
@@ -1697,7 +1838,8 @@ Assistant: <think>I need to calculate 10% of 285. 10% = 0.1, so 0.1 × 285.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>10.0</computed>
 <requires>python:math</requires>
@@ -1709,7 +1851,8 @@ Assistant: <think>I need to calculate 20% of 270. 20% = 0.2, so 0.2 × 270.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>20.0</computed>
 <requires>python:math</requires>
@@ -1721,7 +1864,8 @@ Assistant: <think>I need to calculate 60% of 998. 60% = 0.6, so 0.6 × 998.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>60.0</computed>
 <requires>python:math</requires>
@@ -1733,7 +1877,8 @@ Assistant: <think>I need to calculate 5% of 542. 5% = 0.05, so 0.05 × 542.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5.0</computed>
 <requires>python:math</requires>
@@ -1745,7 +1890,8 @@ Assistant: <think>I need to calculate 15% of 718. 15% = 0.15, so 0.15 × 718.</t
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>15.0</computed>
 <requires>python:math</requires>
@@ -1757,7 +1903,8 @@ Assistant: <think>I need to calculate 30% of 826. 30% = 0.3, so 0.3 × 826.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>30.0</computed>
 <requires>python:math</requires>
@@ -1769,7 +1916,8 @@ Assistant: <think>I need to calculate 30% of 860. 30% = 0.3, so 0.3 × 860.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>30.0</computed>
 <requires>python:math</requires>
@@ -1781,7 +1929,8 @@ Assistant: <think>I need to calculate 50% of 898. 50% = 0.5, so 0.5 × 898.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>50.0</computed>
 <requires>python:math</requires>
@@ -1793,7 +1942,8 @@ Assistant: <think>I need to calculate 70% of 381. 70% = 0.7, so 0.7 × 381.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>70.0</computed>
 <requires>python:math</requires>
@@ -1805,7 +1955,8 @@ Assistant: <think>I need to calculate 40% of 385. 40% = 0.4, so 0.4 × 385.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>40.0</computed>
 <requires>python:math</requires>
@@ -1817,7 +1968,8 @@ Assistant: <think>I need to calculate 30% of 624. 30% = 0.3, so 0.3 × 624.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>30.0</computed>
 <requires>python:math</requires>
@@ -1829,7 +1981,8 @@ Assistant: <think>I need to calculate 60% of 161. 60% = 0.6, so 0.6 × 161.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>60.0</computed>
 <requires>python:math</requires>
@@ -1841,7 +1994,8 @@ Assistant: <think>I need to calculate 40% of 176. 40% = 0.4, so 0.4 × 176.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>40.0</computed>
 <requires>python:math</requires>
@@ -1853,7 +2007,8 @@ Assistant: <think>I need to calculate 50% of 501. 50% = 0.5, so 0.5 × 501.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>50.0</computed>
 <requires>python:math</requires>
@@ -1865,7 +2020,8 @@ Assistant: <think>I need to calculate 5% of 113. 5% = 0.05, so 0.05 × 113.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5.0</computed>
 <requires>python:math</requires>
@@ -1877,7 +2033,8 @@ Assistant: <think>I need to calculate 30% of 646. 30% = 0.3, so 0.3 × 646.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>30.0</computed>
 <requires>python:math</requires>
@@ -1889,7 +2046,8 @@ Assistant: <think>I need to calculate 90% of 944. 90% = 0.9, so 0.9 × 944.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>90.0</computed>
 <requires>python:math</requires>
@@ -1901,7 +2059,8 @@ Assistant: <think>I need to calculate 50% of 213. 50% = 0.5, so 0.5 × 213.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>50.0</computed>
 <requires>python:math</requires>
@@ -1913,7 +2072,8 @@ Assistant: <think>I need to calculate 50% of 436. 50% = 0.5, so 0.5 × 436.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>50.0</computed>
 <requires>python:math</requires>
@@ -1925,7 +2085,8 @@ Assistant: <think>I need to calculate 75% of 404. 75% = 0.75, so 0.75 × 404.</t
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>75.0</computed>
 <requires>python:math</requires>
@@ -1937,7 +2098,8 @@ Assistant: <think>I need to calculate 80% of 209. 80% = 0.8, so 0.8 × 209.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>80.0</computed>
 <requires>python:math</requires>
@@ -1949,7 +2111,8 @@ Assistant: <think>I need to calculate 20% of 852. 20% = 0.2, so 0.2 × 852.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>20.0</computed>
 <requires>python:math</requires>
@@ -1961,7 +2124,8 @@ Assistant: <think>I need to calculate 20% of 314. 20% = 0.2, so 0.2 × 314.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>20.0</computed>
 <requires>python:math</requires>
@@ -1973,7 +2137,8 @@ Assistant: <think>I need to calculate 10% of 620. 10% = 0.1, so 0.1 × 620.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>10.0</computed>
 <requires>python:math</requires>
@@ -1985,7 +2150,8 @@ Assistant: <think>I need to calculate 50% of 659. 50% = 0.5, so 0.5 × 659.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>50.0</computed>
 <requires>python:math</requires>
@@ -1997,7 +2163,8 @@ Assistant: <think>I need to calculate 10% of 291. 10% = 0.1, so 0.1 × 291.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>10.0</computed>
 <requires>python:math</requires>
@@ -2009,7 +2176,8 @@ Assistant: <think>I need to calculate 25% of 260. 25% = 0.25, so 0.25 × 260.</t
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>25.0</computed>
 <requires>python:math</requires>
@@ -2021,7 +2189,8 @@ Assistant: <think>I need to calculate 30% of 678. 30% = 0.3, so 0.3 × 678.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>30.0</computed>
 <requires>python:math</requires>
@@ -2033,7 +2202,8 @@ Assistant: <think>I need to calculate 75% of 377. 75% = 0.75, so 0.75 × 377.</t
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>75.0</computed>
 <requires>python:math</requires>
@@ -2045,7 +2215,8 @@ Assistant: <think>I need to calculate 90% of 639. 90% = 0.9, so 0.9 × 639.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>90.0</computed>
 <requires>python:math</requires>
@@ -2057,7 +2228,8 @@ Assistant: <think>I need to calculate 30% of 996. 30% = 0.3, so 0.3 × 996.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>30.0</computed>
 <requires>python:math</requires>
@@ -2069,7 +2241,8 @@ Assistant: <think>I need to calculate 40% of 874. 40% = 0.4, so 0.4 × 874.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>40.0</computed>
 <requires>python:math</requires>
@@ -2081,7 +2254,8 @@ Assistant: <think>I need to calculate 30% of 365. 30% = 0.3, so 0.3 × 365.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>30.0</computed>
 <requires>python:math</requires>
@@ -2093,7 +2267,8 @@ Assistant: <think>I need to calculate 30% of 243. 30% = 0.3, so 0.3 × 243.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>30.0</computed>
 <requires>python:math</requires>
@@ -2105,7 +2280,8 @@ Assistant: <think>I need to calculate 70% of 497. 70% = 0.7, so 0.7 × 497.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>70.0</computed>
 <requires>python:math</requires>
@@ -2117,7 +2293,8 @@ Assistant: <think>I need to calculate 10% of 321. 10% = 0.1, so 0.1 × 321.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>10.0</computed>
 <requires>python:math</requires>
@@ -2129,7 +2306,8 @@ Assistant: <think>I need to calculate 20% of 973. 20% = 0.2, so 0.2 × 973.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>20.0</computed>
 <requires>python:math</requires>
@@ -2141,7 +2319,8 @@ Assistant: <think>I need to calculate 15% of 604. 15% = 0.15, so 0.15 × 604.</t
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>15.0</computed>
 <requires>python:math</requires>
@@ -2153,7 +2332,8 @@ Assistant: <think>I need to calculate 75% of 833. 75% = 0.75, so 0.75 × 833.</t
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>75.0</computed>
 <requires>python:math</requires>
@@ -2165,7 +2345,8 @@ Assistant: <think>I need to calculate 20% of 852. 20% = 0.2, so 0.2 × 852.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>20.0</computed>
 <requires>python:math</requires>
@@ -2177,7 +2358,8 @@ Assistant: <think>I need to calculate 20% of 582. 20% = 0.2, so 0.2 × 582.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>20.0</computed>
 <requires>python:math</requires>
@@ -2189,7 +2371,8 @@ Assistant: <think>I need to calculate 20% of 222. 20% = 0.2, so 0.2 × 222.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>20.0</computed>
 <requires>python:math</requires>
@@ -2201,7 +2384,8 @@ Assistant: <think>I need to calculate 60% of 532. 60% = 0.6, so 0.6 × 532.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>60.0</computed>
 <requires>python:math</requires>
@@ -2213,7 +2397,8 @@ Assistant: <think>I need to calculate 30% of 855. 30% = 0.3, so 0.3 × 855.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>30.0</computed>
 <requires>python:math</requires>
@@ -2225,7 +2410,8 @@ Assistant: <think>I need to calculate 5% of 905. 5% = 0.05, so 0.05 × 905.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5.0</computed>
 <requires>python:math</requires>
@@ -2237,7 +2423,8 @@ Assistant: <think>I need to calculate 5% of 907. 5% = 0.05, so 0.05 × 907.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5.0</computed>
 <requires>python:math</requires>
@@ -2249,7 +2436,8 @@ Assistant: <think>I need to calculate 40% of 808. 40% = 0.4, so 0.4 × 808.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>40.0</computed>
 <requires>python:math</requires>
@@ -2261,7 +2449,8 @@ Assistant: <think>I need to calculate 70% of 854. 70% = 0.7, so 0.7 × 854.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>70.0</computed>
 <requires>python:math</requires>
@@ -2273,7 +2462,8 @@ Assistant: <think>I need to calculate 20% of 273. 20% = 0.2, so 0.2 × 273.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>20.0</computed>
 <requires>python:math</requires>
@@ -2285,7 +2475,8 @@ Assistant: <think>I need to calculate 20% of 725. 20% = 0.2, so 0.2 × 725.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>20.0</computed>
 <requires>python:math</requires>
@@ -2297,7 +2488,8 @@ Assistant: <think>I need to calculate 50% of 694. 50% = 0.5, so 0.5 × 694.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>50.0</computed>
 <requires>python:math</requires>
@@ -2309,7 +2501,8 @@ Assistant: <think>I need to calculate 15% of 924. 15% = 0.15, so 0.15 × 924.</t
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>15.0</computed>
 <requires>python:math</requires>
@@ -2321,7 +2514,8 @@ Assistant: <think>I need to calculate 75% of 950. 75% = 0.75, so 0.75 × 950.</t
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>75.0</computed>
 <requires>python:math</requires>
@@ -2333,7 +2527,8 @@ Assistant: <think>I need to calculate 5% of 856. 5% = 0.05, so 0.05 × 856.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5.0</computed>
 <requires>python:math</requires>
@@ -2345,7 +2540,8 @@ Assistant: <think>I need to calculate 70% of 987. 70% = 0.7, so 0.7 × 987.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>70.0</computed>
 <requires>python:math</requires>
@@ -2357,7 +2553,8 @@ Assistant: <think>I need to calculate 10% of 348. 10% = 0.1, so 0.1 × 348.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>10.0</computed>
 <requires>python:math</requires>
@@ -2369,7 +2566,8 @@ Assistant: <think>I need to calculate 10% of 284. 10% = 0.1, so 0.1 × 284.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>10.0</computed>
 <requires>python:math</requires>
@@ -2381,7 +2579,8 @@ Assistant: <think>I need to calculate 30% of 815. 30% = 0.3, so 0.3 × 815.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>30.0</computed>
 <requires>python:math</requires>
@@ -2393,7 +2592,8 @@ Assistant: <think>I need to calculate 60% of 867. 60% = 0.6, so 0.6 × 867.</thi
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>60.0</computed>
 <requires>python:math</requires>
@@ -2405,7 +2605,8 @@ Assistant: <think>Area of a circle = π × r². With radius 14, area = π × 14�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>14.0</computed>
 <requires>python:math</requires>
@@ -2417,7 +2618,8 @@ Assistant: <think>Area of a circle = π × r². With radius 13, area = π × 13�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>13.0</computed>
 <requires>python:math</requires>
@@ -2429,7 +2631,8 @@ Assistant: <think>Area of a circle = π × r². With radius 24, area = π × 24�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>24.0</computed>
 <requires>python:math</requires>
@@ -2441,7 +2644,8 @@ Assistant: <think>Area of a circle = π × r². With radius 25, area = π × 25�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>25.0</computed>
 <requires>python:math</requires>
@@ -2453,7 +2657,8 @@ Assistant: <think>Area of a circle = π × r². With radius 20, area = π × 20�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>20.0</computed>
 <requires>python:math</requires>
@@ -2465,7 +2670,8 @@ Assistant: <think>Area of a circle = π × r². With radius 23, area = π × 23�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>23.0</computed>
 <requires>python:math</requires>
@@ -2477,7 +2683,8 @@ Assistant: <think>Area of a circle = π × r². With radius 20, area = π × 20�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>20.0</computed>
 <requires>python:math</requires>
@@ -2489,7 +2696,8 @@ Assistant: <think>Area of a circle = π × r². With radius 14, area = π × 14�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>14.0</computed>
 <requires>python:math</requires>
@@ -2501,7 +2709,8 @@ Assistant: <think>Area of a circle = π × r². With radius 24, area = π × 24�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>24.0</computed>
 <requires>python:math</requires>
@@ -2513,7 +2722,8 @@ Assistant: <think>Area of a circle = π × r². With radius 16, area = π × 16�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>16.0</computed>
 <requires>python:math</requires>
@@ -2525,7 +2735,8 @@ Assistant: <think>Area of a circle = π × r². With radius 25, area = π × 25�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>25.0</computed>
 <requires>python:math</requires>
@@ -2537,7 +2748,8 @@ Assistant: <think>Area of a circle = π × r². With radius 12, area = π × 12�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>12.0</computed>
 <requires>python:math</requires>
@@ -2549,7 +2761,8 @@ Assistant: <think>Area of a circle = π × r². With radius 11, area = π × 11�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>11.0</computed>
 <requires>python:math</requires>
@@ -2561,7 +2774,8 @@ Assistant: <think>Area of a circle = π × r². With radius 17, area = π × 17�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>17.0</computed>
 <requires>python:math</requires>
@@ -2573,7 +2787,8 @@ Assistant: <think>Area of a circle = π × r². With radius 11, area = π × 11�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>11.0</computed>
 <requires>python:math</requires>
@@ -2585,7 +2800,8 @@ Assistant: <think>Area of a circle = π × r². With radius 22, area = π × 22�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>22.0</computed>
 <requires>python:math</requires>
@@ -2597,7 +2813,8 @@ Assistant: <think>Area of a circle = π × r². With radius 16, area = π × 16�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>16.0</computed>
 <requires>python:math</requires>
@@ -2609,7 +2826,8 @@ Assistant: <think>Area of a circle = π × r². With radius 13, area = π × 13�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>13.0</computed>
 <requires>python:math</requires>
@@ -2621,7 +2839,8 @@ Assistant: <think>Area of a circle = π × r². With radius 22, area = π × 22�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>22.0</computed>
 <requires>python:math</requires>
@@ -2633,7 +2852,8 @@ Assistant: <think>Area of a circle = π × r². With radius 24, area = π × 24�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>24.0</computed>
 <requires>python:math</requires>
@@ -2645,7 +2865,8 @@ Assistant: <think>Area of a circle = π × r². With radius 18, area = π × 18�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>18.0</computed>
 <requires>python:math</requires>
@@ -2657,7 +2878,8 @@ Assistant: <think>Area of a circle = π × r². With radius 15, area = π × 15�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>15.0</computed>
 <requires>python:math</requires>
@@ -2669,7 +2891,8 @@ Assistant: <think>Area of a circle = π × r². With radius 21, area = π × 21�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>21.0</computed>
 <requires>python:math</requires>
@@ -2681,7 +2904,8 @@ Assistant: <think>Area of a circle = π × r². With radius 23, area = π × 23�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>23.0</computed>
 <requires>python:math</requires>
@@ -2693,7 +2917,8 @@ Assistant: <think>Area of a circle = π × r². With radius 13, area = π × 13�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>13.0</computed>
 <requires>python:math</requires>
@@ -2705,7 +2930,8 @@ Assistant: <think>Area of a circle = π × r². With radius 17, area = π × 17�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>17.0</computed>
 <requires>python:math</requires>
@@ -2717,7 +2943,8 @@ Assistant: <think>Area of a circle = π × r². With radius 12, area = π × 12�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>12.0</computed>
 <requires>python:math</requires>
@@ -2729,7 +2956,8 @@ Assistant: <think>Area of a circle = π × r². With radius 13, area = π × 13�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>13.0</computed>
 <requires>python:math</requires>
@@ -2741,7 +2969,8 @@ Assistant: <think>Area of a circle = π × r². With radius 21, area = π × 21�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>21.0</computed>
 <requires>python:math</requires>
@@ -2753,7 +2982,8 @@ Assistant: <think>Area of a circle = π × r². With radius 13, area = π × 13�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>13.0</computed>
 <requires>python:math</requires>
@@ -2765,7 +2995,8 @@ Assistant: <think>Area of a circle = π × r². With radius 17, area = π × 17�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>17.0</computed>
 <requires>python:math</requires>
@@ -2777,7 +3008,8 @@ Assistant: <think>Area of a circle = π × r². With radius 21, area = π × 21�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>21.0</computed>
 <requires>python:math</requires>
@@ -2789,7 +3021,8 @@ Assistant: <think>Area of a circle = π × r². With radius 16, area = π × 16�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>16.0</computed>
 <requires>python:math</requires>
@@ -2801,7 +3034,8 @@ Assistant: <think>Area of a circle = π × r². With radius 12, area = π × 12�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>12.0</computed>
 <requires>python:math</requires>
@@ -2813,7 +3047,8 @@ Assistant: <think>Area of a circle = π × r². With radius 25, area = π × 25�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>25.0</computed>
 <requires>python:math</requires>
@@ -2825,7 +3060,8 @@ Assistant: <think>Area of a circle = π × r². With radius 24, area = π × 24�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>24.0</computed>
 <requires>python:math</requires>
@@ -2837,7 +3073,8 @@ Assistant: <think>Area of a circle = π × r². With radius 23, area = π × 23�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>23.0</computed>
 <requires>python:math</requires>
@@ -2849,7 +3086,8 @@ Assistant: <think>Area of a circle = π × r². With radius 15, area = π × 15�
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>15.0</computed>
 <requires>python:math</requires>
@@ -2861,7 +3099,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -2873,7 +3112,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -2885,7 +3125,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -2897,7 +3138,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -2909,7 +3151,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -2921,7 +3164,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -2933,7 +3177,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -2945,7 +3190,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -2957,7 +3203,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -2969,7 +3216,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -2981,7 +3229,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -2993,7 +3242,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3005,7 +3255,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3017,7 +3268,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3029,7 +3281,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3041,7 +3294,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3053,7 +3307,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3065,7 +3320,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3077,7 +3333,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3089,7 +3346,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3101,7 +3359,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3113,7 +3372,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3125,7 +3385,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3137,7 +3398,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3149,7 +3411,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3161,7 +3424,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3173,7 +3437,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3185,7 +3450,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3197,7 +3463,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3209,7 +3476,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3221,7 +3489,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3233,7 +3502,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3245,7 +3515,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3257,7 +3528,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3269,7 +3541,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3281,7 +3554,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3293,7 +3567,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3305,7 +3580,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3317,7 +3593,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3329,7 +3606,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3341,7 +3619,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3353,7 +3632,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3365,7 +3645,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3377,7 +3658,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3389,7 +3671,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3401,7 +3684,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3413,7 +3697,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3425,7 +3710,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3437,7 +3723,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3449,7 +3736,8 @@ Assistant: <think>For a rectangle: Area = length × width, Perimeter = 2(length 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:math</requires>
@@ -3461,7 +3749,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>63.0</computed>
 <requires>python:math</requires>
@@ -3473,7 +3762,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>85.0</computed>
 <requires>python:math</requires>
@@ -3485,7 +3775,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>29.0</computed>
 <requires>python:math</requires>
@@ -3497,7 +3788,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>12.0</computed>
 <requires>python:math</requires>
@@ -3509,7 +3801,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>76.0</computed>
 <requires>python:math</requires>
@@ -3521,7 +3814,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>67.0</computed>
 <requires>python:math</requires>
@@ -3533,7 +3827,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>77.0</computed>
 <requires>python:math</requires>
@@ -3545,7 +3840,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>62.0</computed>
 <requires>python:math</requires>
@@ -3557,7 +3853,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>62.0</computed>
 <requires>python:math</requires>
@@ -3569,7 +3866,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>87.0</computed>
 <requires>python:math</requires>
@@ -3581,7 +3879,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>48.0</computed>
 <requires>python:math</requires>
@@ -3593,7 +3892,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>81.0</computed>
 <requires>python:math</requires>
@@ -3605,7 +3905,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>53.0</computed>
 <requires>python:math</requires>
@@ -3617,7 +3918,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>10.0</computed>
 <requires>python:math</requires>
@@ -3629,7 +3931,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>64.0</computed>
 <requires>python:math</requires>
@@ -3641,7 +3944,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>30.0</computed>
 <requires>python:math</requires>
@@ -3653,7 +3957,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>91.0</computed>
 <requires>python:math</requires>
@@ -3665,7 +3970,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>15.0</computed>
 <requires>python:math</requires>
@@ -3677,7 +3983,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>19.0</computed>
 <requires>python:math</requires>
@@ -3689,7 +3996,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>88.0</computed>
 <requires>python:math</requires>
@@ -3701,7 +4009,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>13.0</computed>
 <requires>python:math</requires>
@@ -3713,7 +4022,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>28.0</computed>
 <requires>python:math</requires>
@@ -3725,7 +4035,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>100.0</computed>
 <requires>python:math</requires>
@@ -3737,7 +4048,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>45.0</computed>
 <requires>python:math</requires>
@@ -3749,7 +4061,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>83.0</computed>
 <requires>python:math</requires>
@@ -3761,7 +4074,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>26.0</computed>
 <requires>python:math</requires>
@@ -3773,7 +4087,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>49.0</computed>
 <requires>python:math</requires>
@@ -3785,7 +4100,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>89.0</computed>
 <requires>python:math</requires>
@@ -3797,7 +4113,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>19.0</computed>
 <requires>python:math</requires>
@@ -3809,7 +4126,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>34.0</computed>
 <requires>python:math</requires>
@@ -3821,7 +4139,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>26.0</computed>
 <requires>python:math</requires>
@@ -3833,7 +4152,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>66.0</computed>
 <requires>python:math</requires>
@@ -3845,7 +4165,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>28.0</computed>
 <requires>python:math</requires>
@@ -3857,7 +4178,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>25.0</computed>
 <requires>python:math</requires>
@@ -3869,7 +4191,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>61.0</computed>
 <requires>python:math</requires>
@@ -3881,7 +4204,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>76.0</computed>
 <requires>python:math</requires>
@@ -3893,7 +4217,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>41.0</computed>
 <requires>python:math</requires>
@@ -3905,7 +4230,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>45.0</computed>
 <requires>python:math</requires>
@@ -3917,7 +4243,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>85.0</computed>
 <requires>python:math</requires>
@@ -3929,7 +4256,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>69.0</computed>
 <requires>python:math</requires>
@@ -3941,7 +4269,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>38.0</computed>
 <requires>python:math</requires>
@@ -3953,7 +4282,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>97.0</computed>
 <requires>python:math</requires>
@@ -3965,7 +4295,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>61.0</computed>
 <requires>python:math</requires>
@@ -3977,7 +4308,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>18.0</computed>
 <requires>python:math</requires>
@@ -3989,7 +4321,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>31.0</computed>
 <requires>python:math</requires>
@@ -4001,7 +4334,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>14.0</computed>
 <requires>python:math</requires>
@@ -4013,7 +4347,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>25.0</computed>
 <requires>python:math</requires>
@@ -4025,7 +4360,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>41.0</computed>
 <requires>python:math</requires>
@@ -4037,7 +4373,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>58.0</computed>
 <requires>python:math</requires>
@@ -4049,7 +4386,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>67.0</computed>
 <requires>python:math</requires>
@@ -4061,7 +4399,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>15.0</computed>
 <requires>python:math</requires>
@@ -4073,7 +4412,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>82.0</computed>
 <requires>python:math</requires>
@@ -4085,7 +4425,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>99.0</computed>
 <requires>python:math</requires>
@@ -4097,7 +4438,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>16.0</computed>
 <requires>python:math</requires>
@@ -4109,7 +4451,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>95.0</computed>
 <requires>python:math</requires>
@@ -4121,7 +4464,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>43.0</computed>
 <requires>python:math</requires>
@@ -4133,7 +4477,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>35.0</computed>
 <requires>python:math</requires>
@@ -4145,7 +4490,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>70.0</computed>
 <requires>python:math</requires>
@@ -4157,7 +4503,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>95.0</computed>
 <requires>python:math</requires>
@@ -4169,7 +4516,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>53.0</computed>
 <requires>python:math</requires>
@@ -4181,7 +4529,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>81.0</computed>
 <requires>python:math</requires>
@@ -4193,7 +4542,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>87.0</computed>
 <requires>python:math</requires>
@@ -4205,7 +4555,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>64.0</computed>
 <requires>python:math</requires>
@@ -4217,7 +4568,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>74.0</computed>
 <requires>python:math</requires>
@@ -4229,7 +4581,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>94.0</computed>
 <requires>python:math</requires>
@@ -4241,7 +4594,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>73.0</computed>
 <requires>python:math</requires>
@@ -4253,7 +4607,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>77.0</computed>
 <requires>python:math</requires>
@@ -4265,7 +4620,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>35.0</computed>
 <requires>python:math</requires>
@@ -4277,7 +4633,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>43.0</computed>
 <requires>python:math</requires>
@@ -4289,7 +4646,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>15.0</computed>
 <requires>python:math</requires>
@@ -4301,7 +4659,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>45.0</computed>
 <requires>python:math</requires>
@@ -4313,7 +4672,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>86.0</computed>
 <requires>python:math</requires>
@@ -4325,7 +4685,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>21.0</computed>
 <requires>python:math</requires>
@@ -4337,7 +4698,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>22.0</computed>
 <requires>python:math</requires>
@@ -4349,7 +4711,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>18.0</computed>
 <requires>python:math</requires>
@@ -4361,7 +4724,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>67.0</computed>
 <requires>python:math</requires>
@@ -4373,7 +4737,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>39.0</computed>
 <requires>python:math</requires>
@@ -4385,7 +4750,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>71.0</computed>
 <requires>python:math</requires>
@@ -4397,7 +4763,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>49.0</computed>
 <requires>python:math</requires>
@@ -4409,7 +4776,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>79.0</computed>
 <requires>python:math</requires>
@@ -4421,7 +4789,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>34.0</computed>
 <requires>python:math</requires>
@@ -4433,7 +4802,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>13.0</computed>
 <requires>python:math</requires>
@@ -4445,7 +4815,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>82.0</computed>
 <requires>python:math</requires>
@@ -4457,7 +4828,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>42.0</computed>
 <requires>python:math</requires>
@@ -4469,7 +4841,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>43.0</computed>
 <requires>python:math</requires>
@@ -4481,7 +4854,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>100.0</computed>
 <requires>python:math</requires>
@@ -4493,7 +4867,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>64.0</computed>
 <requires>python:math</requires>
@@ -4505,7 +4880,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>19.0</computed>
 <requires>python:math</requires>
@@ -4517,7 +4893,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>38.0</computed>
 <requires>python:math</requires>
@@ -4529,7 +4906,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>21.0</computed>
 <requires>python:math</requires>
@@ -4541,7 +4919,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>23.0</computed>
 <requires>python:math</requires>
@@ -4553,7 +4932,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>100.0</computed>
 <requires>python:math</requires>
@@ -4565,7 +4945,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>34.0</computed>
 <requires>python:math</requires>
@@ -4577,7 +4958,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>35.0</computed>
 <requires>python:math</requires>
@@ -4589,7 +4971,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>10.0</computed>
 <requires>python:math</requires>
@@ -4601,7 +4984,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>36.0</computed>
 <requires>python:math</requires>
@@ -4613,7 +4997,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>29.0</computed>
 <requires>python:math</requires>
@@ -4625,7 +5010,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>55.0</computed>
 <requires>python:math</requires>
@@ -4637,7 +5023,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>59.0</computed>
 <requires>python:math</requires>
@@ -4649,7 +5036,8 @@ Assistant: <think>I need to add all numbers and divide by the count.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>87.0</computed>
 <requires>python:math</requires>
@@ -4661,7 +5049,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 4.32 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.32</computed>
 <requires>python:chemistry</requires>
@@ -4673,7 +5062,8 @@ Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Wher
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.0821</computed>
 <requires>python:chemistry</requires>
@@ -4685,7 +5075,8 @@ Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.0</computed>
 <requires>python:rf</requires>
@@ -4697,7 +5088,8 @@ Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Wher
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.0821</computed>
 <requires>python:chemistry</requires>
@@ -4709,7 +5101,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>93.0</computed>
 <requires>python:statistics</requires>
@@ -4721,7 +5114,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 9.71e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>11.6</computed>
 <requires>python:electrical</requires>
@@ -4733,7 +5127,8 @@ Assistant: <think>Using Ohm's law: R = V / I. R = 9.1 V / 2.10 A.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.1</computed>
 <requires>python:electrical</requires>
@@ -4745,7 +5140,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s. For f = 6e+09 Hz, 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:rf</requires>
@@ -4757,7 +5153,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 6.81e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>14.9</computed>
 <requires>python:electrical</requires>
@@ -4769,7 +5166,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s. For f = 2e+10 Hz, 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:rf</requires>
@@ -4781,7 +5179,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 2.51 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.51</computed>
 <requires>python:chemistry</requires>
@@ -4793,7 +5192,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>91.0</computed>
 <requires>python:statistics</requires>
@@ -4805,7 +5205,8 @@ Assistant: <think>Using Ohm's law: I = V / R. I = 27.9 V / 362 Ω.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>27.9</computed>
 <requires>python:electrical</requires>
@@ -4817,7 +5218,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 4.15 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.15</computed>
 <requires>python:chemistry</requires>
@@ -4829,7 +5231,8 @@ Assistant: <think>Power P = V × I. P = 213 V × 8.2 A. Energy in 1 hour = P × 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>221.2</computed>
 <requires>python:electrical</requires>
@@ -4841,7 +5244,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 8.32e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>17.1</computed>
 <requires>python:electrical</requires>
@@ -4853,7 +5257,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 0.42 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.42</computed>
 <requires>python:chemistry</requires>
@@ -4865,7 +5270,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 3.87e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>7.1</computed>
 <requires>python:electrical</requires>
@@ -4877,7 +5283,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>55.0</computed>
 <requires>python:statistics</requires>
@@ -4889,7 +5296,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.55 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.55</computed>
 <requires>python:chemistry</requires>
@@ -4901,7 +5309,8 @@ Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Wher
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.0821</computed>
 <requires>python:chemistry</requires>
@@ -4913,7 +5322,8 @@ Assistant: <think>Using Ohm's law: R = V / I. R = 24.2 V / 0.19 A.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>24.2</computed>
 <requires>python:electrical</requires>
@@ -4925,7 +5335,8 @@ Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Wher
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.0821</computed>
 <requires>python:chemistry</requires>
@@ -4937,7 +5348,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 2991 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -4949,7 +5361,8 @@ Assistant: <think>Using Ohm's law: I = V / R. I = 24.0 V / 810 Ω.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>24.0</computed>
 <requires>python:electrical</requires>
@@ -4961,7 +5374,8 @@ Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Wher
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.0821</computed>
 <requires>python:chemistry</requires>
@@ -4973,7 +5387,8 @@ Assistant: <think>Power P = V × I. P = 232 V × 1.3 A. Energy in 1 hour = P × 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>233.3</computed>
 <requires>python:electrical</requires>
@@ -4985,7 +5400,8 @@ Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.0</computed>
 <requires>python:rf</requires>
@@ -4997,7 +5413,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 1.06 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.06</computed>
 <requires>python:chemistry</requires>
@@ -5009,7 +5426,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>72.0</computed>
 <requires>python:statistics</requires>
@@ -5021,7 +5439,8 @@ Assistant: <think>Using Ohm's law: I = V / R. I = 40.3 V / 514 Ω.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>40.3</computed>
 <requires>python:electrical</requires>
@@ -5033,7 +5452,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 2.42e-05 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>6.5</computed>
 <requires>python:electrical</requires>
@@ -5045,7 +5465,8 @@ Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Wher
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.0821</computed>
 <requires>python:chemistry</requires>
@@ -5057,7 +5478,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 4.68 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.68</computed>
 <requires>python:chemistry</requires>
@@ -5069,7 +5491,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s. For f = 4e+08 Hz, 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:rf</requires>
@@ -5081,7 +5504,8 @@ Assistant: <think>Power P = V × I. P = 182 V × 13.8 A. Energy in 1 hour = P ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>195.8</computed>
 <requires>python:electrical</requires>
@@ -5093,7 +5517,8 @@ Assistant: <think>Using Ohm's law: V = I × R. V = 9.61 A × 621 Ω.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.61</computed>
 <requires>python:electrical</requires>
@@ -5105,7 +5530,8 @@ Assistant: <think>Using Ohm's law: V = I × R. V = 2.86 A × 543 Ω.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.86</computed>
 <requires>python:electrical</requires>
@@ -5117,7 +5543,8 @@ Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.0</computed>
 <requires>python:rf</requires>
@@ -5129,7 +5556,8 @@ Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.0</computed>
 <requires>python:rf</requires>
@@ -5141,7 +5569,8 @@ Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.0</computed>
 <requires>python:rf</requires>
@@ -5153,7 +5582,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.86 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.86</computed>
 <requires>python:chemistry</requires>
@@ -5165,7 +5595,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.26 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.26</computed>
 <requires>python:chemistry</requires>
@@ -5177,7 +5608,8 @@ Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.0</computed>
 <requires>python:rf</requires>
@@ -5189,7 +5621,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s. For f = 5e+07 Hz, 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:rf</requires>
@@ -5201,7 +5634,8 @@ Assistant: <think>Using Ohm's law: I = V / R. I = 18.3 V / 247 Ω.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>18.3</computed>
 <requires>python:electrical</requires>
@@ -5213,7 +5647,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 7.40e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>14.9</computed>
 <requires>python:electrical</requires>
@@ -5225,7 +5660,8 @@ Assistant: <think>Power P = V × I. P = 175 V × 17.9 A. Energy in 1 hour = P ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>192.9</computed>
 <requires>python:electrical</requires>
@@ -5237,7 +5673,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s. For f = 1e+08 Hz, 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:rf</requires>
@@ -5249,7 +5686,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 2025 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -5261,7 +5699,8 @@ Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Wher
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.0821</computed>
 <requires>python:chemistry</requires>
@@ -5273,7 +5712,8 @@ Assistant: <think>Using Ohm's law: R = V / I. R = 48.6 V / 0.97 A.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>48.6</computed>
 <requires>python:electrical</requires>
@@ -5285,7 +5725,8 @@ Assistant: <think>Using Ohm's law: V = I × R. V = 6.19 A × 103 Ω.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>6.19</computed>
 <requires>python:electrical</requires>
@@ -5297,7 +5738,8 @@ Assistant: <think>Using Ohm's law: V = I × R. V = 9.64 A × 578 Ω.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.64</computed>
 <requires>python:electrical</requires>
@@ -5309,7 +5751,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 0.93 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.93</computed>
 <requires>python:chemistry</requires>
@@ -5321,7 +5764,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 3414 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -5333,7 +5777,8 @@ Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Wher
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.0821</computed>
 <requires>python:chemistry</requires>
@@ -5345,7 +5790,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 9.66e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>18.8</computed>
 <requires>python:electrical</requires>
@@ -5357,7 +5803,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 1.14 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.14</computed>
 <requires>python:chemistry</requires>
@@ -5369,7 +5816,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 8.86e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>13.8</computed>
 <requires>python:electrical</requires>
@@ -5381,7 +5829,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 1.54 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.54</computed>
 <requires>python:chemistry</requires>
@@ -5393,7 +5842,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.74 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.74</computed>
 <requires>python:chemistry</requires>
@@ -5405,7 +5855,8 @@ Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Wher
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.0821</computed>
 <requires>python:chemistry</requires>
@@ -5417,7 +5868,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 5.66e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>8.5</computed>
 <requires>python:electrical</requires>
@@ -5429,7 +5881,8 @@ Assistant: <think>Power P = V × I. P = 156 V × 2.1 A. Energy in 1 hour = P × 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>158.1</computed>
 <requires>python:electrical</requires>
@@ -5441,7 +5894,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 7.46e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.9</computed>
 <requires>python:electrical</requires>
@@ -5453,7 +5907,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>78.0</computed>
 <requires>python:statistics</requires>
@@ -5465,7 +5920,8 @@ Assistant: <think>Power P = V × I. P = 228 V × 18.4 A. Energy in 1 hour = P ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>246.4</computed>
 <requires>python:electrical</requires>
@@ -5477,7 +5933,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.75 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.75</computed>
 <requires>python:chemistry</requires>
@@ -5489,7 +5946,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.13 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.13</computed>
 <requires>python:chemistry</requires>
@@ -5501,7 +5959,8 @@ Assistant: <think>Power P = V × I. P = 129 V × 4.0 A. Energy in 1 hour = P × 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>133</computed>
 <requires>python:electrical</requires>
@@ -5513,7 +5972,8 @@ Assistant: <think>Power P = V × I. P = 202 V × 18.1 A. Energy in 1 hour = P ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>220.1</computed>
 <requires>python:electrical</requires>
@@ -5525,7 +5985,8 @@ Assistant: <think>Using Ohm's law: I = V / R. I = 5.9 V / 929 Ω.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5.9</computed>
 <requires>python:electrical</requires>
@@ -5537,7 +5998,8 @@ Assistant: <think>Power P = V × I. P = 171 V × 16.1 A. Energy in 1 hour = P ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>187.1</computed>
 <requires>python:electrical</requires>
@@ -5549,7 +6011,8 @@ Assistant: <think>Power P = V × I. P = 216 V × 3.2 A. Energy in 1 hour = P × 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>219.2</computed>
 <requires>python:electrical</requires>
@@ -5561,7 +6024,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>78.0</computed>
 <requires>python:statistics</requires>
@@ -5573,7 +6037,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 8945 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -5585,7 +6050,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 4.13e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>12.1</computed>
 <requires>python:electrical</requires>
@@ -5597,7 +6063,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 9614 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -5609,7 +6076,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.43 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.43</computed>
 <requires>python:chemistry</requires>
@@ -5621,7 +6089,8 @@ Assistant: <think>Using Ohm's law: R = V / I. R = 22.3 V / 1.47 A.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>22.3</computed>
 <requires>python:electrical</requires>
@@ -5633,7 +6102,8 @@ Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Wher
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.0821</computed>
 <requires>python:chemistry</requires>
@@ -5645,7 +6115,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 2.29e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>6.5</computed>
 <requires>python:electrical</requires>
@@ -5657,7 +6128,8 @@ Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Wher
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.0821</computed>
 <requires>python:chemistry</requires>
@@ -5669,7 +6141,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 8555 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -5681,7 +6154,8 @@ Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Wher
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.0821</computed>
 <requires>python:chemistry</requires>
@@ -5693,7 +6167,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>54.0</computed>
 <requires>python:statistics</requires>
@@ -5705,7 +6180,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 3.21e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>10.5</computed>
 <requires>python:electrical</requires>
@@ -5717,7 +6193,8 @@ Assistant: <think>Using Ohm's law: R = V / I. R = 35.0 V / 1.35 A.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>35.0</computed>
 <requires>python:electrical</requires>
@@ -5729,7 +6206,8 @@ Assistant: <think>Using Ohm's law: V = I × R. V = 1.28 A × 936 Ω.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.28</computed>
 <requires>python:electrical</requires>
@@ -5741,7 +6219,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>95.0</computed>
 <requires>python:statistics</requires>
@@ -5753,7 +6232,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 7863 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -5765,7 +6245,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s. For f = 2e+09 Hz, 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:rf</requires>
@@ -5777,7 +6258,8 @@ Assistant: <think>Power P = V × I. P = 188 V × 16.0 A. Energy in 1 hour = P ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>204</computed>
 <requires>python:electrical</requires>
@@ -5789,7 +6271,8 @@ Assistant: <think>Using Ohm's law: R = V / I. R = 10.7 V / 2.45 A.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>10.7</computed>
 <requires>python:electrical</requires>
@@ -5801,7 +6284,8 @@ Assistant: <think>Using Ohm's law: R = V / I. R = 41.7 V / 3.69 A.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>41.7</computed>
 <requires>python:electrical</requires>
@@ -5813,7 +6297,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 1.48 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.48</computed>
 <requires>python:chemistry</requires>
@@ -5825,7 +6310,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 5252 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -5837,7 +6323,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s. For f = 9e+08 Hz, 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:rf</requires>
@@ -5849,7 +6336,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 821 Hz. So 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -5861,7 +6349,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 7.48e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>10.2</computed>
 <requires>python:electrical</requires>
@@ -5873,7 +6362,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>41.0</computed>
 <requires>python:statistics</requires>
@@ -5885,7 +6375,8 @@ Assistant: <think>Power P = V × I. P = 151 V × 8.6 A. Energy in 1 hour = P × 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>159.6</computed>
 <requires>python:electrical</requires>
@@ -5897,7 +6388,8 @@ Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.0</computed>
 <requires>python:rf</requires>
@@ -5909,7 +6401,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 4.31e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5.8</computed>
 <requires>python:electrical</requires>
@@ -5921,7 +6414,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 1577 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -5933,7 +6427,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 5.51e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>10.6</computed>
 <requires>python:electrical</requires>
@@ -5945,7 +6440,8 @@ Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.0</computed>
 <requires>python:rf</requires>
@@ -5957,7 +6453,8 @@ Assistant: <think>Using Ohm's law: V = I × R. V = 6.07 A × 354 Ω.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>6.07</computed>
 <requires>python:electrical</requires>
@@ -5969,7 +6466,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 9181 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -5981,7 +6479,8 @@ Assistant: <think>Using Ohm's law: R = V / I. R = 5.7 V / 3.05 A.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5.7</computed>
 <requires>python:electrical</requires>
@@ -5993,7 +6492,8 @@ Assistant: <think>Using Ohm's law: R = V / I. R = 5.3 V / 4.51 A.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5.3</computed>
 <requires>python:electrical</requires>
@@ -6005,7 +6505,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 8.01e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>16.5</computed>
 <requires>python:electrical</requires>
@@ -6017,7 +6518,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>35.0</computed>
 <requires>python:statistics</requires>
@@ -6029,7 +6531,8 @@ Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Wher
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.0821</computed>
 <requires>python:chemistry</requires>
@@ -6041,7 +6544,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 8297 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -6053,7 +6557,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>51.0</computed>
 <requires>python:statistics</requires>
@@ -6065,7 +6570,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 0.32 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.32</computed>
 <requires>python:chemistry</requires>
@@ -6077,7 +6583,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 2.56e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.6</computed>
 <requires>python:electrical</requires>
@@ -6089,7 +6596,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 2.97 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.97</computed>
 <requires>python:chemistry</requires>
@@ -6101,7 +6609,8 @@ Assistant: <think>Using Ohm's law: R = V / I. R = 11.5 V / 2.96 A.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>11.5</computed>
 <requires>python:electrical</requires>
@@ -6113,7 +6622,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 5.48e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>8.9</computed>
 <requires>python:electrical</requires>
@@ -6125,7 +6635,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 8029 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -6137,7 +6648,8 @@ Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.0</computed>
 <requires>python:rf</requires>
@@ -6149,7 +6661,8 @@ Assistant: <think>Power P = V × I. P = 215 V × 4.2 A. Energy in 1 hour = P × 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>219.2</computed>
 <requires>python:electrical</requires>
@@ -6161,7 +6674,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s. For f = 1e+10 Hz, 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:rf</requires>
@@ -6173,7 +6687,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 2.26 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.26</computed>
 <requires>python:chemistry</requires>
@@ -6185,7 +6700,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>88.0</computed>
 <requires>python:statistics</requires>
@@ -6197,7 +6713,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>43.0</computed>
 <requires>python:statistics</requires>
@@ -6209,7 +6726,8 @@ Assistant: <think>Using Ohm's law: I = V / R. I = 17.9 V / 64 Ω.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>17.9</computed>
 <requires>python:electrical</requires>
@@ -6221,7 +6739,8 @@ Assistant: <think>Using Ohm's law: V = I × R. V = 1.92 A × 583 Ω.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.92</computed>
 <requires>python:electrical</requires>
@@ -6233,7 +6752,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 2.66 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.66</computed>
 <requires>python:chemistry</requires>
@@ -6245,7 +6765,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 9280 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -6257,7 +6778,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 3462 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -6269,7 +6791,8 @@ Assistant: <think>Power P = V × I. P = 148 V × 10.0 A. Energy in 1 hour = P ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>158</computed>
 <requires>python:electrical</requires>
@@ -6281,7 +6804,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.33 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.33</computed>
 <requires>python:chemistry</requires>
@@ -6293,7 +6817,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 2.37 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.37</computed>
 <requires>python:chemistry</requires>
@@ -6305,7 +6830,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 2.91 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.91</computed>
 <requires>python:chemistry</requires>
@@ -6317,7 +6843,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>98.0</computed>
 <requires>python:statistics</requires>
@@ -6329,7 +6856,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>59.0</computed>
 <requires>python:statistics</requires>
@@ -6341,7 +6869,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 2521 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -6353,7 +6882,8 @@ Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.0</computed>
 <requires>python:rf</requires>
@@ -6365,7 +6895,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 0.55 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.55</computed>
 <requires>python:chemistry</requires>
@@ -6377,7 +6908,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 2627 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -6389,7 +6921,8 @@ Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.0</computed>
 <requires>python:rf</requires>
@@ -6401,7 +6934,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>81.0</computed>
 <requires>python:statistics</requires>
@@ -6413,7 +6947,8 @@ Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Wher
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.0821</computed>
 <requires>python:chemistry</requires>
@@ -6425,7 +6960,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 0.92 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.92</computed>
 <requires>python:chemistry</requires>
@@ -6437,7 +6973,8 @@ Assistant: <think>Using Ohm's law: R = V / I. R = 42.3 V / 2.15 A.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>42.3</computed>
 <requires>python:electrical</requires>
@@ -6449,7 +6986,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 1902 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -6461,7 +6999,8 @@ Assistant: <think>Using ideal gas law PV = nRT. Solving for n: n = PV/(RT). Wher
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>0.0821</computed>
 <requires>python:chemistry</requires>
@@ -6473,7 +7012,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>76.0</computed>
 <requires>python:statistics</requires>
@@ -6485,7 +7025,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.06 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.06</computed>
 <requires>python:chemistry</requires>
@@ -6497,7 +7038,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.67 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.67</computed>
 <requires>python:chemistry</requires>
@@ -6509,7 +7051,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>44.0</computed>
 <requires>python:statistics</requires>
@@ -6521,7 +7064,8 @@ Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.0</computed>
 <requires>python:rf</requires>
@@ -6533,7 +7077,8 @@ Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.0</computed>
 <requires>python:rf</requires>
@@ -6545,7 +7090,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 1.30 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.3</computed>
 <requires>python:chemistry</requires>
@@ -6557,7 +7103,8 @@ Assistant: <think>Using Ohm's law: I = V / R. I = 6.6 V / 868 Ω.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>6.6</computed>
 <requires>python:electrical</requires>
@@ -6569,7 +7116,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>20.0</computed>
 <requires>python:statistics</requires>
@@ -6581,7 +7129,8 @@ Assistant: <think>Power P = V × I. P = 134 V × 8.2 A. Energy in 1 hour = P × 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>142.2</computed>
 <requires>python:electrical</requires>
@@ -6593,7 +7142,8 @@ Assistant: <think>Standard deviation = √(Σ(x-μ)²/n). First find mean μ, th
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>38.0</computed>
 <requires>python:statistics</requires>
@@ -6605,7 +7155,8 @@ Assistant: <think>Molarity (M) = moles of solute / liters of solution. M = 3.85 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.85</computed>
 <requires>python:chemistry</requires>
@@ -6617,7 +7168,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 4409 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -6629,7 +7181,8 @@ Assistant: <think>Wavelength λ = c/f where c = 3×10⁸ m/s and f = 6362 Hz. So
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:physics</requires>
@@ -6641,7 +7194,8 @@ Assistant: <think>Resonant frequency f = 1/(2π√(LC)). With L = 3.94e-04 H and
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>10.2</computed>
 <requires>python:electrical</requires>
@@ -6653,7 +7207,8 @@ Assistant: <think>I need to calculate a 3-period moving average.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:math</requires>

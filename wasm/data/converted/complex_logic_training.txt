@@ -5,7 +5,8 @@ Assistant: <think>I need to multiply 25 by 77.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1925</computed>
 <requires>python:math</requires>
@@ -17,7 +18,8 @@ Assistant: <think>I need to multiply 37 by 50.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1850</computed>
 <requires>python:math</requires>
@@ -29,7 +31,8 @@ Assistant: <think>I need to multiply 71 by 12.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>852</computed>
 <requires>python:math</requires>
@@ -41,7 +44,8 @@ Assistant: <think>I need to multiply 52 by 72.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3744</computed>
 <requires>python:math</requires>
@@ -53,7 +57,8 @@ Assistant: <think>I need to multiply 54 by 80.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4320</computed>
 <requires>python:math</requires>
@@ -65,7 +70,8 @@ Assistant: <think>I need to multiply 97 by 47.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4559</computed>
 <requires>python:math</requires>
@@ -77,7 +83,8 @@ Assistant: <think>I need to multiply 35 by 22.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>770</computed>
 <requires>python:math</requires>
@@ -89,7 +96,8 @@ Assistant: <think>I need to multiply 86 by 69.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5934</computed>
 <requires>python:math</requires>
@@ -101,7 +109,8 @@ Assistant: <think>I need to multiply 31 by 26.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>806</computed>
 <requires>python:math</requires>
@@ -113,7 +122,8 @@ Assistant: <think>I need to multiply 44 by 62.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2728</computed>
 <requires>python:math</requires>
@@ -125,7 +135,8 @@ Assistant: <think>I need to multiply 15 by 46.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>690</computed>
 <requires>python:math</requires>
@@ -137,7 +148,8 @@ Assistant: <think>I need to multiply 41 by 93.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3813</computed>
 <requires>python:math</requires>
@@ -149,7 +161,8 @@ Assistant: <think>I need to multiply 61 by 17.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1037</computed>
 <requires>python:math</requires>
@@ -161,7 +174,8 @@ Assistant: <think>I need to multiply 40 by 24.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>960</computed>
 <requires>python:math</requires>
@@ -173,7 +187,8 @@ Assistant: <think>I need to multiply 72 by 27.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1944</computed>
 <requires>python:math</requires>
@@ -185,7 +200,8 @@ Assistant: <think>I need to multiply 63 by 35.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2205</computed>
 <requires>python:math</requires>
@@ -197,7 +213,8 @@ Assistant: <think>I need to multiply 40 by 22.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>880</computed>
 <requires>python:math</requires>
@@ -209,7 +226,8 @@ Assistant: <think>I need to multiply 23 by 14.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>322</computed>
 <requires>python:math</requires>
@@ -221,7 +239,8 @@ Assistant: <think>I need to multiply 79 by 26.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2054</computed>
 <requires>python:math</requires>
@@ -233,7 +252,8 @@ Assistant: <think>I need to multiply 50 by 34.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1700</computed>
 <requires>python:math</requires>
@@ -245,7 +265,8 @@ Assistant: <think>I need to multiply 86 by 45.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3870</computed>
 <requires>python:math</requires>
@@ -257,7 +278,8 @@ Assistant: <think>I need to multiply 83 by 21.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1743</computed>
 <requires>python:math</requires>
@@ -269,7 +291,8 @@ Assistant: <think>I need to multiply 60 by 37.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2220</computed>
 <requires>python:math</requires>
@@ -281,7 +304,8 @@ Assistant: <think>I need to multiply 65 by 24.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1560</computed>
 <requires>python:math</requires>
@@ -293,7 +317,8 @@ Assistant: <think>I need to multiply 22 by 42.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>924</computed>
 <requires>python:math</requires>
@@ -305,7 +330,8 @@ Assistant: <think>I need to multiply 46 by 96.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4416</computed>
 <requires>python:math</requires>
@@ -317,7 +343,8 @@ Assistant: <think>I need to multiply 76 by 95.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>7220</computed>
 <requires>python:math</requires>
@@ -329,7 +356,8 @@ Assistant: <think>I need to multiply 51 by 85.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4335</computed>
 <requires>python:math</requires>
@@ -341,7 +369,8 @@ Assistant: <think>I need to multiply 75 by 66.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4950</computed>
 <requires>python:math</requires>
@@ -353,7 +382,8 @@ Assistant: <think>I need to multiply 60 by 29.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1740</computed>
 <requires>python:math</requires>
@@ -365,7 +395,8 @@ Assistant: <think>I need to multiply 22 by 28.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>616</computed>
 <requires>python:math</requires>
@@ -377,7 +408,8 @@ Assistant: <think>I need to multiply 24 by 22.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>528</computed>
 <requires>python:math</requires>
@@ -389,7 +421,8 @@ Assistant: <think>I need to multiply 98 by 53.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5194</computed>
 <requires>python:math</requires>
@@ -401,7 +434,8 @@ Assistant: <think>I need to multiply 90 by 45.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4050</computed>
 <requires>python:math</requires>
@@ -413,7 +447,8 @@ Assistant: <think>I need to multiply 73 by 98.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>7154</computed>
 <requires>python:math</requires>
@@ -425,7 +460,8 @@ Assistant: <think>I need to multiply 53 by 63.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3339</computed>
 <requires>python:math</requires>
@@ -437,7 +473,8 @@ Assistant: <think>I need to multiply 76 by 92.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>6992</computed>
 <requires>python:math</requires>
@@ -449,7 +486,8 @@ Assistant: <think>I need to multiply 43 by 65.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2795</computed>
 <requires>python:math</requires>
@@ -461,7 +499,8 @@ Assistant: <think>I need to multiply 52 by 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1664</computed>
 <requires>python:math</requires>
@@ -473,7 +512,8 @@ Assistant: <think>I need to multiply 87 by 82.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>7134</computed>
 <requires>python:math</requires>
@@ -485,7 +525,8 @@ Assistant: <think>I need to multiply 80 by 34.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2720</computed>
 <requires>python:math</requires>
@@ -497,7 +538,8 @@ Assistant: <think>I need to multiply 92 by 83.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>7636</computed>
 <requires>python:math</requires>
@@ -509,7 +551,8 @@ Assistant: <think>I need to multiply 84 by 65.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5460</computed>
 <requires>python:math</requires>
@@ -521,7 +564,8 @@ Assistant: <think>I need to multiply 51 by 65.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3315</computed>
 <requires>python:math</requires>
@@ -533,7 +577,8 @@ Assistant: <think>I need to multiply 99 by 73.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>7227</computed>
 <requires>python:math</requires>
@@ -545,7 +590,8 @@ Assistant: <think>I need to multiply 87 by 64.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5568</computed>
 <requires>python:math</requires>
@@ -557,7 +603,8 @@ Assistant: <think>I need to multiply 49 by 14.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>686</computed>
 <requires>python:math</requires>
@@ -569,7 +616,8 @@ Assistant: <think>I need to multiply 56 by 82.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4592</computed>
 <requires>python:math</requires>
@@ -581,7 +629,8 @@ Assistant: <think>I need to multiply 37 by 43.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1591</computed>
 <requires>python:math</requires>
@@ -593,7 +642,8 @@ Assistant: <think>I need to multiply 51 by 46.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2346</computed>
 <requires>python:math</requires>
@@ -605,7 +655,8 @@ Assistant: <think>I need to divide 216 by 8.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>27</computed>
 <requires>python:math</requires>
@@ -617,7 +668,8 @@ Assistant: <think>I need to divide 396 by 18.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>22</computed>
 <requires>python:math</requires>
@@ -629,7 +681,8 @@ Assistant: <think>I need to divide 510 by 15.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>34</computed>
 <requires>python:math</requires>
@@ -641,7 +694,8 @@ Assistant: <think>I need to divide 150 by 15.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>10</computed>
 <requires>python:math</requires>
@@ -653,7 +707,8 @@ Assistant: <think>I need to divide 399 by 21.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>19</computed>
 <requires>python:math</requires>
@@ -665,7 +720,8 @@ Assistant: <think>I need to divide 984 by 24.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>41</computed>
 <requires>python:math</requires>
@@ -677,7 +733,8 @@ Assistant: <think>I need to divide 735 by 15.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>49</computed>
 <requires>python:math</requires>
@@ -689,7 +746,8 @@ Assistant: <think>I need to divide 200 by 4.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>50</computed>
 <requires>python:math</requires>
@@ -701,7 +759,8 @@ Assistant: <think>I need to divide 462 by 21.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>22</computed>
 <requires>python:math</requires>
@@ -713,7 +772,8 @@ Assistant: <think>I need to divide 456 by 19.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>24</computed>
 <requires>python:math</requires>
@@ -725,7 +785,8 @@ Assistant: <think>I need to divide 550 by 22.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>25</computed>
 <requires>python:math</requires>
@@ -737,7 +798,8 @@ Assistant: <think>I need to divide 858 by 22.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>39</computed>
 <requires>python:math</requires>
@@ -749,7 +811,8 @@ Assistant: <think>I need to divide 58 by 2.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>29</computed>
 <requires>python:math</requires>
@@ -761,7 +824,8 @@ Assistant: <think>I need to divide 738 by 18.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>41</computed>
 <requires>python:math</requires>
@@ -773,7 +837,8 @@ Assistant: <think>I need to divide 819 by 21.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>39</computed>
 <requires>python:math</requires>
@@ -785,7 +850,8 @@ Assistant: <think>I need to divide 336 by 16.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>21</computed>
 <requires>python:math</requires>
@@ -797,7 +863,8 @@ Assistant: <think>I need to divide 230 by 5.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>46</computed>
 <requires>python:math</requires>
@@ -809,7 +876,8 @@ Assistant: <think>I need to divide 98 by 7.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>14</computed>
 <requires>python:math</requires>
@@ -821,7 +889,8 @@ Assistant: <think>I need to divide 828 by 23.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>36</computed>
 <requires>python:math</requires>
@@ -833,7 +902,8 @@ Assistant: <think>I need to divide 390 by 15.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>26</computed>
 <requires>python:math</requires>
@@ -845,7 +915,8 @@ Assistant: <think>I need to divide 308 by 11.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>28</computed>
 <requires>python:math</requires>
@@ -857,7 +928,8 @@ Assistant: <think>I need to divide 270 by 6.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>45</computed>
 <requires>python:math</requires>
@@ -869,7 +941,8 @@ Assistant: <think>I need to divide 64 by 4.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>16</computed>
 <requires>python:math</requires>
@@ -881,7 +954,8 @@ Assistant: <think>I need to divide 1035 by 23.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>45</computed>
 <requires>python:math</requires>
@@ -893,7 +967,8 @@ Assistant: <think>I need to divide 126 by 6.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>21</computed>
 <requires>python:math</requires>
@@ -905,7 +980,8 @@ Assistant: <think>I need to divide 90 by 5.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>18</computed>
 <requires>python:math</requires>
@@ -917,7 +993,8 @@ Assistant: <think>I need to divide 874 by 23.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>38</computed>
 <requires>python:math</requires>
@@ -929,7 +1006,8 @@ Assistant: <think>I need to divide 104 by 4.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>26</computed>
 <requires>python:math</requires>
@@ -941,7 +1019,8 @@ Assistant: <think>I need to divide 735 by 15.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>49</computed>
 <requires>python:math</requires>
@@ -953,7 +1032,8 @@ Assistant: <think>I need to divide 256 by 8.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32</computed>
 <requires>python:math</requires>
@@ -965,7 +1045,8 @@ Assistant: <think>I need to divide 286 by 11.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>26</computed>
 <requires>python:math</requires>
@@ -977,7 +1058,8 @@ Assistant: <think>I need to divide 238 by 14.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>17</computed>
 <requires>python:math</requires>
@@ -989,7 +1071,8 @@ Assistant: <think>I need to divide 555 by 15.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>37</computed>
 <requires>python:math</requires>
@@ -1001,7 +1084,8 @@ Assistant: <think>I need to divide 588 by 14.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>42</computed>
 <requires>python:math</requires>
@@ -1013,7 +1097,8 @@ Assistant: <think>I need to divide 90 by 2.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>45</computed>
 <requires>python:math</requires>
@@ -1025,7 +1110,8 @@ Assistant: <think>I need to divide 348 by 12.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>29</computed>
 <requires>python:math</requires>
@@ -1037,7 +1123,8 @@ Assistant: <think>I need to divide 187 by 11.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>17</computed>
 <requires>python:math</requires>
@@ -1049,7 +1136,8 @@ Assistant: <think>I need to divide 286 by 11.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>26</computed>
 <requires>python:math</requires>
@@ -1061,7 +1149,8 @@ Assistant: <think>I need to divide 90 by 6.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>15</computed>
 <requires>python:math</requires>
@@ -1073,7 +1162,8 @@ Assistant: <think>I need to divide 180 by 10.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>18</computed>
 <requires>python:math</requires>
@@ -1085,7 +1175,8 @@ Assistant: <think>I need to divide 154 by 7.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>22</computed>
 <requires>python:math</requires>
@@ -1097,7 +1188,8 @@ Assistant: <think>I need to divide 230 by 5.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>46</computed>
 <requires>python:math</requires>
@@ -1109,7 +1201,8 @@ Assistant: <think>I need to divide 117 by 3.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>39</computed>
 <requires>python:math</requires>
@@ -1121,7 +1214,8 @@ Assistant: <think>I need to divide 42 by 3.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>14</computed>
 <requires>python:math</requires>
@@ -1133,7 +1227,8 @@ Assistant: <think>I need to divide 338 by 13.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>26</computed>
 <requires>python:math</requires>
@@ -1145,7 +1240,8 @@ Assistant: <think>I need to divide 147 by 3.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>49</computed>
 <requires>python:math</requires>
@@ -1157,7 +1253,8 @@ Assistant: <think>I need to divide 279 by 9.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>31</computed>
 <requires>python:math</requires>
@@ -1169,7 +1266,8 @@ Assistant: <think>I need to divide 66 by 2.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>33</computed>
 <requires>python:math</requires>
@@ -1181,7 +1279,8 @@ Assistant: <think>I need to divide 260 by 10.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>26</computed>
 <requires>python:math</requires>
@@ -1193,7 +1292,8 @@ Assistant: <think>I need to divide 450 by 18.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>25</computed>
 <requires>python:math</requires>
@@ -1205,7 +1305,8 @@ Assistant: <think>I need to count how many times 'i' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1216,7 +1317,8 @@ Assistant: <think>I need to count how many times 'r' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1227,7 +1329,8 @@ Assistant: <think>I need to count how many times 'o' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1238,7 +1341,8 @@ Assistant: <think>I need to count how many times 'e' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1249,7 +1353,8 @@ Assistant: <think>I need to count how many times 'u' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1260,7 +1365,8 @@ Assistant: <think>I need to count how many times 'r' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1271,7 +1377,8 @@ Assistant: <think>I need to count how many times 'e' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1282,7 +1389,8 @@ Assistant: <think>I need to count how many times 't' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1293,7 +1401,8 @@ Assistant: <think>I need to count how many times 'r' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1304,7 +1413,8 @@ Assistant: <think>I need to count how many times 's' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1315,7 +1425,8 @@ Assistant: <think>I need to count how many times 't' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1326,7 +1437,8 @@ Assistant: <think>I need to count how many times 's' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1337,7 +1449,8 @@ Assistant: <think>I need to count how many times 's' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1348,7 +1461,8 @@ Assistant: <think>I need to count how many times 'o' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1359,7 +1473,8 @@ Assistant: <think>I need to count how many times 'o' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1370,7 +1485,8 @@ Assistant: <think>I need to count how many times 'e' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1381,7 +1497,8 @@ Assistant: <think>I need to count how many times 't' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1392,7 +1509,8 @@ Assistant: <think>I need to count how many times 'r' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1403,7 +1521,8 @@ Assistant: <think>I need to count how many times 's' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1414,7 +1533,8 @@ Assistant: <think>I need to count how many times 'a' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1425,7 +1545,8 @@ Assistant: <think>I need to count how many times 's' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1436,7 +1557,8 @@ Assistant: <think>I need to count how many times 'a' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1447,7 +1569,8 @@ Assistant: <think>I need to count how many times 'o' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1458,7 +1581,8 @@ Assistant: <think>I need to count how many times 'r' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1469,7 +1593,8 @@ Assistant: <think>I need to count how many times 'i' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1480,7 +1605,8 @@ Assistant: <think>I need to count how many times 'e' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1491,7 +1617,8 @@ Assistant: <think>I need to count how many times 'u' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1502,7 +1629,8 @@ Assistant: <think>I need to count how many times 'a' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1513,7 +1641,8 @@ Assistant: <think>I need to count how many times 'i' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1524,7 +1653,8 @@ Assistant: <think>I need to count how many times 'o' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1535,7 +1665,8 @@ Assistant: <think>I need to count how many times 't' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1546,7 +1677,8 @@ Assistant: <think>I need to count how many times 't' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1557,7 +1689,8 @@ Assistant: <think>I need to count how many times 'u' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1568,7 +1701,8 @@ Assistant: <think>I need to count how many times 'a' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1579,7 +1713,8 @@ Assistant: <think>I need to count how many times 'o' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1590,7 +1725,8 @@ Assistant: <think>I need to count how many times 'r' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1601,7 +1737,8 @@ Assistant: <think>I need to count how many times 's' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1612,7 +1749,8 @@ Assistant: <think>I need to count how many times 'o' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1623,7 +1761,8 @@ Assistant: <think>I need to count how many times 't' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1634,7 +1773,8 @@ Assistant: <think>I need to count how many times 'a' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1645,7 +1785,8 @@ Assistant: <think>I need to count how many times 'u' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1656,7 +1797,8 @@ Assistant: <think>I need to count how many times 'a' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1667,7 +1809,8 @@ Assistant: <think>I need to count how many times 'e' appears in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1678,7 +1821,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1689,7 +1833,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1700,7 +1845,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1711,7 +1857,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1722,7 +1869,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1733,7 +1881,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1744,7 +1893,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1755,7 +1905,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1766,7 +1917,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1777,7 +1929,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1788,7 +1941,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1799,7 +1953,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1810,7 +1965,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1821,7 +1977,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1832,7 +1989,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1843,7 +2001,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1854,7 +2013,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1865,7 +2025,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1876,7 +2037,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1887,7 +2049,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1898,7 +2061,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1909,7 +2073,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1920,7 +2085,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1931,7 +2097,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1942,7 +2109,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1953,7 +2121,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1964,7 +2133,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1975,7 +2145,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1986,7 +2157,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -1997,7 +2169,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -2008,7 +2181,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -2019,7 +2193,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -2030,7 +2205,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -2041,7 +2217,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -2052,7 +2229,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -2063,7 +2241,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -2074,7 +2253,8 @@ Assistant: <think>I need to split the text by spaces and count the words.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:text</requires>
 
@@ -2085,7 +2265,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2097,7 +2278,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2109,7 +2291,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2121,7 +2304,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2133,7 +2317,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2145,7 +2330,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2157,7 +2343,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2169,7 +2356,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2181,7 +2369,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2193,7 +2382,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2205,7 +2395,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2217,7 +2408,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2229,7 +2421,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2241,7 +2434,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2253,7 +2447,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2265,7 +2460,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2277,7 +2473,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2289,7 +2486,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2301,7 +2499,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2313,7 +2512,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2325,7 +2525,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2337,7 +2538,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2349,7 +2551,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2361,7 +2564,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2373,7 +2577,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2385,7 +2590,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2397,7 +2603,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2409,7 +2616,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2421,7 +2629,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2433,7 +2642,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2445,7 +2655,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2457,7 +2668,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2469,7 +2681,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2481,7 +2694,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2493,7 +2707,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2505,7 +2720,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2517,7 +2733,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2529,7 +2746,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2541,7 +2759,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2553,7 +2772,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2565,7 +2785,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2577,7 +2798,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2589,7 +2811,8 @@ Assistant: <think>I need to count all vowels (a, e, i, o, u) in the text.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:text</requires>
@@ -2601,7 +2824,8 @@ Assistant: <think>Area of a circle = π × r². With radius 6, area = π × 6².
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>6.0</computed>
 <requires>python:math</requires>
@@ -2613,7 +2837,8 @@ Assistant: <think>Area of a circle = π × r². With radius 6, area = π × 6².
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>6.0</computed>
 <requires>python:math</requires>
@@ -2625,7 +2850,8 @@ Assistant: <think>Area of a circle = π × r². With radius 8, area = π × 8².
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>8.0</computed>
 <requires>python:math</requires>
@@ -2637,7 +2863,8 @@ Assistant: <think>Area of a circle = π × r². With radius 9, area = π × 9².
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:math</requires>
@@ -2649,7 +2876,8 @@ Assistant: <think>Area of a circle = π × r². With radius 8, area = π × 8².
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>8.0</computed>
 <requires>python:math</requires>
@@ -2661,7 +2889,8 @@ Assistant: <think>Area of a circle = π × r². With radius 9, area = π × 9².
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:math</requires>
@@ -2673,7 +2902,8 @@ Assistant: <think>Area of a circle = π × r². With radius 8, area = π × 8².
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>8.0</computed>
 <requires>python:math</requires>
@@ -2685,7 +2915,8 @@ Assistant: <think>Area of a circle = π × r². With radius 8, area = π × 8².
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>8.0</computed>
 <requires>python:math</requires>
@@ -2697,7 +2928,8 @@ Assistant: <think>Area of a circle = π × r². With radius 6, area = π × 6².
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>6.0</computed>
 <requires>python:math</requires>
@@ -2709,7 +2941,8 @@ Assistant: <think>Area of a circle = π × r². With radius 6, area = π × 6².
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>6.0</computed>
 <requires>python:math</requires>
@@ -2721,7 +2954,8 @@ Assistant: <think>Area of a circle = π × r². With radius 5, area = π × 5².
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>5.0</computed>
 <requires>python:math</requires>
@@ -2733,7 +2967,8 @@ Assistant: <think>Area of a circle = π × r². With radius 6, area = π × 6².
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>6.0</computed>
 <requires>python:math</requires>
@@ -2745,7 +2980,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2757,7 +2993,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2769,7 +3006,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2781,7 +3019,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2793,7 +3032,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2805,7 +3045,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2817,7 +3058,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2829,7 +3071,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2841,7 +3084,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2853,7 +3097,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2865,7 +3110,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2877,7 +3123,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2889,7 +3136,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2901,7 +3149,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2913,7 +3162,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2925,7 +3175,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2937,7 +3188,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2949,7 +3201,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2961,7 +3214,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2973,7 +3227,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2985,7 +3240,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -2997,7 +3253,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -3009,7 +3266,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -3021,7 +3279,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -3033,7 +3292,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -3045,7 +3305,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -3057,7 +3318,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -3069,7 +3331,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -3081,7 +3344,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -3093,7 +3357,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -3105,7 +3370,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -3117,7 +3383,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -3129,7 +3396,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -3141,7 +3409,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -3153,7 +3422,8 @@ Assistant: <think>To convert Celsius to Fahrenheit: F = (C × 9/5) + 32.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -3165,7 +3435,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3177,7 +3448,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3189,7 +3461,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3201,7 +3474,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3213,7 +3487,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3225,7 +3500,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3237,7 +3513,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3249,7 +3526,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3261,7 +3539,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3273,7 +3552,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3285,7 +3565,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3297,7 +3578,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3309,7 +3591,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3321,7 +3604,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3333,7 +3617,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3345,7 +3630,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3357,7 +3643,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3369,7 +3656,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3381,7 +3669,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3393,7 +3682,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3405,7 +3695,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3417,7 +3708,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3429,7 +3721,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3441,7 +3734,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3453,7 +3747,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3465,7 +3760,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3477,7 +3773,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3489,7 +3786,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3501,7 +3799,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3513,7 +3812,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3525,7 +3825,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3537,7 +3838,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3549,7 +3851,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3561,7 +3864,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3573,7 +3877,8 @@ Assistant: <think>1 mile = 1.60934 kilometers.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.mul))
+    f64.mul)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1.0</computed>
 <requires>python:conversion</requires>
@@ -3585,7 +3890,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3596,7 +3902,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3607,7 +3914,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3618,7 +3926,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3629,7 +3938,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3640,7 +3950,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3651,7 +3962,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3662,7 +3974,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3673,7 +3986,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3684,7 +3998,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3695,7 +4010,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3706,7 +4022,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3717,7 +4034,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3728,7 +4046,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3739,7 +4058,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3750,7 +4070,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3761,7 +4082,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3772,7 +4094,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3783,7 +4106,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3794,7 +4118,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3805,7 +4130,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3816,7 +4142,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3827,7 +4154,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3838,7 +4166,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3849,7 +4178,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3860,7 +4190,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3871,7 +4202,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3882,7 +4214,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3893,7 +4226,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3904,7 +4238,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3915,7 +4250,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3926,7 +4262,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3937,7 +4274,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3948,7 +4286,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3959,7 +4298,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3970,7 +4310,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3981,7 +4322,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -3992,7 +4334,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -4003,7 +4346,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -4014,7 +4358,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -4025,7 +4370,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -4036,7 +4382,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -4047,7 +4394,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -4058,7 +4406,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -4069,7 +4418,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -4080,7 +4430,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -4091,7 +4442,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -4102,7 +4454,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -4113,7 +4466,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -4124,7 +4478,8 @@ Assistant: <think>I need to evaluate the boolean expression step by step.</think
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <requires>python:logic</requires>
 
@@ -4135,7 +4490,8 @@ Assistant: <think>To find median, I need to sort the data and find the middle va
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>12.0</computed>
 <requires>python:statistics</requires>
@@ -4147,7 +4503,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of CaCO3 is 10
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:chemistry</requires>
@@ -4159,7 +4516,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -4171,7 +4529,8 @@ Assistant: <think>To find median, I need to sort the data and find the middle va
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>8.0</computed>
 <requires>python:statistics</requires>
@@ -4183,7 +4542,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -4195,7 +4555,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -4207,7 +4568,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -4219,7 +4581,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -4231,7 +4594,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -4243,7 +4607,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of H2O is 18.0
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:chemistry</requires>
@@ -4255,7 +4620,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -4267,7 +4633,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -4279,7 +4646,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of NaCl is 58.
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>58.44</computed>
 <requires>python:chemistry</requires>
@@ -4291,7 +4659,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -4303,7 +4672,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -4315,7 +4685,8 @@ Assistant: <think>To find median, I need to sort the data and find the middle va
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>11.0</computed>
 <requires>python:statistics</requires>
@@ -4327,7 +4698,8 @@ Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = 67 + 273.15
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>273.15</computed>
 <requires>python:conversion</requires>
@@ -4339,7 +4711,8 @@ Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = 93 + 273.15
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>273.15</computed>
 <requires>python:conversion</requires>
@@ -4351,7 +4724,8 @@ Assistant: <think>To convert Kelvin to Celsius, I subtract 273.15. So C = 524 - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>273.15</computed>
 <requires>python:conversion</requires>
@@ -4363,7 +4737,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -4375,7 +4750,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -4387,7 +4763,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -4399,7 +4776,8 @@ Assistant: <think>To find median, I need to sort the data and find the middle va
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>13.0</computed>
 <requires>python:statistics</requires>
@@ -4411,7 +4789,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -4423,7 +4802,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -4435,7 +4815,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -4447,7 +4828,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -4459,7 +4841,8 @@ Assistant: <think>To convert Kelvin to Celsius, I subtract 273.15. So C = 559 - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>273.15</computed>
 <requires>python:conversion</requires>
@@ -4471,7 +4854,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -4483,7 +4867,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -4495,7 +4880,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of CO2 is 44.0
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:chemistry</requires>
@@ -4507,7 +4893,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -4519,7 +4906,8 @@ Assistant: <think>To find median, I need to sort the data and find the middle va
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>8.0</computed>
 <requires>python:statistics</requires>
@@ -4531,7 +4919,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -4543,7 +4932,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of H2SO4 is 98
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:chemistry</requires>
@@ -4555,7 +4945,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -4567,7 +4958,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -4579,7 +4971,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -4591,7 +4984,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -4603,7 +4997,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -4615,7 +5010,8 @@ Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = -15 + 273.1
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>273.15</computed>
 <requires>python:conversion</requires>
@@ -4627,7 +5023,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -4639,7 +5036,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -4651,7 +5049,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -4663,7 +5062,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -4675,7 +5075,8 @@ Assistant: <think>To find median, I need to sort the data and find the middle va
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:statistics</requires>
@@ -4687,7 +5088,8 @@ Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.0</computed>
 <requires>python:rf</requires>
@@ -4699,7 +5101,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -4711,7 +5114,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of CaCO3 is 10
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:chemistry</requires>
@@ -4723,7 +5127,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -4735,7 +5140,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -4747,7 +5153,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -4759,7 +5166,8 @@ Assistant: <think>Quarter-wave antenna length = λ/4. First find λ = c/f, then 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>4.0</computed>
 <requires>python:rf</requires>
@@ -4771,7 +5179,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -4783,7 +5192,8 @@ Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = 18 + 273.15
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>273.15</computed>
 <requires>python:conversion</requires>
@@ -4795,7 +5205,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -4807,7 +5218,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -4819,7 +5231,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -4831,7 +5244,8 @@ Assistant: <think>To find median, I need to sort the data and find the middle va
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:statistics</requires>
@@ -4843,7 +5257,8 @@ Assistant: <think>To convert Kelvin to Celsius, I subtract 273.15. So C = 393 - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.sub))
+    f64.sub)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>273.15</computed>
 <requires>python:conversion</requires>
@@ -4855,7 +5270,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -4867,7 +5283,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -4879,7 +5296,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of CaCO3 is 10
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:chemistry</requires>
@@ -4891,7 +5309,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -4903,7 +5322,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -4915,7 +5335,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -4927,7 +5348,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -4939,7 +5361,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of NaCl is 58.
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>58.44</computed>
 <requires>python:chemistry</requires>
@@ -4951,7 +5374,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -4963,7 +5387,8 @@ Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = -15 + 273.1
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>273.15</computed>
 <requires>python:conversion</requires>
@@ -4975,7 +5400,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of NaCl is 58.
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>58.44</computed>
 <requires>python:chemistry</requires>
@@ -4987,7 +5413,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of CaCO3 is 10
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:chemistry</requires>
@@ -4999,7 +5426,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -5011,7 +5439,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -5023,7 +5452,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of CaCO3 is 10
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:chemistry</requires>
@@ -5035,7 +5465,8 @@ Assistant: <think>To find median, I need to sort the data and find the middle va
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>15.0</computed>
 <requires>python:statistics</requires>
@@ -5047,7 +5478,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -5059,7 +5491,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -5071,7 +5504,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -5083,7 +5517,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -5095,7 +5530,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -5107,7 +5543,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -5119,7 +5556,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -5131,7 +5569,8 @@ Assistant: <think>To find median, I need to sort the data and find the middle va
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>10.0</computed>
 <requires>python:statistics</requires>
@@ -5143,7 +5582,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of NaCl is 58.
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>58.44</computed>
 <requires>python:chemistry</requires>
@@ -5155,7 +5595,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -5167,7 +5608,8 @@ Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = 194 + 273.1
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>273.15</computed>
 <requires>python:conversion</requires>
@@ -5179,7 +5621,8 @@ Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = 88 + 273.15
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>273.15</computed>
 <requires>python:conversion</requires>
@@ -5191,7 +5634,8 @@ Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = 52 + 273.15
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>273.15</computed>
 <requires>python:conversion</requires>
@@ -5203,7 +5647,8 @@ Assistant: <think>To find median, I need to sort the data and find the middle va
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:statistics</requires>
@@ -5215,7 +5660,8 @@ Assistant: <think>To find median, I need to sort the data and find the middle va
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>12.0</computed>
 <requires>python:statistics</requires>
@@ -5227,7 +5673,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -5239,7 +5686,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -5251,7 +5699,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -5263,7 +5712,8 @@ Assistant: <think>To find median, I need to sort the data and find the middle va
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>10.0</computed>
 <requires>python:statistics</requires>
@@ -5275,7 +5725,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -5287,7 +5738,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -5299,7 +5751,8 @@ Assistant: <think>To find median, I need to sort the data and find the middle va
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>15.0</computed>
 <requires>python:statistics</requires>
@@ -5311,7 +5764,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -5323,7 +5777,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -5335,7 +5790,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of CaCO3 is 10
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:chemistry</requires>
@@ -5347,7 +5803,8 @@ Assistant: <think>To find median, I need to sort the data and find the middle va
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>8.0</computed>
 <requires>python:statistics</requires>
@@ -5359,7 +5816,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of H2O is 18.0
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:chemistry</requires>
@@ -5371,7 +5829,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of C6H12O6 is 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>6.0</computed>
 <requires>python:chemistry</requires>
@@ -5383,7 +5842,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of C6H12O6 is 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>6.0</computed>
 <requires>python:chemistry</requires>
@@ -5395,7 +5855,8 @@ Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = -40 + 273.1
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>273.15</computed>
 <requires>python:conversion</requires>
@@ -5407,7 +5868,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -5419,7 +5881,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -5431,7 +5894,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -5443,7 +5907,8 @@ Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = -3 + 273.15
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>273.15</computed>
 <requires>python:conversion</requires>
@@ -5455,7 +5920,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -5467,7 +5933,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -5479,7 +5946,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of CO2 is 44.0
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:chemistry</requires>
@@ -5491,7 +5959,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -5503,7 +5972,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -5515,7 +5985,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of H2SO4 is 98
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:chemistry</requires>
@@ -5527,7 +5998,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -5539,7 +6011,8 @@ Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = 148 + 273.1
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>273.15</computed>
 <requires>python:conversion</requires>
@@ -5551,7 +6024,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -5563,7 +6037,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -5575,7 +6050,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of NaCl is 58.
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>58.44</computed>
 <requires>python:chemistry</requires>
@@ -5587,7 +6063,8 @@ Assistant: <think>To convert Celsius to Fahrenheit, I use the formula: F = (C ×
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:conversion</requires>
@@ -5599,7 +6076,8 @@ Assistant: <think>Number of moles = mass / molar mass. Molar mass of H2SO4 is 98
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:chemistry</requires>
@@ -5611,7 +6089,8 @@ Assistant: <think>To convert Fahrenheit to Celsius, I use the formula: C = (F - 
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>32.0</computed>
 <requires>python:conversion</requires>
@@ -5623,7 +6102,8 @@ Assistant: <think>To convert Celsius to Kelvin, I add 273.15. So K = 190 + 273.1
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>273.15</computed>
 <requires>python:conversion</requires>
@@ -5635,7 +6115,8 @@ Assistant: <think>To find median, I need to sort the data and find the middle va
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>9.0</computed>
 <requires>python:statistics</requires>
@@ -5647,7 +6128,8 @@ Assistant: <think>For free fall from height h, time t = √(2h/g) where g = 9.81
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>2.0</computed>
 <requires>python:physics</requires>
@@ -5724,7 +6206,8 @@ Assistant: <think>I need to check the system's memory usage.</think>
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.div))
+    f64.div)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>1024.0</computed>
 <requires>python:psutil</requires>
@@ -5736,7 +6219,8 @@ Assistant: <think>I need to use the Pythagorean theorem to find the hypotenuse.<
   (func $compute (param f64 f64) (result f64)
     local.get 0
     local.get 1
-    f64.add))
+    f64.add)
+  (export "compute" (func $compute)))
 </wat_model>
 <computed>3.0</computed>
 <requires>python:math</requires>
