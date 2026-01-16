@@ -63,3 +63,10 @@ rocblas_*
 # Checkpoint directories (moved to root)
 wasm_worldmodel_output/
 wasm_worldmodel_output/*
+
+# All checkpoint patterns
+*checkpoint*/
+checkpoint-*/
+final_model/
+failed_model/
+interrupted_model/
