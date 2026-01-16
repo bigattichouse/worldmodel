@@ -1,0 +1,18 @@
+# Core ML Dependencies
+# Note: Install PyTorch separately based on your hardware:
+# AMD ROCm: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.0  
+# NVIDIA CUDA: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+# CPU-Only: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+
+transformers>=4.57.0
+huggingface_hub>=0.36.0
+accelerate>=1.12.0
+datasets>=2.16.0
+
+# Optional dependencies (not required for basic training)
+peft>=0.13.0
+bitsandbytes>=0.44.0
+
+# Development and testing (optional)
+pytest>=7.0.0
+pytest-asyncio>=0.21.0

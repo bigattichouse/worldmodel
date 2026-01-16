@@ -59,3 +59,7 @@ quick_test/
 # ROCm specific
 rocblas_*
 .rocm/
+
+# Checkpoint directories (moved to root)
+wasm_worldmodel_output/
+wasm_worldmodel_output/*

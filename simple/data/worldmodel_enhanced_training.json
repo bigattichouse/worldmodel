@@ -1,0 +1,2926 @@
+{
+  "metadata": {
+    "total_examples": 184,
+    "created_at": "2025-12-26T18:02:07.631340+00:00",
+    "generator_version": "4.0_enhanced_with_science",
+    "description": "Enhanced WorldModel training dataset with science and tricky problems",
+    "original_examples": 173,
+    "science_examples": 11
+  },
+  "examples": [
+    {
+      "input_text": "Analyze the following text: 'Hello world, this is a test sentence with several words.'. Count the number of vowels",
+      "target_output": "<think>I need to analyze the text 'Hello world, this is a test sentence with several words.' and count vowels.</think>\n<model>\ntext = \"Hello world, this is a test sentence with several words.\"\nvowels = \"aeiouAEIOU\"\ncount = sum(1 for char in text if char in vowels)\nprint(f\"Number of vowels: {count}\")\n</model>\n<requires>python:text</requires>",
+      "metadata": {
+        "template_name": "text_analysis",
+        "template_description": "Analyze text properties",
+        "variables": {
+          "text": "Hello world, this is a test sentence with several words.",
+          "analysis_type": "vowels"
+        },
+        "requires_execution": true,
+        "expected_result": "Number of vowels: 15"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.040469+00:00"
+    },
+    {
+      "input_text": "Calculate 10 + 46",
+      "target_output": "<think>I need to calculate 10 + 46. Let me compute this step by step.</think>\n<model>\nresult = 10 + 46\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "basic_arithmetic",
+        "template_description": "Simple arithmetic operations",
+        "variables": {
+          "a": 10,
+          "b": 46,
+          "op": "+"
+        },
+        "requires_execution": true,
+        "expected_result": "56"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.039591+00:00"
+    },
+    {
+      "input_text": "Calculate 17 + 52",
+      "target_output": "<think>I need to calculate 17 + 52. Let me compute this step by step.</think>\n<model>\nresult = 17 + 52\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "basic_arithmetic",
+        "template_description": "Simple arithmetic operations",
+        "variables": {
+          "a": 17,
+          "b": 52,
+          "op": "+"
+        },
+        "requires_execution": true,
+        "expected_result": "69"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.037022+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 1x\u00b2 + -2x + 7 = 0",
+      "target_output": "<think>I need to find roots of 1x\u00b2 + -2x + 7 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 1, -2, 7\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 1,
+          "b": -2,
+          "c": 7
+        },
+        "requires_execution": true,
+        "expected_result": "Complex roots: 1.00 \u00b1 2.45i"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.817863+00:00"
+    },
+    {
+      "input_text": "Analyze the following text: 'The quick brown fox jumps over the lazy dog.'. Count the number of words",
+      "target_output": "<think>I need to analyze the text 'The quick brown fox jumps over the lazy dog.' and count words.</think>\n<model>\ntext = \"The quick brown fox jumps over the lazy dog.\"\nwords = text.split()\ncount = len(words)\nprint(f\"Number of words: {count}\")\n</model>\n<requires>python:text</requires>",
+      "metadata": {
+        "template_name": "text_analysis",
+        "template_description": "Analyze text properties",
+        "variables": {
+          "text": "The quick brown fox jumps over the lazy dog.",
+          "analysis_type": "words"
+        },
+        "requires_execution": true,
+        "expected_result": "Number of words: 9"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T01:10:10.818548+00:00"
+    },
+    {
+      "input_text": "Evaluate the boolean expression: True or True and True",
+      "target_output": "<think>I need to solve: Evaluate the boolean expression: True or True and True</think>\n<model>\n# Solution for: Evaluate the boolean expression: True or True and True\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "boolean_logic",
+        "template_description": "Boolean logic evaluation",
+        "variables": {
+          "expr1": "True",
+          "expr2": "True",
+          "expr3": "True",
+          "op1": "or",
+          "op2": "and"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "medium",
+      "category": "logic",
+      "created_at": "2025-12-26T16:28:14.039041+00:00"
+    },
+    {
+      "input_text": "Calculate the mean of the following numbers: item",
+      "target_output": "<think>I need to calculate the mean of these numbers: item</think>\n<model>\nnumbers = [item]\nmean = sum(numbers) / len(numbers)\nprint(f\"Mean: {mean:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "statistics_mean",
+        "template_description": "Calculate mean of numbers",
+        "variables": {
+          "numbers": "item"
+        },
+        "requires_execution": true,
+        "expected_result": "Error calculating mean"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.038262+00:00"
+    },
+    {
+      "input_text": "Take the string 'Data Science' and convert to uppercase",
+      "target_output": "<think>I need to solve: Take the string 'Data Science' and convert to uppercase</think>\n<model>\n# Solution for: Take the string 'Data Science' and convert to uppercase\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "string_operations",
+        "template_description": "String manipulation tasks",
+        "variables": {
+          "input_str": "Data Science",
+          "operation": "convert to uppercase"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T01:10:10.817184+00:00"
+    },
+    {
+      "input_text": "What are the benefits of learning Python?",
+      "target_output": "Learning Python offers many benefits: it has simple, readable syntax that's beginner-friendly; extensive libraries for data science, web development, and automation; strong community support; and high demand in the job market across many industries.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "creative"
+      },
+      "difficulty": "easy",
+      "category": "creative",
+      "created_at": "2025-12-26T16:28:07.443598+00:00"
+    },
+    {
+      "input_text": "Calculate 51 - 84",
+      "target_output": "<think>I need to calculate 51 - 84. Let me compute this step by step.</think>\n<model>\nresult = 51 - 84\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "basic_arithmetic",
+        "template_description": "Simple arithmetic operations",
+        "variables": {
+          "a": 51,
+          "b": 84,
+          "op": "-"
+        },
+        "requires_execution": true,
+        "expected_result": "-33"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.037790+00:00"
+    },
+    {
+      "input_text": "Analyze the following text: 'Hello world, this is a test sentence with several words.'. Count the number of consonants",
+      "target_output": "<think>I need to analyze the text 'Hello world, this is a test sentence with several words.' and count consonants.</think>\n<model>\ntext = \"Hello world, this is a test sentence with several words.\"\nconsonants = sum(1 for char in text if char.isalpha() and char not in \"aeiouAEIOU\")\nprint(f\"Number of consonants: {consonants}\")\n</model>\n<requires>python:text</requires>",
+      "metadata": {
+        "template_name": "text_analysis",
+        "template_description": "Analyze text properties",
+        "variables": {
+          "text": "Hello world, this is a test sentence with several words.",
+          "analysis_type": "consonants"
+        },
+        "requires_execution": true,
+        "expected_result": "Number of consonants: 30"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.040540+00:00"
+    },
+    {
+      "input_text": "Write a function to check if 98 is a prime number",
+      "target_output": "<think>I need to check if 98 is prime. A prime number is only divisible by 1 and itself.</think>\n<model>\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nnumber = 98\nresult = is_prime(number)\nprint(f\"{number} is {'prime' if result else 'not prime'}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "prime_checker",
+        "template_description": "Check if number is prime",
+        "variables": {
+          "number": 98
+        },
+        "requires_execution": true,
+        "expected_result": "98 is not prime"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.037316+00:00"
+    },
+    {
+      "input_text": "Calculate the mean of the following numbers: item",
+      "target_output": "<think>I need to calculate the mean of these numbers: item</think>\n<model>\nnumbers = [item]\nmean = sum(numbers) / len(numbers)\nprint(f\"Mean: {mean:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "statistics_mean",
+        "template_description": "Calculate mean of numbers",
+        "variables": {
+          "numbers": "item"
+        },
+        "requires_execution": true,
+        "expected_result": "Error calculating mean"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.040576+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 2x\u00b2 + 3x + -1 = 0",
+      "target_output": "<think>I need to find roots of 2x\u00b2 + 3x + -1 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 2, 3, -1\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 2,
+          "b": 3,
+          "c": -1
+        },
+        "requires_execution": true,
+        "expected_result": "Two real roots: 0.28, -1.78"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.817379+00:00"
+    },
+    {
+      "input_text": "Generate the first 7 numbers in the Fibonacci sequence",
+      "target_output": "<think>I need to generate the first 7 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>\n<model>\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    \n    fib = [0, 1]\n    for i in range(2, n):\n        fib.append(fib[i-1] + fib[i-2])\n    return fib\n\nresult = fibonacci(7)\nprint(result)\n</model>\n<requires>python:computation</requires>",
+      "metadata": {
+        "template_name": "fibonacci_sequence",
+        "template_description": "Generate Fibonacci sequence",
+        "variables": {
+          "n": 7
+        },
+        "requires_execution": true,
+        "expected_result": "[0, 1, 1, 2, 3, 5, 8]"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T01:10:10.818619+00:00"
+    },
+    {
+      "input_text": "Calculate the mean of the following numbers: item",
+      "target_output": "<think>I need to calculate the mean of these numbers: item</think>\n<model>\nnumbers = [item]\nmean = sum(numbers) / len(numbers)\nprint(f\"Mean: {mean:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "statistics_mean",
+        "template_description": "Calculate mean of numbers",
+        "variables": {
+          "numbers": "item"
+        },
+        "requires_execution": true,
+        "expected_result": "Error calculating mean"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.037831+00:00"
+    },
+    {
+      "input_text": "Calculate compound interest: $1000 at 5% for 3 years",
+      "target_output": "<think>Compound interest formula: A = P(1 + r)^t where P=1000, r=0.05, t=3</think>\n<model>\nprincipal = 1000\nrate = 0.05\ntime = 3\namount = principal * (1 + rate) ** time\ninterest = amount - principal\nprint(f\"Final amount: ${amount:.2f}\")\nprint(f\"Interest earned: ${interest:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "calculation"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:07.443574+00:00"
+    },
+    {
+      "input_text": "Evaluate the boolean expression: False or False or True",
+      "target_output": "<think>I need to solve: Evaluate the boolean expression: False or False or True</think>\n<model>\n# Solution for: Evaluate the boolean expression: False or False or True\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "boolean_logic",
+        "template_description": "Boolean logic evaluation",
+        "variables": {
+          "expr1": "False",
+          "expr2": "False",
+          "expr3": "True",
+          "op1": "or",
+          "op2": "or"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "medium",
+      "category": "logic",
+      "created_at": "2025-12-26T01:10:10.817570+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 3x\u00b2 + 3x + 9 = 0",
+      "target_output": "<think>I need to find roots of 3x\u00b2 + 3x + 9 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 3, 3, 9\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 3,
+          "b": 3,
+          "c": 9
+        },
+        "requires_execution": true,
+        "expected_result": "Complex roots: -0.50 \u00b1 1.66i"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.037115+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 1x\u00b2 + -1x + 5 = 0",
+      "target_output": "<think>I need to find roots of 1x\u00b2 + -1x + 5 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 1, -1, 5\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 1,
+          "b": -1,
+          "c": 5
+        },
+        "requires_execution": true,
+        "expected_result": "Complex roots: 0.50 \u00b1 2.18i"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.817102+00:00"
+    },
+    {
+      "input_text": "If I buy 3 books for $12 each and 2 notebooks for $4 each, how much change do I get from $50?",
+      "target_output": "<think>I need to calculate total cost: (3 \u00d7 $12) + (2 \u00d7 $4) = $36 + $8 = $44. Change from $50 = $50 - $44 = $6.</think>\n<model>\nbooks = 3 * 12\nnotebooks = 2 * 4\ntotal_cost = books + notebooks\nmoney_given = 50\nchange = money_given - total_cost\nprint(f\"Books: ${books}\")\nprint(f\"Notebooks: ${notebooks}\")\nprint(f\"Total cost: ${total_cost}\")\nprint(f\"Change: ${change}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "multi_step_reasoning"
+      },
+      "difficulty": "hard",
+      "category": "reasoning",
+      "created_at": "2025-12-26T16:28:07.443608+00:00"
+    },
+    {
+      "input_text": "Calculate 42 - 10",
+      "target_output": "<think>I need to calculate 42 - 10. Let me compute this step by step.</think>\n<model>\nresult = 42 - 10\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "basic_arithmetic",
+        "template_description": "Simple arithmetic operations",
+        "variables": {
+          "a": 42,
+          "b": 10,
+          "op": "-"
+        },
+        "requires_execution": true,
+        "expected_result": "32"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.040353+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 3x\u00b2 + 6x + -7 = 0",
+      "target_output": "<think>I need to find roots of 3x\u00b2 + 6x + -7 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 3, 6, -7\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 3,
+          "b": 6,
+          "c": -7
+        },
+        "requires_execution": true,
+        "expected_result": "Two real roots: 0.83, -2.83"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.039950+00:00"
+    },
+    {
+      "input_text": "Calculate 22 * 44",
+      "target_output": "<think>I need to calculate 22 * 44. Let me compute this step by step.</think>\n<model>\nresult = 22 * 44\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "basic_arithmetic",
+        "template_description": "Simple arithmetic operations",
+        "variables": {
+          "a": 22,
+          "b": 44,
+          "op": "*"
+        },
+        "requires_execution": true,
+        "expected_result": "968"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.818296+00:00"
+    },
+    {
+      "input_text": "Evaluate the boolean expression: False and True or False",
+      "target_output": "<think>I need to solve: Evaluate the boolean expression: False and True or False</think>\n<model>\n# Solution for: Evaluate the boolean expression: False and True or False\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "boolean_logic",
+        "template_description": "Boolean logic evaluation",
+        "variables": {
+          "expr1": "False",
+          "expr2": "True",
+          "expr3": "False",
+          "op1": "and",
+          "op2": "or"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "medium",
+      "category": "logic",
+      "created_at": "2025-12-26T16:28:14.039453+00:00"
+    },
+    {
+      "input_text": "Take the string 'Python Programming' and reverse the string",
+      "target_output": "<think>I need to solve: Take the string 'Python Programming' and reverse the string</think>\n<model>\n# Solution for: Take the string 'Python Programming' and reverse the string\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "string_operations",
+        "template_description": "String manipulation tasks",
+        "variables": {
+          "input_str": "Python Programming",
+          "operation": "reverse the string"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.039984+00:00"
+    },
+    {
+      "input_text": "Calculate the mean of the following numbers: item",
+      "target_output": "<think>I need to calculate the mean of these numbers: item</think>\n<model>\nnumbers = [item]\nmean = sum(numbers) / len(numbers)\nprint(f\"Mean: {mean:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "statistics_mean",
+        "template_description": "Calculate mean of numbers",
+        "variables": {
+          "numbers": "item"
+        },
+        "requires_execution": true,
+        "expected_result": "Error calculating mean"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.037552+00:00"
+    },
+    {
+      "input_text": "Calculate the mean of the following numbers: item",
+      "target_output": "<think>I need to calculate the mean of these numbers: item</think>\n<model>\nnumbers = [item]\nmean = sum(numbers) / len(numbers)\nprint(f\"Mean: {mean:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "statistics_mean",
+        "template_description": "Calculate mean of numbers",
+        "variables": {
+          "numbers": "item"
+        },
+        "requires_execution": true,
+        "expected_result": "Error calculating mean"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.817994+00:00"
+    },
+    {
+      "input_text": "Generate the first 11 numbers in the Fibonacci sequence",
+      "target_output": "<think>I need to generate the first 11 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>\n<model>\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    \n    fib = [0, 1]\n    for i in range(2, n):\n        fib.append(fib[i-1] + fib[i-2])\n    return fib\n\nresult = fibonacci(11)\nprint(result)\n</model>\n<requires>python:computation</requires>",
+      "metadata": {
+        "template_name": "fibonacci_sequence",
+        "template_description": "Generate Fibonacci sequence",
+        "variables": {
+          "n": 11
+        },
+        "requires_execution": true,
+        "expected_result": "[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T01:10:10.817952+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 3x\u00b2 + -6x + -5 = 0",
+      "target_output": "<think>I need to find roots of 3x\u00b2 + -6x + -5 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 3, -6, -5\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 3,
+          "b": -6,
+          "c": -5
+        },
+        "requires_execution": true,
+        "expected_result": "Two real roots: 2.63, -0.63"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.818073+00:00"
+    },
+    {
+      "input_text": "Explain what machine learning is",
+      "target_output": "Machine learning is a subset of artificial intelligence that enables computers to learn and improve from experience without being explicitly programmed. It uses algorithms to analyze data, identify patterns, and make predictions or decisions based on that analysis.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "explanation"
+      },
+      "difficulty": "medium",
+      "category": "explanation",
+      "created_at": "2025-12-26T16:28:07.443590+00:00"
+    },
+    {
+      "input_text": "Analyze the following text: 'The quick brown fox jumps over the lazy dog.'. Count the number of words",
+      "target_output": "<think>I need to analyze the text 'The quick brown fox jumps over the lazy dog.' and count words.</think>\n<model>\ntext = \"The quick brown fox jumps over the lazy dog.\"\nwords = text.split()\ncount = len(words)\nprint(f\"Number of words: {count}\")\n</model>\n<requires>python:text</requires>",
+      "metadata": {
+        "template_name": "text_analysis",
+        "template_description": "Analyze text properties",
+        "variables": {
+          "text": "The quick brown fox jumps over the lazy dog.",
+          "analysis_type": "words"
+        },
+        "requires_execution": true,
+        "expected_result": "Number of words: 9"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T01:10:10.818367+00:00"
+    },
+    {
+      "input_text": "Evaluate the boolean expression: True or True or True",
+      "target_output": "<think>I need to solve: Evaluate the boolean expression: True or True or True</think>\n<model>\n# Solution for: Evaluate the boolean expression: True or True or True\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "boolean_logic",
+        "template_description": "Boolean logic evaluation",
+        "variables": {
+          "expr1": "True",
+          "expr2": "True",
+          "expr3": "True",
+          "op1": "or",
+          "op2": "or"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "medium",
+      "category": "logic",
+      "created_at": "2025-12-26T16:28:14.037439+00:00"
+    },
+    {
+      "input_text": "Write a function to check if 22 is a prime number",
+      "target_output": "<think>I need to check if 22 is prime. A prime number is only divisible by 1 and itself.</think>\n<model>\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nnumber = 22\nresult = is_prime(number)\nprint(f\"{number} is {'prime' if result else 'not prime'}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "prime_checker",
+        "template_description": "Check if number is prime",
+        "variables": {
+          "number": 22
+        },
+        "requires_execution": true,
+        "expected_result": "22 is not prime"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T01:10:10.817456+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 3x\u00b2 + -5x + 1 = 0",
+      "target_output": "<think>I need to find roots of 3x\u00b2 + -5x + 1 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 3, -5, 1\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 3,
+          "b": -5,
+          "c": 1
+        },
+        "requires_execution": true,
+        "expected_result": "Two real roots: 1.43, 0.23"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.037874+00:00"
+    },
+    {
+      "input_text": "Generate the first 6 numbers in the Fibonacci sequence",
+      "target_output": "<think>I need to generate the first 6 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>\n<model>\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    \n    fib = [0, 1]\n    for i in range(2, n):\n        fib.append(fib[i-1] + fib[i-2])\n    return fib\n\nresult = fibonacci(6)\nprint(result)\n</model>\n<requires>python:computation</requires>",
+      "metadata": {
+        "template_name": "fibonacci_sequence",
+        "template_description": "Generate Fibonacci sequence",
+        "variables": {
+          "n": 6
+        },
+        "requires_execution": true,
+        "expected_result": "[0, 1, 1, 2, 3, 5]"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.039911+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 2x\u00b2 + -3x + -9 = 0",
+      "target_output": "<think>I need to find roots of 2x\u00b2 + -3x + -9 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 2, -3, -9\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 2,
+          "b": -3,
+          "c": -9
+        },
+        "requires_execution": true,
+        "expected_result": "Two real roots: 3.00, -1.50"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.037668+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 5x\u00b2 + -2x + -4 = 0",
+      "target_output": "<think>I need to find roots of 5x\u00b2 + -2x + -4 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 5, -2, -4\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 5,
+          "b": -2,
+          "c": -4
+        },
+        "requires_execution": true,
+        "expected_result": "Two real roots: 1.12, -0.72"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.816852+00:00"
+    },
+    {
+      "input_text": "Analyze the following text: 'Python is a powerful programming language for data science.'. Count the number of words",
+      "target_output": "<think>I need to analyze the text 'Python is a powerful programming language for data science.' and count words.</think>\n<model>\ntext = \"Python is a powerful programming language for data science.\"\nwords = text.split()\ncount = len(words)\nprint(f\"Number of words: {count}\")\n</model>\n<requires>python:text</requires>",
+      "metadata": {
+        "template_name": "text_analysis",
+        "template_description": "Analyze text properties",
+        "variables": {
+          "text": "Python is a powerful programming language for data science.",
+          "analysis_type": "words"
+        },
+        "requires_execution": true,
+        "expected_result": "Number of words: 9"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T01:10:10.818513+00:00"
+    },
+    {
+      "input_text": "Write a function to check if 12 is a prime number",
+      "target_output": "<think>I need to check if 12 is prime. A prime number is only divisible by 1 and itself.</think>\n<model>\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nnumber = 12\nresult = is_prime(number)\nprint(f\"{number} is {'prime' if result else 'not prime'}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "prime_checker",
+        "template_description": "Check if number is prime",
+        "variables": {
+          "number": 12
+        },
+        "requires_execution": true,
+        "expected_result": "12 is not prime"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.037752+00:00"
+    },
+    {
+      "input_text": "Write a function to check if 74 is a prime number",
+      "target_output": "<think>I need to check if 74 is prime. A prime number is only divisible by 1 and itself.</think>\n<model>\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nnumber = 74\nresult = is_prime(number)\nprint(f\"{number} is {'prime' if result else 'not prime'}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "prime_checker",
+        "template_description": "Check if number is prime",
+        "variables": {
+          "number": 74
+        },
+        "requires_execution": true,
+        "expected_result": "74 is not prime"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T01:10:10.817418+00:00"
+    },
+    {
+      "input_text": "Create a list of 10 strings and count unique items",
+      "target_output": "<think>I need to solve: Create a list of 10 strings and count unique items</think>\n<model>\n# Solution for: Create a list of 10 strings and count unique items\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "list_manipulation",
+        "template_description": "Basic list operations",
+        "variables": {
+          "count": 10,
+          "item_type": "strings",
+          "operation": "count unique items"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.038408+00:00"
+    },
+    {
+      "input_text": "Calculate the mean of the following numbers: item",
+      "target_output": "<think>I need to calculate the mean of these numbers: item</think>\n<model>\nnumbers = [item]\nmean = sum(numbers) / len(numbers)\nprint(f\"Mean: {mean:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "statistics_mean",
+        "template_description": "Calculate mean of numbers",
+        "variables": {
+          "numbers": "item"
+        },
+        "requires_execution": true,
+        "expected_result": "Error calculating mean"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.039384+00:00"
+    },
+    {
+      "input_text": "Generate the first 10 numbers in the Fibonacci sequence",
+      "target_output": "<think>I need to generate the first 10 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>\n<model>\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    \n    fib = [0, 1]\n    for i in range(2, n):\n        fib.append(fib[i-1] + fib[i-2])\n    return fib\n\nresult = fibonacci(10)\nprint(result)\n</model>\n<requires>python:computation</requires>",
+      "metadata": {
+        "template_name": "fibonacci_sequence",
+        "template_description": "Generate Fibonacci sequence",
+        "variables": {
+          "n": 10
+        },
+        "requires_execution": true,
+        "expected_result": "[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.037160+00:00"
+    },
+    {
+      "input_text": "Take the string 'Python Programming' and replace spaces with underscores",
+      "target_output": "<think>I need to solve: Take the string 'Python Programming' and replace spaces with underscores</think>\n<model>\n# Solution for: Take the string 'Python Programming' and replace spaces with underscores\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "string_operations",
+        "template_description": "String manipulation tasks",
+        "variables": {
+          "input_str": "Python Programming",
+          "operation": "replace spaces with underscores"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.037403+00:00"
+    },
+    {
+      "input_text": "Write a function to check if 36 is a prime number",
+      "target_output": "<think>I need to check if 36 is prime. A prime number is only divisible by 1 and itself.</think>\n<model>\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nnumber = 36\nresult = is_prime(number)\nprint(f\"{number} is {'prime' if result else 'not prime'}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "prime_checker",
+        "template_description": "Check if number is prime",
+        "variables": {
+          "number": 36
+        },
+        "requires_execution": true,
+        "expected_result": "36 is not prime"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.039119+00:00"
+    },
+    {
+      "input_text": "What does CPU stand for?",
+      "target_output": "CPU stands for Central Processing Unit.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "direct_answer"
+      },
+      "difficulty": "easy",
+      "category": "factual",
+      "created_at": "2025-12-26T16:28:07.443588+00:00"
+    },
+    {
+      "input_text": "Create a list of 6 numbers and count unique items",
+      "target_output": "<think>I need to solve: Create a list of 6 numbers and count unique items</think>\n<model>\n# Solution for: Create a list of 6 numbers and count unique items\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "list_manipulation",
+        "template_description": "Basic list operations",
+        "variables": {
+          "count": 6,
+          "item_type": "numbers",
+          "operation": "count unique items"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.040503+00:00"
+    },
+    {
+      "input_text": "Generate the first 12 numbers in the Fibonacci sequence",
+      "target_output": "<think>I need to generate the first 12 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>\n<model>\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    \n    fib = [0, 1]\n    for i in range(2, n):\n        fib.append(fib[i-1] + fib[i-2])\n    return fib\n\nresult = fibonacci(12)\nprint(result)\n</model>\n<requires>python:computation</requires>",
+      "metadata": {
+        "template_name": "fibonacci_sequence",
+        "template_description": "Generate Fibonacci sequence",
+        "variables": {
+          "n": 12
+        },
+        "requires_execution": true,
+        "expected_result": "[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T01:10:10.816947+00:00"
+    },
+    {
+      "input_text": "Calculate 46 - 49",
+      "target_output": "<think>I need to calculate 46 - 49. Let me compute this step by step.</think>\n<model>\nresult = 46 - 49\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "basic_arithmetic",
+        "template_description": "Simple arithmetic operations",
+        "variables": {
+          "a": 46,
+          "b": 49,
+          "op": "-"
+        },
+        "requires_execution": true,
+        "expected_result": "-3"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.040611+00:00"
+    },
+    {
+      "input_text": "Evaluate the boolean expression: True and False or False",
+      "target_output": "<think>I need to solve: Evaluate the boolean expression: True and False or False</think>\n<model>\n# Solution for: Evaluate the boolean expression: True and False or False\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "boolean_logic",
+        "template_description": "Boolean logic evaluation",
+        "variables": {
+          "expr1": "True",
+          "expr2": "False",
+          "expr3": "False",
+          "op1": "and",
+          "op2": "or"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "medium",
+      "category": "logic",
+      "created_at": "2025-12-26T16:28:14.038931+00:00"
+    },
+    {
+      "input_text": "Take the string 'hello world' and remove all vowels",
+      "target_output": "<think>I need to solve: Take the string 'hello world' and remove all vowels</think>\n<model>\n# Solution for: Take the string 'hello world' and remove all vowels\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "string_operations",
+        "template_description": "String manipulation tasks",
+        "variables": {
+          "input_str": "hello world",
+          "operation": "remove all vowels"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T01:10:10.817003+00:00"
+    },
+    {
+      "input_text": "Calculate the mean of the following numbers: item",
+      "target_output": "<think>I need to calculate the mean of these numbers: item</think>\n<model>\nnumbers = [item]\nmean = sum(numbers) / len(numbers)\nprint(f\"Mean: {mean:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "statistics_mean",
+        "template_description": "Calculate mean of numbers",
+        "variables": {
+          "numbers": "item"
+        },
+        "requires_execution": true,
+        "expected_result": "Error calculating mean"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.036768+00:00"
+    },
+    {
+      "input_text": "Take the string 'Data Science' and convert to uppercase",
+      "target_output": "<think>I need to solve: Take the string 'Data Science' and convert to uppercase</think>\n<model>\n# Solution for: Take the string 'Data Science' and convert to uppercase\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "string_operations",
+        "template_description": "String manipulation tasks",
+        "variables": {
+          "input_str": "Data Science",
+          "operation": "convert to uppercase"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.039806+00:00"
+    },
+    {
+      "input_text": "Create a list of 8 items and reverse the order",
+      "target_output": "<think>I need to solve: Create a list of 8 items and reverse the order</think>\n<model>\n# Solution for: Create a list of 8 items and reverse the order\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "list_manipulation",
+        "template_description": "Basic list operations",
+        "variables": {
+          "count": 8,
+          "item_type": "items",
+          "operation": "reverse the order"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "programming",
+      "created_at": "2025-12-26T01:10:10.818436+00:00"
+    },
+    {
+      "input_text": "Evaluate the boolean expression: True and False or False",
+      "target_output": "<think>I need to solve: Evaluate the boolean expression: True and False or False</think>\n<model>\n# Solution for: Evaluate the boolean expression: True and False or False\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "boolean_logic",
+        "template_description": "Boolean logic evaluation",
+        "variables": {
+          "expr1": "True",
+          "expr2": "False",
+          "expr3": "False",
+          "op1": "and",
+          "op2": "or"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "medium",
+      "category": "logic",
+      "created_at": "2025-12-26T16:28:14.040647+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 2x\u00b2 + 5x + 0 = 0",
+      "target_output": "<think>I need to find roots of 2x\u00b2 + 5x + 0 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 2, 5, 0\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 2,
+          "b": 5,
+          "c": 0
+        },
+        "requires_execution": true,
+        "expected_result": "Two real roots: 0.00, -2.50"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.038115+00:00"
+    },
+    {
+      "input_text": "Convert 100 degrees Fahrenheit to Celsius",
+      "target_output": "<think>To convert Fahrenheit to Celsius: C = (F - 32) \u00d7 5/9</think>\n<model>\nfahrenheit = 100\ncelsius = (fahrenheit - 32) * 5/9\nprint(f\"{fahrenheit}\u00b0F = {celsius:.2f}\u00b0C\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "calculation"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:07.443573+00:00"
+    },
+    {
+      "input_text": "Calculate 19 + 13",
+      "target_output": "<think>I need to calculate 19 + 13. Let me compute this step by step.</think>\n<model>\nresult = 19 + 13\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "basic_arithmetic",
+        "template_description": "Simple arithmetic operations",
+        "variables": {
+          "a": 19,
+          "b": 13,
+          "op": "+"
+        },
+        "requires_execution": true,
+        "expected_result": "32"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.039349+00:00"
+    },
+    {
+      "input_text": "Generate the first 14 numbers in the Fibonacci sequence",
+      "target_output": "<think>I need to generate the first 14 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>\n<model>\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    \n    fib = [0, 1]\n    for i in range(2, n):\n        fib.append(fib[i-1] + fib[i-2])\n    return fib\n\nresult = fibonacci(14)\nprint(result)\n</model>\n<requires>python:computation</requires>",
+      "metadata": {
+        "template_name": "fibonacci_sequence",
+        "template_description": "Generate Fibonacci sequence",
+        "variables": {
+          "n": 14
+        },
+        "requires_execution": true,
+        "expected_result": "[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233]"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T01:10:10.818855+00:00"
+    },
+    {
+      "input_text": "Calculate 43 + 83",
+      "target_output": "<think>I need to calculate 43 + 83. Let me compute this step by step.</think>\n<model>\nresult = 43 + 83\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "basic_arithmetic",
+        "template_description": "Simple arithmetic operations",
+        "variables": {
+          "a": 43,
+          "b": 83,
+          "op": "+"
+        },
+        "requires_execution": true,
+        "expected_result": "126"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.039774+00:00"
+    },
+    {
+      "input_text": "Create a list of 8 strings and find the maximum",
+      "target_output": "<think>I need to solve: Create a list of 8 strings and find the maximum</think>\n<model>\n# Solution for: Create a list of 8 strings and find the maximum\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "list_manipulation",
+        "template_description": "Basic list operations",
+        "variables": {
+          "count": 8,
+          "item_type": "strings",
+          "operation": "find the maximum"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.036885+00:00"
+    },
+    {
+      "input_text": "Generate the first 7 numbers in the Fibonacci sequence",
+      "target_output": "<think>I need to generate the first 7 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>\n<model>\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    \n    fib = [0, 1]\n    for i in range(2, n):\n        fib.append(fib[i-1] + fib[i-2])\n    return fib\n\nresult = fibonacci(7)\nprint(result)\n</model>\n<requires>python:computation</requires>",
+      "metadata": {
+        "template_name": "fibonacci_sequence",
+        "template_description": "Generate Fibonacci sequence",
+        "variables": {
+          "n": 7
+        },
+        "requires_execution": true,
+        "expected_result": "[0, 1, 1, 2, 3, 5, 8]"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.040281+00:00"
+    },
+    {
+      "input_text": "Analyze the following text: 'Hello world, this is a test sentence with several words.'. Count the number of vowels",
+      "target_output": "<think>I need to analyze the text 'Hello world, this is a test sentence with several words.' and count vowels.</think>\n<model>\ntext = \"Hello world, this is a test sentence with several words.\"\nvowels = \"aeiouAEIOU\"\ncount = sum(1 for char in text if char in vowels)\nprint(f\"Number of vowels: {count}\")\n</model>\n<requires>python:text</requires>",
+      "metadata": {
+        "template_name": "text_analysis",
+        "template_description": "Analyze text properties",
+        "variables": {
+          "text": "Hello world, this is a test sentence with several words.",
+          "analysis_type": "vowels"
+        },
+        "requires_execution": true,
+        "expected_result": "Number of vowels: 15"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T01:10:10.817906+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 5x\u00b2 + 9x + -4 = 0",
+      "target_output": "<think>I need to find roots of 5x\u00b2 + 9x + -4 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 5, 9, -4\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 5,
+          "b": 9,
+          "c": -4
+        },
+        "requires_execution": true,
+        "expected_result": "Two real roots: 0.37, -2.17"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.039706+00:00"
+    },
+    {
+      "input_text": "Calculate the mean of the following numbers: item",
+      "target_output": "<think>I need to calculate the mean of these numbers: item</think>\n<model>\nnumbers = [item]\nmean = sum(numbers) / len(numbers)\nprint(f\"Mean: {mean:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "statistics_mean",
+        "template_description": "Calculate mean of numbers",
+        "variables": {
+          "numbers": "item"
+        },
+        "requires_execution": true,
+        "expected_result": "Error calculating mean"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.039190+00:00"
+    },
+    {
+      "input_text": "Write a function to check if 89 is a prime number",
+      "target_output": "<think>I need to check if 89 is prime. A prime number is only divisible by 1 and itself.</think>\n<model>\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nnumber = 89\nresult = is_prime(number)\nprint(f\"{number} is {'prime' if result else 'not prime'}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "prime_checker",
+        "template_description": "Check if number is prime",
+        "variables": {
+          "number": 89
+        },
+        "requires_execution": true,
+        "expected_result": "89 is prime"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.038338+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 2x\u00b2 + 3x + 2 = 0",
+      "target_output": "<think>I need to find roots of 2x\u00b2 + 3x + 2 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 2, 3, 2\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 2,
+          "b": 3,
+          "c": 2
+        },
+        "requires_execution": true,
+        "expected_result": "Complex roots: -0.75 \u00b1 0.66i"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.040204+00:00"
+    },
+    {
+      "input_text": "Write a function to check if 98 is a prime number",
+      "target_output": "<think>I need to check if 98 is prime. A prime number is only divisible by 1 and itself.</think>\n<model>\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nnumber = 98\nresult = is_prime(number)\nprint(f\"{number} is {'prime' if result else 'not prime'}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "prime_checker",
+        "template_description": "Check if number is prime",
+        "variables": {
+          "number": 98
+        },
+        "requires_execution": true,
+        "expected_result": "98 is not prime"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.036978+00:00"
+    },
+    {
+      "input_text": "Generate the first 8 numbers in the Fibonacci sequence",
+      "target_output": "<think>I need to generate the first 8 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>\n<model>\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    \n    fib = [0, 1]\n    for i in range(2, n):\n        fib.append(fib[i-1] + fib[i-2])\n    return fib\n\nresult = fibonacci(8)\nprint(result)\n</model>\n<requires>python:computation</requires>",
+      "metadata": {
+        "template_name": "fibonacci_sequence",
+        "template_description": "Generate Fibonacci sequence",
+        "variables": {
+          "n": 8
+        },
+        "requires_execution": true,
+        "expected_result": "[0, 1, 1, 2, 3, 5, 8, 13]"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.039005+00:00"
+    },
+    {
+      "input_text": "Find the factorial of 6",
+      "target_output": "<think>I need to calculate 6! = 6 \u00d7 5 \u00d7 4 \u00d7 3 \u00d7 2 \u00d7 1.</think>\n<model>\nimport math\nresult = math.factorial(6)\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "calculation"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:07.443570+00:00"
+    },
+    {
+      "input_text": "Find the median of: [1, 3, 5, 7, 9, 11, 13]",
+      "target_output": "<think>To find the median of an odd number of elements, I take the middle value.</think>\n<model>\ndata = [1, 3, 5, 7, 9, 11, 13]\ndata.sort()\nn = len(data)\nmedian = data[n // 2]\nprint(f\"Median: {median}\")\n</model>\n<requires>python:data_processing</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "data_analysis"
+      },
+      "difficulty": "medium",
+      "category": "data_processing",
+      "created_at": "2025-12-26T16:28:07.443578+00:00"
+    },
+    {
+      "input_text": "Create a list of 8 numbers and sort them",
+      "target_output": "<think>I need to solve: Create a list of 8 numbers and sort them</think>\n<model>\n# Solution for: Create a list of 8 numbers and sort them\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "list_manipulation",
+        "template_description": "Basic list operations",
+        "variables": {
+          "count": 8,
+          "item_type": "numbers",
+          "operation": "sort them"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.037473+00:00"
+    },
+    {
+      "input_text": "Calculate the mean of the following numbers: item",
+      "target_output": "<think>I need to calculate the mean of these numbers: item</think>\n<model>\nnumbers = [item]\nmean = sum(numbers) / len(numbers)\nprint(f\"Mean: {mean:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "statistics_mean",
+        "template_description": "Calculate mean of numbers",
+        "variables": {
+          "numbers": "item"
+        },
+        "requires_execution": true,
+        "expected_result": "Error calculating mean"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.039844+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 2x\u00b2 + -10x + 5 = 0",
+      "target_output": "<think>I need to find roots of 2x\u00b2 + -10x + 5 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 2, -10, 5\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 2,
+          "b": -10,
+          "c": 5
+        },
+        "requires_execution": true,
+        "expected_result": "Two real roots: 4.44, 0.56"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.038567+00:00"
+    },
+    {
+      "input_text": "Generate the first 7 numbers in the Fibonacci sequence",
+      "target_output": "<think>I need to generate the first 7 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>\n<model>\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    \n    fib = [0, 1]\n    for i in range(2, n):\n        fib.append(fib[i-1] + fib[i-2])\n    return fib\n\nresult = fibonacci(7)\nprint(result)\n</model>\n<requires>python:computation</requires>",
+      "metadata": {
+        "template_name": "fibonacci_sequence",
+        "template_description": "Generate Fibonacci sequence",
+        "variables": {
+          "n": 7
+        },
+        "requires_execution": true,
+        "expected_result": "[0, 1, 1, 2, 3, 5, 8]"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.039488+00:00"
+    },
+    {
+      "input_text": "Create a list of 10 items and reverse the order",
+      "target_output": "<think>I need to solve: Create a list of 10 items and reverse the order</think>\n<model>\n# Solution for: Create a list of 10 items and reverse the order\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "list_manipulation",
+        "template_description": "Basic list operations",
+        "variables": {
+          "count": 10,
+          "item_type": "items",
+          "operation": "reverse the order"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.037956+00:00"
+    },
+    {
+      "input_text": "Write a function to check if 14 is a prime number",
+      "target_output": "<think>I need to check if 14 is prime. A prime number is only divisible by 1 and itself.</think>\n<model>\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nnumber = 14\nresult = is_prime(number)\nprint(f\"{number} is {'prime' if result else 'not prime'}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "prime_checker",
+        "template_description": "Check if number is prime",
+        "variables": {
+          "number": 14
+        },
+        "requires_execution": true,
+        "expected_result": "14 is not prime"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.040124+00:00"
+    },
+    {
+      "input_text": "Calculate 87 + 8",
+      "target_output": "<think>I need to calculate 87 + 8. Let me compute this step by step.</think>\n<model>\nresult = 87 + 8\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "basic_arithmetic",
+        "template_description": "Simple arithmetic operations",
+        "variables": {
+          "a": 87,
+          "b": 8,
+          "op": "+"
+        },
+        "requires_execution": true,
+        "expected_result": "95"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.037591+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 5x\u00b2 + -8x + 9 = 0",
+      "target_output": "<think>I need to find roots of 5x\u00b2 + -8x + 9 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 5, -8, 9\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 5,
+          "b": -8,
+          "c": 9
+        },
+        "requires_execution": true,
+        "expected_result": "Complex roots: 0.80 \u00b1 1.08i"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.818475+00:00"
+    },
+    {
+      "input_text": "A train travels 120 miles in 2 hours. How fast was it going in mph? Then calculate how far it would travel in 5 hours at that speed.",
+      "target_output": "<think>First I need to find the speed: speed = distance/time = 120/2 = 60 mph. Then calculate distance in 5 hours: distance = speed \u00d7 time = 60 \u00d7 5 = 300 miles.</think>\n<model>\n# Step 1: Calculate speed\ndistance1 = 120  # miles\ntime1 = 2  # hours\nspeed = distance1 / time1\nprint(f\"Speed: {speed} mph\")\n\n# Step 2: Calculate distance in 5 hours\ntime2 = 5  # hours\ndistance2 = speed * time2\nprint(f\"Distance in {time2} hours: {distance2} miles\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "multi_step_reasoning"
+      },
+      "difficulty": "hard",
+      "category": "reasoning",
+      "created_at": "2025-12-26T16:28:07.443607+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 4x\u00b2 + -3x + -3 = 0",
+      "target_output": "<think>I need to find roots of 4x\u00b2 + -3x + -3 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 4, -3, -3\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 4,
+          "b": -3,
+          "c": -3
+        },
+        "requires_execution": true,
+        "expected_result": "Two real roots: 1.32, -0.57"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.038034+00:00"
+    },
+    {
+      "input_text": "Implement binary search to find 7 in [1, 3, 5, 7, 9, 11]",
+      "target_output": "<think>I need to implement binary search to efficiently find 7 in the sorted array.</think>\n<model>\ndef binary_search(arr, target):\n    left, right = 0, len(arr) - 1\n    \n    while left <= right:\n        mid = (left + right) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\narr = [1, 3, 5, 7, 9, 11]\ntarget = 7\nresult = binary_search(arr, target)\nprint(f\"Found {target} at index {result}\")\n</model>\n<requires>python:algorithms</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "algorithm"
+      },
+      "difficulty": "hard",
+      "category": "algorithms",
+      "created_at": "2025-12-26T16:28:07.443580+00:00"
+    },
+    {
+      "input_text": "Generate the first 6 numbers in the Fibonacci sequence",
+      "target_output": "<think>I need to generate the first 6 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>\n<model>\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    \n    fib = [0, 1]\n    for i in range(2, n):\n        fib.append(fib[i-1] + fib[i-2])\n    return fib\n\nresult = fibonacci(6)\nprint(result)\n</model>\n<requires>python:computation</requires>",
+      "metadata": {
+        "template_name": "fibonacci_sequence",
+        "template_description": "Generate Fibonacci sequence",
+        "variables": {
+          "n": 6
+        },
+        "requires_execution": true,
+        "expected_result": "[0, 1, 1, 2, 3, 5]"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T01:10:10.817609+00:00"
+    },
+    {
+      "input_text": "Calculate 42 - 9",
+      "target_output": "<think>I need to calculate 42 - 9. Let me compute this step by step.</think>\n<model>\nresult = 42 - 9\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "basic_arithmetic",
+        "template_description": "Simple arithmetic operations",
+        "variables": {
+          "a": 42,
+          "b": 9,
+          "op": "-"
+        },
+        "requires_execution": true,
+        "expected_result": "33"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.817492+00:00"
+    },
+    {
+      "input_text": "Calculate the mean of the following numbers: item",
+      "target_output": "<think>I need to calculate the mean of these numbers: item</think>\n<model>\nnumbers = [item]\nmean = sum(numbers) / len(numbers)\nprint(f\"Mean: {mean:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "statistics_mean",
+        "template_description": "Calculate mean of numbers",
+        "variables": {
+          "numbers": "item"
+        },
+        "requires_execution": true,
+        "expected_result": "Error calculating mean"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.039630+00:00"
+    },
+    {
+      "input_text": "What is the capital of Japan?",
+      "target_output": "Tokyo is the capital of Japan.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "direct_answer"
+      },
+      "difficulty": "easy",
+      "category": "factual",
+      "created_at": "2025-12-26T16:28:07.443583+00:00"
+    },
+    {
+      "input_text": "Evaluate the boolean expression: False and False and True",
+      "target_output": "<think>I need to solve: Evaluate the boolean expression: False and False and True</think>\n<model>\n# Solution for: Evaluate the boolean expression: False and False and True\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "boolean_logic",
+        "template_description": "Boolean logic evaluation",
+        "variables": {
+          "expr1": "False",
+          "expr2": "False",
+          "expr3": "True",
+          "op1": "and",
+          "op2": "and"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "medium",
+      "category": "logic",
+      "created_at": "2025-12-26T01:10:10.818147+00:00"
+    },
+    {
+      "input_text": "What is the bubble sort algorithm?",
+      "target_output": "Bubble sort is a simple sorting algorithm that repeatedly steps through a list, compares adjacent elements, and swaps them if they're in the wrong order. This process repeats until no more swaps are needed. While easy to understand, it's inefficient for large datasets with O(n\u00b2) time complexity.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "conceptual"
+      },
+      "difficulty": "medium",
+      "category": "boundary",
+      "created_at": "2025-12-26T16:28:07.443604+00:00"
+    },
+    {
+      "input_text": "Write a function to check if 93 is a prime number",
+      "target_output": "<think>I need to check if 93 is prime. A prime number is only divisible by 1 and itself.</think>\n<model>\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nnumber = 93\nresult = is_prime(number)\nprint(f\"{number} is {'prime' if result else 'not prime'}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "prime_checker",
+        "template_description": "Check if number is prime",
+        "variables": {
+          "number": 93
+        },
+        "requires_execution": true,
+        "expected_result": "93 is not prime"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T01:10:10.818816+00:00"
+    },
+    {
+      "input_text": "Analyze the following text: 'Hello world, this is a test sentence with several words.'. Count the number of consonants",
+      "target_output": "<think>I need to analyze the text 'Hello world, this is a test sentence with several words.' and count consonants.</think>\n<model>\ntext = \"Hello world, this is a test sentence with several words.\"\nconsonants = sum(1 for char in text if char.isalpha() and char not in \"aeiouAEIOU\")\nprint(f\"Number of consonants: {consonants}\")\n</model>\n<requires>python:text</requires>",
+      "metadata": {
+        "template_name": "text_analysis",
+        "template_description": "Analyze text properties",
+        "variables": {
+          "text": "Hello world, this is a test sentence with several words.",
+          "analysis_type": "consonants"
+        },
+        "requires_execution": true,
+        "expected_result": "Number of consonants: 30"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.038449+00:00"
+    },
+    {
+      "input_text": "What year did World War II end?",
+      "target_output": "World War II ended in 1945.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "direct_answer"
+      },
+      "difficulty": "easy",
+      "category": "factual",
+      "created_at": "2025-12-26T16:28:07.443589+00:00"
+    },
+    {
+      "input_text": "What is the difference between HTTP and HTTPS?",
+      "target_output": "HTTP (HyperText Transfer Protocol) is the foundation of data communication on the web, while HTTPS (HTTP Secure) is the secure version that encrypts data transmission using SSL/TLS protocols. HTTPS protects against eavesdropping and man-in-the-middle attacks.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "explanation"
+      },
+      "difficulty": "medium",
+      "category": "explanation",
+      "created_at": "2025-12-26T16:28:07.443592+00:00"
+    },
+    {
+      "input_text": "Analyze the following text: 'The quick brown fox jumps over the lazy dog.'. Count the number of characters",
+      "target_output": "<think>I need to analyze the text 'The quick brown fox jumps over the lazy dog.' and count characters.</think>\n<model>\ntext = \"The quick brown fox jumps over the lazy dog.\"\ncount = len(text)\nprint(f\"Number of characters: {count}\")\n</model>\n<requires>python:text</requires>",
+      "metadata": {
+        "template_name": "text_analysis",
+        "template_description": "Analyze text properties",
+        "variables": {
+          "text": "The quick brown fox jumps over the lazy dog.",
+          "analysis_type": "characters"
+        },
+        "requires_execution": true,
+        "expected_result": "Number of characters: 44"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T01:10:10.817223+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 4x\u00b2 + 7x + 5 = 0",
+      "target_output": "<think>I need to find roots of 4x\u00b2 + 7x + 5 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 4, 7, 5\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 4,
+          "b": 7,
+          "c": 5
+        },
+        "requires_execution": true,
+        "expected_result": "Complex roots: -0.88 \u00b1 0.70i"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.818740+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 4x\u00b2 + 5x + -9 = 0",
+      "target_output": "<think>I need to find roots of 4x\u00b2 + 5x + -9 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 4, 5, -9\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 4,
+          "b": 5,
+          "c": -9
+        },
+        "requires_execution": true,
+        "expected_result": "Two real roots: 1.00, -2.25"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.817146+00:00"
+    },
+    {
+      "input_text": "Analyze the following text: 'Machine learning and artificial intelligence are transforming technology.'. Count the number of consonants",
+      "target_output": "<think>I need to analyze the text 'Machine learning and artificial intelligence are transforming technology.' and count consonants.</think>\n<model>\ntext = \"Machine learning and artificial intelligence are transforming technology.\"\nconsonants = sum(1 for char in text if char.isalpha() and char not in \"aeiouAEIOU\")\nprint(f\"Number of consonants: {consonants}\")\n</model>\n<requires>python:text</requires>",
+      "metadata": {
+        "template_name": "text_analysis",
+        "template_description": "Analyze text properties",
+        "variables": {
+          "text": "Machine learning and artificial intelligence are transforming technology.",
+          "analysis_type": "consonants"
+        },
+        "requires_execution": true,
+        "expected_result": "Number of consonants: 40"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.040393+00:00"
+    },
+    {
+      "input_text": "Analyze the following text: 'The quick brown fox jumps over the lazy dog.'. Count the number of characters",
+      "target_output": "<think>I need to analyze the text 'The quick brown fox jumps over the lazy dog.' and count characters.</think>\n<model>\ntext = \"The quick brown fox jumps over the lazy dog.\"\ncount = len(text)\nprint(f\"Number of characters: {count}\")\n</model>\n<requires>python:text</requires>",
+      "metadata": {
+        "template_name": "text_analysis",
+        "template_description": "Analyze text properties",
+        "variables": {
+          "text": "The quick brown fox jumps over the lazy dog.",
+          "analysis_type": "characters"
+        },
+        "requires_execution": true,
+        "expected_result": "Number of characters: 44"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.039155+00:00"
+    },
+    {
+      "input_text": "Create a list of 7 strings and count unique items",
+      "target_output": "<think>I need to solve: Create a list of 7 strings and count unique items</think>\n<model>\n# Solution for: Create a list of 7 strings and count unique items\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "list_manipulation",
+        "template_description": "Basic list operations",
+        "variables": {
+          "count": 7,
+          "item_type": "strings",
+          "operation": "count unique items"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.040431+00:00"
+    },
+    {
+      "input_text": "Create a list of 5 numbers and reverse the order",
+      "target_output": "<think>I need to solve: Create a list of 5 numbers and reverse the order</think>\n<model>\n# Solution for: Create a list of 5 numbers and reverse the order\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "list_manipulation",
+        "template_description": "Basic list operations",
+        "variables": {
+          "count": 5,
+          "item_type": "numbers",
+          "operation": "reverse the order"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.038151+00:00"
+    },
+    {
+      "input_text": "Write a function to check if 61 is a prime number",
+      "target_output": "<think>I need to check if 61 is prime. A prime number is only divisible by 1 and itself.</think>\n<model>\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nnumber = 61\nresult = is_prime(number)\nprint(f\"{number} is {'prime' if result else 'not prime'}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "prime_checker",
+        "template_description": "Check if number is prime",
+        "variables": {
+          "number": 61
+        },
+        "requires_execution": true,
+        "expected_result": "61 is prime"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.037512+00:00"
+    },
+    {
+      "input_text": "Calculate 24 - 33",
+      "target_output": "<think>I need to calculate 24 - 33. Let me compute this step by step.</think>\n<model>\nresult = 24 - 33\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "basic_arithmetic",
+        "template_description": "Simple arithmetic operations",
+        "variables": {
+          "a": 24,
+          "b": 33,
+          "op": "-"
+        },
+        "requires_execution": true,
+        "expected_result": "-9"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.038301+00:00"
+    },
+    {
+      "input_text": "Take the string 'Python Programming' and replace spaces with underscores",
+      "target_output": "<think>I need to solve: Take the string 'Python Programming' and replace spaces with underscores</think>\n<model>\n# Solution for: Take the string 'Python Programming' and replace spaces with underscores\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "string_operations",
+        "template_description": "String manipulation tasks",
+        "variables": {
+          "input_str": "Python Programming",
+          "operation": "replace spaces with underscores"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.038968+00:00"
+    },
+    {
+      "input_text": "Create a list of 5 numbers and sort them",
+      "target_output": "<think>I need to solve: Create a list of 5 numbers and sort them</think>\n<model>\n# Solution for: Create a list of 5 numbers and sort them\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "list_manipulation",
+        "template_description": "Basic list operations",
+        "variables": {
+          "count": 5,
+          "item_type": "numbers",
+          "operation": "sort them"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.037276+00:00"
+    },
+    {
+      "input_text": "Generate the first 11 numbers in the Fibonacci sequence",
+      "target_output": "<think>I need to generate the first 11 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>\n<model>\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    \n    fib = [0, 1]\n    for i in range(2, n):\n        fib.append(fib[i-1] + fib[i-2])\n    return fib\n\nresult = fibonacci(11)\nprint(result)\n</model>\n<requires>python:computation</requires>",
+      "metadata": {
+        "template_name": "fibonacci_sequence",
+        "template_description": "Generate Fibonacci sequence",
+        "variables": {
+          "n": 11
+        },
+        "requires_execution": true,
+        "expected_result": "[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.039667+00:00"
+    },
+    {
+      "input_text": "Generate the first 5 numbers in the Fibonacci sequence",
+      "target_output": "<think>I need to generate the first 5 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>\n<model>\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    \n    fib = [0, 1]\n    for i in range(2, n):\n        fib.append(fib[i-1] + fib[i-2])\n    return fib\n\nresult = fibonacci(5)\nprint(result)\n</model>\n<requires>python:computation</requires>",
+      "metadata": {
+        "template_name": "fibonacci_sequence",
+        "template_description": "Generate Fibonacci sequence",
+        "variables": {
+          "n": 5
+        },
+        "requires_execution": true,
+        "expected_result": "[0, 1, 1, 2, 3]"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.038525+00:00"
+    },
+    {
+      "input_text": "Calculate the mean of the following numbers: item",
+      "target_output": "<think>I need to calculate the mean of these numbers: item</think>\n<model>\nnumbers = [item]\nmean = sum(numbers) / len(numbers)\nprint(f\"Mean: {mean:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "statistics_mean",
+        "template_description": "Calculate mean of numbers",
+        "variables": {
+          "numbers": "item"
+        },
+        "requires_execution": true,
+        "expected_result": "Error calculating mean"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.818224+00:00"
+    },
+    {
+      "input_text": "Calculate 30 * 83",
+      "target_output": "<think>I need to calculate 30 * 83. Let me compute this step by step.</think>\n<model>\nresult = 30 * 83\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "basic_arithmetic",
+        "template_description": "Simple arithmetic operations",
+        "variables": {
+          "a": 30,
+          "b": 83,
+          "op": "*"
+        },
+        "requires_execution": true,
+        "expected_result": "2490"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.818187+00:00"
+    },
+    {
+      "input_text": "Evaluate the boolean expression: False and True or False",
+      "target_output": "<think>I need to solve: Evaluate the boolean expression: False and True or False</think>\n<model>\n# Solution for: Evaluate the boolean expression: False and True or False\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "boolean_logic",
+        "template_description": "Boolean logic evaluation",
+        "variables": {
+          "expr1": "False",
+          "expr2": "True",
+          "expr3": "False",
+          "op1": "and",
+          "op2": "or"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "medium",
+      "category": "logic",
+      "created_at": "2025-12-26T16:28:14.040089+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 1x\u00b2 + 7x + -3 = 0",
+      "target_output": "<think>I need to find roots of 1x\u00b2 + 7x + -3 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 1, 7, -3\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 1,
+          "b": 7,
+          "c": -3
+        },
+        "requires_execution": true,
+        "expected_result": "Two real roots: 0.41, -7.41"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.817055+00:00"
+    },
+    {
+      "input_text": "Calculate the mean of the following numbers: item",
+      "target_output": "<think>I need to calculate the mean of these numbers: item</think>\n<model>\nnumbers = [item]\nmean = sum(numbers) / len(numbers)\nprint(f\"Mean: {mean:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "statistics_mean",
+        "template_description": "Calculate mean of numbers",
+        "variables": {
+          "numbers": "item"
+        },
+        "requires_execution": true,
+        "expected_result": "Error calculating mean"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.040317+00:00"
+    },
+    {
+      "input_text": "Calculate 19 - 88",
+      "target_output": "<think>I need to calculate 19 - 88. Let me compute this step by step.</think>\n<model>\nresult = 19 - 88\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "basic_arithmetic",
+        "template_description": "Simple arithmetic operations",
+        "variables": {
+          "a": 19,
+          "b": 88,
+          "op": "-"
+        },
+        "requires_execution": true,
+        "expected_result": "-69"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.817262+00:00"
+    },
+    {
+      "input_text": "Take the string 'machine learning' and reverse the string",
+      "target_output": "<think>I need to solve: Take the string 'machine learning' and reverse the string</think>\n<model>\n# Solution for: Take the string 'machine learning' and reverse the string\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "string_operations",
+        "template_description": "String manipulation tasks",
+        "variables": {
+          "input_str": "machine learning",
+          "operation": "reverse the string"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.036932+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 1x\u00b2 + -2x + 6 = 0",
+      "target_output": "<think>I need to find roots of 1x\u00b2 + -2x + 6 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 1, -2, 6\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 1,
+          "b": -2,
+          "c": 6
+        },
+        "requires_execution": true,
+        "expected_result": "Complex roots: 1.00 \u00b1 2.24i"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.818700+00:00"
+    },
+    {
+      "input_text": "Create a list of 7 strings and reverse the order",
+      "target_output": "<think>I need to solve: Create a list of 7 strings and reverse the order</think>\n<model>\n# Solution for: Create a list of 7 strings and reverse the order\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "list_manipulation",
+        "template_description": "Basic list operations",
+        "variables": {
+          "count": 7,
+          "item_type": "strings",
+          "operation": "reverse the order"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.038860+00:00"
+    },
+    {
+      "input_text": "Calculate the mean of the following numbers: item",
+      "target_output": "<think>I need to calculate the mean of these numbers: item</think>\n<model>\nnumbers = [item]\nmean = sum(numbers) / len(numbers)\nprint(f\"Mean: {mean:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "statistics_mean",
+        "template_description": "Calculate mean of numbers",
+        "variables": {
+          "numbers": "item"
+        },
+        "requires_execution": true,
+        "expected_result": "Error calculating mean"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.818260+00:00"
+    },
+    {
+      "input_text": "Write a short poem about coding",
+      "target_output": "Lines of code flow like a river,\\nLogic dancing in the night,\\nBugs and features, give and take,\\nUntil solutions shine so bright.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "creative"
+      },
+      "difficulty": "easy",
+      "category": "creative",
+      "created_at": "2025-12-26T16:28:07.443595+00:00"
+    },
+    {
+      "input_text": "Analyze the following text: 'The quick brown fox jumps over the lazy dog.'. Count the number of words",
+      "target_output": "<think>I need to analyze the text 'The quick brown fox jumps over the lazy dog.' and count words.</think>\n<model>\ntext = \"The quick brown fox jumps over the lazy dog.\"\nwords = text.split()\ncount = len(words)\nprint(f\"Number of words: {count}\")\n</model>\n<requires>python:text</requires>",
+      "metadata": {
+        "template_name": "text_analysis",
+        "template_description": "Analyze text properties",
+        "variables": {
+          "text": "The quick brown fox jumps over the lazy dog.",
+          "analysis_type": "words"
+        },
+        "requires_execution": true,
+        "expected_result": "Number of words: 9"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T01:10:10.817781+00:00"
+    },
+    {
+      "input_text": "Calculate the mean of the following numbers: item",
+      "target_output": "<think>I need to calculate the mean of these numbers: item</think>\n<model>\nnumbers = [item]\nmean = sum(numbers) / len(numbers)\nprint(f\"Mean: {mean:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "statistics_mean",
+        "template_description": "Calculate mean of numbers",
+        "variables": {
+          "numbers": "item"
+        },
+        "requires_execution": true,
+        "expected_result": "Error calculating mean"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.817691+00:00"
+    },
+    {
+      "input_text": "Generate all permutations of [1, 2, 3]",
+      "target_output": "<think>I need to generate all possible permutations of the list [1, 2, 3].</think>\n<model>\nfrom itertools import permutations\n\nitems = [1, 2, 3]\nperms = list(permutations(items))\nfor perm in perms:\n    print(list(perm))\n</model>\n<requires>python:algorithms</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "algorithm"
+      },
+      "difficulty": "hard",
+      "category": "algorithms",
+      "created_at": "2025-12-26T16:28:07.443581+00:00"
+    },
+    {
+      "input_text": "How do I calculate the area of a circle?",
+      "target_output": "To calculate the area of a circle, use the formula A = \u03c0r\u00b2, where A is the area, \u03c0 (pi) is approximately 3.14159, and r is the radius of the circle.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "conceptual"
+      },
+      "difficulty": "medium",
+      "category": "boundary",
+      "created_at": "2025-12-26T16:28:07.443602+00:00"
+    },
+    {
+      "input_text": "Calculate the mean of the following numbers: item",
+      "target_output": "<think>I need to calculate the mean of these numbers: item</think>\n<model>\nnumbers = [item]\nmean = sum(numbers) / len(numbers)\nprint(f\"Mean: {mean:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "statistics_mean",
+        "template_description": "Calculate mean of numbers",
+        "variables": {
+          "numbers": "item"
+        },
+        "requires_execution": true,
+        "expected_result": "Error calculating mean"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.037993+00:00"
+    },
+    {
+      "input_text": "Sort this list of numbers: [64, 34, 25, 12, 22, 11, 90]",
+      "target_output": "<think>I need to sort the given list of numbers in ascending order.</think>\n<model>\nnumbers = [64, 34, 25, 12, 22, 11, 90]\nsorted_numbers = sorted(numbers)\nprint(sorted_numbers)\n</model>\n<requires>python:data_processing</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "data_analysis"
+      },
+      "difficulty": "medium",
+      "category": "data_processing",
+      "created_at": "2025-12-26T16:28:07.443576+00:00"
+    },
+    {
+      "input_text": "What is the largest planet in our solar system?",
+      "target_output": "Jupiter is the largest planet in our solar system.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "direct_answer"
+      },
+      "difficulty": "easy",
+      "category": "factual",
+      "created_at": "2025-12-26T16:28:07.443586+00:00"
+    },
+    {
+      "input_text": "Write a function to check if 9 is a prime number",
+      "target_output": "<think>I need to check if 9 is prime. A prime number is only divisible by 1 and itself.</think>\n<model>\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nnumber = 9\nresult = is_prime(number)\nprint(f\"{number} is {'prime' if result else 'not prime'}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "prime_checker",
+        "template_description": "Check if number is prime",
+        "variables": {
+          "number": 9
+        },
+        "requires_execution": true,
+        "expected_result": "9 is not prime"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.038373+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 1x\u00b2 + -9x + -2 = 0",
+      "target_output": "<think>I need to find roots of 1x\u00b2 + -9x + -2 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 1, -9, -2\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 1,
+          "b": -9,
+          "c": -2
+        },
+        "requires_execution": true,
+        "expected_result": "Two real roots: 9.22, -0.22"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.817652+00:00"
+    },
+    {
+      "input_text": "Calculate 72 * 46",
+      "target_output": "<think>I need to calculate 72 * 46. Let me compute this step by step.</think>\n<model>\nresult = 72 * 46\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "basic_arithmetic",
+        "template_description": "Simple arithmetic operations",
+        "variables": {
+          "a": 72,
+          "b": 46,
+          "op": "*"
+        },
+        "requires_execution": true,
+        "expected_result": "3312"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.039557+00:00"
+    },
+    {
+      "input_text": "Calculate the mean of the following numbers: item",
+      "target_output": "<think>I need to calculate the mean of these numbers: item</think>\n<model>\nnumbers = [item]\nmean = sum(numbers) / len(numbers)\nprint(f\"Mean: {mean:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "statistics_mean",
+        "template_description": "Calculate mean of numbers",
+        "variables": {
+          "numbers": "item"
+        },
+        "requires_execution": true,
+        "expected_result": "Error calculating mean"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.037627+00:00"
+    },
+    {
+      "input_text": "Take the string 'Data Science' and replace spaces with underscores",
+      "target_output": "<think>I need to solve: Take the string 'Data Science' and replace spaces with underscores</think>\n<model>\n# Solution for: Take the string 'Data Science' and replace spaces with underscores\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "string_operations",
+        "template_description": "String manipulation tasks",
+        "variables": {
+          "input_str": "Data Science",
+          "operation": "replace spaces with underscores"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.037220+00:00"
+    },
+    {
+      "input_text": "Calculate the mean of the following numbers: item",
+      "target_output": "<think>I need to calculate the mean of these numbers: item</think>\n<model>\nnumbers = [item]\nmean = sum(numbers) / len(numbers)\nprint(f\"Mean: {mean:.2f}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "statistics_mean",
+        "template_description": "Calculate mean of numbers",
+        "variables": {
+          "numbers": "item"
+        },
+        "requires_execution": true,
+        "expected_result": "Error calculating mean"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.038072+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 2x\u00b2 + -3x + -10 = 0",
+      "target_output": "<think>I need to find roots of 2x\u00b2 + -3x + -10 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 2, -3, -10\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 2,
+          "b": -3,
+          "c": -10
+        },
+        "requires_execution": true,
+        "expected_result": "Two real roots: 3.11, -1.61"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.039237+00:00"
+    },
+    {
+      "input_text": "Calculate the square root of 144",
+      "target_output": "<think>I need to find the square root of 144.</think>\n<model>\nimport math\nresult = math.sqrt(144)\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "requires_computation": true,
+        "pattern": "calculation"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:07.443562+00:00"
+    },
+    {
+      "input_text": "Take the string 'machine learning' and reverse the string",
+      "target_output": "<think>I need to solve: Take the string 'machine learning' and reverse the string</think>\n<model>\n# Solution for: Take the string 'machine learning' and reverse the string\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "string_operations",
+        "template_description": "String manipulation tasks",
+        "variables": {
+          "input_str": "machine learning",
+          "operation": "reverse the string"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.036833+00:00"
+    },
+    {
+      "input_text": "Evaluate the boolean expression: True or True or True",
+      "target_output": "<think>I need to solve: Evaluate the boolean expression: True or True or True</think>\n<model>\n# Solution for: Evaluate the boolean expression: True or True or True\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "boolean_logic",
+        "template_description": "Boolean logic evaluation",
+        "variables": {
+          "expr1": "True",
+          "expr2": "True",
+          "expr3": "True",
+          "op1": "or",
+          "op2": "or"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "medium",
+      "category": "logic",
+      "created_at": "2025-12-26T01:10:10.818402+00:00"
+    },
+    {
+      "input_text": "Create a list of 5 strings and sort them",
+      "target_output": "<think>I need to solve: Create a list of 5 strings and sort them</think>\n<model>\n# Solution for: Create a list of 5 strings and sort them\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "list_manipulation",
+        "template_description": "Basic list operations",
+        "variables": {
+          "count": 5,
+          "item_type": "strings",
+          "operation": "sort them"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.040161+00:00"
+    },
+    {
+      "input_text": "Write a function to check if 82 is a prime number",
+      "target_output": "<think>I need to check if 82 is prime. A prime number is only divisible by 1 and itself.</think>\n<model>\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nnumber = 82\nresult = is_prime(number)\nprint(f\"{number} is {'prime' if result else 'not prime'}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "prime_checker",
+        "template_description": "Check if number is prime",
+        "variables": {
+          "number": 82
+        },
+        "requires_execution": true,
+        "expected_result": "82 is not prime"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.037914+00:00"
+    },
+    {
+      "input_text": "What is compound interest?",
+      "target_output": "Compound interest is interest calculated on the initial principal and the accumulated interest from previous periods. It grows exponentially over time, making it more powerful than simple interest.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "conceptual"
+      },
+      "difficulty": "medium",
+      "category": "boundary",
+      "created_at": "2025-12-26T16:28:07.443600+00:00"
+    },
+    {
+      "input_text": "Describe what a database is",
+      "target_output": "A database is an organized collection of structured information or data, typically stored electronically in a computer system. It's managed by a database management system (DBMS) that allows users to create, read, update, and delete data efficiently.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "explanation"
+      },
+      "difficulty": "medium",
+      "category": "explanation",
+      "created_at": "2025-12-26T16:28:07.443593+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 3x\u00b2 + 5x + -3 = 0",
+      "target_output": "<think>I need to find roots of 3x\u00b2 + 5x + -3 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 3, 5, -3\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 3,
+          "b": 5,
+          "c": -3
+        },
+        "requires_execution": true,
+        "expected_result": "Two real roots: 0.47, -2.14"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.039313+00:00"
+    },
+    {
+      "input_text": "Generate the first 5 numbers in the Fibonacci sequence",
+      "target_output": "<think>I need to generate the first 5 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>\n<model>\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    \n    fib = [0, 1]\n    for i in range(2, n):\n        fib.append(fib[i-1] + fib[i-2])\n    return fib\n\nresult = fibonacci(5)\nprint(result)\n</model>\n<requires>python:computation</requires>",
+      "metadata": {
+        "template_name": "fibonacci_sequence",
+        "template_description": "Generate Fibonacci sequence",
+        "variables": {
+          "n": 5
+        },
+        "requires_execution": true,
+        "expected_result": "[0, 1, 1, 2, 3]"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.038603+00:00"
+    },
+    {
+      "input_text": "Write a function to check if 41 is a prime number",
+      "target_output": "<think>I need to check if 41 is prime. A prime number is only divisible by 1 and itself.</think>\n<model>\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nnumber = 41\nresult = is_prime(number)\nprint(f\"{number} is {'prime' if result else 'not prime'}\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "prime_checker",
+        "template_description": "Check if number is prime",
+        "variables": {
+          "number": 41
+        },
+        "requires_execution": true,
+        "expected_result": "41 is prime"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.039522+00:00"
+    },
+    {
+      "input_text": "Take the string 'machine learning' and convert to uppercase",
+      "target_output": "<think>I need to solve: Take the string 'machine learning' and convert to uppercase</think>\n<model>\n# Solution for: Take the string 'machine learning' and convert to uppercase\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "string_operations",
+        "template_description": "String manipulation tasks",
+        "variables": {
+          "input_str": "machine learning",
+          "operation": "convert to uppercase"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.039272+00:00"
+    },
+    {
+      "input_text": "Take the string 'Python Programming' and remove all vowels",
+      "target_output": "<think>I need to solve: Take the string 'Python Programming' and remove all vowels</think>\n<model>\n# Solution for: Take the string 'Python Programming' and remove all vowels\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "string_operations",
+        "template_description": "String manipulation tasks",
+        "variables": {
+          "input_str": "Python Programming",
+          "operation": "remove all vowels"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.038705+00:00"
+    },
+    {
+      "input_text": "Generate the first 13 numbers in the Fibonacci sequence",
+      "target_output": "<think>I need to generate the first 13 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>\n<model>\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    \n    fib = [0, 1]\n    for i in range(2, n):\n        fib.append(fib[i-1] + fib[i-2])\n    return fib\n\nresult = fibonacci(13)\nprint(result)\n</model>\n<requires>python:computation</requires>",
+      "metadata": {
+        "template_name": "fibonacci_sequence",
+        "template_description": "Generate Fibonacci sequence",
+        "variables": {
+          "n": 13
+        },
+        "requires_execution": true,
+        "expected_result": "[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144]"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T01:10:10.818111+00:00"
+    },
+    {
+      "input_text": "Calculate 76 * 14",
+      "target_output": "<think>I need to calculate 76 * 14. Let me compute this step by step.</think>\n<model>\nresult = 76 * 14\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "basic_arithmetic",
+        "template_description": "Simple arithmetic operations",
+        "variables": {
+          "a": 76,
+          "b": 14,
+          "op": "*"
+        },
+        "requires_execution": true,
+        "expected_result": "1064"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.818032+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 1x\u00b2 + 8x + 1 = 0",
+      "target_output": "<think>I need to find roots of 1x\u00b2 + 8x + 1 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 1, 8, 1\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 1,
+          "b": 8,
+          "c": 1
+        },
+        "requires_execution": true,
+        "expected_result": "Two real roots: -0.13, -7.87"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.037366+00:00"
+    },
+    {
+      "input_text": "Create a list of 5 strings and find the maximum",
+      "target_output": "<think>I need to solve: Create a list of 5 strings and find the maximum</think>\n<model>\n# Solution for: Create a list of 5 strings and find the maximum\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "list_manipulation",
+        "template_description": "Basic list operations",
+        "variables": {
+          "count": 5,
+          "item_type": "strings",
+          "operation": "find the maximum"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "programming",
+      "created_at": "2025-12-26T01:10:10.818653+00:00"
+    },
+    {
+      "input_text": "Who invented the telephone?",
+      "target_output": "Alexander Graham Bell invented the telephone in 1876.",
+      "metadata": {
+        "requires_computation": false,
+        "pattern": "direct_answer"
+      },
+      "difficulty": "easy",
+      "category": "factual",
+      "created_at": "2025-12-26T16:28:07.443585+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 4x\u00b2 + 0x + -4 = 0",
+      "target_output": "<think>I need to find roots of 4x\u00b2 + 0x + -4 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 4, 0, -4\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 4,
+          "b": 0,
+          "c": -4
+        },
+        "requires_execution": true,
+        "expected_result": "Two real roots: 1.00, -1.00"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.037070+00:00"
+    },
+    {
+      "input_text": "Calculate 48 - 90",
+      "target_output": "<think>I need to calculate 48 - 90. Let me compute this step by step.</think>\n<model>\nresult = 48 - 90\nprint(result)\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "basic_arithmetic",
+        "template_description": "Simple arithmetic operations",
+        "variables": {
+          "a": 48,
+          "b": 90,
+          "op": "-"
+        },
+        "requires_execution": true,
+        "expected_result": "-42"
+      },
+      "difficulty": "easy",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.817299+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 5x\u00b2 + 0x + 1 = 0",
+      "target_output": "<think>I need to find roots of 5x\u00b2 + 0x + 1 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 5, 0, 1\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 5,
+          "b": 0,
+          "c": 1
+        },
+        "requires_execution": true,
+        "expected_result": "Complex roots: 0.00 \u00b1 0.45i"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.818779+00:00"
+    },
+    {
+      "input_text": "Evaluate the boolean expression: False or False and True",
+      "target_output": "<think>I need to solve: Evaluate the boolean expression: False or False and True</think>\n<model>\n# Solution for: Evaluate the boolean expression: False or False and True\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "boolean_logic",
+        "template_description": "Boolean logic evaluation",
+        "variables": {
+          "expr1": "False",
+          "expr2": "False",
+          "expr3": "True",
+          "op1": "or",
+          "op2": "and"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "medium",
+      "category": "logic",
+      "created_at": "2025-12-26T16:28:14.038486+00:00"
+    },
+    {
+      "input_text": "Analyze the following text: 'Machine learning and artificial intelligence are transforming technology.'. Count the number of consonants",
+      "target_output": "<think>I need to analyze the text 'Machine learning and artificial intelligence are transforming technology.' and count consonants.</think>\n<model>\ntext = \"Machine learning and artificial intelligence are transforming technology.\"\nconsonants = sum(1 for char in text if char.isalpha() and char not in \"aeiouAEIOU\")\nprint(f\"Number of consonants: {consonants}\")\n</model>\n<requires>python:text</requires>",
+      "metadata": {
+        "template_name": "text_analysis",
+        "template_description": "Analyze text properties",
+        "variables": {
+          "text": "Machine learning and artificial intelligence are transforming technology.",
+          "analysis_type": "consonants"
+        },
+        "requires_execution": true,
+        "expected_result": "Number of consonants: 40"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.038743+00:00"
+    },
+    {
+      "input_text": "Create a list of 9 strings and find the maximum",
+      "target_output": "<think>I need to solve: Create a list of 9 strings and find the maximum</think>\n<model>\n# Solution for: Create a list of 9 strings and find the maximum\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "list_manipulation",
+        "template_description": "Basic list operations",
+        "variables": {
+          "count": 9,
+          "item_type": "strings",
+          "operation": "find the maximum"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.040051+00:00"
+    },
+    {
+      "input_text": "Generate the first 9 numbers in the Fibonacci sequence",
+      "target_output": "<think>I need to generate the first 9 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>\n<model>\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    \n    fib = [0, 1]\n    for i in range(2, n):\n        fib.append(fib[i-1] + fib[i-2])\n    return fib\n\nresult = fibonacci(9)\nprint(result)\n</model>\n<requires>python:computation</requires>",
+      "metadata": {
+        "template_name": "fibonacci_sequence",
+        "template_description": "Generate Fibonacci sequence",
+        "variables": {
+          "n": 9
+        },
+        "requires_execution": true,
+        "expected_result": "[0, 1, 1, 2, 3, 5, 8, 13, 21]"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.040246+00:00"
+    },
+    {
+      "input_text": "Generate the first 13 numbers in the Fibonacci sequence",
+      "target_output": "<think>I need to generate the first 13 Fibonacci numbers. Each number is the sum of the two preceding ones.</think>\n<model>\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    \n    fib = [0, 1]\n    for i in range(2, n):\n        fib.append(fib[i-1] + fib[i-2])\n    return fib\n\nresult = fibonacci(13)\nprint(result)\n</model>\n<requires>python:computation</requires>",
+      "metadata": {
+        "template_name": "fibonacci_sequence",
+        "template_description": "Generate Fibonacci sequence",
+        "variables": {
+          "n": 13
+        },
+        "requires_execution": true,
+        "expected_result": "[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144]"
+      },
+      "difficulty": "medium",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.038188+00:00"
+    },
+    {
+      "input_text": "Take the string 'Python Programming' and reverse the string",
+      "target_output": "<think>I need to solve: Take the string 'Python Programming' and reverse the string</think>\n<model>\n# Solution for: Take the string 'Python Programming' and reverse the string\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "string_operations",
+        "template_description": "String manipulation tasks",
+        "variables": {
+          "input_str": "Python Programming",
+          "operation": "reverse the string"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.039417+00:00"
+    },
+    {
+      "input_text": "Evaluate the boolean expression: False or False or True",
+      "target_output": "<think>I need to solve: Evaluate the boolean expression: False or False or True</think>\n<model>\n# Solution for: Evaluate the boolean expression: False or False or True\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "boolean_logic",
+        "template_description": "Boolean logic evaluation",
+        "variables": {
+          "expr1": "False",
+          "expr2": "False",
+          "expr3": "True",
+          "op1": "or",
+          "op2": "or"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "medium",
+      "category": "logic",
+      "created_at": "2025-12-26T01:10:10.818583+00:00"
+    },
+    {
+      "input_text": "Analyze the following text: 'Python is a powerful programming language for data science.'. Count the number of consonants",
+      "target_output": "<think>I need to analyze the text 'Python is a powerful programming language for data science.' and count consonants.</think>\n<model>\ntext = \"Python is a powerful programming language for data science.\"\nconsonants = sum(1 for char in text if char.isalpha() and char not in \"aeiouAEIOU\")\nprint(f\"Number of consonants: {consonants}\")\n</model>\n<requires>python:text</requires>",
+      "metadata": {
+        "template_name": "text_analysis",
+        "template_description": "Analyze text properties",
+        "variables": {
+          "text": "Python is a powerful programming language for data science.",
+          "analysis_type": "consonants"
+        },
+        "requires_execution": true,
+        "expected_result": "Number of consonants: 31"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.037710+00:00"
+    },
+    {
+      "input_text": "Take the string 'hello world' and convert to uppercase",
+      "target_output": "<think>I need to solve: Take the string 'hello world' and convert to uppercase</think>\n<model>\n# Solution for: Take the string 'hello world' and convert to uppercase\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "string_operations",
+        "template_description": "String manipulation tasks",
+        "variables": {
+          "input_str": "hello world",
+          "operation": "convert to uppercase"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T01:10:10.817742+00:00"
+    },
+    {
+      "input_text": "Take the string 'Data Science' and remove all vowels",
+      "target_output": "<think>I need to solve: Take the string 'Data Science' and remove all vowels</think>\n<model>\n# Solution for: Take the string 'Data Science' and remove all vowels\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "string_operations",
+        "template_description": "String manipulation tasks",
+        "variables": {
+          "input_str": "Data Science",
+          "operation": "remove all vowels"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.039740+00:00"
+    },
+    {
+      "input_text": "Create a list of 9 strings and reverse the order",
+      "target_output": "<think>I need to solve: Create a list of 9 strings and reverse the order</think>\n<model>\n# Solution for: Create a list of 9 strings and reverse the order\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "list_manipulation",
+        "template_description": "Basic list operations",
+        "variables": {
+          "count": 9,
+          "item_type": "strings",
+          "operation": "reverse the order"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "programming",
+      "created_at": "2025-12-26T01:10:10.818331+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 5x\u00b2 + -9x + 7 = 0",
+      "target_output": "<think>I need to find roots of 5x\u00b2 + -9x + 7 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 5, -9, 7\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 5,
+          "b": -9,
+          "c": 7
+        },
+        "requires_execution": true,
+        "expected_result": "Complex roots: 0.90 \u00b1 0.77i"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T01:10:10.817823+00:00"
+    },
+    {
+      "input_text": "Evaluate the boolean expression: True and True and True",
+      "target_output": "<think>I need to solve: Evaluate the boolean expression: True and True and True</think>\n<model>\n# Solution for: Evaluate the boolean expression: True and True and True\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "boolean_logic",
+        "template_description": "Boolean logic evaluation",
+        "variables": {
+          "expr1": "True",
+          "expr2": "True",
+          "expr3": "True",
+          "op1": "and",
+          "op2": "and"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "medium",
+      "category": "logic",
+      "created_at": "2025-12-26T01:10:10.817532+00:00"
+    },
+    {
+      "input_text": "Evaluate the boolean expression: True and False and False",
+      "target_output": "<think>I need to solve: Evaluate the boolean expression: True and False and False</think>\n<model>\n# Solution for: Evaluate the boolean expression: True and False and False\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "boolean_logic",
+        "template_description": "Boolean logic evaluation",
+        "variables": {
+          "expr1": "True",
+          "expr2": "False",
+          "expr3": "False",
+          "op1": "and",
+          "op2": "and"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "medium",
+      "category": "logic",
+      "created_at": "2025-12-26T16:28:14.040018+00:00"
+    },
+    {
+      "input_text": "Take the string 'machine learning' and convert to uppercase",
+      "target_output": "<think>I need to solve: Take the string 'machine learning' and convert to uppercase</think>\n<model>\n# Solution for: Take the string 'machine learning' and convert to uppercase\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "string_operations",
+        "template_description": "String manipulation tasks",
+        "variables": {
+          "input_str": "machine learning",
+          "operation": "convert to uppercase"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.038671+00:00"
+    },
+    {
+      "input_text": "Create a list of 10 items and sort them",
+      "target_output": "<think>I need to solve: Create a list of 10 items and sort them</think>\n<model>\n# Solution for: Create a list of 10 items and sort them\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "list_manipulation",
+        "template_description": "Basic list operations",
+        "variables": {
+          "count": 10,
+          "item_type": "items",
+          "operation": "sort them"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.038895+00:00"
+    },
+    {
+      "input_text": "Evaluate the boolean expression: True or False or True",
+      "target_output": "<think>I need to solve: Evaluate the boolean expression: True or False or True</think>\n<model>\n# Solution for: Evaluate the boolean expression: True or False or True\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "boolean_logic",
+        "template_description": "Boolean logic evaluation",
+        "variables": {
+          "expr1": "True",
+          "expr2": "False",
+          "expr3": "True",
+          "op1": "or",
+          "op2": "or"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "medium",
+      "category": "logic",
+      "created_at": "2025-12-26T16:28:14.038638+00:00"
+    },
+    {
+      "input_text": "Create a list of 5 items and sort them",
+      "target_output": "<think>I need to solve: Create a list of 5 items and sort them</think>\n<model>\n# Solution for: Create a list of 5 items and sort them\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "list_manipulation",
+        "template_description": "Basic list operations",
+        "variables": {
+          "count": 5,
+          "item_type": "items",
+          "operation": "sort them"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.039083+00:00"
+    },
+    {
+      "input_text": "Find the roots of the quadratic equation 2x\u00b2 + -2x + 3 = 0",
+      "target_output": "<think>I need to find roots of 2x\u00b2 + -2x + 3 = 0 using the quadratic formula.</think>\n<model>\nimport math\n\na, b, c = 2, -2, 3\ndiscriminant = b**2 - 4*a*c\n\nif discriminant > 0:\n    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n    print(f\"Two real roots: {root1:.2f}, {root2:.2f}\")\nelif discriminant == 0:\n    root = -b / (2*a)\n    print(f\"One real root: {root:.2f}\")\nelse:\n    real_part = -b / (2*a)\n    imag_part = math.sqrt(-discriminant) / (2*a)\n    print(f\"Complex roots: {real_part:.2f} \u00b1 {imag_part:.2f}i\")\n</model>\n<requires>python:math</requires>",
+      "metadata": {
+        "template_name": "quadratic_roots",
+        "template_description": "Find roots of quadratic equations",
+        "variables": {
+          "a": 2,
+          "b": -2,
+          "c": 3
+        },
+        "requires_execution": true,
+        "expected_result": "Complex roots: 0.50 \u00b1 1.12i"
+      },
+      "difficulty": "medium",
+      "category": "math",
+      "created_at": "2025-12-26T16:28:14.038825+00:00"
+    },
+    {
+      "input_text": "Create a list of 10 items and count unique items",
+      "target_output": "<think>I need to solve: Create a list of 10 items and count unique items</think>\n<model>\n# Solution for: Create a list of 10 items and count unique items\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "list_manipulation",
+        "template_description": "Basic list operations",
+        "variables": {
+          "count": 10,
+          "item_type": "items",
+          "operation": "count unique items"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "programming",
+      "created_at": "2025-12-26T16:28:14.038785+00:00"
+    },
+    {
+      "input_text": "Take the string 'hello world' and remove all vowels",
+      "target_output": "<think>I need to solve: Take the string 'hello world' and remove all vowels</think>\n<model>\n# Solution for: Take the string 'hello world' and remove all vowels\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "string_operations",
+        "template_description": "String manipulation tasks",
+        "variables": {
+          "input_str": "hello world",
+          "operation": "remove all vowels"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T01:10:10.817336+00:00"
+    },
+    {
+      "input_text": "Take the string 'machine learning' and remove all vowels",
+      "target_output": "<think>I need to solve: Take the string 'machine learning' and remove all vowels</think>\n<model>\n# Solution for: Take the string 'machine learning' and remove all vowels\nprint('Solution implementation needed')\n</model>\n<requires>python:general</requires>",
+      "metadata": {
+        "template_name": "string_operations",
+        "template_description": "String manipulation tasks",
+        "variables": {
+          "input_str": "machine learning",
+          "operation": "remove all vowels"
+        },
+        "requires_execution": true,
+        "expected_result": "Solution implementation needed"
+      },
+      "difficulty": "easy",
+      "category": "text",
+      "created_at": "2025-12-26T16:28:14.039877+00:00"
+    },
+    {
+      "input_text": "Calculate the energy required to melt 250g of paraffin wax (latent heat of fusion = 200 kJ/kg)",
+      "target_output": "<think>To calculate energy required for phase change, I use Q = m \u00d7 Lf where Q is energy, m is mass in kg, and Lf is latent heat of fusion. Mass = 250g = 0.25kg, Lf = 200 kJ/kg.</think>\n<model>\nmass_kg = 0.25  # 250g converted to kg\nlatent_heat_fusion = 200  # kJ/kg\nenergy_required = mass_kg * latent_heat_fusion\nprint(f\"Energy required to melt {mass_kg*1000}g of paraffin: {energy_required} kJ\")\n</model>\n<requires>python:physics</requires>",
+      "category": "physics_phase_change"
+    },
+    {
+      "input_text": "A PCM has a melting point of 28\u00b0C. If 500g of this material at 25\u00b0C absorbs 15 kJ of energy, calculate its final temperature (specific heat = 2.1 kJ/kg\u00b7K, latent heat = 180 kJ/kg)",
+      "target_output": "<think>First, calculate energy to heat from 25\u00b0C to 28\u00b0C using Q = mc\u0394T. Then check if remaining energy can complete phase change. If not, material stays at 28\u00b0C partially melted.</think>\n<model>\nm = 0.5  # kg\nc = 2.1  # kJ/kg\u00b7K\nLf = 180  # kJ/kg\nT_initial = 25  # \u00b0C\nT_melt = 28  # \u00b0C\nQ_total = 15  # kJ\n\n# Energy to reach melting point\nQ_sensible = m * c * (T_melt - T_initial)\nprint(f\"Energy to reach melting point: {Q_sensible} kJ\")\n\n# Remaining energy for phase change\nQ_remaining = Q_total - Q_sensible\nprint(f\"Remaining energy: {Q_remaining} kJ\")\n\n# Energy needed for complete melting\nQ_phase_change = m * Lf\nprint(f\"Energy for complete melting: {Q_phase_change} kJ\")\n\nif Q_remaining >= Q_phase_change:\n    print(\"Material completely melts and temperature rises above 28\u00b0C\")\nelse:\n    fraction_melted = Q_remaining / Q_phase_change\n    print(f\"Material partially melts: {fraction_melted:.2%} melted at 28\u00b0C\")\n</model>\n<requires>python:physics</requires>",
+      "category": "physics_phase_change"
+    },
+    {
+      "input_text": "Calculate the molarity of a solution containing 58.5g of NaCl dissolved in 500mL of water (MW of NaCl = 58.5 g/mol)",
+      "target_output": "<think>Molarity = moles of solute / liters of solution. First convert mass to moles using MW, then convert volume to liters.</think>\n<model>\nmass_NaCl = 58.5  # grams\nmolar_mass_NaCl = 58.5  # g/mol\nvolume_L = 0.5  # 500mL = 0.5L\n\nmoles_NaCl = mass_NaCl / molar_mass_NaCl\nmolarity = moles_NaCl / volume_L\n\nprint(f\"Moles of NaCl: {moles_NaCl} mol\")\nprint(f\"Molarity: {molarity} M\")\n</model>\n<requires>python:chemistry</requires>",
+      "category": "chemistry_solutions"
+    },
+    {
+      "input_text": "For the reaction 2H\u2082 + O\u2082 \u2192 2H\u2082O, if 5 moles of H\u2082 react completely, how many moles of H\u2082O are produced?",
+      "target_output": "<think>From the balanced equation, 2 moles H\u2082 produce 2 moles H\u2082O. The molar ratio is 1:1. So 5 moles H\u2082 will produce 5 moles H\u2082O.</think>\n<model>\n# Balanced equation: 2H\u2082 + O\u2082 \u2192 2H\u2082O\n# Molar ratio H\u2082:H\u2082O = 2:2 = 1:1\n\nmoles_H2 = 5\nmolar_ratio = 1  # 1 mole H\u2082O per 1 mole H\u2082\nmoles_H2O = moles_H2 * molar_ratio\n\nprint(f\"Moles of H\u2082 reacting: {moles_H2}\")\nprint(f\"Moles of H\u2082O produced: {moles_H2O}\")\n</model>\n<requires>python:chemistry</requires>",
+      "category": "chemistry_stoichiometry"
+    },
+    {
+      "input_text": "A spring with constant k = 200 N/m is compressed by 0.15m. Calculate the elastic potential energy stored",
+      "target_output": "<think>Elastic potential energy is given by U = (1/2)kx\u00b2 where k is spring constant and x is compression distance.</think>\n<model>\nk = 200  # N/m\nx = 0.15  # m\n\nelastic_energy = 0.5 * k * x**2\n\nprint(f\"Spring constant: {k} N/m\")\nprint(f\"Compression: {x} m\")\nprint(f\"Elastic potential energy: {elastic_energy} J\")\n</model>\n<requires>python:physics</requires>",
+      "category": "physics_energy"
+    },
+    {
+      "input_text": "Calculate the orbital velocity of a satellite 400km above Earth's surface (Earth radius = 6371 km, g = 9.81 m/s\u00b2)",
+      "target_output": "<think>Orbital velocity v = \u221a(GM/r) where r is distance from Earth's center. Since GM = gR\u00b2 for Earth's surface, I can use v = \u221a(gR\u00b2/r) where R is Earth's radius.</think>\n<model>\nimport math\n\nR_earth = 6371000  # Earth radius in meters\naltitude = 400000  # 400 km in meters\ng = 9.81  # m/s\u00b2\n\nr_orbit = R_earth + altitude  # distance from Earth's center\nGM = g * R_earth**2  # GM for Earth\n\norbital_velocity = math.sqrt(GM / r_orbit)\n\nprint(f\"Altitude: {altitude/1000} km\")\nprint(f\"Orbital radius: {r_orbit/1000} km\")\nprint(f\"Orbital velocity: {orbital_velocity:.0f} m/s = {orbital_velocity/1000:.2f} km/s\")\n</model>\n<requires>python:physics</requires>",
+      "category": "physics_orbital"
+    },
+    {
+      "input_text": "Find the derivative of f(x) = 3x\u2074 - 2x\u00b3 + 5x - 7",
+      "target_output": "<think>To find the derivative, I apply the power rule: d/dx(ax\u207f) = nax\u207f\u207b\u00b9. For each term: d/dx(3x\u2074) = 12x\u00b3, d/dx(-2x\u00b3) = -6x\u00b2, d/dx(5x) = 5, d/dx(-7) = 0.</think>\n<model>\nimport sympy as sp\n\nx = sp.Symbol('x')\nf = 3*x**4 - 2*x**3 + 5*x - 7\n\nderivative = sp.diff(f, x)\n\nprint(f\"Original function: f(x) = {f}\")\nprint(f\"Derivative: f'(x) = {derivative}\")\n\n# Manual verification\nmanual_derivative = 12*x**3 - 6*x**2 + 5\nprint(f\"Manual calculation: f'(x) = {manual_derivative}\")\nprint(f\"Verification: {sp.simplify(derivative - manual_derivative) == 0}\")\n</model>\n<requires>python:math</requires>",
+      "category": "math_calculus"
+    },
+    {
+      "input_text": "Solve the quadratic equation 2x\u00b2 + 5x - 3 = 0",
+      "target_output": "<think>I can use the quadratic formula: x = (-b \u00b1 \u221a(b\u00b2 - 4ac)) / 2a where a=2, b=5, c=-3. I'll calculate the discriminant first.</think>\n<model>\nimport math\n\na = 2\nb = 5 \nc = -3\n\n# Calculate discriminant\ndiscriminant = b**2 - 4*a*c\nprint(f\"Discriminant: {discriminant}\")\n\nif discriminant >= 0:\n    x1 = (-b + math.sqrt(discriminant)) / (2*a)\n    x2 = (-b - math.sqrt(discriminant)) / (2*a)\n    \n    print(f\"Solutions:\")\n    print(f\"x\u2081 = {x1}\")\n    print(f\"x\u2082 = {x2}\")\n    \n    # Verify solutions\n    def f(x):\n        return 2*x**2 + 5*x - 3\n    \n    print(f\"Verification:\")\n    print(f\"f({x1}) = {f(x1)}\")\n    print(f\"f({x2}) = {f(x2)}\")\nelse:\n    print(\"No real solutions\")\n</model>\n<requires>python:math</requires>",
+      "category": "math_algebra"
+    },
+    {
+      "input_text": "Count the number of R's in the word 'strawberry'",
+      "target_output": "<think>I need to count each occurrence of the letter 'R' (both uppercase and lowercase) in the word 'strawberry'. I'll iterate through each character and count matches.</think>\n<model>\nword = \"strawberry\"\nletter_to_count = \"r\"\n\n# Count both uppercase and lowercase R\ncount = word.lower().count(letter_to_count.lower())\n\nprint(f\"Word: '{word}'\")\nprint(f\"Letter to count: '{letter_to_count}'\")\nprint(f\"Number of R's: {count}\")\n\n# Show each character for verification\nprint(\"\\nCharacter breakdown:\")\nfor i, char in enumerate(word):\n    is_r = char.lower() == letter_to_count.lower()\n    print(f\"Position {i+1}: '{char}' -> {'R found!' if is_r else 'not R'}\")\n</model>\n<requires>python:string_processing</requires>",
+      "category": "string_analysis"
+    },
+    {
+      "input_text": "How many times does the letter 'e' appear in 'eleven'?",
+      "target_output": "<think>I need to count occurrences of 'e' in 'eleven'. I'll check each character position to count both uppercase and lowercase 'e'.</think>\n<model>\nword = \"eleven\"\nletter = \"e\"\n\ncount = word.lower().count(letter.lower())\n\nprint(f\"Word: '{word}'\")\nprint(f\"Counting letter: '{letter}'\")\nprint(f\"Total count: {count}\")\n\n# Show positions where 'e' appears\npositions = [i+1 for i, char in enumerate(word) if char.lower() == letter.lower()]\nprint(f\"Letter 'e' appears at positions: {positions}\")\n</model>\n<requires>python:string_processing</requires>",
+      "category": "string_analysis"
+    },
+    {
+      "input_text": "Count the number of words in this sentence: 'The quick brown fox jumps over the lazy dog'",
+      "target_output": "<think>To count words, I can split the sentence by whitespace and count the resulting elements. I need to handle multiple spaces and strip whitespace.</think>\n<model>\nsentence = \"The quick brown fox jumps over the lazy dog\"\n\n# Split by whitespace and filter out empty strings\nwords = sentence.split()\nword_count = len(words)\n\nprint(f\"Sentence: '{sentence}'\")\nprint(f\"Number of words: {word_count}\")\nprint(f\"Words: {words}\")\n\n# Alternative method using regular expressions for complex cases\nimport re\nwords_regex = re.findall(r'\\b\\w+\\b', sentence)\nprint(f\"Using regex count: {len(words_regex)}\")\nprint(f\"Words found: {words_regex}\")\n</model>\n<requires>python:string_processing</requires>",
+      "category": "string_analysis"
+    }
+  ]
+}
