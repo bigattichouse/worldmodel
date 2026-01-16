@@ -363,6 +363,7 @@ def main():
         
         # Long training stability
         save_total_limit=5,  # Keep more checkpoints for long runs
+        save_safetensors=False,  # Use PyTorch format to avoid tied weights issues
         
         # ROCm optimizations with file descriptor leak prevention
         dataloader_num_workers=2,           # Reduced to prevent fd leaks

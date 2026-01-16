@@ -87,10 +87,33 @@ class QwenWASMAdapter(nn.Module):
         # Output heads
         self.wasm_lm_head = nn.Linear(hidden_size, wasm_vocab_size, bias=False)
         
+        # Fix tied weights issue for safetensors
+        self._tie_weights()
+        
         print(f"✅ QwenWASMAdapter initialized")
         print(f"   Text layers: {len(self.text_model.encoder.layer) if hasattr(self.text_model, 'encoder') else 'N/A'}")
         print(f"   WASM layers: {len(self.wasm_layers)}")
         print(f"   Cross-modal fusion at layers: {self.cross_modal_indices}")
+    
+    def _tie_weights(self):
+        """Handle tied weights to avoid safetensors memory sharing issues."""
+        # Untie the weights to prevent safetensors issues
+        if hasattr(self.text_model, 'tie_weights'):
+            # Create separate copies of tied weights
+            if hasattr(self.text_model, 'lm_head') and hasattr(self.text_model, 'model'):
+                if hasattr(self.text_model.model, 'embed_tokens'):
+                    # Create a copy of the embedding weights for the lm_head
+                    embed_weight = self.text_model.model.embed_tokens.weight.data.clone()
+                    self.text_model.lm_head.weight.data = embed_weight
+    
+    def _untie_weights_for_saving(self):
+        """Temporarily untie weights for safe serialization."""
+        if hasattr(self.text_model, 'lm_head') and hasattr(self.text_model, 'model'):
+            if hasattr(self.text_model.model, 'embed_tokens'):
+                # Ensure weights are not sharing memory
+                if self.text_model.lm_head.weight.data_ptr() == self.text_model.model.embed_tokens.weight.data_ptr():
+                    # Create a true copy to break memory sharing
+                    self.text_model.lm_head.weight.data = self.text_model.model.embed_tokens.weight.data.clone()
     
     def set_wasm_tokenizer(self, wasm_tokenizer):
         """Set the WASM tokenizer for token-to-WAT conversion."""
@@ -520,15 +543,26 @@ class QwenWASMAdapter(nn.Module):
             "wasm_executed": len(outputs["execution_results"]) > 0
         }
     
-    def save_pretrained(self, save_directory: str):
+    def save_pretrained(self, save_directory: str, safe_serialization: bool = True):
         """Save the WASM adapter model."""
         import os
         import json
         
         os.makedirs(save_directory, exist_ok=True)
         
-        # Save the underlying text model
-        self.text_model.save_pretrained(save_directory)
+        # Temporarily untie weights to avoid safetensors issues
+        self._untie_weights_for_saving()
+        
+        try:
+            # Save the underlying text model with explicit safe_serialization control
+            self.text_model.save_pretrained(save_directory, safe_serialization=safe_serialization)
+        except Exception as e:
+            print(f"Warning: Failed to save with safetensors, trying PyTorch format: {e}")
+            # Fallback to PyTorch format
+            self.text_model.save_pretrained(save_directory, safe_serialization=False)
+        
+        # Restore tied weights
+        self._tie_weights()
         
         # Save WASM-specific components
         wasm_state = {
