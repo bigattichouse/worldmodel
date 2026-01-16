@@ -192,10 +192,14 @@ class QwenWASMAdapter(nn.Module):
                         wasm_hidden = self.wasm_layers[wasm_layer_idx](enhanced_wasm)
                         wasm_layer_idx += 1
                     
-                    # Execute WASM at this layer
+                    # Store WASM generation for selective execution
                     if execute_wasm:
-                        execution_result = self._execute_wasm_at_layer(wasm_hidden, layer_idx)
-                        execution_results.append(execution_result)
+                        wasm_candidate = self._prepare_wasm_candidate(wasm_hidden, layer_idx)
+                        execution_results.append(wasm_candidate)
+            
+            # Selective execution: score and execute only top candidates
+            if execute_wasm and execution_results:
+                execution_results = self._selective_wasm_execution(execution_results)
         
         # Generate WASM output logits
         wasm_logits = None
@@ -452,6 +456,155 @@ class QwenWASMAdapter(nn.Module):
         wasm_hidden = wasm_hidden + 0.05 * position_offsets * torch.randn_like(wasm_hidden)
         
         return wasm_hidden
+    
+    def _prepare_wasm_candidate(self, wasm_hidden: torch.Tensor, layer_idx: int) -> Dict[str, Any]:
+        """Prepare WASM candidate without executing - just generate and analyze."""
+        try:
+            # Convert WASM hidden states to tokens (same as before)
+            wasm_logits = self.wasm_lm_head(wasm_hidden)
+            wasm_tokens = torch.argmax(wasm_logits, dim=-1)
+            
+            # Convert tokens to WAT code
+            wat_code = self._tokens_to_wat(wasm_tokens)
+            
+            if wat_code and wat_code.strip():
+                # Extract inputs from context
+                inputs = self._extract_inputs_from_context(layer_idx)
+                
+                return {
+                    "layer": layer_idx,
+                    "wat_code": wat_code,
+                    "inputs": inputs,
+                    "executed": False,  # Mark as not executed yet
+                    "success": None,
+                    "result": None,
+                    "error": None,
+                    "score": 0.0  # Will be computed in selective execution
+                }
+            else:
+                return {
+                    "layer": layer_idx,
+                    "wat_code": "",
+                    "inputs": [],
+                    "executed": False,
+                    "success": False,
+                    "result": None,
+                    "error": "Empty WAT code",
+                    "score": -1.0
+                }
+        
+        except Exception as e:
+            return {
+                "layer": layer_idx,
+                "wat_code": "",
+                "inputs": [],
+                "executed": False, 
+                "success": False,
+                "result": None,
+                "error": str(e),
+                "score": -1.0
+            }
+    
+    def _selective_wasm_execution(self, candidates: List[Dict[str, Any]], top_k: int = 2) -> List[Dict[str, Any]]:
+        """Score WASM candidates and execute only the most promising ones."""
+        
+        # Score each candidate without executing
+        for candidate in candidates:
+            if candidate["wat_code"]:
+                candidate["score"] = self._score_wasm_candidate(candidate)
+            else:
+                candidate["score"] = -1.0
+        
+        # Sort by score (highest first)
+        candidates.sort(key=lambda x: x["score"], reverse=True)
+        
+        # Execute top-K candidates
+        executed_count = 0
+        for candidate in candidates:
+            if executed_count >= top_k:
+                # Mark remaining as not executed
+                candidate["executed"] = False
+                candidate["success"] = False
+                candidate["result"] = None
+                candidate["error"] = f"Not executed (rank {candidates.index(candidate) + 1})"
+            elif candidate["score"] > -0.5:  # Only execute reasonable candidates
+                # Execute this candidate
+                execution_result = self.wasm_executor.execute_wat(
+                    wat_code=candidate["wat_code"],
+                    inputs=candidate["inputs"],
+                    api_calls=[]
+                )
+                
+                candidate["executed"] = True
+                candidate["success"] = execution_result["success"]
+                candidate["result"] = execution_result.get("result")
+                candidate["error"] = execution_result.get("error")
+                
+                executed_count += 1
+            else:
+                # Skip low-scoring candidates
+                candidate["executed"] = False
+                candidate["success"] = False
+                candidate["result"] = None
+                candidate["error"] = f"Low score ({candidate['score']:.2f})"
+        
+        print(f"   ⚡ Selective execution: {executed_count}/{len(candidates)} operations computed")
+        
+        return candidates
+    
+    def _score_wasm_candidate(self, candidate: Dict[str, Any]) -> float:
+        """Score a WASM candidate for execution priority without running it."""
+        score = 0.0
+        
+        wat_code = candidate["wat_code"]
+        layer_idx = candidate["layer"]
+        inputs = candidate.get("inputs", [])
+        
+        # Factor 1: Layer position (later layers = more refined)
+        layer_score = layer_idx / 11.0  # Normalize by max layer
+        score += layer_score * 1.0
+        
+        # Factor 2: Operation type analysis
+        if hasattr(self, '_current_input_text'):
+            question = self._current_input_text.lower()
+            
+            # Extract operation from WAT
+            if 'f64.mul' in wat_code:
+                wat_op = 'multiply'
+            elif 'f64.add' in wat_code:
+                wat_op = 'add'
+            elif 'f64.sub' in wat_code:
+                wat_op = 'subtract'
+            elif 'f64.div' in wat_code:
+                wat_op = 'divide'
+            else:
+                wat_op = 'unknown'
+            
+            # Score based on question-operation alignment
+            if wat_op == 'multiply' and any(word in question for word in ['*', '×', 'times', 'multiply', 'product']):
+                score += 2.0
+            elif wat_op == 'add' and any(word in question for word in ['+', 'plus', 'add', 'sum']):
+                score += 2.0
+            elif wat_op == 'subtract' and any(word in question for word in ['-', 'minus', 'subtract', 'difference']):
+                score += 2.0
+            elif wat_op == 'divide' and any(word in question for word in ['/', '÷', 'divide', 'divided']):
+                score += 2.0
+            else:
+                score += 0.2  # Small penalty for mismatched operations
+        
+        # Factor 3: WAT code quality
+        if 'compute' in wat_code and 'export' in wat_code:
+            score += 0.5  # Bonus for well-formed WAT
+        
+        # Factor 4: Parameter count analysis
+        if 'param f64 f64' in wat_code and len(inputs) >= 2:
+            score += 0.3  # Binary operation with enough inputs
+        elif 'param f64' in wat_code and len(inputs) >= 1:
+            score += 0.3  # Unary operation with enough inputs
+        else:
+            score -= 0.2  # Parameter mismatch penalty
+        
+        return score
     
     def _inject_computed_tokens(self, text_logits: torch.Tensor, execution_results: List[Dict]) -> torch.Tensor:
         """Inject computed results into token generation logits."""

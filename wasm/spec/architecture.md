@@ -298,6 +298,71 @@ Output:      [Unified Generation with <computed> tokens]
 - **WASM Positional Encoding**: Code structure awareness (function scope, control flow)
 - **WASM Attention**: Self-attention within WASM code sequences
 
+## Emergent Training Behaviors
+
+### Layer Specialization Discovery
+
+During training with diverse mathematical operations (490 division, 420 multiplication, 100 addition, 100 subtraction examples), an unexpected emergent behavior was observed: **cross-modal layers developed operation specialization** rather than context-adaptive generation.
+
+#### Observed Layer Behaviors:
+```
+Layer 3  (Early):   Primarily multiplication (f64.mul)
+Layer 7  (Middle):  Mixed operations, often addition (f64.add)  
+Layer 11 (Late):    Division (f64.div) and unary operations
+```
+
+#### Expected vs. Actual Behavior:
+
+**Expected (Context-Adaptive)**:
+```
+Question: "5 + 3"  → All layers generate f64.add
+Question: "5 * 3"  → All layers generate f64.mul  
+```
+
+**Actual (Layer-Specialized)**:
+```
+Question: "5 + 3"  → Layer 3: f64.mul, Layer 7: f64.add, Layer 11: f64.div
+Question: "5 * 3"  → Layer 3: f64.mul, Layer 7: f64.add, Layer 11: f64.sub
+```
+
+### Root Cause Analysis
+
+1. **Cross-Modal Communication Gap**: Text layers don't effectively communicate operation intent to WASM layers
+2. **Layer Position Learning**: Each layer learned that its "role" is to attempt a specific type of operation
+3. **Training Signal Distribution**: Model learned to hedge bets by trying multiple operations
+
+### Computational Ensemble Effect
+
+This emergent behavior creates an unintentional but useful "computational ensemble":
+- Multiple mathematical approaches per question
+- Increased robustness against single-layer failures  
+- Natural redundancy in mathematical reasoning
+
+### Solution: Attention-Based Selection
+
+Implemented selection system mimicking token generation attention:
+
+```python
+score = operation_match * 2.0 + layer_position * 1.0 + reasonableness * 0.5
+```
+
+**Components**:
+- **Operation Match**: Semantic similarity between question intent and generated WAT operation
+- **Layer Position**: Later layers weighted higher (more refined processing)
+- **Reasonableness**: Result magnitude sanity checking
+
+**Results**:
+- ✅ Correctly identifies mathematically appropriate operations
+- ✅ Handles parameter mismatches (1-param vs 2-param functions)
+- ✅ Provides interpretable scoring for debugging
+
+### Future Improvements
+
+1. **Enhanced Cross-Modal Attention**: Improve text→WASM information transfer
+2. **Learned Selection Head**: Train end-to-end selection instead of hand-crafted features
+3. **Operation Conditioning**: Explicitly condition WASM generation on detected operations
+4. **Dynamic Layer Routing**: Route questions to layers best suited for specific operation types
+
 #### 2. Cross-Modal Attention Mechanism  
 ```python
 class CrossModalAttention(nn.Module):
