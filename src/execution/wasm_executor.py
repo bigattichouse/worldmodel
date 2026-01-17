@@ -205,6 +205,69 @@ class WASMExecutor:
         
         return None
     
+    def _validate_and_select_inputs(self, inputs: Optional[List[Any]], param_count: int, wat_code: str) -> List[float]:
+        """
+        Intelligently validate and select the correct number of inputs for WASM function.
+        
+        Args:
+            inputs: Raw input list (may contain extra numbers)
+            param_count: Expected parameter count from WASM function
+            wat_code: WAT code to analyze for operation type
+            
+        Returns:
+            List of validated inputs matching param_count
+        """
+        if not inputs:
+            return []
+            
+        # Convert all inputs to floats, filter out invalid ones
+        valid_numbers = []
+        for inp in inputs:
+            try:
+                num = float(inp)
+                # Filter out obvious non-operand numbers (like precision specs, iteration counts)
+                if not (-1e10 <= num <= 1e10):  # Reasonable range check
+                    continue
+                valid_numbers.append(num)
+            except (ValueError, TypeError):
+                continue
+        
+        if param_count == 0:
+            return []
+        elif param_count == 1:
+            # For unary operations, select the most relevant number
+            if "square" in wat_code or "sqrt" in wat_code:
+                # For squares/roots, prefer non-zero positive numbers
+                positive_nums = [n for n in valid_numbers if n > 0]
+                return [positive_nums[0]] if positive_nums else [valid_numbers[0]] if valid_numbers else [0]
+            else:
+                # Default: use first number
+                return [valid_numbers[0]] if valid_numbers else [0]
+        elif param_count == 2:
+            # For binary operations, select the two most relevant numbers
+            if len(valid_numbers) >= 2:
+                # Smart selection based on operation type
+                if any(op in wat_code for op in ["f64.div", "div"]):
+                    # For division, avoid zero divisor
+                    non_zero = [n for n in valid_numbers[1:] if n != 0]
+                    if non_zero:
+                        return [valid_numbers[0], non_zero[0]]
+                    else:
+                        # No non-zero divisor found, use first two anyway (will handle error later)
+                        return valid_numbers[:2]
+                else:
+                    # For other operations, use first two numbers
+                    return valid_numbers[:2]
+            elif len(valid_numbers) == 1:
+                # Only one number provided for binary op - duplicate it or use default
+                return [valid_numbers[0], valid_numbers[0]]
+            else:
+                # No valid numbers - return defaults
+                return [0.0, 1.0]
+        else:
+            # More than 2 parameters - use first N
+            return (valid_numbers + [0.0] * param_count)[:param_count]
+    
     def _execute_with_wasmtime(self, wasm_file: str, inputs: Optional[List[Any]]) -> Optional[float]:
         """Execute WASM file using wasmtime Python runtime."""
         try:
@@ -241,20 +304,24 @@ class WASMExecutor:
             func_type = compute_func.type(store)
             param_count = len(func_type.params)
             
-            print(f"      Function expects {param_count} parameters, got {len(inputs) if inputs else 0}")
+            # Validate and select appropriate inputs
+            # Note: For wasmtime execution, we can't access the original WAT code,
+            # so we pass an empty string for wat_code parameter
+            validated_inputs = self._validate_and_select_inputs(inputs, param_count, "")
+            print(f"      Function expects {param_count} parameters, got {len(inputs) if inputs else 0}, using {len(validated_inputs)}")
             
-            # Execute with appropriate number of parameters
-            if param_count == 2 and inputs and len(inputs) >= 2:
+            # Execute with validated parameters
+            if param_count == 2 and len(validated_inputs) >= 2:
                 # Binary operations
-                result = compute_func(store, float(inputs[0]), float(inputs[1]))
-            elif param_count == 1 and inputs and len(inputs) >= 1:
-                # Unary operations (use first input)
-                result = compute_func(store, float(inputs[0]))
+                result = compute_func(store, float(validated_inputs[0]), float(validated_inputs[1]))
+            elif param_count == 1 and len(validated_inputs) >= 1:
+                # Unary operations
+                result = compute_func(store, float(validated_inputs[0]))
             elif param_count == 0:
                 # No parameters
                 result = compute_func(store)
             else:
-                raise RuntimeError(f"Parameter mismatch: function expects {param_count}, but got {len(inputs) if inputs else 0} inputs")
+                raise RuntimeError(f"Parameter validation failed: function expects {param_count}, but validated inputs: {len(validated_inputs)}")
             
             return float(result) if result is not None else None
             

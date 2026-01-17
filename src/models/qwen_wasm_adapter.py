@@ -30,7 +30,7 @@ class QwenWASMAdapter(nn.Module):
         self,
         model_path: str,
         wasm_vocab_size: int = 8000,
-        cross_modal_layers: List[int] = [3, 7, 11],
+        cross_modal_layers: List[int] = [3, 7, 11, 15, 19, 23, 27],
         freeze_text_layers: bool = False,
         use_sandbox: bool = True,
         sandbox_config: Optional[Dict] = None

@@ -215,7 +215,7 @@ def setup_wasm_model_and_tokenizers(model_path: str, use_sandbox: bool = True, s
     wasm_adapter = QwenWASMAdapter(
         model_path=model_path,
         wasm_vocab_size=8000,
-        cross_modal_layers=[3, 7, 11],  # Every 4 layers (Flamingo style)
+        cross_modal_layers=[3, 7, 11, 15, 19, 23, 27],  # 25% layer coverage (7 of 28 layers)
         freeze_text_layers=False,  # Allow fine-tuning
         use_sandbox=use_sandbox,
         sandbox_config=sandbox_config
@@ -484,7 +484,7 @@ def main():
         "model_type": "QwenWASMAdapter",
         "base_model": MODEL_NAME,
         "training_data": DATA_DIR,
-        "cross_modal_layers": [3, 7, 11],
+        "cross_modal_layers": [3, 7, 11, 15, 19, 23, 27],
         "sandbox_enabled": USE_SANDBOX,
         "sandbox_config": sandbox_config if USE_SANDBOX else None,
         "training_args": {
