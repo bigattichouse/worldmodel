@@ -250,7 +250,8 @@ class WASMCurriculumDataset:
         self.stages = {
             "basic_arithmetic": None,
             "system_operations": None,
-            "complex_logic": None
+            "complex_logic": None,
+            "error_handling": None
         }
         
         self._load_all_stages()
@@ -262,7 +263,8 @@ class WASMCurriculumDataset:
         stage_files = {
             "basic_arithmetic": "basic_arithmetic_training.txt",
             "system_operations": "system_operations_training.txt", 
-            "complex_logic": "complex_logic_training.txt"
+            "complex_logic": "complex_logic_training.txt",
+            "error_handling": "error_handling_training.txt"
         }
         
         for stage_name, filename in stage_files.items():
@@ -289,7 +291,7 @@ class WASMCurriculumDataset:
     def get_combined_dataset(self, stages: Optional[List[str]] = None) -> WASMModalDataset:
         """Get combined dataset from multiple stages."""
         if stages is None:
-            stages = ["basic_arithmetic", "system_operations", "complex_logic"]
+            stages = ["basic_arithmetic", "system_operations", "complex_logic", "error_handling"]
         
         # Combine examples from specified stages
         all_examples = []
