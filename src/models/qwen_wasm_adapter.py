@@ -13,7 +13,10 @@ from transformers import AutoModel, AutoTokenizer, AutoConfig
 
 from .cross_modal_attention import CrossModalAttention
 from ..execution.wasm_executor import WASMExecutor
+from ..execution.bytelogic_executor import ByteLogicExecutor
+from ..execution.computation_processor import ComputationTokenProcessor
 from ..tokenization.wat_tokenizer import WATTokenizer
+from ..tokenization.bytelogic_tokenizer import ByteLogicTokenizer
 
 
 class QwenWASMAdapter(nn.Module):
@@ -81,6 +84,15 @@ class QwenWASMAdapter(nn.Module):
             sandbox_config=sandbox_config
         )
         
+        # ByteLogic execution system
+        self.bytelogic_executor = ByteLogicExecutor(timeout=10)
+        self.bytelogic_tokenizer = ByteLogicTokenizer()
+        self.computation_processor = ComputationTokenProcessor(
+            bytelogic_executor=self.bytelogic_executor,
+            wasm_executor=self.wasm_executor,
+            tokenizer=self.bytelogic_tokenizer
+        )
+        
         # WASM tokenizer for token conversion (will be set during training)
         self.wasm_tokenizer = None
         
@@ -94,6 +106,8 @@ class QwenWASMAdapter(nn.Module):
         print(f"   Text layers: {len(self.text_model.encoder.layer) if hasattr(self.text_model, 'encoder') else 'N/A'}")
         print(f"   WASM layers: {len(self.wasm_layers)}")
         print(f"   Cross-modal fusion at layers: {self.cross_modal_indices}")
+        print(f"   ByteLogic support: {'Enabled' if self.bytelogic_executor else 'Disabled'}")
+        print(f"   Computation tokens: {'Supported' if self.computation_processor else 'Disabled'}")
     
     def _tie_weights(self):
         """Handle tied weights to avoid safetensors memory sharing issues."""
@@ -694,12 +708,50 @@ class QwenWASMAdapter(nn.Module):
         
         generated_text = self.text_tokenizer.decode(generated_ids[0], skip_special_tokens=True)
         
+        # Process computation tokens in the generated text
+        processed_text = self.process_computation_tokens(generated_text)
+        
         return {
             "input": input_text,
-            "output": generated_text,
+            "output": processed_text,
+            "raw_output": generated_text,
             "execution_results": outputs["execution_results"],
-            "wasm_executed": len(outputs["execution_results"]) > 0
+            "wasm_executed": len(outputs["execution_results"]) > 0,
+            "computation_tokens_processed": processed_text != generated_text
         }
+    
+    def process_computation_tokens(self, text: str, context: Optional[Dict] = None) -> str:
+        """
+        Process computation tokens in generated text using ByteLogic execution.
+        
+        Args:
+            text: Generated text that may contain computation tokens
+            context: Optional context for execution
+            
+        Returns:
+            Text with computation tokens replaced by results
+        """
+        try:
+            return self.computation_processor.process_text(text, context)
+        except Exception as e:
+            logger.warning(f"Failed to process computation tokens: {e}")
+            return text
+    
+    def validate_computation_tokens(self, text: str) -> List[Dict]:
+        """Validate computation tokens in text without executing."""
+        return self.computation_processor.validate_computation_tokens(text)
+    
+    def preview_computation_execution(self, text: str, context: Optional[Dict] = None) -> Dict:
+        """Preview computation token execution without running."""
+        return self.computation_processor.preview_execution(text, context)
+    
+    def get_computation_stats(self) -> Dict:
+        """Get computation processing statistics."""
+        return self.computation_processor.get_statistics()
+    
+    def enable_computation_debug(self, enabled: bool = True):
+        """Enable debug mode for computation processing."""
+        self.computation_processor.enable_debug_mode(enabled)
     
     def save_pretrained(self, save_directory: str, safe_serialization: bool = True):
         """Save the WASM adapter model."""

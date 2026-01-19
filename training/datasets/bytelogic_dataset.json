@@ -1,0 +1,449 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "generator": "Simple ByteLogic Dataset Generator",
+    "total_examples": 26,
+    "train_examples": 20,
+    "val_examples": 2,
+    "test_examples": 4,
+    "categories": [
+      "mathematical_computation",
+      "string_processing",
+      "logic_programming"
+    ],
+    "difficulty_levels": [
+      "beginner",
+      "intermediate"
+    ]
+  },
+  "train": [
+    {
+      "input": "Is node e reachable from node a?",
+      "output": "I'll check graph reachability: <computation>\nREL edge\nREL reachable\nFACT edge a b\nFACT edge b c\nFACT edge c d\nFACT edge d e\nRULE reachable: SCAN edge, EMIT reachable $0 $1\nRULE reachable: SCAN edge, JOIN reachable $1, EMIT reachable $0 $2\nSOLVE\nQUERY reachable a e\n</computation> \u2192 Yes, you can reach node e from node a.",
+      "metadata": {
+        "id": "graph_reach_1",
+        "category": "logic_programming",
+        "subcategory": "graph_algorithms",
+        "difficulty": "intermediate",
+        "input": "Is node e reachable from node a?",
+        "output": "I'll check graph reachability: <computation>\nREL edge\nREL reachable\nFACT edge a b\nFACT edge b c\nFACT edge c d\nFACT edge d e\nRULE reachable: SCAN edge, EMIT reachable $0 $1\nRULE reachable: SCAN edge, JOIN reachable $1, EMIT reachable $0 $2\nSOLVE\nQUERY reachable a e\n</computation> \u2192 Yes, you can reach node e from node a.",
+        "bytelogic_code": "REL edge\nREL reachable\nFACT edge a b\nFACT edge b c\nFACT edge c d\nFACT edge d e\nRULE reachable: SCAN edge, EMIT reachable $0 $1\nRULE reachable: SCAN edge, JOIN reachable $1, EMIT reachable $0 $2\nSOLVE\nQUERY reachable a e",
+        "expected_result": [
+          1
+        ]
+      }
+    },
+    {
+      "input": "Who are Alex's children?",
+      "output": "I'll check Alex's children: <computation>\nREL parent\nFACT parent alex beth\nFACT parent alex chris\nSOLVE\nQUERY parent alex ?\n</computation> \u2192 Beth and Chris are Alex's children.",
+      "metadata": {
+        "id": "family_basic_3",
+        "category": "logic_programming",
+        "subcategory": "family_relationships",
+        "difficulty": "beginner",
+        "input": "Who are Alex's children?",
+        "output": "I'll check Alex's children: <computation>\nREL parent\nFACT parent alex beth\nFACT parent alex chris\nSOLVE\nQUERY parent alex ?\n</computation> \u2192 Beth and Chris are Alex's children.",
+        "bytelogic_code": "REL parent\nFACT parent alex beth\nFACT parent alex chris\nSOLVE\nQUERY parent alex ?",
+        "expected_result": [
+          "beth",
+          "chris"
+        ]
+      }
+    },
+    {
+      "input": "What's 30% of 150?",
+      "output": "I'll calculate the percentage: <computation>\nCALC percentage\n  INPUT $value $percent\n  LET $decimal = $percent / 100\n  RESULT $value * $decimal\nEND\nRESULT CALC percentage(150, 30)\n</computation> \u2192 45",
+      "metadata": {
+        "id": "math_percentage_2",
+        "category": "mathematical_computation",
+        "subcategory": "percentage_calculations",
+        "difficulty": "beginner",
+        "input": "What's 30% of 150?",
+        "output": "I'll calculate the percentage: <computation>\nCALC percentage\n  INPUT $value $percent\n  LET $decimal = $percent / 100\n  RESULT $value * $decimal\nEND\nRESULT CALC percentage(150, 30)\n</computation> \u2192 45",
+        "bytelogic_code": "CALC percentage\n  INPUT $value $percent\n  LET $decimal = $percent / 100\n  RESULT $value * $decimal\nEND\nRESULT CALC percentage(150, 30)",
+        "expected_result": [
+          45
+        ]
+      }
+    },
+    {
+      "input": "Who are Alex's grandchildren?",
+      "output": "I'll find Alex's grandchildren: <computation>\nREL parent\nREL grandparent\nFACT parent alex beth\nFACT parent alex chris\nFACT parent beth diana\nFACT parent chris eric\nRULE grandparent: SCAN parent MATCH $0, JOIN parent $0, EMIT grandparent $1 $2\nSOLVE\nQUERY grandparent alex ?\n</computation> \u2192 Diana and Eric are Alex's grandchildren.",
+      "metadata": {
+        "id": "family_grandparent_3",
+        "category": "logic_programming",
+        "subcategory": "family_relationships",
+        "difficulty": "intermediate",
+        "input": "Who are Alex's grandchildren?",
+        "output": "I'll find Alex's grandchildren: <computation>\nREL parent\nREL grandparent\nFACT parent alex beth\nFACT parent alex chris\nFACT parent beth diana\nFACT parent chris eric\nRULE grandparent: SCAN parent MATCH $0, JOIN parent $0, EMIT grandparent $1 $2\nSOLVE\nQUERY grandparent alex ?\n</computation> \u2192 Diana and Eric are Alex's grandchildren.",
+        "bytelogic_code": "REL parent\nREL grandparent\nFACT parent alex beth\nFACT parent alex chris\nFACT parent beth diana\nFACT parent chris eric\nRULE grandparent: SCAN parent MATCH $0, JOIN parent $0, EMIT grandparent $1 $2\nSOLVE\nQUERY grandparent alex ?",
+        "expected_result": [
+          "diana",
+          "eric"
+        ]
+      }
+    },
+    {
+      "input": "How many 'e' characters are in 'computer'?",
+      "output": "I'll count the 'e' characters: <computation>\nCALC count_char\n  INPUT $word $char\n  LET $count = 0\n  FOR $i IN RANGE(0, LENGTH($word))\n    LET $letter = CHAR_AT($word, $i)\n    IF $letter == $char THEN\n      LET $count = $count + 1\n    END\n  END\n  RESULT $count\nEND\nRESULT CALC count_char(\"computer\", \"e\")\n</computation> \u2192 1",
+      "metadata": {
+        "id": "string_count_3",
+        "category": "string_processing",
+        "subcategory": "character_counting",
+        "difficulty": "intermediate",
+        "input": "How many 'e' characters are in 'computer'?",
+        "output": "I'll count the 'e' characters: <computation>\nCALC count_char\n  INPUT $word $char\n  LET $count = 0\n  FOR $i IN RANGE(0, LENGTH($word))\n    LET $letter = CHAR_AT($word, $i)\n    IF $letter == $char THEN\n      LET $count = $count + 1\n    END\n  END\n  RESULT $count\nEND\nRESULT CALC count_char(\"computer\", \"e\")\n</computation> \u2192 1",
+        "bytelogic_code": "CALC count_char\n  INPUT $word $char\n  LET $count = 0\n  FOR $i IN RANGE(0, LENGTH($word))\n    LET $letter = CHAR_AT($word, $i)\n    IF $letter == $char THEN\n      LET $count = $count + 1\n    END\n  END\n  RESULT $count\nEND\nRESULT CALC count_char(\"computer\", \"e\")",
+        "expected_result": [
+          1
+        ]
+      }
+    },
+    {
+      "input": "What's 15% of 400?",
+      "output": "I'll calculate the percentage: <computation>\nCALC percentage\n  INPUT $value $percent\n  LET $decimal = $percent / 100\n  RESULT $value * $decimal\nEND\nRESULT CALC percentage(400, 15)\n</computation> \u2192 60",
+      "metadata": {
+        "id": "math_percentage_3",
+        "category": "mathematical_computation",
+        "subcategory": "percentage_calculations",
+        "difficulty": "beginner",
+        "input": "What's 15% of 400?",
+        "output": "I'll calculate the percentage: <computation>\nCALC percentage\n  INPUT $value $percent\n  LET $decimal = $percent / 100\n  RESULT $value * $decimal\nEND\nRESULT CALC percentage(400, 15)\n</computation> \u2192 60",
+        "bytelogic_code": "CALC percentage\n  INPUT $value $percent\n  LET $decimal = $percent / 100\n  RESULT $value * $decimal\nEND\nRESULT CALC percentage(400, 15)",
+        "expected_result": [
+          60
+        ]
+      }
+    },
+    {
+      "input": "What's 25% of 300?",
+      "output": "I'll calculate the percentage: <computation>\nCALC percentage\n  INPUT $value $percent\n  LET $decimal = $percent / 100\n  RESULT $value * $decimal\nEND\nRESULT CALC percentage(300, 25)\n</computation> \u2192 75",
+      "metadata": {
+        "id": "math_percentage_1",
+        "category": "mathematical_computation",
+        "subcategory": "percentage_calculations",
+        "difficulty": "beginner",
+        "input": "What's 25% of 300?",
+        "output": "I'll calculate the percentage: <computation>\nCALC percentage\n  INPUT $value $percent\n  LET $decimal = $percent / 100\n  RESULT $value * $decimal\nEND\nRESULT CALC percentage(300, 25)\n</computation> \u2192 75",
+        "bytelogic_code": "CALC percentage\n  INPUT $value $percent\n  LET $decimal = $percent / 100\n  RESULT $value * $decimal\nEND\nRESULT CALC percentage(300, 25)",
+        "expected_result": [
+          75
+        ]
+      }
+    },
+    {
+      "input": "How many 'i' characters are in 'algorithm'?",
+      "output": "I'll count the 'i' characters: <computation>\nCALC count_char\n  INPUT $word $char\n  LET $count = 0\n  FOR $i IN RANGE(0, LENGTH($word))\n    LET $letter = CHAR_AT($word, $i)\n    IF $letter == $char THEN\n      LET $count = $count + 1\n    END\n  END\n  RESULT $count\nEND\nRESULT CALC count_char(\"algorithm\", \"i\")\n</computation> \u2192 1",
+      "metadata": {
+        "id": "string_count_4",
+        "category": "string_processing",
+        "subcategory": "character_counting",
+        "difficulty": "intermediate",
+        "input": "How many 'i' characters are in 'algorithm'?",
+        "output": "I'll count the 'i' characters: <computation>\nCALC count_char\n  INPUT $word $char\n  LET $count = 0\n  FOR $i IN RANGE(0, LENGTH($word))\n    LET $letter = CHAR_AT($word, $i)\n    IF $letter == $char THEN\n      LET $count = $count + 1\n    END\n  END\n  RESULT $count\nEND\nRESULT CALC count_char(\"algorithm\", \"i\")\n</computation> \u2192 1",
+        "bytelogic_code": "CALC count_char\n  INPUT $word $char\n  LET $count = 0\n  FOR $i IN RANGE(0, LENGTH($word))\n    LET $letter = CHAR_AT($word, $i)\n    IF $letter == $char THEN\n      LET $count = $count + 1\n    END\n  END\n  RESULT $count\nEND\nRESULT CALC count_char(\"algorithm\", \"i\")",
+        "expected_result": [
+          1
+        ]
+      }
+    },
+    {
+      "input": "Who are Anna's grandchildren?",
+      "output": "I'll find Anna's grandchildren: <computation>\nREL parent\nREL grandparent\nFACT parent anna ben\nFACT parent anna clara\nFACT parent ben dan\nFACT parent clara ella\nRULE grandparent: SCAN parent MATCH $0, JOIN parent $0, EMIT grandparent $1 $2\nSOLVE\nQUERY grandparent anna ?\n</computation> \u2192 Dan and Ella are Anna's grandchildren.",
+      "metadata": {
+        "id": "family_grandparent_2",
+        "category": "logic_programming",
+        "subcategory": "family_relationships",
+        "difficulty": "intermediate",
+        "input": "Who are Anna's grandchildren?",
+        "output": "I'll find Anna's grandchildren: <computation>\nREL parent\nREL grandparent\nFACT parent anna ben\nFACT parent anna clara\nFACT parent ben dan\nFACT parent clara ella\nRULE grandparent: SCAN parent MATCH $0, JOIN parent $0, EMIT grandparent $1 $2\nSOLVE\nQUERY grandparent anna ?\n</computation> \u2192 Dan and Ella are Anna's grandchildren.",
+        "bytelogic_code": "REL parent\nREL grandparent\nFACT parent anna ben\nFACT parent anna clara\nFACT parent ben dan\nFACT parent clara ella\nRULE grandparent: SCAN parent MATCH $0, JOIN parent $0, EMIT grandparent $1 $2\nSOLVE\nQUERY grandparent anna ?",
+        "expected_result": [
+          "dan",
+          "ella"
+        ]
+      }
+    },
+    {
+      "input": "What's 12% of 500?",
+      "output": "I'll calculate the percentage: <computation>\nCALC percentage\n  INPUT $value $percent\n  LET $decimal = $percent / 100\n  RESULT $value * $decimal\nEND\nRESULT CALC percentage(500, 12)\n</computation> \u2192 60",
+      "metadata": {
+        "id": "math_percentage_4",
+        "category": "mathematical_computation",
+        "subcategory": "percentage_calculations",
+        "difficulty": "beginner",
+        "input": "What's 12% of 500?",
+        "output": "I'll calculate the percentage: <computation>\nCALC percentage\n  INPUT $value $percent\n  LET $decimal = $percent / 100\n  RESULT $value * $decimal\nEND\nRESULT CALC percentage(500, 12)\n</computation> \u2192 60",
+        "bytelogic_code": "CALC percentage\n  INPUT $value $percent\n  LET $decimal = $percent / 100\n  RESULT $value * $decimal\nEND\nRESULT CALC percentage(500, 12)",
+        "expected_result": [
+          60
+        ]
+      }
+    },
+    {
+      "input": "How many 'l' characters are in 'hello'?",
+      "output": "I'll count the 'l' characters: <computation>\nCALC count_char\n  INPUT $word $char\n  LET $count = 0\n  FOR $i IN RANGE(0, LENGTH($word))\n    LET $letter = CHAR_AT($word, $i)\n    IF $letter == $char THEN\n      LET $count = $count + 1\n    END\n  END\n  RESULT $count\nEND\nRESULT CALC count_char(\"hello\", \"l\")\n</computation> \u2192 2",
+      "metadata": {
+        "id": "string_count_2",
+        "category": "string_processing",
+        "subcategory": "character_counting",
+        "difficulty": "intermediate",
+        "input": "How many 'l' characters are in 'hello'?",
+        "output": "I'll count the 'l' characters: <computation>\nCALC count_char\n  INPUT $word $char\n  LET $count = 0\n  FOR $i IN RANGE(0, LENGTH($word))\n    LET $letter = CHAR_AT($word, $i)\n    IF $letter == $char THEN\n      LET $count = $count + 1\n    END\n  END\n  RESULT $count\nEND\nRESULT CALC count_char(\"hello\", \"l\")\n</computation> \u2192 2",
+        "bytelogic_code": "CALC count_char\n  INPUT $word $char\n  LET $count = 0\n  FOR $i IN RANGE(0, LENGTH($word))\n    LET $letter = CHAR_AT($word, $i)\n    IF $letter == $char THEN\n      LET $count = $count + 1\n    END\n  END\n  RESULT $count\nEND\nRESULT CALC count_char(\"hello\", \"l\")",
+        "expected_result": [
+          2
+        ]
+      }
+    },
+    {
+      "input": "What's 20% of 200?",
+      "output": "I'll calculate the percentage: <computation>\nCALC percentage\n  INPUT $value $percent\n  LET $decimal = $percent / 100\n  RESULT $value * $decimal\nEND\nRESULT CALC percentage(200, 20)\n</computation> \u2192 40",
+      "metadata": {
+        "id": "math_percentage_0",
+        "category": "mathematical_computation",
+        "subcategory": "percentage_calculations",
+        "difficulty": "beginner",
+        "input": "What's 20% of 200?",
+        "output": "I'll calculate the percentage: <computation>\nCALC percentage\n  INPUT $value $percent\n  LET $decimal = $percent / 100\n  RESULT $value * $decimal\nEND\nRESULT CALC percentage(200, 20)\n</computation> \u2192 40",
+        "bytelogic_code": "CALC percentage\n  INPUT $value $percent\n  LET $decimal = $percent / 100\n  RESULT $value * $decimal\nEND\nRESULT CALC percentage(200, 20)",
+        "expected_result": [
+          40
+        ]
+      }
+    },
+    {
+      "input": "Who are John's children?",
+      "output": "I'll check John's children: <computation>\nREL parent\nFACT parent john mary\nFACT parent john peter\nSOLVE\nQUERY parent john ?\n</computation> \u2192 Mary and Peter are John's children.",
+      "metadata": {
+        "id": "family_basic_1",
+        "category": "logic_programming",
+        "subcategory": "family_relationships",
+        "difficulty": "beginner",
+        "input": "Who are John's children?",
+        "output": "I'll check John's children: <computation>\nREL parent\nFACT parent john mary\nFACT parent john peter\nSOLVE\nQUERY parent john ?\n</computation> \u2192 Mary and Peter are John's children.",
+        "bytelogic_code": "REL parent\nFACT parent john mary\nFACT parent john peter\nSOLVE\nQUERY parent john ?",
+        "expected_result": [
+          "mary",
+          "peter"
+        ]
+      }
+    },
+    {
+      "input": "What's the 8th Fibonacci number?",
+      "output": "I'll calculate the 8th Fibonacci number: <computation>\nCALC fibonacci\n  INPUT $n\n  IF $n <= 1 THEN\n    RESULT $n\n  ELSE\n    LET $a = CALC fibonacci($n - 1)\n    LET $b = CALC fibonacci($n - 2)\n    RESULT $a + $b\n  END\nEND\nRESULT CALC fibonacci(8)\n</computation> \u2192 21",
+      "metadata": {
+        "id": "math_fibonacci_2",
+        "category": "mathematical_computation",
+        "subcategory": "sequences",
+        "difficulty": "intermediate",
+        "input": "What's the 8th Fibonacci number?",
+        "output": "I'll calculate the 8th Fibonacci number: <computation>\nCALC fibonacci\n  INPUT $n\n  IF $n <= 1 THEN\n    RESULT $n\n  ELSE\n    LET $a = CALC fibonacci($n - 1)\n    LET $b = CALC fibonacci($n - 2)\n    RESULT $a + $b\n  END\nEND\nRESULT CALC fibonacci(8)\n</computation> \u2192 21",
+        "bytelogic_code": "CALC fibonacci\n  INPUT $n\n  IF $n <= 1 THEN\n    RESULT $n\n  ELSE\n    LET $a = CALC fibonacci($n - 1)\n    LET $b = CALC fibonacci($n - 2)\n    RESULT $a + $b\n  END\nEND\nRESULT CALC fibonacci(8)",
+        "expected_result": [
+          21
+        ]
+      }
+    },
+    {
+      "input": "How many 'm' characters are in 'programming'?",
+      "output": "I'll count the 'm' characters: <computation>\nCALC count_char\n  INPUT $word $char\n  LET $count = 0\n  FOR $i IN RANGE(0, LENGTH($word))\n    LET $letter = CHAR_AT($word, $i)\n    IF $letter == $char THEN\n      LET $count = $count + 1\n    END\n  END\n  RESULT $count\nEND\nRESULT CALC count_char(\"programming\", \"m\")\n</computation> \u2192 2",
+      "metadata": {
+        "id": "string_count_1",
+        "category": "string_processing",
+        "subcategory": "character_counting",
+        "difficulty": "intermediate",
+        "input": "How many 'm' characters are in 'programming'?",
+        "output": "I'll count the 'm' characters: <computation>\nCALC count_char\n  INPUT $word $char\n  LET $count = 0\n  FOR $i IN RANGE(0, LENGTH($word))\n    LET $letter = CHAR_AT($word, $i)\n    IF $letter == $char THEN\n      LET $count = $count + 1\n    END\n  END\n  RESULT $count\nEND\nRESULT CALC count_char(\"programming\", \"m\")\n</computation> \u2192 2",
+        "bytelogic_code": "CALC count_char\n  INPUT $word $char\n  LET $count = 0\n  FOR $i IN RANGE(0, LENGTH($word))\n    LET $letter = CHAR_AT($word, $i)\n    IF $letter == $char THEN\n      LET $count = $count + 1\n    END\n  END\n  RESULT $count\nEND\nRESULT CALC count_char(\"programming\", \"m\")",
+        "expected_result": [
+          2
+        ]
+      }
+    },
+    {
+      "input": "Can you reach node q from node x?",
+      "output": "I'll check graph reachability: <computation>\nREL edge\nREL reachable\nFACT edge x y\nFACT edge y z\nFACT edge p q\nRULE reachable: SCAN edge, EMIT reachable $0 $1\nRULE reachable: SCAN edge, JOIN reachable $1, EMIT reachable $0 $2\nSOLVE\nQUERY reachable x q\n</computation> \u2192 No, you cannot reach node q from node x.",
+      "metadata": {
+        "id": "graph_reach_2",
+        "category": "logic_programming",
+        "subcategory": "graph_algorithms",
+        "difficulty": "intermediate",
+        "input": "Can you reach node q from node x?",
+        "output": "I'll check graph reachability: <computation>\nREL edge\nREL reachable\nFACT edge x y\nFACT edge y z\nFACT edge p q\nRULE reachable: SCAN edge, EMIT reachable $0 $1\nRULE reachable: SCAN edge, JOIN reachable $1, EMIT reachable $0 $2\nSOLVE\nQUERY reachable x q\n</computation> \u2192 No, you cannot reach node q from node x.",
+        "bytelogic_code": "REL edge\nREL reachable\nFACT edge x y\nFACT edge y z\nFACT edge p q\nRULE reachable: SCAN edge, EMIT reachable $0 $1\nRULE reachable: SCAN edge, JOIN reachable $1, EMIT reachable $0 $2\nSOLVE\nQUERY reachable x q",
+        "expected_result": [
+          0
+        ]
+      }
+    },
+    {
+      "input": "Who are Alice's children?",
+      "output": "I'll check Alice's children: <computation>\nREL parent\nFACT parent alice bob\nFACT parent alice charlie\nSOLVE\nQUERY parent alice ?\n</computation> \u2192 Bob and Charlie are Alice's children.",
+      "metadata": {
+        "id": "family_basic_0",
+        "category": "logic_programming",
+        "subcategory": "family_relationships",
+        "difficulty": "beginner",
+        "input": "Who are Alice's children?",
+        "output": "I'll check Alice's children: <computation>\nREL parent\nFACT parent alice bob\nFACT parent alice charlie\nSOLVE\nQUERY parent alice ?\n</computation> \u2192 Bob and Charlie are Alice's children.",
+        "bytelogic_code": "REL parent\nFACT parent alice bob\nFACT parent alice charlie\nSOLVE\nQUERY parent alice ?",
+        "expected_result": [
+          "bob",
+          "charlie"
+        ]
+      }
+    },
+    {
+      "input": "Who are Anna's children?",
+      "output": "I'll check Anna's children: <computation>\nREL parent\nFACT parent anna ben\nFACT parent anna clara\nSOLVE\nQUERY parent anna ?\n</computation> \u2192 Ben and Clara are Anna's children.",
+      "metadata": {
+        "id": "family_basic_2",
+        "category": "logic_programming",
+        "subcategory": "family_relationships",
+        "difficulty": "beginner",
+        "input": "Who are Anna's children?",
+        "output": "I'll check Anna's children: <computation>\nREL parent\nFACT parent anna ben\nFACT parent anna clara\nSOLVE\nQUERY parent anna ?\n</computation> \u2192 Ben and Clara are Anna's children.",
+        "bytelogic_code": "REL parent\nFACT parent anna ben\nFACT parent anna clara\nSOLVE\nQUERY parent anna ?",
+        "expected_result": [
+          "ben",
+          "clara"
+        ]
+      }
+    },
+    {
+      "input": "What's the 10th Fibonacci number?",
+      "output": "I'll calculate the 10th Fibonacci number: <computation>\nCALC fibonacci\n  INPUT $n\n  IF $n <= 1 THEN\n    RESULT $n\n  ELSE\n    LET $a = CALC fibonacci($n - 1)\n    LET $b = CALC fibonacci($n - 2)\n    RESULT $a + $b\n  END\nEND\nRESULT CALC fibonacci(10)\n</computation> \u2192 55",
+      "metadata": {
+        "id": "math_fibonacci_4",
+        "category": "mathematical_computation",
+        "subcategory": "sequences",
+        "difficulty": "intermediate",
+        "input": "What's the 10th Fibonacci number?",
+        "output": "I'll calculate the 10th Fibonacci number: <computation>\nCALC fibonacci\n  INPUT $n\n  IF $n <= 1 THEN\n    RESULT $n\n  ELSE\n    LET $a = CALC fibonacci($n - 1)\n    LET $b = CALC fibonacci($n - 2)\n    RESULT $a + $b\n  END\nEND\nRESULT CALC fibonacci(10)\n</computation> \u2192 55",
+        "bytelogic_code": "CALC fibonacci\n  INPUT $n\n  IF $n <= 1 THEN\n    RESULT $n\n  ELSE\n    LET $a = CALC fibonacci($n - 1)\n    LET $b = CALC fibonacci($n - 2)\n    RESULT $a + $b\n  END\nEND\nRESULT CALC fibonacci(10)",
+        "expected_result": [
+          55
+        ]
+      }
+    },
+    {
+      "input": "Who are John's grandchildren?",
+      "output": "I'll find John's grandchildren: <computation>\nREL parent\nREL grandparent\nFACT parent john mary\nFACT parent john peter\nFACT parent mary susan\nFACT parent peter tom\nRULE grandparent: SCAN parent MATCH $0, JOIN parent $0, EMIT grandparent $1 $2\nSOLVE\nQUERY grandparent john ?\n</computation> \u2192 Susan and Tom are John's grandchildren.",
+      "metadata": {
+        "id": "family_grandparent_1",
+        "category": "logic_programming",
+        "subcategory": "family_relationships",
+        "difficulty": "intermediate",
+        "input": "Who are John's grandchildren?",
+        "output": "I'll find John's grandchildren: <computation>\nREL parent\nREL grandparent\nFACT parent john mary\nFACT parent john peter\nFACT parent mary susan\nFACT parent peter tom\nRULE grandparent: SCAN parent MATCH $0, JOIN parent $0, EMIT grandparent $1 $2\nSOLVE\nQUERY grandparent john ?\n</computation> \u2192 Susan and Tom are John's grandchildren.",
+        "bytelogic_code": "REL parent\nREL grandparent\nFACT parent john mary\nFACT parent john peter\nFACT parent mary susan\nFACT parent peter tom\nRULE grandparent: SCAN parent MATCH $0, JOIN parent $0, EMIT grandparent $1 $2\nSOLVE\nQUERY grandparent john ?",
+        "expected_result": [
+          "susan",
+          "tom"
+        ]
+      }
+    }
+  ],
+  "validation": [
+    {
+      "input": "What's the 5th Fibonacci number?",
+      "output": "I'll calculate the 5th Fibonacci number: <computation>\nCALC fibonacci\n  INPUT $n\n  IF $n <= 1 THEN\n    RESULT $n\n  ELSE\n    LET $a = CALC fibonacci($n - 1)\n    LET $b = CALC fibonacci($n - 2)\n    RESULT $a + $b\n  END\nEND\nRESULT CALC fibonacci(5)\n</computation> \u2192 5",
+      "metadata": {
+        "id": "math_fibonacci_0",
+        "category": "mathematical_computation",
+        "subcategory": "sequences",
+        "difficulty": "intermediate",
+        "input": "What's the 5th Fibonacci number?",
+        "output": "I'll calculate the 5th Fibonacci number: <computation>\nCALC fibonacci\n  INPUT $n\n  IF $n <= 1 THEN\n    RESULT $n\n  ELSE\n    LET $a = CALC fibonacci($n - 1)\n    LET $b = CALC fibonacci($n - 2)\n    RESULT $a + $b\n  END\nEND\nRESULT CALC fibonacci(5)\n</computation> \u2192 5",
+        "bytelogic_code": "CALC fibonacci\n  INPUT $n\n  IF $n <= 1 THEN\n    RESULT $n\n  ELSE\n    LET $a = CALC fibonacci($n - 1)\n    LET $b = CALC fibonacci($n - 2)\n    RESULT $a + $b\n  END\nEND\nRESULT CALC fibonacci(5)",
+        "expected_result": [
+          5
+        ]
+      }
+    },
+    {
+      "input": "What's the 9th Fibonacci number?",
+      "output": "I'll calculate the 9th Fibonacci number: <computation>\nCALC fibonacci\n  INPUT $n\n  IF $n <= 1 THEN\n    RESULT $n\n  ELSE\n    LET $a = CALC fibonacci($n - 1)\n    LET $b = CALC fibonacci($n - 2)\n    RESULT $a + $b\n  END\nEND\nRESULT CALC fibonacci(9)\n</computation> \u2192 34",
+      "metadata": {
+        "id": "math_fibonacci_3",
+        "category": "mathematical_computation",
+        "subcategory": "sequences",
+        "difficulty": "intermediate",
+        "input": "What's the 9th Fibonacci number?",
+        "output": "I'll calculate the 9th Fibonacci number: <computation>\nCALC fibonacci\n  INPUT $n\n  IF $n <= 1 THEN\n    RESULT $n\n  ELSE\n    LET $a = CALC fibonacci($n - 1)\n    LET $b = CALC fibonacci($n - 2)\n    RESULT $a + $b\n  END\nEND\nRESULT CALC fibonacci(9)\n</computation> \u2192 34",
+        "bytelogic_code": "CALC fibonacci\n  INPUT $n\n  IF $n <= 1 THEN\n    RESULT $n\n  ELSE\n    LET $a = CALC fibonacci($n - 1)\n    LET $b = CALC fibonacci($n - 2)\n    RESULT $a + $b\n  END\nEND\nRESULT CALC fibonacci(9)",
+        "expected_result": [
+          34
+        ]
+      }
+    }
+  ],
+  "test": [
+    {
+      "input": "Can you reach the end node from the start node?",
+      "output": "I'll check graph reachability: <computation>\nREL edge\nREL reachable\nFACT edge start middle\nFACT edge start branch\nFACT edge middle target\nFACT edge branch target\nFACT edge target end\nRULE reachable: SCAN edge, EMIT reachable $0 $1\nRULE reachable: SCAN edge, JOIN reachable $1, EMIT reachable $0 $2\nSOLVE\nQUERY reachable start end\n</computation> \u2192 Yes, you can reach node end from node start.",
+      "metadata": {
+        "id": "graph_reach_0",
+        "category": "logic_programming",
+        "subcategory": "graph_algorithms",
+        "difficulty": "intermediate",
+        "input": "Can you reach the end node from the start node?",
+        "output": "I'll check graph reachability: <computation>\nREL edge\nREL reachable\nFACT edge start middle\nFACT edge start branch\nFACT edge middle target\nFACT edge branch target\nFACT edge target end\nRULE reachable: SCAN edge, EMIT reachable $0 $1\nRULE reachable: SCAN edge, JOIN reachable $1, EMIT reachable $0 $2\nSOLVE\nQUERY reachable start end\n</computation> \u2192 Yes, you can reach node end from node start.",
+        "bytelogic_code": "REL edge\nREL reachable\nFACT edge start middle\nFACT edge start branch\nFACT edge middle target\nFACT edge branch target\nFACT edge target end\nRULE reachable: SCAN edge, EMIT reachable $0 $1\nRULE reachable: SCAN edge, JOIN reachable $1, EMIT reachable $0 $2\nSOLVE\nQUERY reachable start end",
+        "expected_result": [
+          1
+        ]
+      }
+    },
+    {
+      "input": "Who are Alice's grandchildren?",
+      "output": "I'll find Alice's grandchildren: <computation>\nREL parent\nREL grandparent\nFACT parent alice bob\nFACT parent alice charlie\nFACT parent bob david\nFACT parent charlie eve\nRULE grandparent: SCAN parent MATCH $0, JOIN parent $0, EMIT grandparent $1 $2\nSOLVE\nQUERY grandparent alice ?\n</computation> \u2192 David and Eve are Alice's grandchildren.",
+      "metadata": {
+        "id": "family_grandparent_0",
+        "category": "logic_programming",
+        "subcategory": "family_relationships",
+        "difficulty": "intermediate",
+        "input": "Who are Alice's grandchildren?",
+        "output": "I'll find Alice's grandchildren: <computation>\nREL parent\nREL grandparent\nFACT parent alice bob\nFACT parent alice charlie\nFACT parent bob david\nFACT parent charlie eve\nRULE grandparent: SCAN parent MATCH $0, JOIN parent $0, EMIT grandparent $1 $2\nSOLVE\nQUERY grandparent alice ?\n</computation> \u2192 David and Eve are Alice's grandchildren.",
+        "bytelogic_code": "REL parent\nREL grandparent\nFACT parent alice bob\nFACT parent alice charlie\nFACT parent bob david\nFACT parent charlie eve\nRULE grandparent: SCAN parent MATCH $0, JOIN parent $0, EMIT grandparent $1 $2\nSOLVE\nQUERY grandparent alice ?",
+        "expected_result": [
+          "david",
+          "eve"
+        ]
+      }
+    },
+    {
+      "input": "What's the 7th Fibonacci number?",
+      "output": "I'll calculate the 7th Fibonacci number: <computation>\nCALC fibonacci\n  INPUT $n\n  IF $n <= 1 THEN\n    RESULT $n\n  ELSE\n    LET $a = CALC fibonacci($n - 1)\n    LET $b = CALC fibonacci($n - 2)\n    RESULT $a + $b\n  END\nEND\nRESULT CALC fibonacci(7)\n</computation> \u2192 13",
+      "metadata": {
+        "id": "math_fibonacci_1",
+        "category": "mathematical_computation",
+        "subcategory": "sequences",
+        "difficulty": "intermediate",
+        "input": "What's the 7th Fibonacci number?",
+        "output": "I'll calculate the 7th Fibonacci number: <computation>\nCALC fibonacci\n  INPUT $n\n  IF $n <= 1 THEN\n    RESULT $n\n  ELSE\n    LET $a = CALC fibonacci($n - 1)\n    LET $b = CALC fibonacci($n - 2)\n    RESULT $a + $b\n  END\nEND\nRESULT CALC fibonacci(7)\n</computation> \u2192 13",
+        "bytelogic_code": "CALC fibonacci\n  INPUT $n\n  IF $n <= 1 THEN\n    RESULT $n\n  ELSE\n    LET $a = CALC fibonacci($n - 1)\n    LET $b = CALC fibonacci($n - 2)\n    RESULT $a + $b\n  END\nEND\nRESULT CALC fibonacci(7)",
+        "expected_result": [
+          13
+        ]
+      }
+    },
+    {
+      "input": "How many 'r' characters are in 'strawberry'?",
+      "output": "I'll count the 'r' characters: <computation>\nCALC count_char\n  INPUT $word $char\n  LET $count = 0\n  FOR $i IN RANGE(0, LENGTH($word))\n    LET $letter = CHAR_AT($word, $i)\n    IF $letter == $char THEN\n      LET $count = $count + 1\n    END\n  END\n  RESULT $count\nEND\nRESULT CALC count_char(\"strawberry\", \"r\")\n</computation> \u2192 3",
+      "metadata": {
+        "id": "string_count_0",
+        "category": "string_processing",
+        "subcategory": "character_counting",
+        "difficulty": "intermediate",
+        "input": "How many 'r' characters are in 'strawberry'?",
+        "output": "I'll count the 'r' characters: <computation>\nCALC count_char\n  INPUT $word $char\n  LET $count = 0\n  FOR $i IN RANGE(0, LENGTH($word))\n    LET $letter = CHAR_AT($word, $i)\n    IF $letter == $char THEN\n      LET $count = $count + 1\n    END\n  END\n  RESULT $count\nEND\nRESULT CALC count_char(\"strawberry\", \"r\")\n</computation> \u2192 3",
+        "bytelogic_code": "CALC count_char\n  INPUT $word $char\n  LET $count = 0\n  FOR $i IN RANGE(0, LENGTH($word))\n    LET $letter = CHAR_AT($word, $i)\n    IF $letter == $char THEN\n      LET $count = $count + 1\n    END\n  END\n  RESULT $count\nEND\nRESULT CALC count_char(\"strawberry\", \"r\")",
+        "expected_result": [
+          3
+        ]
+      }
+    }
+  ]
+}

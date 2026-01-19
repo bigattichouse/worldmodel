@@ -1,3 +1,6 @@
 [submodule "sandbox/scratchpad"]
 	path = sandbox/scratchpad
 	url = https://github.com/bigattichouse/scratchpad.git
+[submodule "bytelogic"]
+	path = bytelogic
+	url = https://github.com/bigattichouse/bytelogic.git
