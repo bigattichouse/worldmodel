@@ -130,33 +130,64 @@ class ByteLogicComputationTrainer:
     
     def _setup_datasets(self):
         """Load and setup training datasets."""
-        if self.dataset_path.lower() == "auto" or self.dataset_path.lower() == "all":
+        if self.dataset_path.lower() in ["auto", "all"]:
             logger.info(f"📖 Loading ALL ByteLogic datasets automatically")
 
-            # Load all datasets from the training directory
-            loader = DynamicDatasetLoader(datasets_dir="training/datasets", split_ratio=0.8)
-            dataset = loader.load()
+            # Import and use the function directly
+            import importlib.util
+            from pathlib import Path
+            tools_path = Path(__file__).parent / "tools" / "multi_dataset_loader.py"
+            spec = importlib.util.spec_from_file_location("multi_dataset_loader_helper", tools_path)
+            multi_loader_module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(multi_loader_module)
 
-            # Convert to the format expected by the existing training pipeline
-            train_data = dataset['train']
-            val_data = dataset['val']
+            # Use the function
+            all_examples = multi_loader_module.load_all_datasets()
 
-            logger.info(f"   Total loaded examples: {len(train_data) + len(val_data)}")
-            logger.info(f"   Training examples: {len(train_data)}")
-            logger.info(f"   Validation examples: {len(val_data)}")
+            # Split into train and validation sets
+            split_idx = int(len(all_examples) * 0.8)
+            train_examples = all_examples[:split_idx]
+            val_examples = all_examples[split_idx:]
 
-            # Create ByteLogic datasets from the loaded data
+            logger.info(f"   Total loaded examples: {len(all_examples)}")
+            logger.info(f"   Training examples: {len(train_examples)}")
+            logger.info(f"   Validation examples: {len(val_examples)}")
+
+            # We need to create a custom dataset implementation since we can't pass examples directly
+            # Let's create the datasets with temporary files
             from training.bytelogic_dataset_new import ByteLogicDataset
-            self.train_dataset = ByteLogicDataset(
-                examples=train_data,
-                tokenizer=self.text_tokenizer,
-                max_length=self.max_length
-            )
-            self.val_dataset = ByteLogicDataset(
-                examples=val_data,
-                tokenizer=self.text_tokenizer,
-                max_length=self.max_length
-            )
+            import tempfile
+            import json
+
+            # Create temporary files for the train and val data
+            with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.json', dir='/tmp') as f:
+                json.dump({"train": train_examples}, f)
+                temp_train_file = f.name
+
+            with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.json', dir='/tmp') as f:
+                json.dump({"train": val_examples}, f)
+                temp_val_file = f.name
+
+            try:
+                # Create ByteLogic datasets using the temporary files
+                self.train_dataset = ByteLogicDataset(
+                    data_file=temp_train_file,
+                    tokenizer=self.text_tokenizer,
+                    max_length=self.max_length,
+                    validation_mode=False
+                )
+                self.val_dataset = ByteLogicDataset(
+                    data_file=temp_val_file,
+                    tokenizer=self.text_tokenizer,
+                    max_length=self.max_length,
+                    validation_mode=True
+                )
+            finally:
+                # Clean up temporary files
+                import os
+                os.remove(temp_train_file)
+                os.remove(temp_val_file)
+
         else:
             logger.info(f"📖 Loading ByteLogic datasets from {self.dataset_path}")
 
@@ -177,14 +208,14 @@ class ByteLogicComputationTrainer:
             )
 
         # Create data loaders
-        self.train_loader = DataLoader(
+        self.train_loader = torch.utils.data.DataLoader(
             self.train_dataset,
             batch_size=self.batch_size,
             shuffle=True,
             collate_fn=self._collate_fn
         )
 
-        self.val_loader = DataLoader(
+        self.val_loader = torch.utils.data.DataLoader(
             self.val_dataset,
             batch_size=self.batch_size,
             shuffle=False,
