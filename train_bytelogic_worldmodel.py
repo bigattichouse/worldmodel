@@ -172,13 +172,13 @@ class ByteLogicComputationTrainer:
                 # Create ByteLogic datasets using the temporary files
                 self.train_dataset = ByteLogicDataset(
                     data_file=temp_train_file,
-                    tokenizer=self.text_tokenizer,
+                    text_tokenizer=self.text_tokenizer,
                     max_length=self.max_length,
                     validation_mode=False
                 )
                 self.val_dataset = ByteLogicDataset(
                     data_file=temp_val_file,
-                    tokenizer=self.text_tokenizer,
+                    text_tokenizer=self.text_tokenizer,
                     max_length=self.max_length,
                     validation_mode=True
                 )
