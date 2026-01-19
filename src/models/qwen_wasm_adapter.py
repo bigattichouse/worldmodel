@@ -278,7 +278,8 @@ class QwenWASMAdapter(nn.Module):
                         inputs=inputs_dict if inputs_dict else None
                     )
                 except Exception as exec_error:
-                    print(f"ByteLogic execution error: {exec_error}")
+                    # Suppress error printing during training to reduce spam
+                    # Only print for debugging purposes
                     execution_result = {
                         "success": False,
                         "error": str(exec_error),

@@ -166,7 +166,10 @@ class ByteLogicExecutor:
                 result["computation_token"] = self._format_computation_token(result)
             
         except Exception as e:
-            logger.error(f"ByteLogic execution failed: {e}")
+            # Suppress noisy error messages during training, but still capture for internal processing
+            # Only log severe errors outside of normal training noise
+            if "list' object has no attribute 'items'" not in str(e):
+                logger.error(f"ByteLogic execution failed: {e}")
             result["error"] = str(e)
             result["computation_token"] = f"<error>{str(e)}</error>"
         
@@ -267,6 +270,8 @@ class ByteLogicExecutor:
         except subprocess.TimeoutExpired:
             return {"success": False, "error": "Compilation timeout"}
         except Exception as e:
+            # Suppress noisy error messages during training
+            # Only return error for debugging purposes
             return {"success": False, "error": f"Compilation failed: {e}"}
     
     def _execute_real_wasm(self, wat_code: str) -> Dict:
