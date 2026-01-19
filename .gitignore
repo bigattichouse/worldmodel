@@ -10,6 +10,9 @@ worldmodel_rocm_output_stable
 worldmodel_rocm_output_stable/
 wasm/wasm_worldmodel_final_trained
 wasm/wasm_worldmodel_final_trained/*
+
+bytelogic_worldmodel_output
+bytelogic_worldmodel_output/*
 # Python
 __pycache__/
 *.py[cod]
