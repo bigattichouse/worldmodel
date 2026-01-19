@@ -207,12 +207,27 @@ class ByteLogicExecutor:
         except Exception as e:
             return {"valid": False, "error": f"Syntax check failed: {e}"}
     
-    def _inject_inputs(self, bl_code: str, inputs: Dict) -> str:
+    def _inject_inputs(self, bl_code: str, inputs) -> str:
         """Inject input facts into ByteLogic code."""
+        # Handle case where inputs is not a dict (e.g., is a list or other type)
+        if inputs is None:
+            return bl_code
+
+        # Ensure inputs is a dict, converting from list if necessary
+        if isinstance(inputs, list):
+            # Convert list to dict format: {f"input_{i}": value for i, value in enumerate(inputs)}
+            inputs = {f"input_{i}": v for i, v in enumerate(inputs) if v != 0.0 and v is not None}
+        elif hasattr(inputs, '__iter__') and not isinstance(inputs, dict) and not isinstance(inputs, str):
+            # Handle other iterable types
+            inputs = {f"input_{i}": v for i, v in enumerate(inputs) if v != 0.0 and v is not None}
+        elif not isinstance(inputs, dict):
+            # Single value case - convert to dict
+            inputs = {"input_0": inputs}
+
         # Find insertion point after REL declarations
         lines = bl_code.split('\n')
         insertion_point = 0
-        
+
         for i, line in enumerate(lines):
             if line.strip().startswith('REL '):
                 insertion_point = i + 1
@@ -221,7 +236,7 @@ class ByteLogicExecutor:
                 break
             elif line.strip() and not line.strip().startswith(';') and not line.strip().startswith('REL '):
                 break
-        
+
         # Generate FACT statements from inputs
         fact_lines = []
         for relation, facts in inputs.items():
@@ -231,7 +246,10 @@ class ByteLogicExecutor:
                         fact_lines.append(f"FACT {relation} {fact[0]} {fact[1]}")
                     elif isinstance(fact, dict) and 'a' in fact and 'b' in fact:
                         fact_lines.append(f"FACT {relation} {fact['a']} {fact['b']}")
-        
+            else:
+                # Single value case: treat the relation name as the predicate and the value
+                fact_lines.append(f"FACT {relation} {facts} default_value")
+
         # Insert facts
         new_lines = lines[:insertion_point] + fact_lines + lines[insertion_point:]
         return '\n'.join(new_lines)
