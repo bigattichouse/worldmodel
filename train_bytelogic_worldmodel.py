@@ -35,6 +35,10 @@ from training.bytelogic_dataset_new import load_bytelogic_dataset, ByteLogicData
 from execution.bytelogic_executor import ByteLogicExecutor
 from tokenization.bytelogic_tokenizer import ByteLogicTokenizer
 
+# Import the multi-dataset loader
+sys.path.insert(0, str(Path(__file__).parent / "tools"))
+from multi_dataset_loader import DynamicDatasetLoader
+
 # Setup logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -126,24 +130,52 @@ class ByteLogicComputationTrainer:
     
     def _setup_datasets(self):
         """Load and setup training datasets."""
-        logger.info(f"📖 Loading ByteLogic datasets from {self.dataset_path}")
-        
-        # Load training dataset
-        self.train_dataset = load_bytelogic_dataset(
-            data_file=self.dataset_path,
-            tokenizer=self.text_tokenizer,
-            max_length=self.max_length,
-            validation_mode=False
-        )
-        
-        # Load validation dataset
-        self.val_dataset = load_bytelogic_dataset(
-            data_file=self.dataset_path,
-            tokenizer=self.text_tokenizer,
-            max_length=self.max_length,
-            validation_mode=True
-        )
-        
+        if self.dataset_path.lower() == "auto" or self.dataset_path.lower() == "all":
+            logger.info(f"📖 Loading ALL ByteLogic datasets automatically")
+
+            # Load all datasets from the training directory
+            loader = DynamicDatasetLoader(datasets_dir="training/datasets", split_ratio=0.8)
+            dataset = loader.load()
+
+            # Convert to the format expected by the existing training pipeline
+            train_data = dataset['train']
+            val_data = dataset['val']
+
+            logger.info(f"   Total loaded examples: {len(train_data) + len(val_data)}")
+            logger.info(f"   Training examples: {len(train_data)}")
+            logger.info(f"   Validation examples: {len(val_data)}")
+
+            # Create ByteLogic datasets from the loaded data
+            from training.bytelogic_dataset_new import ByteLogicDataset
+            self.train_dataset = ByteLogicDataset(
+                examples=train_data,
+                tokenizer=self.text_tokenizer,
+                max_length=self.max_length
+            )
+            self.val_dataset = ByteLogicDataset(
+                examples=val_data,
+                tokenizer=self.text_tokenizer,
+                max_length=self.max_length
+            )
+        else:
+            logger.info(f"📖 Loading ByteLogic datasets from {self.dataset_path}")
+
+            # Load training dataset using the original approach
+            self.train_dataset = load_bytelogic_dataset(
+                data_file=self.dataset_path,
+                tokenizer=self.text_tokenizer,
+                max_length=self.max_length,
+                validation_mode=False
+            )
+
+            # Load validation dataset
+            self.val_dataset = load_bytelogic_dataset(
+                data_file=self.dataset_path,
+                tokenizer=self.text_tokenizer,
+                max_length=self.max_length,
+                validation_mode=True
+            )
+
         # Create data loaders
         self.train_loader = DataLoader(
             self.train_dataset,
@@ -151,14 +183,14 @@ class ByteLogicComputationTrainer:
             shuffle=True,
             collate_fn=self._collate_fn
         )
-        
+
         self.val_loader = DataLoader(
             self.val_dataset,
             batch_size=self.batch_size,
             shuffle=False,
             collate_fn=self._collate_fn
         )
-        
+
         logger.info(f"✅ Datasets loaded")
         logger.info(f"   Training examples: {len(self.train_dataset)}")
         logger.info(f"   Validation examples: {len(self.val_dataset)}")
@@ -406,21 +438,24 @@ def main():
     """Main training function."""
     parser = argparse.ArgumentParser(description="ByteLogic Integrated WorldModel Training")
     parser.add_argument("--model", required=True, help="Path to base model")
-    parser.add_argument("--dataset", required=True, help="Path to ByteLogic dataset")
+    parser.add_argument("--dataset", required=True, help="Path to ByteLogic dataset (use 'auto' or 'all' to load all datasets from training/datasets/)")
     parser.add_argument("--output_dir", default="integrated_worldmodel_output", help="Output directory")
     parser.add_argument("--epochs", type=int, default=5, help="Number of epochs")
     parser.add_argument("--batch_size", type=int, default=2, help="Batch size")
     parser.add_argument("--learning_rate", type=float, default=1e-5, help="Learning rate")
     parser.add_argument("--computation_layers", nargs='+', type=int, default=[3, 7, 11, 15, 19, 23, 27], help="Computation layer indices")
-    
+
     args = parser.parse_args()
-    
+
     logger.info(f"🎯 Integrated ByteLogic WorldModel Training")
     logger.info(f"   Model: {args.model}")
-    logger.info(f"   Dataset: {args.dataset}")
+    if args.dataset.lower() in ['auto', 'all']:
+        logger.info(f"   Dataset: Loading ALL datasets automatically from training/datasets/")
+    else:
+        logger.info(f"   Dataset: {args.dataset}")
     logger.info(f"   Output: {args.output_dir}")
     logger.info(f"   Computation layers: {args.computation_layers}")
-    
+
     # Initialize trainer
     trainer = ByteLogicComputationTrainer(
         model_path=args.model,
@@ -430,7 +465,7 @@ def main():
         learning_rate=args.learning_rate,
         batch_size=args.batch_size
     )
-    
+
     # Run training
     try:
         trainer.train(epochs=args.epochs)
