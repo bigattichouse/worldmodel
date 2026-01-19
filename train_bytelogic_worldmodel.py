@@ -62,8 +62,8 @@ else:
 
 class ByteLogicComputationTrainer:
     """Trainer for ByteLogic-integrated WorldModel."""
-    
-    def __init__(self, 
+
+    def __init__(self,
                  model_path: str,
                  dataset_path: str,
                  output_dir: str,
@@ -73,7 +73,7 @@ class ByteLogicComputationTrainer:
                  max_length: int = 512):
         """
         Initialize integrated trainer.
-        
+
         Args:
             model_path: Path to base model
             dataset_path: Path to ByteLogic training dataset
@@ -90,19 +90,29 @@ class ByteLogicComputationTrainer:
         self.learning_rate = learning_rate
         self.batch_size = batch_size
         self.max_length = max_length
-        
+
+        # Initialize failure tracking
+        self.total_executions = 0
+        self.failed_executions = 0
+
         # Create output directory
         self.output_dir.mkdir(exist_ok=True)
-        
+
         # Initialize components
         self.device = device
         self._setup_model()
         self._setup_datasets()
         self._setup_optimizer()
-        
+
         logger.info(f"🏗️ Integrated trainer initialized")
         logger.info(f"   Computation layers: {computation_layers}")
         logger.info(f"   Training with execution: True")
+
+    def get_execution_stats(self) -> str:
+        """Get execution statistics."""
+        if self.total_executions == 0:
+            return "0/0"
+        return f"{self.failed_executions}/{self.total_executions}"
     
     def _setup_model(self):
         """Initialize the QwenWASMAdapter with ByteLogic integration."""
@@ -262,37 +272,40 @@ class ByteLogicComputationTrainer:
     def _compute_loss(self, outputs: Dict[str, Any], labels: torch.Tensor) -> torch.Tensor:
         """
         Compute loss for integrated ByteLogic training.
-        
+
         Includes both language modeling loss and computation consistency loss.
         """
         # Standard language modeling loss
         logits = outputs['logits']
         shift_logits = logits[..., :-1, :].contiguous()
         shift_labels = labels[..., 1:].contiguous()
-        
+
         # Flatten for cross entropy
         loss_fct = nn.CrossEntropyLoss(ignore_index=-100)
         lm_loss = loss_fct(shift_logits.view(-1, shift_logits.size(-1)), shift_labels.view(-1))
-        
+
         # Computation consistency loss (if execution results available)
         computation_loss = 0.0
         execution_results = outputs.get('execution_results', [])
-        
+
         if execution_results:
-            # Encourage successful execution and valid ByteLogic syntax
+            # Track execution successes/failures for statistics
             for result in execution_results:
-                if result.get('executed', False) and result.get('success', False):
-                    # Small reward for successful execution
-                    computation_loss -= 0.1
-                else:
-                    # Small penalty for failed execution
-                    computation_loss += 0.1
-            
+                if result.get('executed', False):  # Only track if actually executed
+                    self.total_executions += 1
+                    if not result.get('success', False):
+                        self.failed_executions += 1
+                        # Small penalty for failed execution
+                        computation_loss += 0.1
+                    elif result.get('success', False):
+                        # Small reward for successful execution
+                        computation_loss -= 0.1
+
             computation_loss = torch.tensor(computation_loss, device=self.device, requires_grad=True)
-        
+
         # Combine losses
         total_loss = lm_loss + 0.1 * computation_loss
-        
+
         return total_loss, lm_loss, computation_loss
     
     def train_epoch(self, epoch: int) -> Dict[str, float]:
@@ -359,15 +372,18 @@ class ByteLogicComputationTrainer:
             # Calculate progress percentage
             progress_pct = ((batch_idx + 1) / total_batches) * 100
 
+            # Get execution failure stats
+            fail_stats = self.get_execution_stats()
+
             # Update progress line (separate from logging)
-            prog_line = f"\r  Epoch {epoch + 1} Batch {batch_idx + 1}/{total_batches} | {progress_pct:.1f}% | loss={loss.item():.4f} | {batch_time:.2f}s/batch | ETA: {eta_seconds/60:.1f}m"
+            prog_line = f"\r  Epoch {epoch + 1} Batch {batch_idx + 1}/{total_batches} | {progress_pct:.1f}% | loss={loss.item():.4f} | Fails: {fail_stats} | {batch_time:.2f}s/batch | ETA: {eta_seconds/60:.1f}m"
             print(prog_line, end="", flush=True)
 
             # Log progress every 50 batches for detailed tracking
             if (batch_idx + 1) % 50 == 0:
                 # Add a newline before log message to separate from progress
                 print()  # newline to separate from progress line
-                logger.info(f"  Batch {batch_idx + 1}/{total_batches}: loss={loss.item():.4f}, lm_loss={lm_loss.item():.4f}, elapsed={elapsed_time/60:.1f}min")
+                logger.info(f"  Batch {batch_idx + 1}/{total_batches}: loss={loss.item():.4f}, lm_loss={lm_loss.item():.4f}, Fails: {fail_stats}, elapsed={elapsed_time/60:.1f}min")
                 # Re-print progress line after log
                 print(prog_line, end="", flush=True)
 
@@ -444,8 +460,11 @@ class ByteLogicComputationTrainer:
                 # Calculate progress percentage
                 progress_pct = ((batch_idx + 1) / total_batches) * 100
 
+                # Get execution failure stats
+                fail_stats = self.get_execution_stats()
+
                 # Update progress line for validation (separate from logging)
-                prog_line = f"\r  Validation Batch {batch_idx + 1}/{total_batches} | {progress_pct:.1f}% | loss={loss.item():.4f} | ETA: {eta_seconds/60:.1f}m"
+                prog_line = f"\r  Validation Batch {batch_idx + 1}/{total_batches} | {progress_pct:.1f}% | loss={loss.item():.4f} | Fails: {fail_stats} | ETA: {eta_seconds/60:.1f}m"
                 print(prog_line, end="", flush=True)
 
         # Print newline after validation progress bar
