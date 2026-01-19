@@ -1,38 +1,46 @@
 #!/usr/bin/env python3
 """
-ByteLogic WorldModel Training
-============================
+ByteLogic Integrated WorldModel Training
+========================================
 
-Trains the worldmodel LLM using ByteLogic-only training data.
-Replaces WAT-based computation with ByteLogic structured reasoning.
+Trains a WorldModel with integrated ByteLogic computation during forward pass.
+Uses QwenWASMAdapter architecture with cross-modal computation layers.
+
+This creates a model that:
+1. Generates ByteLogic code at multiple layers (3, 7, 11)
+2. Executes code during forward pass
+3. Injects results into token stream
+4. Learns computation-augmented reasoning
+
+Based on WorldModel LLM specification with ByteLogic integration.
 """
-
-import sys
-import os
-sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
 import torch
 import torch.nn as nn
-from transformers import (
-    AutoTokenizer, AutoModelForCausalLM, TrainingArguments, 
-    Trainer, TrainerCallback, DataCollatorForLanguageModeling
-)
+from torch.utils.data import DataLoader
+import os
+import sys
 import json
-import time
-from pathlib import Path
-from typing import List, Dict, Optional
-import logging
 import argparse
+import logging
+import time
+from typing import Dict, List, Optional, Any
+from pathlib import Path
 
-# ByteLogic components
-from src.training.bytelogic_dataset_new import load_bytelogic_dataset
+# Add src to path
+sys.path.insert(0, str(Path(__file__).parent / "src"))
+
+from models.qwen_wasm_adapter import QwenWASMAdapter
+from training.bytelogic_dataset_new import load_bytelogic_dataset, ByteLogicDataset
+from execution.bytelogic_executor import ByteLogicExecutor
+from tokenization.bytelogic_tokenizer import ByteLogicTokenizer
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# ROCm Detection
-print("=== ByteLogic WorldModel Training ===")
+# Hardware detection
+print("=== ByteLogic Integrated WorldModel Training ===")
 print(f"PyTorch version: {torch.__version__}")
 print(f"CUDA available: {torch.cuda.is_available()}")
 
@@ -45,250 +53,388 @@ if torch.cuda.is_available():
     torch.cuda.empty_cache()
 else:
     device = torch.device("cpu")
-    print("⚠️ No GPU detected, using CPU")
+    print("❌ Using CPU")
 
 
-class ByteLogicTrainingCallback(TrainerCallback):
-    """Callback for monitoring ByteLogic training progress."""
+class ByteLogicComputationTrainer:
+    """Trainer for ByteLogic-integrated WorldModel."""
     
-    def __init__(self, save_frequency: int = 500):
-        self.save_frequency = save_frequency
-        self.step_times = []
-        self.start_time = time.time()
+    def __init__(self, 
+                 model_path: str,
+                 dataset_path: str,
+                 output_dir: str,
+                 computation_layers: List[int] = [3, 7, 11, 15, 19, 23, 27],
+                 learning_rate: float = 1e-5,
+                 batch_size: int = 2,
+                 max_length: int = 512):
+        """
+        Initialize integrated trainer.
+        
+        Args:
+            model_path: Path to base model
+            dataset_path: Path to ByteLogic training dataset
+            output_dir: Output directory for checkpoints
+            computation_layers: Layers for ByteLogic computation
+            learning_rate: Training learning rate
+            batch_size: Training batch size
+            max_length: Maximum sequence length
+        """
+        self.model_path = model_path
+        self.dataset_path = dataset_path
+        self.output_dir = Path(output_dir)
+        self.computation_layers = computation_layers
+        self.learning_rate = learning_rate
+        self.batch_size = batch_size
+        self.max_length = max_length
+        
+        # Create output directory
+        self.output_dir.mkdir(exist_ok=True)
+        
+        # Initialize components
+        self.device = device
+        self._setup_model()
+        self._setup_datasets()
+        self._setup_optimizer()
+        
+        logger.info(f"🏗️ Integrated trainer initialized")
+        logger.info(f"   Computation layers: {computation_layers}")
+        logger.info(f"   Training with execution: True")
     
-    def on_step_end(self, args, state, control, **kwargs):
-        """Monitor training progress."""
-        current_time = time.time()
-        if len(self.step_times) > 0:
-            step_time = current_time - self.step_times[-1]
-            self.step_times.append(current_time)
+    def _setup_model(self):
+        """Initialize the QwenWASMAdapter with ByteLogic integration."""
+        logger.info(f"🧠 Initializing QwenWASMAdapter...")
+        
+        # Initialize with ByteLogic computation layers
+        self.model = QwenWASMAdapter(
+            model_path=self.model_path,
+            cross_modal_layers=self.computation_layers,
+            freeze_text_layers=False,  # Allow full training
+            use_sandbox=False  # Disable sandbox for training speed
+        )
+        
+        # Move to device
+        self.model.to(self.device)
+        
+        # Set up ByteLogic tokenizer
+        self.bytelogic_tokenizer = ByteLogicTokenizer()
+        
+        # Get text tokenizer for dataset processing
+        self.text_tokenizer = self.model.text_tokenizer
+        
+        logger.info(f"✅ Model initialized with {sum(p.numel() for p in self.model.parameters()):,} parameters")
+        logger.info(f"   Computation layers: {self.computation_layers}")
+    
+    def _setup_datasets(self):
+        """Load and setup training datasets."""
+        logger.info(f"📖 Loading ByteLogic datasets from {self.dataset_path}")
+        
+        # Load training dataset
+        self.train_dataset = load_bytelogic_dataset(
+            data_file=self.dataset_path,
+            tokenizer=self.text_tokenizer,
+            max_length=self.max_length,
+            validation_mode=False
+        )
+        
+        # Load validation dataset
+        self.val_dataset = load_bytelogic_dataset(
+            data_file=self.dataset_path,
+            tokenizer=self.text_tokenizer,
+            max_length=self.max_length,
+            validation_mode=True
+        )
+        
+        # Create data loaders
+        self.train_loader = DataLoader(
+            self.train_dataset,
+            batch_size=self.batch_size,
+            shuffle=True,
+            collate_fn=self._collate_fn
+        )
+        
+        self.val_loader = DataLoader(
+            self.val_dataset,
+            batch_size=self.batch_size,
+            shuffle=False,
+            collate_fn=self._collate_fn
+        )
+        
+        logger.info(f"✅ Datasets loaded")
+        logger.info(f"   Training examples: {len(self.train_dataset)}")
+        logger.info(f"   Validation examples: {len(self.val_dataset)}")
+    
+    def _collate_fn(self, batch: List[Dict]) -> Dict[str, torch.Tensor]:
+        """Collate function for batch processing."""
+        # Standard collation for now - can be enhanced for computation-specific needs
+        input_ids = torch.stack([item['input_ids'] for item in batch])
+        attention_mask = torch.stack([item['attention_mask'] for item in batch])
+        labels = torch.stack([item['labels'] for item in batch])
+        
+        return {
+            'input_ids': input_ids,
+            'attention_mask': attention_mask,
+            'labels': labels
+        }
+    
+    def _setup_optimizer(self):
+        """Setup optimizer and scheduler."""
+        # Use AdamW with lower learning rate for integrated training
+        self.optimizer = torch.optim.AdamW(
+            self.model.parameters(),
+            lr=self.learning_rate,
+            weight_decay=0.01,
+            eps=1e-8
+        )
+        
+        # Cosine annealing scheduler
+        total_steps = len(self.train_loader) * 5  # 5 epochs
+        self.scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
+            self.optimizer,
+            T_max=total_steps,
+            eta_min=1e-7
+        )
+        
+        logger.info(f"🔧 Optimizer configured: AdamW (lr={self.learning_rate})")
+    
+    def _compute_loss(self, outputs: Dict[str, Any], labels: torch.Tensor) -> torch.Tensor:
+        """
+        Compute loss for integrated ByteLogic training.
+        
+        Includes both language modeling loss and computation consistency loss.
+        """
+        # Standard language modeling loss
+        logits = outputs['logits']
+        shift_logits = logits[..., :-1, :].contiguous()
+        shift_labels = labels[..., 1:].contiguous()
+        
+        # Flatten for cross entropy
+        loss_fct = nn.CrossEntropyLoss(ignore_index=-100)
+        lm_loss = loss_fct(shift_logits.view(-1, shift_logits.size(-1)), shift_labels.view(-1))
+        
+        # Computation consistency loss (if execution results available)
+        computation_loss = 0.0
+        execution_results = outputs.get('execution_results', [])
+        
+        if execution_results:
+            # Encourage successful execution and valid ByteLogic syntax
+            for result in execution_results:
+                if result.get('executed', False) and result.get('success', False):
+                    # Small reward for successful execution
+                    computation_loss -= 0.1
+                else:
+                    # Small penalty for failed execution
+                    computation_loss += 0.1
             
-            # Log progress every 50 steps
-            if state.global_step % 50 == 0:
-                elapsed = current_time - self.start_time
-                steps_per_sec = state.global_step / elapsed if elapsed > 0 else 0
+            computation_loss = torch.tensor(computation_loss, device=self.device, requires_grad=True)
+        
+        # Combine losses
+        total_loss = lm_loss + 0.1 * computation_loss
+        
+        return total_loss, lm_loss, computation_loss
+    
+    def train_epoch(self, epoch: int) -> Dict[str, float]:
+        """Train one epoch with integrated ByteLogic execution."""
+        self.model.train()
+        
+        total_loss = 0.0
+        total_lm_loss = 0.0
+        total_comp_loss = 0.0
+        num_batches = 0
+        
+        logger.info(f"🏋️ Training epoch {epoch + 1}")
+        
+        for batch_idx, batch in enumerate(self.train_loader):
+            # Move batch to device
+            input_ids = batch['input_ids'].to(self.device)
+            attention_mask = batch['attention_mask'].to(self.device)
+            labels = batch['labels'].to(self.device)
+            
+            # Forward pass with ByteLogic execution
+            self.optimizer.zero_grad()
+            
+            outputs = self.model(
+                input_ids=input_ids,
+                attention_mask=attention_mask,
+                execute_wasm=True,  # CRITICAL: Enable computation during training
+                return_dict=True
+            )
+            
+            # Compute loss
+            loss, lm_loss, comp_loss = self._compute_loss(outputs, labels)
+            
+            # Backward pass
+            loss.backward()
+            
+            # Gradient clipping
+            torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0)
+            
+            # Optimizer step
+            self.optimizer.step()
+            self.scheduler.step()
+            
+            # Update metrics
+            total_loss += loss.item()
+            total_lm_loss += lm_loss.item()
+            if isinstance(comp_loss, torch.Tensor):
+                total_comp_loss += comp_loss.item()
+            num_batches += 1
+            
+            # Log progress
+            if batch_idx % 10 == 0:
+                logger.info(f"  Batch {batch_idx}: loss={loss.item():.4f}, lm_loss={lm_loss.item():.4f}")
+        
+        # Average losses
+        avg_loss = total_loss / num_batches
+        avg_lm_loss = total_lm_loss / num_batches
+        avg_comp_loss = total_comp_loss / num_batches
+        
+        return {
+            'total_loss': avg_loss,
+            'lm_loss': avg_lm_loss,
+            'computation_loss': avg_comp_loss
+        }
+    
+    def validate(self) -> Dict[str, float]:
+        """Validate model with ByteLogic execution."""
+        self.model.eval()
+        
+        total_loss = 0.0
+        total_lm_loss = 0.0
+        total_comp_loss = 0.0
+        num_batches = 0
+        successful_executions = 0
+        total_executions = 0
+        
+        with torch.no_grad():
+            for batch in self.val_loader:
+                # Move batch to device
+                input_ids = batch['input_ids'].to(self.device)
+                attention_mask = batch['attention_mask'].to(self.device)
+                labels = batch['labels'].to(self.device)
                 
-                logger.info(f"Step {state.global_step}: "
-                          f"{steps_per_sec:.2f} steps/sec, "
-                          f"recent step: {step_time:.2f}s")
-        else:
-            self.step_times.append(current_time)
+                # Forward pass with ByteLogic execution
+                outputs = self.model(
+                    input_ids=input_ids,
+                    attention_mask=attention_mask,
+                    execute_wasm=True,  # Execute during validation too
+                    return_dict=True
+                )
+                
+                # Compute loss
+                loss, lm_loss, comp_loss = self._compute_loss(outputs, labels)
+                
+                # Update metrics
+                total_loss += loss.item()
+                total_lm_loss += lm_loss.item()
+                if isinstance(comp_loss, torch.Tensor):
+                    total_comp_loss += comp_loss.item()
+                num_batches += 1
+                
+                # Track execution success
+                execution_results = outputs.get('execution_results', [])
+                for result in execution_results:
+                    total_executions += 1
+                    if result.get('executed', False) and result.get('success', False):
+                        successful_executions += 1
+        
+        # Average metrics
+        avg_loss = total_loss / num_batches
+        avg_lm_loss = total_lm_loss / num_batches
+        avg_comp_loss = total_comp_loss / num_batches
+        execution_success_rate = successful_executions / max(total_executions, 1)
+        
+        return {
+            'val_loss': avg_loss,
+            'val_lm_loss': avg_lm_loss,
+            'val_computation_loss': avg_comp_loss,
+            'execution_success_rate': execution_success_rate
+        }
     
-    def on_save(self, args, state, control, **kwargs):
-        """Handle model saving."""
-        logger.info(f"💾 Saved checkpoint at step {state.global_step}")
-
-
-def setup_model_and_tokenizer(model_path: str, max_length: int = 1024):
-    """Setup model and tokenizer with ByteLogic support."""
-    logger.info(f"Loading base model from {model_path}")
+    def save_checkpoint(self, epoch: int, metrics: Dict[str, float]):
+        """Save model checkpoint."""
+        checkpoint_path = self.output_dir / f"checkpoint_epoch_{epoch + 1}.pt"
+        
+        torch.save({
+            'epoch': epoch,
+            'model_state_dict': self.model.state_dict(),
+            'optimizer_state_dict': self.optimizer.state_dict(),
+            'scheduler_state_dict': self.scheduler.state_dict(),
+            'metrics': metrics,
+            'computation_layers': self.computation_layers
+        }, checkpoint_path)
+        
+        logger.info(f"💾 Saved checkpoint: {checkpoint_path}")
     
-    # Load tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(model_path)
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
-    
-    # Load model
-    model = AutoModelForCausalLM.from_pretrained(
-        model_path,
-        torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
-        device_map="auto" if torch.cuda.is_available() else None,
-        trust_remote_code=True
-    )
-    
-    # Resize token embeddings if new tokens were added
-    original_vocab_size = len(tokenizer)
-    
-    # Add ByteLogic tokens through dataset loading (this will modify tokenizer)
-    dummy_dataset = load_bytelogic_dataset(
-        data_file="training/datasets/bytelogic_train_comprehensive.jsonl",
-        tokenizer=tokenizer,
-        max_length=max_length
-    )
-    
-    # Resize model embeddings if tokenizer vocabulary expanded
-    new_vocab_size = len(tokenizer)
-    if new_vocab_size > original_vocab_size:
-        model.resize_token_embeddings(new_vocab_size)
-        logger.info(f"Resized token embeddings from {original_vocab_size} to {new_vocab_size}")
-    
-    return model, tokenizer
-
-
-def create_training_arguments(output_dir: str, epochs: int, learning_rate: float = 2e-5):
-    """Create training arguments optimized for ByteLogic training."""
-    return TrainingArguments(
-        output_dir=output_dir,
+    def train(self, epochs: int = 5):
+        """Run complete integrated training."""
+        logger.info(f"🚀 Starting integrated ByteLogic training")
+        logger.info(f"   Epochs: {epochs}")
+        logger.info(f"   Computation layers: {self.computation_layers}")
+        logger.info(f"   Execution during training: True")
         
-        # Training parameters
-        num_train_epochs=epochs,
-        per_device_train_batch_size=2,  # Conservative for large models
-        per_device_eval_batch_size=4,
-        gradient_accumulation_steps=8,  # Effective batch size = 2*8 = 16
-        learning_rate=learning_rate,
-        weight_decay=0.01,
+        best_val_loss = float('inf')
         
-        # Learning rate scheduling
-        lr_scheduler_type="cosine",
-        warmup_steps=100,
+        for epoch in range(epochs):
+            # Train epoch
+            train_metrics = self.train_epoch(epoch)
+            
+            # Validate
+            val_metrics = self.validate()
+            
+            # Log metrics
+            logger.info(f"📊 Epoch {epoch + 1}/{epochs}")
+            logger.info(f"   Train Loss: {train_metrics['total_loss']:.4f}")
+            logger.info(f"   Val Loss: {val_metrics['val_loss']:.4f}")
+            logger.info(f"   Execution Success: {val_metrics['execution_success_rate']:.2%}")
+            
+            # Save checkpoint if best validation loss
+            if val_metrics['val_loss'] < best_val_loss:
+                best_val_loss = val_metrics['val_loss']
+                self.save_checkpoint(epoch, {**train_metrics, **val_metrics})
+                logger.info(f"✅ New best validation loss: {best_val_loss:.4f}")
         
-        # Evaluation and saving
-        eval_strategy="steps",
-        eval_steps=200,
-        save_strategy="steps", 
-        save_steps=400,  # Multiple of eval_steps (200)
-        save_total_limit=5,
+        # Save final model
+        final_path = self.output_dir / "final_integrated_model.pt"
+        torch.save(self.model.state_dict(), final_path)
         
-        # Optimization
-        bf16=True if torch.cuda.is_available() else False,  # Use bfloat16 if available
-        fp16=False,  # Don't use fp16 with bf16
-        dataloader_num_workers=2,  # Reduced to prevent file descriptor leaks
-        dataloader_persistent_workers=False,  # Disable to prevent leaks
-        
-        # Logging
-        logging_steps=50,
-        report_to=None,  # Disable wandb/tensorboard for now
-        
-        # Memory optimization
-        gradient_checkpointing=True,
-        
-        # Other
-        remove_unused_columns=False,
-        load_best_model_at_end=True,
-        metric_for_best_model="eval_loss",
-        greater_is_better=False,
-        
-        # Seed for reproducibility
-        seed=42
-    )
+        logger.info(f"🎉 Training completed!")
+        logger.info(f"   Final model: {final_path}")
+        logger.info(f"   Best validation loss: {best_val_loss:.4f}")
 
 
 def main():
     """Main training function."""
-    parser = argparse.ArgumentParser(description="ByteLogic WorldModel Training")
-    parser.add_argument("--model", default="../model/Qwen3-0.6B", 
-                       help="Path to base model")
-    parser.add_argument("--dataset", default="training/datasets/comprehensive_bytelogic_dataset.json",
-                       help="Path to ByteLogic training dataset")
-    parser.add_argument("--output-dir", default="bytelogic_worldmodel_output",
-                       help="Output directory for trained model")
-    parser.add_argument("--epochs", type=int, default=5,
-                       help="Number of training epochs")
-    parser.add_argument("--learning-rate", type=float, default=2e-5,
-                       help="Learning rate")
-    parser.add_argument("--max-length", type=int, default=1024,
-                       help="Maximum sequence length")
-    parser.add_argument("--curriculum", default="all",
-                       choices=["basic", "intermediate", "advanced", "all"],
-                       help="Curriculum learning stage")
+    parser = argparse.ArgumentParser(description="ByteLogic Integrated WorldModel Training")
+    parser.add_argument("--model", required=True, help="Path to base model")
+    parser.add_argument("--dataset", required=True, help="Path to ByteLogic dataset")
+    parser.add_argument("--output_dir", default="integrated_worldmodel_output", help="Output directory")
+    parser.add_argument("--epochs", type=int, default=5, help="Number of epochs")
+    parser.add_argument("--batch_size", type=int, default=2, help="Batch size")
+    parser.add_argument("--learning_rate", type=float, default=1e-5, help="Learning rate")
+    parser.add_argument("--computation_layers", nargs='+', type=int, default=[3, 7, 11, 15, 19, 23, 27], help="Computation layer indices")
     
     args = parser.parse_args()
     
-    logger.info("🚀 Starting ByteLogic WorldModel Training")
+    logger.info(f"🎯 Integrated ByteLogic WorldModel Training")
     logger.info(f"   Model: {args.model}")
     logger.info(f"   Dataset: {args.dataset}")
     logger.info(f"   Output: {args.output_dir}")
-    logger.info(f"   Epochs: {args.epochs}")
-    logger.info(f"   Curriculum: {args.curriculum}")
+    logger.info(f"   Computation layers: {args.computation_layers}")
     
-    # Create output directory
-    os.makedirs(args.output_dir, exist_ok=True)
+    # Initialize trainer
+    trainer = ByteLogicComputationTrainer(
+        model_path=args.model,
+        dataset_path=args.dataset,
+        output_dir=args.output_dir,
+        computation_layers=args.computation_layers,
+        learning_rate=args.learning_rate,
+        batch_size=args.batch_size
+    )
     
+    # Run training
     try:
-        # Setup model and tokenizer
-        logger.info("📚 Setting up model and tokenizer...")
-        model, tokenizer = setup_model_and_tokenizer(args.model, args.max_length)
-        
-        # Load datasets
-        logger.info("📖 Loading training datasets...")
-        train_dataset = load_bytelogic_dataset(
-            data_file=args.dataset,
-            tokenizer=tokenizer,
-            max_length=args.max_length,
-            curriculum_stage=args.curriculum,
-            validation_mode=False
-        )
-        
-        eval_dataset = load_bytelogic_dataset(
-            data_file=args.dataset,
-            tokenizer=tokenizer,
-            max_length=args.max_length,
-            curriculum_stage=args.curriculum,
-            validation_mode=True
-        )
-        
-        logger.info(f"   Training examples: {len(train_dataset)}")
-        logger.info(f"   Validation examples: {len(eval_dataset)}")
-        
-        # Create data collator
-        data_collator = DataCollatorForLanguageModeling(
-            tokenizer=tokenizer,
-            mlm=False  # Causal language modeling
-        )
-        
-        # Create training arguments
-        training_args = create_training_arguments(
-            output_dir=args.output_dir,
-            epochs=args.epochs,
-            learning_rate=args.learning_rate
-        )
-        
-        # Create trainer
-        trainer = Trainer(
-            model=model,
-            args=training_args,
-            train_dataset=train_dataset,
-            eval_dataset=eval_dataset,
-            data_collator=data_collator,
-            callbacks=[ByteLogicTrainingCallback()]
-        )
-        
-        # Save training configuration
-        config = {
-            "model_path": args.model,
-            "dataset_path": args.dataset,
-            "curriculum_stage": args.curriculum,
-            "training_args": training_args.to_dict(),
-            "train_examples": len(train_dataset),
-            "eval_examples": len(eval_dataset),
-            "vocab_size": len(tokenizer)
-        }
-        
-        config_file = os.path.join(args.output_dir, "training_config.json")
-        with open(config_file, 'w') as f:
-            json.dump(config, f, indent=2)
-        
-        logger.info(f"📁 Saved training config to {config_file}")
-        
-        # Start training
-        logger.info("🏋️ Starting training...")
-        trainer.train()
-        
-        # Save final model
-        logger.info("💾 Saving final model...")
-        final_model_path = os.path.join(args.output_dir, "final_model")
-        trainer.save_model(final_model_path)
-        tokenizer.save_pretrained(final_model_path)
-        
-        # Save training summary
-        summary = {
-            "status": "completed",
-            "final_model_path": final_model_path,
-            "training_time": time.time() - trainer.state.log_history[0]['train_runtime'] if trainer.state.log_history else "unknown",
-            "total_steps": trainer.state.global_step,
-            "final_loss": trainer.state.log_history[-1].get('train_loss') if trainer.state.log_history else "unknown"
-        }
-        
-        summary_file = os.path.join(args.output_dir, "training_summary.json")
-        with open(summary_file, 'w') as f:
-            json.dump(summary, f, indent=2)
-        
-        logger.info(f"✅ Training completed successfully!")
-        logger.info(f"   Final model: {final_model_path}")
-        logger.info(f"   Training summary: {summary_file}")
-        
+        trainer.train(epochs=args.epochs)
         return True
-        
     except Exception as e:
         logger.error(f"❌ Training failed: {e}")
         import traceback
