@@ -1,0 +1,1176 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "generator": "Error Handling Dataset Generator",
+    "total_examples": 100,
+    "train_examples": 80,
+    "val_examples": 10,
+    "test_examples": 10,
+    "categories": [
+      "parse_errors",
+      "error_recovery",
+      "runtime_errors"
+    ],
+    "features": [
+      "error_detection",
+      "error_explanation",
+      "error_recovery"
+    ]
+  },
+  "train": [
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent eve jack\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_16",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent frank sam\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_13",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "Correct this rule with unbound variables: RULE test: SCAN parent, EMIT result $2 $0",
+      "output": "I'll fix the variable binding: <computation>\nREL parent\nFACT parent quinn quinn\nRULE test: SCAN parent, EMIT result $0 $1\nSOLVE\nQUERY result ? ?\n</computation> → Fixed by using bound variables $0 and $1 instead of unbound $2. Result: quinn→quinn",
+      "metadata": {
+        "id": "recovery_unbound_variable_9",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "unbound_variable"
+      }
+    },
+    {
+      "input": "Query without solving first",
+      "output": "This code is missing a required step: <computation>\nREL parent\nFACT parent henry luke\nQUERY parent henry ?\n</computation> ❌ Error: QUERY used without SOLVE. Must call SOLVE before querying results.",
+      "metadata": {
+        "id": "error_missing_solve_12",
+        "category": "error_handling",
+        "subcategory": "missing_solve",
+        "difficulty": "intermediate",
+        "expected_error": "missing_solve",
+        "error_type": "missing_solve"
+      }
+    },
+    {
+      "input": "Query without solving first",
+      "output": "This code is missing a required step: <computation>\nREL parent\nFACT parent kate alice\nQUERY parent kate ?\n</computation> ❌ Error: QUERY used without SOLVE. Must call SOLVE before querying results.",
+      "metadata": {
+        "id": "error_missing_solve_35",
+        "category": "error_handling",
+        "subcategory": "missing_solve",
+        "difficulty": "intermediate",
+        "expected_error": "missing_solve",
+        "error_type": "missing_solve"
+      }
+    },
+    {
+      "input": "Fix this broken ByteLogic code: FACT parent alice bob QUERY parent ? ?",
+      "output": "I'll fix this step by step: <computation>\nREL parent\nFACT parent sam ivy\nSOLVE\nQUERY parent ? ?\n</computation> → Fixed by adding missing REL declaration and SOLVE step. Result: sam→ivy",
+      "metadata": {
+        "id": "recovery_missing_rel_and_solve_15",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "missing_rel_and_solve"
+      }
+    },
+    {
+      "input": "Find parent relationships without declaring the relation",
+      "output": "I notice there's an error in this ByteLogic code: <computation>\nFACT parent quinn bob\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Relation 'parent' used but not declared. Need to add 'REL parent' first.",
+      "metadata": {
+        "id": "error_undefined_relation_48",
+        "category": "error_handling",
+        "subcategory": "undefined_relation",
+        "difficulty": "intermediate",
+        "expected_error": "undefined_relation",
+        "error_type": "undefined_relation"
+      }
+    },
+    {
+      "input": "Query without solving first",
+      "output": "This code is missing a required step: <computation>\nREL parent\nFACT parent frank tina\nQUERY parent frank ?\n</computation> ❌ Error: QUERY used without SOLVE. Must call SOLVE before querying results.",
+      "metadata": {
+        "id": "error_missing_solve_5",
+        "category": "error_handling",
+        "subcategory": "missing_solve",
+        "difficulty": "intermediate",
+        "expected_error": "missing_solve",
+        "error_type": "missing_solve"
+      }
+    },
+    {
+      "input": "Code with syntax errors",
+      "output": "This ByteLogic code has syntax errors: <computation>\nREL parent\nFACTS parent charlie quinn\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Unknown keyword 'FACTS'. Did you mean 'FACT'?",
+      "metadata": {
+        "id": "error_syntax_error_2",
+        "category": "error_handling",
+        "subcategory": "syntax_error",
+        "difficulty": "intermediate",
+        "expected_error": "syntax_error",
+        "error_type": "syntax_error"
+      }
+    },
+    {
+      "input": "Code with syntax errors",
+      "output": "This ByteLogic code has syntax errors: <computation>\nREL parent\nFACTS parent nancy david\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Unknown keyword 'FACTS'. Did you mean 'FACT'?",
+      "metadata": {
+        "id": "error_syntax_error_6",
+        "category": "error_handling",
+        "subcategory": "syntax_error",
+        "difficulty": "intermediate",
+        "expected_error": "syntax_error",
+        "error_type": "syntax_error"
+      }
+    },
+    {
+      "input": "Fix this broken ByteLogic code: FACT parent alice bob QUERY parent ? ?",
+      "output": "I'll fix this step by step: <computation>\nREL parent\nFACT parent oscar mary\nSOLVE\nQUERY parent ? ?\n</computation> → Fixed by adding missing REL declaration and SOLVE step. Result: oscar→mary",
+      "metadata": {
+        "id": "recovery_missing_rel_and_solve_12",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "missing_rel_and_solve"
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent david ivy\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_1",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "Find parent relationships without declaring the relation",
+      "output": "I notice there's an error in this ByteLogic code: <computation>\nFACT parent kate jack\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Relation 'parent' used but not declared. Need to add 'REL parent' first.",
+      "metadata": {
+        "id": "error_undefined_relation_38",
+        "category": "error_handling",
+        "subcategory": "undefined_relation",
+        "difficulty": "intermediate",
+        "expected_error": "undefined_relation",
+        "error_type": "undefined_relation"
+      }
+    },
+    {
+      "input": "Code with syntax errors",
+      "output": "This ByteLogic code has syntax errors: <computation>\nREL parent\nFACTS parent tina ivy\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Unknown keyword 'FACTS'. Did you mean 'FACT'?",
+      "metadata": {
+        "id": "error_syntax_error_19",
+        "category": "error_handling",
+        "subcategory": "syntax_error",
+        "difficulty": "intermediate",
+        "expected_error": "syntax_error",
+        "error_type": "syntax_error"
+      }
+    },
+    {
+      "input": "Correct this rule with unbound variables: RULE test: SCAN parent, EMIT result $2 $0",
+      "output": "I'll fix the variable binding: <computation>\nREL parent\nFACT parent grace peter\nRULE test: SCAN parent, EMIT result $0 $1\nSOLVE\nQUERY result ? ?\n</computation> → Fixed by using bound variables $0 and $1 instead of unbound $2. Result: grace→peter",
+      "metadata": {
+        "id": "recovery_unbound_variable_29",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "unbound_variable"
+      }
+    },
+    {
+      "input": "Create a rule with an unbound variable",
+      "output": "This ByteLogic code has a variable binding error: <computation>\nREL parent\nFACT parent sam alice\nRULE test: SCAN parent, EMIT result $2 $0\nSOLVE\nQUERY result ? ?\n</computation> ❌ Error: Variable $2 is not bound in the SCAN operation. Only $0 and $1 are available.",
+      "metadata": {
+        "id": "error_unbound_variable_10",
+        "category": "error_handling",
+        "subcategory": "unbound_variable",
+        "difficulty": "intermediate",
+        "expected_error": "unbound_variable",
+        "error_type": "unbound_variable"
+      }
+    },
+    {
+      "input": "Query without solving first",
+      "output": "This code is missing a required step: <computation>\nREL parent\nFACT parent eve jack\nQUERY parent eve ?\n</computation> ❌ Error: QUERY used without SOLVE. Must call SOLVE before querying results.",
+      "metadata": {
+        "id": "error_missing_solve_39",
+        "category": "error_handling",
+        "subcategory": "missing_solve",
+        "difficulty": "intermediate",
+        "expected_error": "missing_solve",
+        "error_type": "missing_solve"
+      }
+    },
+    {
+      "input": "Find parent relationships without declaring the relation",
+      "output": "I notice there's an error in this ByteLogic code: <computation>\nFACT parent tina oscar\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Relation 'parent' used but not declared. Need to add 'REL parent' first.",
+      "metadata": {
+        "id": "error_undefined_relation_43",
+        "category": "error_handling",
+        "subcategory": "undefined_relation",
+        "difficulty": "intermediate",
+        "expected_error": "undefined_relation",
+        "error_type": "undefined_relation"
+      }
+    },
+    {
+      "input": "Correct this rule with unbound variables: RULE test: SCAN parent, EMIT result $2 $0",
+      "output": "I'll fix the variable binding: <computation>\nREL parent\nFACT parent ivy peter\nRULE test: SCAN parent, EMIT result $0 $1\nSOLVE\nQUERY result ? ?\n</computation> → Fixed by using bound variables $0 and $1 instead of unbound $2. Result: ivy→peter",
+      "metadata": {
+        "id": "recovery_unbound_variable_2",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "unbound_variable"
+      }
+    },
+    {
+      "input": "Find parent relationships without declaring the relation",
+      "output": "I notice there's an error in this ByteLogic code: <computation>\nFACT parent grace sam\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Relation 'parent' used but not declared. Need to add 'REL parent' first.",
+      "metadata": {
+        "id": "error_undefined_relation_15",
+        "category": "error_handling",
+        "subcategory": "undefined_relation",
+        "difficulty": "intermediate",
+        "expected_error": "undefined_relation",
+        "error_type": "undefined_relation"
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent alice charlie\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_0",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "Query without solving first",
+      "output": "This code is missing a required step: <computation>\nREL parent\nFACT parent grace mary\nQUERY parent grace ?\n</computation> ❌ Error: QUERY used without SOLVE. Must call SOLVE before querying results.",
+      "metadata": {
+        "id": "error_missing_solve_23",
+        "category": "error_handling",
+        "subcategory": "missing_solve",
+        "difficulty": "intermediate",
+        "expected_error": "missing_solve",
+        "error_type": "missing_solve"
+      }
+    },
+    {
+      "input": "Query without solving first",
+      "output": "This code is missing a required step: <computation>\nREL parent\nFACT parent mary grace\nQUERY parent mary ?\n</computation> ❌ Error: QUERY used without SOLVE. Must call SOLVE before querying results.",
+      "metadata": {
+        "id": "error_missing_solve_22",
+        "category": "error_handling",
+        "subcategory": "missing_solve",
+        "difficulty": "intermediate",
+        "expected_error": "missing_solve",
+        "error_type": "missing_solve"
+      }
+    },
+    {
+      "input": "Find parent relationships without declaring the relation",
+      "output": "I notice there's an error in this ByteLogic code: <computation>\nFACT parent jack mary\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Relation 'parent' used but not declared. Need to add 'REL parent' first.",
+      "metadata": {
+        "id": "error_undefined_relation_49",
+        "category": "error_handling",
+        "subcategory": "undefined_relation",
+        "difficulty": "intermediate",
+        "expected_error": "undefined_relation",
+        "error_type": "undefined_relation"
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent oscar charlie\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_5",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "Correct this rule with unbound variables: RULE test: SCAN parent, EMIT result $2 $0",
+      "output": "I'll fix the variable binding: <computation>\nREL parent\nFACT parent sam mary\nRULE test: SCAN parent, EMIT result $0 $1\nSOLVE\nQUERY result ? ?\n</computation> → Fixed by using bound variables $0 and $1 instead of unbound $2. Result: sam→mary",
+      "metadata": {
+        "id": "recovery_unbound_variable_4",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "unbound_variable"
+      }
+    },
+    {
+      "input": "Create a rule with an unbound variable",
+      "output": "This ByteLogic code has a variable binding error: <computation>\nREL parent\nFACT parent luke kate\nRULE test: SCAN parent, EMIT result $2 $0\nSOLVE\nQUERY result ? ?\n</computation> ❌ Error: Variable $2 is not bound in the SCAN operation. Only $0 and $1 are available.",
+      "metadata": {
+        "id": "error_unbound_variable_30",
+        "category": "error_handling",
+        "subcategory": "unbound_variable",
+        "difficulty": "intermediate",
+        "expected_error": "unbound_variable",
+        "error_type": "unbound_variable"
+      }
+    },
+    {
+      "input": "Find parent relationships without declaring the relation",
+      "output": "I notice there's an error in this ByteLogic code: <computation>\nFACT parent henry charlie\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Relation 'parent' used but not declared. Need to add 'REL parent' first.",
+      "metadata": {
+        "id": "error_undefined_relation_37",
+        "category": "error_handling",
+        "subcategory": "undefined_relation",
+        "difficulty": "intermediate",
+        "expected_error": "undefined_relation",
+        "error_type": "undefined_relation"
+      }
+    },
+    {
+      "input": "Fix this broken ByteLogic code: FACT parent alice bob QUERY parent ? ?",
+      "output": "I'll fix this step by step: <computation>\nREL parent\nFACT parent jack sam\nSOLVE\nQUERY parent ? ?\n</computation> → Fixed by adding missing REL declaration and SOLVE step. Result: jack→sam",
+      "metadata": {
+        "id": "recovery_missing_rel_and_solve_3",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "missing_rel_and_solve"
+      }
+    },
+    {
+      "input": "Fix this broken ByteLogic code: FACT parent alice bob QUERY parent ? ?",
+      "output": "I'll fix this step by step: <computation>\nREL parent\nFACT parent alice eve\nSOLVE\nQUERY parent ? ?\n</computation> → Fixed by adding missing REL declaration and SOLVE step. Result: alice→eve",
+      "metadata": {
+        "id": "recovery_missing_rel_and_solve_19",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "missing_rel_and_solve"
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent charlie mary\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_4",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "Query without solving first",
+      "output": "This code is missing a required step: <computation>\nREL parent\nFACT parent luke jack\nQUERY parent luke ?\n</computation> ❌ Error: QUERY used without SOLVE. Must call SOLVE before querying results.",
+      "metadata": {
+        "id": "error_missing_solve_14",
+        "category": "error_handling",
+        "subcategory": "missing_solve",
+        "difficulty": "intermediate",
+        "expected_error": "missing_solve",
+        "error_type": "missing_solve"
+      }
+    },
+    {
+      "input": "Find parent relationships without declaring the relation",
+      "output": "I notice there's an error in this ByteLogic code: <computation>\nFACT parent quinn grace\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Relation 'parent' used but not declared. Need to add 'REL parent' first.",
+      "metadata": {
+        "id": "error_undefined_relation_26",
+        "category": "error_handling",
+        "subcategory": "undefined_relation",
+        "difficulty": "intermediate",
+        "expected_error": "undefined_relation",
+        "error_type": "undefined_relation"
+      }
+    },
+    {
+      "input": "Query without solving first",
+      "output": "This code is missing a required step: <computation>\nREL parent\nFACT parent oscar jack\nQUERY parent oscar ?\n</computation> ❌ Error: QUERY used without SOLVE. Must call SOLVE before querying results.",
+      "metadata": {
+        "id": "error_missing_solve_0",
+        "category": "error_handling",
+        "subcategory": "missing_solve",
+        "difficulty": "intermediate",
+        "expected_error": "missing_solve",
+        "error_type": "missing_solve"
+      }
+    },
+    {
+      "input": "Query without solving first",
+      "output": "This code is missing a required step: <computation>\nREL parent\nFACT parent kate henry\nQUERY parent kate ?\n</computation> ❌ Error: QUERY used without SOLVE. Must call SOLVE before querying results.",
+      "metadata": {
+        "id": "error_missing_solve_7",
+        "category": "error_handling",
+        "subcategory": "missing_solve",
+        "difficulty": "intermediate",
+        "expected_error": "missing_solve",
+        "error_type": "missing_solve"
+      }
+    },
+    {
+      "input": "Correct this rule with unbound variables: RULE test: SCAN parent, EMIT result $2 $0",
+      "output": "I'll fix the variable binding: <computation>\nREL parent\nFACT parent peter quinn\nRULE test: SCAN parent, EMIT result $0 $1\nSOLVE\nQUERY result ? ?\n</computation> → Fixed by using bound variables $0 and $1 instead of unbound $2. Result: peter→quinn",
+      "metadata": {
+        "id": "recovery_unbound_variable_11",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "unbound_variable"
+      }
+    },
+    {
+      "input": "Query without solving first",
+      "output": "This code is missing a required step: <computation>\nREL parent\nFACT parent sam peter\nQUERY parent sam ?\n</computation> ❌ Error: QUERY used without SOLVE. Must call SOLVE before querying results.",
+      "metadata": {
+        "id": "error_missing_solve_41",
+        "category": "error_handling",
+        "subcategory": "missing_solve",
+        "difficulty": "intermediate",
+        "expected_error": "missing_solve",
+        "error_type": "missing_solve"
+      }
+    },
+    {
+      "input": "Fix this broken ByteLogic code: FACT parent alice bob QUERY parent ? ?",
+      "output": "I'll fix this step by step: <computation>\nREL parent\nFACT parent frank ivy\nSOLVE\nQUERY parent ? ?\n</computation> → Fixed by adding missing REL declaration and SOLVE step. Result: frank→ivy",
+      "metadata": {
+        "id": "recovery_missing_rel_and_solve_8",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "missing_rel_and_solve"
+      }
+    },
+    {
+      "input": "Code with syntax errors",
+      "output": "This ByteLogic code has syntax errors: <computation>\nREL parent\nFACTS parent ivy frank\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Unknown keyword 'FACTS'. Did you mean 'FACT'?",
+      "metadata": {
+        "id": "error_syntax_error_9",
+        "category": "error_handling",
+        "subcategory": "syntax_error",
+        "difficulty": "intermediate",
+        "expected_error": "syntax_error",
+        "error_type": "syntax_error"
+      }
+    },
+    {
+      "input": "Find parent relationships without declaring the relation",
+      "output": "I notice there's an error in this ByteLogic code: <computation>\nFACT parent oscar quinn\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Relation 'parent' used but not declared. Need to add 'REL parent' first.",
+      "metadata": {
+        "id": "error_undefined_relation_45",
+        "category": "error_handling",
+        "subcategory": "undefined_relation",
+        "difficulty": "intermediate",
+        "expected_error": "undefined_relation",
+        "error_type": "undefined_relation"
+      }
+    },
+    {
+      "input": "Correct this rule with unbound variables: RULE test: SCAN parent, EMIT result $2 $0",
+      "output": "I'll fix the variable binding: <computation>\nREL parent\nFACT parent luke jack\nRULE test: SCAN parent, EMIT result $0 $1\nSOLVE\nQUERY result ? ?\n</computation> → Fixed by using bound variables $0 and $1 instead of unbound $2. Result: luke→jack",
+      "metadata": {
+        "id": "recovery_unbound_variable_14",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "unbound_variable"
+      }
+    },
+    {
+      "input": "Fix this broken ByteLogic code: FACT parent alice bob QUERY parent ? ?",
+      "output": "I'll fix this step by step: <computation>\nREL parent\nFACT parent jack nancy\nSOLVE\nQUERY parent ? ?\n</computation> → Fixed by adding missing REL declaration and SOLVE step. Result: jack→nancy",
+      "metadata": {
+        "id": "recovery_missing_rel_and_solve_16",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "missing_rel_and_solve"
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent ruth david\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_14",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "Code with syntax errors",
+      "output": "This ByteLogic code has syntax errors: <computation>\nREL parent\nFACTS parent david eve\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Unknown keyword 'FACTS'. Did you mean 'FACT'?",
+      "metadata": {
+        "id": "error_syntax_error_29",
+        "category": "error_handling",
+        "subcategory": "syntax_error",
+        "difficulty": "intermediate",
+        "expected_error": "syntax_error",
+        "error_type": "syntax_error"
+      }
+    },
+    {
+      "input": "Fix this broken ByteLogic code: FACT parent alice bob QUERY parent ? ?",
+      "output": "I'll fix this step by step: <computation>\nREL parent\nFACT parent sam frank\nSOLVE\nQUERY parent ? ?\n</computation> → Fixed by adding missing REL declaration and SOLVE step. Result: sam→frank",
+      "metadata": {
+        "id": "recovery_missing_rel_and_solve_7",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "missing_rel_and_solve"
+      }
+    },
+    {
+      "input": "Correct this rule with unbound variables: RULE test: SCAN parent, EMIT result $2 $0",
+      "output": "I'll fix the variable binding: <computation>\nREL parent\nFACT parent mary oscar\nRULE test: SCAN parent, EMIT result $0 $1\nSOLVE\nQUERY result ? ?\n</computation> → Fixed by using bound variables $0 and $1 instead of unbound $2. Result: mary→oscar",
+      "metadata": {
+        "id": "recovery_unbound_variable_1",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "unbound_variable"
+      }
+    },
+    {
+      "input": "Create a rule with an unbound variable",
+      "output": "This ByteLogic code has a variable binding error: <computation>\nREL parent\nFACT parent tina ivy\nRULE test: SCAN parent, EMIT result $2 $0\nSOLVE\nQUERY result ? ?\n</computation> ❌ Error: Variable $2 is not bound in the SCAN operation. Only $0 and $1 are available.",
+      "metadata": {
+        "id": "error_unbound_variable_4",
+        "category": "error_handling",
+        "subcategory": "unbound_variable",
+        "difficulty": "intermediate",
+        "expected_error": "unbound_variable",
+        "error_type": "unbound_variable"
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent luke charlie\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_19",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "Find parent relationships without declaring the relation",
+      "output": "I notice there's an error in this ByteLogic code: <computation>\nFACT parent nancy nancy\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Relation 'parent' used but not declared. Need to add 'REL parent' first.",
+      "metadata": {
+        "id": "error_undefined_relation_40",
+        "category": "error_handling",
+        "subcategory": "undefined_relation",
+        "difficulty": "intermediate",
+        "expected_error": "undefined_relation",
+        "error_type": "undefined_relation"
+      }
+    },
+    {
+      "input": "Query without solving first",
+      "output": "This code is missing a required step: <computation>\nREL parent\nFACT parent kate quinn\nQUERY parent kate ?\n</computation> ❌ Error: QUERY used without SOLVE. Must call SOLVE before querying results.",
+      "metadata": {
+        "id": "error_missing_solve_31",
+        "category": "error_handling",
+        "subcategory": "missing_solve",
+        "difficulty": "intermediate",
+        "expected_error": "missing_solve",
+        "error_type": "missing_solve"
+      }
+    },
+    {
+      "input": "Create a rule with an unbound variable",
+      "output": "This ByteLogic code has a variable binding error: <computation>\nREL parent\nFACT parent frank frank\nRULE test: SCAN parent, EMIT result $2 $0\nSOLVE\nQUERY result ? ?\n</computation> ❌ Error: Variable $2 is not bound in the SCAN operation. Only $0 and $1 are available.",
+      "metadata": {
+        "id": "error_unbound_variable_25",
+        "category": "error_handling",
+        "subcategory": "unbound_variable",
+        "difficulty": "intermediate",
+        "expected_error": "unbound_variable",
+        "error_type": "unbound_variable"
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent charlie kate\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_11",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "Query without solving first",
+      "output": "This code is missing a required step: <computation>\nREL parent\nFACT parent tina bob\nQUERY parent tina ?\n</computation> ❌ Error: QUERY used without SOLVE. Must call SOLVE before querying results.",
+      "metadata": {
+        "id": "error_missing_solve_17",
+        "category": "error_handling",
+        "subcategory": "missing_solve",
+        "difficulty": "intermediate",
+        "expected_error": "missing_solve",
+        "error_type": "missing_solve"
+      }
+    },
+    {
+      "input": "Fix this broken ByteLogic code: FACT parent alice bob QUERY parent ? ?",
+      "output": "I'll fix this step by step: <computation>\nREL parent\nFACT parent sam alice\nSOLVE\nQUERY parent ? ?\n</computation> → Fixed by adding missing REL declaration and SOLVE step. Result: sam→alice",
+      "metadata": {
+        "id": "recovery_missing_rel_and_solve_24",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "missing_rel_and_solve"
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent sam alice\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_17",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent charlie tina\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_7",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "Query without solving first",
+      "output": "This code is missing a required step: <computation>\nREL parent\nFACT parent sam charlie\nQUERY parent sam ?\n</computation> ❌ Error: QUERY used without SOLVE. Must call SOLVE before querying results.",
+      "metadata": {
+        "id": "error_missing_solve_42",
+        "category": "error_handling",
+        "subcategory": "missing_solve",
+        "difficulty": "intermediate",
+        "expected_error": "missing_solve",
+        "error_type": "missing_solve"
+      }
+    },
+    {
+      "input": "Create a rule with an unbound variable",
+      "output": "This ByteLogic code has a variable binding error: <computation>\nREL parent\nFACT parent nancy luke\nRULE test: SCAN parent, EMIT result $2 $0\nSOLVE\nQUERY result ? ?\n</computation> ❌ Error: Variable $2 is not bound in the SCAN operation. Only $0 and $1 are available.",
+      "metadata": {
+        "id": "error_unbound_variable_44",
+        "category": "error_handling",
+        "subcategory": "unbound_variable",
+        "difficulty": "intermediate",
+        "expected_error": "unbound_variable",
+        "error_type": "unbound_variable"
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent alice jack\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_15",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "Create a rule with an unbound variable",
+      "output": "This ByteLogic code has a variable binding error: <computation>\nREL parent\nFACT parent charlie charlie\nRULE test: SCAN parent, EMIT result $2 $0\nSOLVE\nQUERY result ? ?\n</computation> ❌ Error: Variable $2 is not bound in the SCAN operation. Only $0 and $1 are available.",
+      "metadata": {
+        "id": "error_unbound_variable_13",
+        "category": "error_handling",
+        "subcategory": "unbound_variable",
+        "difficulty": "intermediate",
+        "expected_error": "unbound_variable",
+        "error_type": "unbound_variable"
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent charlie alice\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_10",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "Fix this broken ByteLogic code: FACT parent alice bob QUERY parent ? ?",
+      "output": "I'll fix this step by step: <computation>\nREL parent\nFACT parent david ruth\nSOLVE\nQUERY parent ? ?\n</computation> → Fixed by adding missing REL declaration and SOLVE step. Result: david→ruth",
+      "metadata": {
+        "id": "recovery_missing_rel_and_solve_0",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "missing_rel_and_solve"
+      }
+    },
+    {
+      "input": "Correct this rule with unbound variables: RULE test: SCAN parent, EMIT result $2 $0",
+      "output": "I'll fix the variable binding: <computation>\nREL parent\nFACT parent luke jack\nRULE test: SCAN parent, EMIT result $0 $1\nSOLVE\nQUERY result ? ?\n</computation> → Fixed by using bound variables $0 and $1 instead of unbound $2. Result: luke→jack",
+      "metadata": {
+        "id": "recovery_unbound_variable_26",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "unbound_variable"
+      }
+    },
+    {
+      "input": "Fix this broken ByteLogic code: FACT parent alice bob QUERY parent ? ?",
+      "output": "I'll fix this step by step: <computation>\nREL parent\nFACT parent sam oscar\nSOLVE\nQUERY parent ? ?\n</computation> → Fixed by adding missing REL declaration and SOLVE step. Result: sam→oscar",
+      "metadata": {
+        "id": "recovery_missing_rel_and_solve_6",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "missing_rel_and_solve"
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent charlie eve\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_6",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "Correct this rule with unbound variables: RULE test: SCAN parent, EMIT result $2 $0",
+      "output": "I'll fix the variable binding: <computation>\nREL parent\nFACT parent jack bob\nRULE test: SCAN parent, EMIT result $0 $1\nSOLVE\nQUERY result ? ?\n</computation> → Fixed by using bound variables $0 and $1 instead of unbound $2. Result: jack→bob",
+      "metadata": {
+        "id": "recovery_unbound_variable_23",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "unbound_variable"
+      }
+    },
+    {
+      "input": "Correct this rule with unbound variables: RULE test: SCAN parent, EMIT result $2 $0",
+      "output": "I'll fix the variable binding: <computation>\nREL parent\nFACT parent kate bob\nRULE test: SCAN parent, EMIT result $0 $1\nSOLVE\nQUERY result ? ?\n</computation> → Fixed by using bound variables $0 and $1 instead of unbound $2. Result: kate→bob",
+      "metadata": {
+        "id": "recovery_unbound_variable_27",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "unbound_variable"
+      }
+    },
+    {
+      "input": "Create a rule with an unbound variable",
+      "output": "This ByteLogic code has a variable binding error: <computation>\nREL parent\nFACT parent henry ivy\nRULE test: SCAN parent, EMIT result $2 $0\nSOLVE\nQUERY result ? ?\n</computation> ❌ Error: Variable $2 is not bound in the SCAN operation. Only $0 and $1 are available.",
+      "metadata": {
+        "id": "error_unbound_variable_11",
+        "category": "error_handling",
+        "subcategory": "unbound_variable",
+        "difficulty": "intermediate",
+        "expected_error": "unbound_variable",
+        "error_type": "unbound_variable"
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent charlie henry\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_3",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "Find parent relationships without declaring the relation",
+      "output": "I notice there's an error in this ByteLogic code: <computation>\nFACT parent mary luke\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Relation 'parent' used but not declared. Need to add 'REL parent' first.",
+      "metadata": {
+        "id": "error_undefined_relation_8",
+        "category": "error_handling",
+        "subcategory": "undefined_relation",
+        "difficulty": "intermediate",
+        "expected_error": "undefined_relation",
+        "error_type": "undefined_relation"
+      }
+    },
+    {
+      "input": "Query without solving first",
+      "output": "This code is missing a required step: <computation>\nREL parent\nFACT parent charlie mary\nQUERY parent charlie ?\n</computation> ❌ Error: QUERY used without SOLVE. Must call SOLVE before querying results.",
+      "metadata": {
+        "id": "error_missing_solve_32",
+        "category": "error_handling",
+        "subcategory": "missing_solve",
+        "difficulty": "intermediate",
+        "expected_error": "missing_solve",
+        "error_type": "missing_solve"
+      }
+    },
+    {
+      "input": "Find parent relationships without declaring the relation",
+      "output": "I notice there's an error in this ByteLogic code: <computation>\nFACT parent jack sam\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Relation 'parent' used but not declared. Need to add 'REL parent' first.",
+      "metadata": {
+        "id": "error_undefined_relation_21",
+        "category": "error_handling",
+        "subcategory": "undefined_relation",
+        "difficulty": "intermediate",
+        "expected_error": "undefined_relation",
+        "error_type": "undefined_relation"
+      }
+    },
+    {
+      "input": "Query without solving first",
+      "output": "This code is missing a required step: <computation>\nREL parent\nFACT parent peter bob\nQUERY parent peter ?\n</computation> ❌ Error: QUERY used without SOLVE. Must call SOLVE before querying results.",
+      "metadata": {
+        "id": "error_missing_solve_33",
+        "category": "error_handling",
+        "subcategory": "missing_solve",
+        "difficulty": "intermediate",
+        "expected_error": "missing_solve",
+        "error_type": "missing_solve"
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent peter quinn\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_2",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "Correct this rule with unbound variables: RULE test: SCAN parent, EMIT result $2 $0",
+      "output": "I'll fix the variable binding: <computation>\nREL parent\nFACT parent mary nancy\nRULE test: SCAN parent, EMIT result $0 $1\nSOLVE\nQUERY result ? ?\n</computation> → Fixed by using bound variables $0 and $1 instead of unbound $2. Result: mary→nancy",
+      "metadata": {
+        "id": "recovery_unbound_variable_18",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "unbound_variable"
+      }
+    },
+    {
+      "input": "Correct this rule with unbound variables: RULE test: SCAN parent, EMIT result $2 $0",
+      "output": "I'll fix the variable binding: <computation>\nREL parent\nFACT parent nancy nancy\nRULE test: SCAN parent, EMIT result $0 $1\nSOLVE\nQUERY result ? ?\n</computation> → Fixed by using bound variables $0 and $1 instead of unbound $2. Result: nancy→nancy",
+      "metadata": {
+        "id": "recovery_unbound_variable_17",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "unbound_variable"
+      }
+    },
+    {
+      "input": "Fix this broken ByteLogic code: FACT parent alice bob QUERY parent ? ?",
+      "output": "I'll fix this step by step: <computation>\nREL parent\nFACT parent grace jack\nSOLVE\nQUERY parent ? ?\n</computation> → Fixed by adding missing REL declaration and SOLVE step. Result: grace→jack",
+      "metadata": {
+        "id": "recovery_missing_rel_and_solve_13",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "missing_rel_and_solve"
+      }
+    },
+    {
+      "input": "Create a rule with an unbound variable",
+      "output": "This ByteLogic code has a variable binding error: <computation>\nREL parent\nFACT parent kate bob\nRULE test: SCAN parent, EMIT result $2 $0\nSOLVE\nQUERY result ? ?\n</computation> ❌ Error: Variable $2 is not bound in the SCAN operation. Only $0 and $1 are available.",
+      "metadata": {
+        "id": "error_unbound_variable_24",
+        "category": "error_handling",
+        "subcategory": "unbound_variable",
+        "difficulty": "intermediate",
+        "expected_error": "unbound_variable",
+        "error_type": "unbound_variable"
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent eve oscar\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_18",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "Code with syntax errors",
+      "output": "This ByteLogic code has syntax errors: <computation>\nREL parent\nFACTS parent oscar grace\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Unknown keyword 'FACTS'. Did you mean 'FACT'?",
+      "metadata": {
+        "id": "error_syntax_error_36",
+        "category": "error_handling",
+        "subcategory": "syntax_error",
+        "difficulty": "intermediate",
+        "expected_error": "syntax_error",
+        "error_type": "syntax_error"
+      }
+    }
+  ],
+  "validation": [
+    {
+      "input": "Find parent relationships without declaring the relation",
+      "output": "I notice there's an error in this ByteLogic code: <computation>\nFACT parent sam kate\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Relation 'parent' used but not declared. Need to add 'REL parent' first.",
+      "metadata": {
+        "id": "error_undefined_relation_3",
+        "category": "error_handling",
+        "subcategory": "undefined_relation",
+        "difficulty": "intermediate",
+        "expected_error": "undefined_relation",
+        "error_type": "undefined_relation"
+      }
+    },
+    {
+      "input": "Query without solving first",
+      "output": "This code is missing a required step: <computation>\nREL parent\nFACT parent frank jack\nQUERY parent frank ?\n</computation> ❌ Error: QUERY used without SOLVE. Must call SOLVE before querying results.",
+      "metadata": {
+        "id": "error_missing_solve_46",
+        "category": "error_handling",
+        "subcategory": "missing_solve",
+        "difficulty": "intermediate",
+        "expected_error": "missing_solve",
+        "error_type": "missing_solve"
+      }
+    },
+    {
+      "input": "Correct this rule with unbound variables: RULE test: SCAN parent, EMIT result $2 $0",
+      "output": "I'll fix the variable binding: <computation>\nREL parent\nFACT parent jack luke\nRULE test: SCAN parent, EMIT result $0 $1\nSOLVE\nQUERY result ? ?\n</computation> → Fixed by using bound variables $0 and $1 instead of unbound $2. Result: jack→luke",
+      "metadata": {
+        "id": "recovery_unbound_variable_20",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "unbound_variable"
+      }
+    },
+    {
+      "input": "Correct this rule with unbound variables: RULE test: SCAN parent, EMIT result $2 $0",
+      "output": "I'll fix the variable binding: <computation>\nREL parent\nFACT parent ivy kate\nRULE test: SCAN parent, EMIT result $0 $1\nSOLVE\nQUERY result ? ?\n</computation> → Fixed by using bound variables $0 and $1 instead of unbound $2. Result: ivy→kate",
+      "metadata": {
+        "id": "recovery_unbound_variable_28",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "unbound_variable"
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent oscar kate\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_12",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "Query without solving first",
+      "output": "This code is missing a required step: <computation>\nREL parent\nFACT parent david mary\nQUERY parent david ?\n</computation> ❌ Error: QUERY used without SOLVE. Must call SOLVE before querying results.",
+      "metadata": {
+        "id": "error_missing_solve_20",
+        "category": "error_handling",
+        "subcategory": "missing_solve",
+        "difficulty": "intermediate",
+        "expected_error": "missing_solve",
+        "error_type": "missing_solve"
+      }
+    },
+    {
+      "input": "Correct this rule with unbound variables: RULE test: SCAN parent, EMIT result $2 $0",
+      "output": "I'll fix the variable binding: <computation>\nREL parent\nFACT parent david nancy\nRULE test: SCAN parent, EMIT result $0 $1\nSOLVE\nQUERY result ? ?\n</computation> → Fixed by using bound variables $0 and $1 instead of unbound $2. Result: david→nancy",
+      "metadata": {
+        "id": "recovery_unbound_variable_5",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "unbound_variable"
+      }
+    },
+    {
+      "input": "Code with syntax errors",
+      "output": "This ByteLogic code has syntax errors: <computation>\nREL parent\nFACTS parent nancy oscar\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Unknown keyword 'FACTS'. Did you mean 'FACT'?",
+      "metadata": {
+        "id": "error_syntax_error_28",
+        "category": "error_handling",
+        "subcategory": "syntax_error",
+        "difficulty": "intermediate",
+        "expected_error": "syntax_error",
+        "error_type": "syntax_error"
+      }
+    },
+    {
+      "input": "Fix this broken ByteLogic code: FACT parent alice bob QUERY parent ? ?",
+      "output": "I'll fix this step by step: <computation>\nREL parent\nFACT parent mary alice\nSOLVE\nQUERY parent ? ?\n</computation> → Fixed by adding missing REL declaration and SOLVE step. Result: mary→alice",
+      "metadata": {
+        "id": "recovery_missing_rel_and_solve_22",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "missing_rel_and_solve"
+      }
+    },
+    {
+      "input": "Code with syntax errors",
+      "output": "This ByteLogic code has syntax errors: <computation>\nREL parent\nFACTS parent kate nancy\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Unknown keyword 'FACTS'. Did you mean 'FACT'?",
+      "metadata": {
+        "id": "error_syntax_error_18",
+        "category": "error_handling",
+        "subcategory": "syntax_error",
+        "difficulty": "intermediate",
+        "expected_error": "syntax_error",
+        "error_type": "syntax_error"
+      }
+    }
+  ],
+  "test": [
+    {
+      "input": "Code with syntax errors",
+      "output": "This ByteLogic code has syntax errors: <computation>\nREL parent\nFACTS parent tina mary\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Unknown keyword 'FACTS'. Did you mean 'FACT'?",
+      "metadata": {
+        "id": "error_syntax_error_47",
+        "category": "error_handling",
+        "subcategory": "syntax_error",
+        "difficulty": "intermediate",
+        "expected_error": "syntax_error",
+        "error_type": "syntax_error"
+      }
+    },
+    {
+      "input": "Fix this broken ByteLogic code: FACT parent alice bob QUERY parent ? ?",
+      "output": "I'll fix this step by step: <computation>\nREL parent\nFACT parent oscar ruth\nSOLVE\nQUERY parent ? ?\n</computation> → Fixed by adding missing REL declaration and SOLVE step. Result: oscar→ruth",
+      "metadata": {
+        "id": "recovery_missing_rel_and_solve_25",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "missing_rel_and_solve"
+      }
+    },
+    {
+      "input": "Create a rule with an unbound variable",
+      "output": "This ByteLogic code has a variable binding error: <computation>\nREL parent\nFACT parent ruth kate\nRULE test: SCAN parent, EMIT result $2 $0\nSOLVE\nQUERY result ? ?\n</computation> ❌ Error: Variable $2 is not bound in the SCAN operation. Only $0 and $1 are available.",
+      "metadata": {
+        "id": "error_unbound_variable_34",
+        "category": "error_handling",
+        "subcategory": "unbound_variable",
+        "difficulty": "intermediate",
+        "expected_error": "unbound_variable",
+        "error_type": "unbound_variable"
+      }
+    },
+    {
+      "input": "Fix this broken ByteLogic code: FACT parent alice bob QUERY parent ? ?",
+      "output": "I'll fix this step by step: <computation>\nREL parent\nFACT parent nancy frank\nSOLVE\nQUERY parent ? ?\n</computation> → Fixed by adding missing REL declaration and SOLVE step. Result: nancy→frank",
+      "metadata": {
+        "id": "recovery_missing_rel_and_solve_21",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "missing_rel_and_solve"
+      }
+    },
+    {
+      "input": "Correct this rule with unbound variables: RULE test: SCAN parent, EMIT result $2 $0",
+      "output": "I'll fix the variable binding: <computation>\nREL parent\nFACT parent charlie henry\nRULE test: SCAN parent, EMIT result $0 $1\nSOLVE\nQUERY result ? ?\n</computation> → Fixed by using bound variables $0 and $1 instead of unbound $2. Result: charlie→henry",
+      "metadata": {
+        "id": "recovery_unbound_variable_10",
+        "category": "error_handling",
+        "subcategory": "error_recovery",
+        "difficulty": "advanced",
+        "error_fixed": "unbound_variable"
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent henry mary\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_9",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "What happens if WASM execution fails?",
+      "output": "If ByteLogic compilation or WASM execution fails: <computation>\nREL parent\nFACT parent quinn grace\nSOLVE\nQUERY parent ? ?\n</computation> ⚠️ If compilation/execution fails, I'll explain the error and suggest fixes rather than returning invalid results.",
+      "metadata": {
+        "id": "runtime_error_8",
+        "category": "error_handling",
+        "subcategory": "runtime_errors",
+        "difficulty": "advanced",
+        "handles_execution_failure": true
+      }
+    },
+    {
+      "input": "Code with syntax errors",
+      "output": "This ByteLogic code has syntax errors: <computation>\nREL parent\nFACTS parent alice jack\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Unknown keyword 'FACTS'. Did you mean 'FACT'?",
+      "metadata": {
+        "id": "error_syntax_error_16",
+        "category": "error_handling",
+        "subcategory": "syntax_error",
+        "difficulty": "intermediate",
+        "expected_error": "syntax_error",
+        "error_type": "syntax_error"
+      }
+    },
+    {
+      "input": "Find parent relationships without declaring the relation",
+      "output": "I notice there's an error in this ByteLogic code: <computation>\nFACT parent mary kate\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Relation 'parent' used but not declared. Need to add 'REL parent' first.",
+      "metadata": {
+        "id": "error_undefined_relation_1",
+        "category": "error_handling",
+        "subcategory": "undefined_relation",
+        "difficulty": "intermediate",
+        "expected_error": "undefined_relation",
+        "error_type": "undefined_relation"
+      }
+    },
+    {
+      "input": "Code with syntax errors",
+      "output": "This ByteLogic code has syntax errors: <computation>\nREL parent\nFACTS parent grace ruth\nSOLVE\nQUERY parent ? ?\n</computation> ❌ Error: Unknown keyword 'FACTS'. Did you mean 'FACT'?",
+      "metadata": {
+        "id": "error_syntax_error_27",
+        "category": "error_handling",
+        "subcategory": "syntax_error",
+        "difficulty": "intermediate",
+        "expected_error": "syntax_error",
+        "error_type": "syntax_error"
+      }
+    }
+  ]
+}

@@ -1,72 +1,66 @@
 # Training Datasets
 
-This directory contains ByteLogic training datasets in different formats and versions.
+This directory contains ByteLogic training datasets organized for clarity.
 
-## Primary Datasets (Use These)
+## 🏆 **Main Dataset (Use This)**
 
-### `corrected_bytelogic_dataset.json` ⭐ **RECOMMENDED**
-- **1,000 examples** (100% syntax validated)
-- **ByteLogic 2.0 compatible** (works with current compiler)
-- **Perfect quality**: 0 syntax errors
-- **Categories**: Family relationships, graph algorithms, logic programming
-- **Format**: JSON with train/validation/test splits
+### `complete_bytelogic_dataset.json` ⭐ **RECOMMENDED**
+- **1,100 examples** total (ByteLogic language + error handling)
+- **Format**: JSON with train/validation/test splits (880/110/110)
+- **Features**: Core ByteLogic 2.0 syntax + error detection/recovery
+- **Quality**: 100% syntax validated + comprehensive error handling
+- **Best for**: Production training with robust error handling
 
-### `comprehensive_bytelogic_dataset.json`
-- **1,650 examples** with advanced features
-- **ByteLogic 3.0 syntax** (requires compiler updates)
-- **Advanced features**: Loops, calculations, string processing
-- **Status**: Some syntax errors due to unsupported features
+## 📁 **Component Datasets (parts/ subdirectory)**
 
-## JSONL Exports (Auto-Generated)
+Individual datasets are available in `parts/` for reference:
 
-These are automatically generated from the main JSON files:
+### Core Language Components
+- `parts/corrected_bytelogic_dataset.json` - 1,000 core ByteLogic examples
+- `parts/comprehensive_bytelogic_dataset.json` - 1,650 experimental examples (ByteLogic 3.0)
 
-### Corrected Dataset (JSONL)
-- `bytelogic_train_corrected.jsonl` - 800 training examples
-- `bytelogic_validation_corrected.jsonl` - 100 validation examples  
-- `bytelogic_test_corrected.jsonl` - 100 test examples
+### Error Handling Component  
+- `parts/bytelogic_error_handling_dataset.json` - 100 error handling examples
 
-### Comprehensive Dataset (JSONL)
-- `bytelogic_train_comprehensive.jsonl` - 1,320 training examples
-- `bytelogic_validation_comprehensive.jsonl` - 165 validation examples
-- `bytelogic_test_comprehensive.jsonl` - 165 test examples
+### JSONL Exports
+- `parts/bytelogic_train_*.jsonl` - Training splits
+- `parts/bytelogic_validation_*.jsonl` - Validation splits
+- `parts/bytelogic_test_*.jsonl` - Test splits
 
 ## Usage Recommendations
 
-### For Production Training
+### For Production Training (Recommended)
 ```bash
 python3 train_bytelogic_worldmodel.py \
-  --dataset training/datasets/corrected_bytelogic_dataset.json
+  --dataset training/datasets/complete_bytelogic_dataset.json
+```
+
+### For Core Language Only
+```bash
+python3 train_bytelogic_worldmodel.py \
+  --dataset training/datasets/parts/corrected_bytelogic_dataset.json
 ```
 
 ### For Experimental Training (Advanced Features)
 ```bash
 python3 train_bytelogic_worldmodel.py \
-  --dataset training/datasets/comprehensive_bytelogic_dataset.json
+  --dataset training/datasets/parts/comprehensive_bytelogic_dataset.json
 ```
 
-### For Streaming Training (Large Datasets)
-```bash
-python3 train_bytelogic_worldmodel.py \
-  --dataset training/datasets/bytelogic_train_corrected.jsonl
-```
+## Dataset Organization
 
-## Dataset Consolidation
+**Main dataset**: `complete_bytelogic_dataset.json` combines all training data for production use.
 
-**All datasets are consolidated into the main JSON files.** The JSONL files are exports for convenience:
+**Component datasets** in `parts/`:
+- Core ByteLogic examples (1,000)
+- Error handling examples (100) 
+- Experimental advanced features (1,650)
+- JSONL exports for streaming
 
-- `corrected_bytelogic_dataset.json` = All corrected examples
-- `comprehensive_bytelogic_dataset.json` = All comprehensive examples  
-- Individual JSONL files = Splits for streaming/memory efficiency
+**File Sizes**:
+- `complete_bytelogic_dataset.json`: 1.2MB (1,100 examples) ⭐ **USE THIS**
+- `parts/corrected_bytelogic_dataset.json`: 1.1MB (1,000 examples)
+- `parts/comprehensive_bytelogic_dataset.json`: 2.1MB (1,650 examples)
+- `parts/bytelogic_error_handling_dataset.json`: 0.1MB (100 examples)
 
-You can use either:
-1. **JSON files** (recommended) - Load entire dataset with splits
-2. **JSONL files** - Stream individual splits for large-scale training
-
-## File Sizes
-
-- **corrected_bytelogic_dataset.json**: 1.1MB (1,000 examples)
-- **comprehensive_bytelogic_dataset.json**: 2.1MB (1,650 examples)
-- **Total JSONL files**: ~3MB (all splits combined)
-
-**Recommendation**: Use `corrected_bytelogic_dataset.json` for reliable training with 100% validated syntax.
+**Recommendation**: Use `complete_bytelogic_dataset.json` for production training with comprehensive error handling.

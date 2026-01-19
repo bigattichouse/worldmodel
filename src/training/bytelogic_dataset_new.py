@@ -203,10 +203,7 @@ class ByteLogicDataset(Dataset):
         return {
             'input_ids': encoding['input_ids'].squeeze(0),
             'attention_mask': encoding['attention_mask'].squeeze(0),
-            'labels': labels.squeeze(0),
-            'bytelogic_code': example.get("bytelogic_code", ""),
-            'category': example.get("category", "unknown"),
-            'difficulty': example.get("difficulty", "unknown")
+            'labels': labels.squeeze(0)
         }
 
 

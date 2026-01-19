@@ -136,7 +136,7 @@ def create_training_arguments(output_dir: str, epochs: int, learning_rate: float
         eval_strategy="steps",
         eval_steps=200,
         save_strategy="steps", 
-        save_steps=500,
+        save_steps=400,  # Multiple of eval_steps (200)
         save_total_limit=5,
         
         # Optimization
