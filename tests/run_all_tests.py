@@ -14,15 +14,19 @@ from pathlib import Path
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-def run_test(test_script, description):
+def run_test(test_cmd, description):
     """Run a single test script."""
     print(f"\n🧪 Running {description}...")
     print("=" * 50)
     
     try:
-        result = subprocess.run([
-            sys.executable, test_script
-        ], cwd=Path(__file__).parent, capture_output=False)
+        # Handle command arguments properly
+        if isinstance(test_cmd, str):
+            cmd_args = [sys.executable] + test_cmd.split()
+        else:
+            cmd_args = [sys.executable] + test_cmd
+            
+        result = subprocess.run(cmd_args, cwd=Path(__file__).parent, capture_output=False)
         
         if result.returncode == 0:
             print(f"✅ {description} PASSED")
@@ -53,18 +57,15 @@ def main():
     results = []
     
     for test_cmd, description in tests:
-        # Split command if it has arguments
-        cmd_parts = test_cmd.split()
-        test_script = cmd_parts[0]
-        
-        # Check if test file exists
+        # Check if test file exists (first part of command)
+        test_script = test_cmd.split()[0]
         if not os.path.exists(test_script):
             print(f"⚠️  Test file not found: {test_script}")
             results.append((description, False))
             continue
         
         # Run the test
-        success = run_test(test_cmd.split(), description)
+        success = run_test(test_cmd, description)
         results.append((description, success))
     
     # Summary

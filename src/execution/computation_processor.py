@@ -12,7 +12,7 @@ import logging
 from typing import Dict, List, Optional, Tuple, Any
 from .bytelogic_executor import ByteLogicExecutor
 from .wasm_executor import WASMExecutor
-from ..tokenization.bytelogic_tokenizer import ByteLogicTokenizer
+from tokenization.bytelogic_tokenizer import ByteLogicTokenizer
 
 logger = logging.getLogger(__name__)
 

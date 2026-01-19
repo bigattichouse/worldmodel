@@ -12,11 +12,11 @@ from typing import Dict, Optional, List, Any
 from transformers import AutoModel, AutoTokenizer, AutoConfig
 
 from .cross_modal_attention import CrossModalAttention
-from ..execution.wasm_executor import WASMExecutor
-from ..execution.bytelogic_executor import ByteLogicExecutor
-from ..execution.computation_processor import ComputationTokenProcessor
-from ..tokenization.wat_tokenizer import WATTokenizer
-from ..tokenization.bytelogic_tokenizer import ByteLogicTokenizer
+from execution.wasm_executor import WASMExecutor
+from execution.bytelogic_executor import ByteLogicExecutor
+from execution.computation_processor import ComputationTokenProcessor
+from tokenization.wat_tokenizer import WATTokenizer
+from tokenization.bytelogic_tokenizer import ByteLogicTokenizer
 
 
 class QwenWASMAdapter(nn.Module):
