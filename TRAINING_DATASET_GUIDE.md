@@ -51,6 +51,13 @@ Available datasets for training:
 
 RECOMMENDATIONS:
 
+For AUTOMATIC LOADING (Most Flexible - NEW!):
+  Load ALL datasets automatically from the directory:
+  python3 train_bytelogic_worldmodel.py \
+    --model ~/workspace/model/Qwen3-0.6B \
+    --dataset auto \
+    --epochs 5
+
 For MAXIMUM DATA (Prevents Overfitting - RECOMMENDED):
   Use the large-scale dataset (10x original size):
   python3 train_bytelogic_worldmodel.py \
@@ -96,12 +103,15 @@ SYNTHETIC EXAMPLE CATEGORIES ADDED:
 DATASET CHARACTERISTICS:
 - All datasets maintain 100% standard ByteLogic syntax compatibility
 - All datasets preserve same validation/test splits for consistent evaluation
+- Auto-loading capability: Use --dataset auto to load ALL datasets from training/datasets/
 - Large-scale dataset increases training data by ~1000% (880 -> 8,694 examples) helping prevent overfitting
 - Ultimate dataset combines all datasets for comprehensive coverage (8,154 examples)
 - Comprehensive dataset increases training data by 80% (880 -> 1,577 examples)
 - Added diverse natural language patterns to improve generalization
 - Added thousands of mathematical, rate/ratio, and calculation examples for stronger foundations
 
+The auto-loading feature (--dataset auto) automatically loads all datasets from the directory,
+making it easy to include new datasets without changing the training script.
 The large-scale dataset with 8,694 training examples is ideal for
 training a robust, generalized model that won't overfit to the small dataset.
 The ultimate dataset with 8,154 examples provides all-inclusive coverage.
