@@ -520,7 +520,7 @@ def main():
     """Main training function."""
     parser = argparse.ArgumentParser(description="ByteLogic Integrated WorldModel Training")
     parser.add_argument("--model", required=True, help="Path to base model")
-    parser.add_argument("--dataset", required=True, help="Path to ByteLogic dataset (use 'auto' or 'all' to load all datasets from training/datasets/)")
+    parser.add_argument("--dataset", default="auto", help="Path to ByteLogic dataset (use 'auto' or 'all' to load all datasets from training/datasets/, DEFAULT: auto)")
     parser.add_argument("--output_dir", default="integrated_worldmodel_output", help="Output directory")
     parser.add_argument("--epochs", type=int, default=5, help="Number of epochs")
     parser.add_argument("--batch_size", type=int, default=2, help="Batch size")
@@ -532,7 +532,7 @@ def main():
     logger.info(f"🎯 Integrated ByteLogic WorldModel Training")
     logger.info(f"   Model: {args.model}")
     if args.dataset.lower() in ['auto', 'all']:
-        logger.info(f"   Dataset: Loading ALL datasets automatically from training/datasets/")
+        logger.info(f"   Dataset: Loading ALL datasets automatically from training/datasets/ (DEFAULT)")
     else:
         logger.info(f"   Dataset: {args.dataset}")
     logger.info(f"   Output: {args.output_dir}")
