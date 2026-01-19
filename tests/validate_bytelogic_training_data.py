@@ -20,7 +20,7 @@ class ByteLogicValidator:
     """Validator for ByteLogic training examples."""
     
     def __init__(self):
-        self.bytelogic_compiler = "./bytelogic/build/bytelogic"
+        self.bytelogic_compiler = "../bytelogic/build/bytelogic"
         self.valid_examples = 0
         self.invalid_examples = 0
         self.syntax_errors = []

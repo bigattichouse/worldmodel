@@ -192,8 +192,8 @@ def check_specific_datasets():
     """Check our specific ByteLogic datasets."""
     
     datasets_to_check = [
-        "training/datasets/corrected_bytelogic_dataset.json",
-        "training/datasets/comprehensive_bytelogic_dataset.json"
+        "../training/datasets/corrected_bytelogic_dataset.json",
+        "../training/datasets/comprehensive_bytelogic_dataset.json"
     ]
     
     all_results = {}
