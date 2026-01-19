@@ -86,7 +86,7 @@ class ByteLogicDatasetGenerator:
         for i in range(count):
             math_type = random.choice([
                 "basic_arithmetic", "percentage", "factorial", "fibonacci",
-                "power_calculations", "trigonometry", "mathematical_functions"
+                "power_calculations", "trigonometry", "mathematical_functions", "natural_language_math"
             ])
             
             if math_type == "basic_arithmetic":
@@ -103,8 +103,57 @@ class ByteLogicDatasetGenerator:
                 examples.append(self._generate_trigonometry_example(i))
             elif math_type == "mathematical_functions":
                 examples.append(self._generate_math_functions_example(i))
+            elif math_type == "natural_language_math":
+                examples.append(self._generate_natural_language_math_example(i))
         
         return examples
+
+    def _generate_natural_language_math_example(self, idx: int) -> Dict:
+        """Generate math examples from natural language questions."""
+        question_type = random.choice([
+            "half", "double", "add", "subtract", "multiply", "divide"
+        ])
+        
+        a = random.randint(10, 100)
+        b = random.randint(2, 10)
+        
+        if question_type == "half":
+            a = a * 2 # Ensure it's even
+            question = f"what's half of {a}"
+            code = f"CALC half\nINPUT $0\nRESULT $0 / 2\nEND\nRESULT CALC half({a})"
+            result = a // 2
+        elif question_type == "double":
+            question = f"what's double {a}"
+            code = f"CALC double\nINPUT $0\nRESULT $0 * 2\nEND\nRESULT CALC double({a})"
+            result = a * 2
+        elif question_type == "add":
+            question = f"what's {a} plus {b}"
+            code = f"CALC add\nINPUT $0 $1\nRESULT $0 + $1\nEND\nRESULT CALC add({a}, {b})"
+            result = a + b
+        elif question_type == "subtract":
+            question = f"what's {a} minus {b}"
+            code = f"CALC subtract\nINPUT $0 $1\nRESULT $0 - $1\nEND\nRESULT CALC subtract({a}, {b})"
+            result = a - b
+        elif question_type == "multiply":
+            question = f"what's {a} times {b}"
+            code = f"CALC multiply\nINPUT $0 $1\nRESULT $0 * $1\nEND\nRESULT CALC multiply({a}, {b})"
+            result = a * b
+        else: # divide
+            a = a * b # Ensure it's a clean division
+            question = f"what's {a} divided by {b}"
+            code = f"CALC divide\nINPUT $0 $1\nRESULT $0 / $1\nEND\nRESULT CALC divide({a}, {b})"
+            result = a // b
+            
+        return {
+            "id": f"natural_math_{idx}",
+            "category": "mathematical_computation",
+            "subcategory": "natural_language_math",
+            "difficulty": "beginner",
+            "input": question,
+            "output": f"I'll calculate that: <computation>\n{code}\n</computation> → {result}",
+            "bytelogic_code": code,
+            "expected_result": [result]
+        }
     
     def generate_string_processing_examples(self, count: int = 100) -> List[Dict]:
         """Generate string processing examples."""
@@ -939,7 +988,7 @@ def main():
     
     # Save to file
     os.makedirs("training/datasets", exist_ok=True)
-    output_file = "training/datasets/comprehensive_bytelogic_dataset.json"
+    output_file = "training/datasets/comprehensive_bytelogic_dataset_with_natural_language.json"
     
     with open(output_file, 'w') as f:
         json.dump(dataset, f, indent=2)
@@ -948,7 +997,7 @@ def main():
     
     # Save JSONL files for each split
     for split in ["train", "validation", "test"]:
-        jsonl_file = f"training/datasets/bytelogic_{split}_comprehensive.jsonl"
+        jsonl_file = f"training/datasets/bytelogic_{split}_comprehensive_natural_language.jsonl"
         with open(jsonl_file, 'w') as f:
             for example in dataset[split]:
                 f.write(json.dumps(example) + '\n')
