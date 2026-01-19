@@ -308,7 +308,7 @@ class WASMExecutor:
             # Note: For wasmtime execution, we can't access the original WAT code,
             # so we pass an empty string for wat_code parameter
             validated_inputs = self._validate_and_select_inputs(inputs, param_count, "")
-            print(f"      Function expects {param_count} parameters, got {len(inputs) if inputs else 0}, using {len(validated_inputs)}")
+            # print(f"      Function expects {param_count} parameters, got {len(inputs) if inputs else 0}, using {len(validated_inputs)}")
             
             # Execute with validated parameters
             if param_count == 2 and len(validated_inputs) >= 2:

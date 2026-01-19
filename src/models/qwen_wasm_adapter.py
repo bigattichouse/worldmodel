@@ -562,7 +562,7 @@ class QwenWASMAdapter(nn.Module):
                 candidate["result"] = None
                 candidate["error"] = f"Low score ({candidate['score']:.2f})"
         
-        print(f"   ⚡ Selective execution: {executed_count}/{len(candidates)} operations computed")
+        # print(f"   ⚡ Selective execution: {executed_count}/{len(candidates)} operations computed")
         
         return candidates
     

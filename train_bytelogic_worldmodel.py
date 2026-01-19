@@ -281,7 +281,7 @@ class ByteLogicComputationTrainer:
             
             # Log progress
             if batch_idx % 10 == 0:
-                logger.info(f"  Batch {batch_idx}: loss={loss.item():.4f}, lm_loss={lm_loss.item():.4f}")
+                logger.info(f"  Batch {batch_idx}/{len(self.train_loader)}: loss={loss.item():.4f}, lm_loss={lm_loss.item():.4f}")
         
         # Average losses
         avg_loss = total_loss / num_batches
