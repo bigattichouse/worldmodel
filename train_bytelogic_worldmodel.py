@@ -359,12 +359,17 @@ class ByteLogicComputationTrainer:
             # Calculate progress percentage
             progress_pct = ((batch_idx + 1) / total_batches) * 100
 
-            # Update progress line (without newlines to keep it on same line)
-            print(f"\r  Epoch {epoch + 1}/{total_batches} | {progress_pct:.1f}% | loss={loss.item():.4f} | {batch_time:.2f}s/batch | ETA: {eta_seconds/60:.1f}m", end="")
+            # Update progress line (separate from logging)
+            prog_line = f"\r  Epoch {epoch + 1} Batch {batch_idx + 1}/{total_batches} | {progress_pct:.1f}% | loss={loss.item():.4f} | {batch_time:.2f}s/batch | ETA: {eta_seconds/60:.1f}m"
+            print(prog_line, end="", flush=True)
 
             # Log progress every 50 batches for detailed tracking
             if (batch_idx + 1) % 50 == 0:
+                # Add a newline before log message to separate from progress
+                print()  # newline to separate from progress line
                 logger.info(f"  Batch {batch_idx + 1}/{total_batches}: loss={loss.item():.4f}, lm_loss={lm_loss.item():.4f}, elapsed={elapsed_time/60:.1f}min")
+                # Re-print progress line after log
+                print(prog_line, end="", flush=True)
 
         # Print a newline after progress bar
         print()
@@ -439,8 +444,9 @@ class ByteLogicComputationTrainer:
                 # Calculate progress percentage
                 progress_pct = ((batch_idx + 1) / total_batches) * 100
 
-                # Update progress line for validation
-                print(f"\r  Validation {batch_idx + 1}/{total_batches} | {progress_pct:.1f}% | loss={loss.item():.4f} | ETA: {eta_seconds/60:.1f}m", end="")
+                # Update progress line for validation (separate from logging)
+                prog_line = f"\r  Validation Batch {batch_idx + 1}/{total_batches} | {progress_pct:.1f}% | loss={loss.item():.4f} | ETA: {eta_seconds/60:.1f}m"
+                print(prog_line, end="", flush=True)
 
         # Print newline after validation progress bar
         print()
