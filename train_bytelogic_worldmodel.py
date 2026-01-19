@@ -298,59 +298,82 @@ class ByteLogicComputationTrainer:
     def train_epoch(self, epoch: int) -> Dict[str, float]:
         """Train one epoch with integrated ByteLogic execution."""
         self.model.train()
-        
+
         total_loss = 0.0
         total_lm_loss = 0.0
         total_comp_loss = 0.0
         num_batches = 0
-        
-        logger.info(f"🏋️ Training epoch {epoch + 1}")
-        
+
+        # For progress tracking
+        import time
+        start_time = time.time()
+        total_batches = len(self.train_loader)
+
+        logger.info(f"🏋️ Training epoch {epoch + 1} - {total_batches} batches")
+
         for batch_idx, batch in enumerate(self.train_loader):
+            batch_start_time = time.time()
+
             # Move batch to device
             input_ids = batch['input_ids'].to(self.device)
             attention_mask = batch['attention_mask'].to(self.device)
             labels = batch['labels'].to(self.device)
-            
+
             # Forward pass with ByteLogic execution
             self.optimizer.zero_grad()
-            
+
             outputs = self.model(
                 input_ids=input_ids,
                 attention_mask=attention_mask,
                 execute_wasm=True,  # CRITICAL: Enable computation during training
                 return_dict=True
             )
-            
+
             # Compute loss
             loss, lm_loss, comp_loss = self._compute_loss(outputs, labels)
-            
+
             # Backward pass
             loss.backward()
-            
+
             # Gradient clipping
             torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0)
-            
+
             # Optimizer step
             self.optimizer.step()
             self.scheduler.step()
-            
+
             # Update metrics
             total_loss += loss.item()
             total_lm_loss += lm_loss.item()
             if isinstance(comp_loss, torch.Tensor):
                 total_comp_loss += comp_loss.item()
             num_batches += 1
-            
-            # Log progress
-            if batch_idx % 10 == 0:
-                logger.info(f"  Batch {batch_idx}/{len(self.train_loader)}: loss={loss.item():.4f}, lm_loss={lm_loss.item():.4f}")
-        
+
+            # Calculate timing stats
+            batch_time = time.time() - batch_start_time
+            elapsed_time = time.time() - start_time
+            avg_time_per_batch = elapsed_time / (batch_idx + 1)
+            remaining_batches = total_batches - (batch_idx + 1)
+            eta_seconds = remaining_batches * avg_time_per_batch
+
+            # Calculate progress percentage
+            progress_pct = ((batch_idx + 1) / total_batches) * 100
+
+            # Update progress line (without newlines to keep it on same line)
+            print(f"\r  Epoch {epoch + 1}/{total_batches} | {progress_pct:.1f}% | loss={loss.item():.4f} | {batch_time:.2f}s/batch | ETA: {eta_seconds/60:.1f}m", end="")
+
+            # Log progress every 50 batches for detailed tracking
+            if (batch_idx + 1) % 50 == 0:
+                logger.info(f"  Batch {batch_idx + 1}/{total_batches}: loss={loss.item():.4f}, lm_loss={lm_loss.item():.4f}, elapsed={elapsed_time/60:.1f}min")
+
+        # Print a newline after progress bar
+        print()
+
         # Average losses
         avg_loss = total_loss / num_batches
         avg_lm_loss = total_lm_loss / num_batches
         avg_comp_loss = total_comp_loss / num_batches
-        
+
         return {
             'total_loss': avg_loss,
             'lm_loss': avg_lm_loss,
@@ -360,21 +383,28 @@ class ByteLogicComputationTrainer:
     def validate(self) -> Dict[str, float]:
         """Validate model with ByteLogic execution."""
         self.model.eval()
-        
+
         total_loss = 0.0
         total_lm_loss = 0.0
         total_comp_loss = 0.0
         num_batches = 0
         successful_executions = 0
         total_executions = 0
-        
+
+        # For validation progress tracking
+        import time
+        start_time = time.time()
+        total_batches = len(self.val_loader)
+
+        logger.info(f"🔍 Validation - {total_batches} batches")
+
         with torch.no_grad():
-            for batch in self.val_loader:
+            for batch_idx, batch in enumerate(self.val_loader):
                 # Move batch to device
                 input_ids = batch['input_ids'].to(self.device)
                 attention_mask = batch['attention_mask'].to(self.device)
                 labels = batch['labels'].to(self.device)
-                
+
                 # Forward pass with ByteLogic execution
                 outputs = self.model(
                     input_ids=input_ids,
@@ -382,30 +412,45 @@ class ByteLogicComputationTrainer:
                     execute_wasm=True,  # Execute during validation too
                     return_dict=True
                 )
-                
+
                 # Compute loss
                 loss, lm_loss, comp_loss = self._compute_loss(outputs, labels)
-                
+
                 # Update metrics
                 total_loss += loss.item()
                 total_lm_loss += lm_loss.item()
                 if isinstance(comp_loss, torch.Tensor):
                     total_comp_loss += comp_loss.item()
                 num_batches += 1
-                
+
                 # Track execution success
                 execution_results = outputs.get('execution_results', [])
                 for result in execution_results:
                     total_executions += 1
                     if result.get('executed', False) and result.get('success', False):
                         successful_executions += 1
-        
+
+                # Calculate validation timing stats
+                elapsed_time = time.time() - start_time
+                avg_time_per_batch = elapsed_time / (batch_idx + 1)
+                remaining_batches = total_batches - (batch_idx + 1)
+                eta_seconds = remaining_batches * avg_time_per_batch
+
+                # Calculate progress percentage
+                progress_pct = ((batch_idx + 1) / total_batches) * 100
+
+                # Update progress line for validation
+                print(f"\r  Validation {batch_idx + 1}/{total_batches} | {progress_pct:.1f}% | loss={loss.item():.4f} | ETA: {eta_seconds/60:.1f}m", end="")
+
+        # Print newline after validation progress bar
+        print()
+
         # Average metrics
         avg_loss = total_loss / num_batches
         avg_lm_loss = total_lm_loss / num_batches
         avg_comp_loss = total_comp_loss / num_batches
         execution_success_rate = successful_executions / max(total_executions, 1)
-        
+
         return {
             'val_loss': avg_loss,
             'val_lm_loss': avg_lm_loss,
