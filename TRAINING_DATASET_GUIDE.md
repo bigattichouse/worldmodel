@@ -31,14 +31,21 @@ Available datasets for training:
 
 RECOMMENDATIONS:
 
-For MAXIMUM DATA (Prevents Overfitting):
+For MAXIMUM DATA (Prevents Overfitting - RECOMMENDED):
+  Use the large-scale dataset:
+  python3 train_bytelogic_worldmodel.py \\
+    --model ~/workspace/model/Qwen3-0.6B \\
+    --dataset training/datasets/large_scale_bytelogic_dataset.json \\
+    --epochs 5
+
+For COMPREHENSIVE BUT SMALLER DATASET:
   Use the comprehensive dataset:
   python3 train_bytelogic_worldmodel.py \\
     --model ~/workspace/model/Qwen3-0.6B \\
     --dataset training/datasets/comprehensive_bytelogic_dataset.json \\
     --epochs 5
 
-For STABILITY TESTING: 
+For STABILITY TESTING:
   Use the original or expanded dataset to compare with results
 
 SYNTHETIC EXAMPLE CATEGORIES ADDED:
@@ -46,15 +53,20 @@ SYNTHETIC EXAMPLE CATEGORIES ADDED:
 - Logical reasoning (family relations, social networks)
 - Graph theory (reachability, connections)
 - Compound operations (multi-step calculations)
+- Decimal/real number operations
+- Large-scale repetition for overfitting prevention
 
 DATASET CHARACTERISTICS:
 - All datasets maintain 100% standard ByteLogic syntax compatibility
 - All datasets preserve same validation/test splits for consistent evaluation
-- Comprehensive dataset increases training data by 80% helping prevent overfitting
+- Large-scale dataset increases training data by ~1000% (880 -> 8,694 examples) helping prevent overfitting
+- Comprehensive dataset increases training data by 80% (880 -> 1,577 examples)
 - Added diverse natural language patterns to improve generalization
+- Added thousands of mathematical calculation examples for stronger foundations
 
-The comprehensive dataset with 1,577 training examples is ideal for 
+The large-scale dataset with 8,694 training examples is ideal for
 training a robust, generalized model that won't overfit to the small dataset.
+The comprehensive dataset with 1,577 training examples is a good middle ground.
 """)
 
 if __name__ == "__main__":
