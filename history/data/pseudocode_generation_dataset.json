@@ -1,0 +1,1010 @@
+{
+  "dataset_info": {
+    "name": "pseudocode_generation_dataset",
+    "description": "Training data for generating pseudocode from natural language problems",
+    "size": 200,
+    "phases": ["pseudocode_generation"]
+  },
+  "examples": [
+    {
+      "id": 1,
+      "input": "Who are Alice's children?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for Alice's children\n- Need to find all people who have Alice as their parent\n\nLOGICAL STEPS:\n1. Identify the parent-child relationship\n2. Look for all facts where Alice is the parent\n3. Extract the child from each fact\n\nBYTELOGIC APPROACH:\n- Declare parent relation\n- Add facts about parent-child relationships\n- Query for all children where Alice is the parent\n</thinking>"
+    },
+    {
+      "id": 2,
+      "input": "Who are Alice's grandchildren?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for Alice's grandchildren\n- This requires finding children of Alice's children\n- Need a transitive relationship: parent of parent\n\nLOGICAL STEPS:\n1. Find Alice's children\n2. For each child, find their children (the grandchildren)\n3. This is a classic transitive closure problem\n\nBYTELOGIC APPROACH:\n- Declare parent and grandparent relations\n- Add facts about parent-child relationships\n- Create rule to derive grandparent-grandchild from parent-child twice\n- Query for Alice's grandchildren\n</thinking>"
+    },
+    {
+      "id": 3,
+      "input": "Who are friends of Alice's friends?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for friends of Alice's friends (friends-of-friends)\n- This is a graph traversal problem\n- Need to find connections through one intermediate person\n\nLOGICAL STEPS:\n1. Find Alice's direct friends\n2. For each friend, find their friends\n3. Exclude Alice herself from the results\n4. This requires joining the friend relation with itself\n\nBYTELOGIC APPROACH:\n- Declare friend relation\n- Add facts about friendships\n- Create rule to find friend-of-friend relationships\n- Query for friends of Alice's friends\n</thinking>"
+    },
+    {
+      "id": 4,
+      "input": "What animals can fly?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for animals with the flying capability\n- Need to connect animals to their capabilities\n- May involve hierarchical relationships (species, genus, family)\n\nLOGICAL STEPS:\n1. Identify animals and their capabilities\n2. Find all animals marked as capable of flying\n3. May need to traverse classification hierarchies\n\nBYTELOGIC APPROACH:\n- Declare animal, capability, and classification relations\n- Add facts about which animals have which capabilities\n- Query for animals with flying capability\n</thinking>"
+    },
+    {
+      "id": 5,
+      "input": "Who are Bob's siblings?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for Bob's siblings\n- Siblings share the same parent\n- Need to find all people who have the same parent as Bob\n\nLOGICAL STEPS:\n1. Find Bob's parents\n2. Find all children of those parents\n3. Exclude Bob from the results\n4. This requires finding common parent relationships\n\nBYTELOGIC APPROACH:\n- Declare parent relation\n- Add facts about parent-child relationships\n- Create rule to find people with common parents\n- Query for Bob's siblings\n</thinking>"
+    },
+    {
+      "id": 6,
+      "input": "Who reports to the same manager as Charlie?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for people who report to Charlie's manager(s)\n- This is a co-worker relationship\n- Need to find Charlie's manager, then others who report to the same manager\n\nLOGICAL STEPS:\n1. Find Charlie's manager(s)\n2. Find all people who report to those same managers\n3. Exclude Charlie from the results\n4. This requires finding common reporting relationships\n\nBYTELOGIC APPROACH:\n- Declare reports_to relation\n- Add facts about reporting relationships\n- Create rule to find people with common managers\n- Query for co-workers of Charlie\n</thinking>"
+    },
+    {
+      "id": 7,
+      "input": "Which cities are connected to Boston by a direct route?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for cities directly connected to Boston\n- This is a graph connectivity problem\n- Looking for direct edges from Boston to other cities\n\nLOGICAL STEPS:\n1. Identify the connection relation\n2. Find all facts where Boston is the source\n3. Extract destination cities from those facts\n\nBYTELOGIC APPROACH:\n- Declare connection relation\n- Add facts about city connections\n- Query for all destinations where Boston is the source\n</thinking>"
+    },
+    {
+      "id": 8,
+      "input": "Which courses can I take if I've completed CS101?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for courses available after completing CS101\n- This involves prerequisite relationships\n- Need to find courses that have CS101 as a prerequisite\n\nLOGICAL STEPS:\n1. Identify the prerequisite relation\n2. Find all courses that have CS101 as a prerequisite\n3. Return those course codes\n\nBYTELOGIC APPROACH:\n- Declare prerequisite relation\n- Add facts about course prerequisites\n- Query for courses where CS101 is a prerequisite\n</thinking>"
+    },
+    {
+      "id": 9,
+      "input": "Who are the team members that Alice manages directly or indirectly?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for all people in Alice's management tree\n- This is a hierarchical management relationship\n- Need to find direct reports and their reports recursively\n\nLOGICAL STEPS:\n1. Find Alice's direct reports\n2. For each direct report, find their reports\n3. Continue recursively until no more levels\n4. This is a transitive management relationship\n\nBYTELOGIC APPROACH:\n- Declare reports_to relation\n- Add facts about reporting relationships\n- Create rule for direct management\n- Create rule for indirect management (transitive closure)\n- Query for all people managed by Alice\n</thinking>"
+    },
+    {
+      "id": 10,
+      "input": "Which products are in the same category as laptop?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for products in the same category as 'laptop'\n- This involves product categorization\n- Need to find the category of laptop, then other products in that category\n\nLOGICAL STEPS:\n1. Find the category of laptop\n2. Find all products in that same category\n3. Return those products\n\nBYTELOGIC APPROACH:\n- Declare belongs_to_category relation\n- Add facts about product-category relationships\n- Query for products in the same category as laptop\n</thinking>"
+    },
+    {
+      "id": 11,
+      "input": "Who are the friends that both Alice and Bob have?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for mutual friends of Alice and Bob\n- This is an intersection problem\n- Need to find friends of Alice, friends of Bob, then the intersection\n\nLOGICAL STEPS:\n1. Find all friends of Alice\n2. Find all friends of Bob\n3. Find the intersection of these two sets\n\nBYTELOGIC APPROACH:\n- Declare friend relation\n- Add facts about friendship relationships\n- Create rule to find mutual friends\n- Query for friends of both Alice and Bob\n</thinking>"
+    },
+    {
+      "id": 12,
+      "input": "Which employees have worked on the same projects as David?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for employees who worked on projects with David\n- This is a collaboration relationship\n- Need to find projects David worked on, then other employees on those projects\n\nLOGICAL STEPS:\n1. Find projects that David worked on\n2. For each project, find other employees\n3. Collect all such employees\n\nBYTELOGIC APPROACH:\n- Declare works_on relation\n- Add facts about employee-project relationships\n- Create rule to find collaborators\n- Query for employees on same projects as David\n</thinking>"
+    },
+    {
+      "id": 13,
+      "input": "Who are the descendants of Eve?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for all descendants of Eve\n- This is a full transitive closure of the parent relation\n- Need to find children, grandchildren, great-grandchildren, etc.\n\nLOGICAL STEPS:\n1. Find Eve's children\n2. For each child, find their children\n3. Continue recursively through all generations\n\nBYTELOGIC APPROACH:\n- Declare parent relation\n- Add facts about parent-child relationships\n- Create rule for direct parent-child\n- Create rule for transitive descendant relationship\n- Query for all descendants of Eve\n</thinking>"
+    },
+    {
+      "id": 14,
+      "input": "Which classes inherit from the Vehicle class?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for classes that inherit from Vehicle\n- This is an inheritance hierarchy problem\n- Need to find direct and indirect inheritance relationships\n\nLOGICAL STEPS:\n1. Find classes that directly inherit from Vehicle\n2. Find classes that inherit from those classes (indirect inheritance)\n3. Continue for full inheritance tree\n\nBYTELOGIC APPROACH:\n- Declare inherits_from relation\n- Add facts about inheritance relationships\n- Create rule for direct inheritance\n- Create rule for transitive inheritance\n- Query for all classes inheriting from Vehicle\n</thinking>"
+    },
+    {
+      "id": 15,
+      "input": "Who are the neighbors of node X in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for nodes directly connected to node X\n- This is an undirected graph neighbor problem\n- Need to find all nodes connected by an edge to X\n\nLOGICAL STEPS:\n1. Find all edges where X is one endpoint\n2. Extract the other endpoint from each edge\n3. This represents bidirectional connections\n\nBYTELOGIC APPROACH:\n- Declare connected relation (symmetric)\n- Add facts about bidirectional connections\n- Query for all nodes connected to X\n</thinking>"
+    },
+    {
+      "id": 16,
+      "input": "Which departments are under the same division as HR?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for departments in the same division as HR\n- This involves organizational hierarchy\n- Need to find HR's division, then other departments in that division\n\nLOGICAL STEPS:\n1. Find which division HR belongs to\n2. Find all departments in that same division\n3. Return those departments\n\nBYTELOGIC APPROACH:\n- Declare department_of relation\n- Add facts about department-division relationships\n- Query for departments in the same division as HR\n</thinking>"
+    },
+    {
+      "id": 17,
+      "input": "Who are the suppliers that provide materials to the same factories as supplier A?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for suppliers that share factory relationships with supplier A\n- This is a supplier-factory bipartite graph problem\n- Need to find factories supplied by A, then other suppliers of those factories\n\nLOGICAL STEPS:\n1. Find factories that receive supplies from supplier A\n2. For each of those factories, find other suppliers\n3. Return all such suppliers\n\nBYTELOGIC APPROACH:\n- Declare supplies_to relation\n- Add facts about supplier-factory relationships\n- Create rule to find suppliers of common factories\n- Query for suppliers of factories served by A\n</thinking>"
+    },
+    {
+      "id": 18,
+      "input": "Which genes are associated with the same disease as gene BRCA1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for genes linked to diseases that BRCA1 is also linked to\n- This is a gene-disease association problem\n- Need to find diseases of BRCA1, then other genes associated with those diseases\n\nLOGICAL STEPS:\n1. Find diseases associated with BRCA1\n2. For each disease, find other genes associated with it\n3. Return all such genes\n\nBYTELOGIC APPROACH:\n- Declare associated_with relation\n- Add facts about gene-disease associations\n- Create rule to find genes associated with common diseases\n- Query for genes associated with BRCA1's diseases\n</thinking>"
+    },
+    {
+      "id": 19,
+      "input": "Who are the students in the same study group as John?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for students in John's study groups\n- This is a group membership problem\n- Need to find groups John belongs to, then other members of those groups\n\nLOGICAL STEPS:\n1. Find study groups that John is a member of\n2. For each group, find other members\n3. Return all such students\n\nBYTELOGIC APPROACH:\n- Declare member_of relation\n- Add facts about student-group memberships\n- Create rule to find group members\n- Query for students in John's groups\n</thinking>"
+    },
+    {
+      "id": 20,
+      "input": "Which books are in the same series as 'Harry Potter'?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for books in the same series as 'Harry Potter'\n- This is a book-series categorization problem\n- Need to find the series of Harry Potter, then other books in that series\n\nLOGICAL STEPS:\n1. Find which series 'Harry Potter' belongs to\n2. Find all books in that same series\n3. Return those books\n\nBYTELOGIC APPROACH:\n- Declare part_of_series relation\n- Add facts about book-series relationships\n- Query for books in the same series as Harry Potter\n</thinking>"
+    },
+    {
+      "id": 21,
+      "input": "Who are the actors that appeared in the same movies as Tom Hanks?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for actors who co-starred with Tom Hanks\n- This is a collaboration network problem\n- Need to find movies Tom Hanks appeared in, then other actors in those movies\n\nLOGICAL STEPS:\n1. Find movies that Tom Hanks appeared in\n2. For each movie, find other actors\n3. Return all such actors\n\nBYTELOGIC APPROACH:\n- Declare acted_in relation\n- Add facts about actor-movie relationships\n- Create rule to find co-actors\n- Query for actors in Tom Hanks' movies\n</thinking>"
+    },
+    {
+      "id": 22,
+      "input": "Which proteins interact with the same proteins as protein P53?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for proteins that share interaction partners with P53\n- This is a protein-protein interaction network problem\n- Need to find proteins that P53 interacts with, then proteins that interact with those\n\nLOGICAL STEPS:\n1. Find proteins that P53 interacts with\n2. For each of those proteins, find their interaction partners\n3. Return all such proteins\n\nBYTELOGIC APPROACH:\n- Declare interacts_with relation\n- Add facts about protein-protein interactions\n- Create rule to find proteins with common interactors\n- Query for proteins interacting with P53's partners\n</thinking>"
+    },
+    {
+      "id": 23,
+      "input": "Who are the customers that purchased the same products as customer ID 12345?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for customers who bought products that customer 12345 bought\n- This is a market basket analysis problem\n- Need to find products bought by 12345, then other customers who bought those\n\nLOGICAL STEPS:\n1. Find products purchased by customer 12345\n2. For each product, find other customers who bought it\n3. Return all such customers\n\nBYTELOGIC APPROACH:\n- Declare purchased relation\n- Add facts about customer-product purchases\n- Create rule to find customers with common purchases\n- Query for customers buying 12345's products\n</thinking>"
+    },
+    {
+      "id": 24,
+      "input": "Which countries share borders with the same countries as France?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for countries that share borders with France's neighbors\n- This is a geographic adjacency problem\n- Need to find France's neighbors, then countries bordering those neighbors\n\nLOGICAL STEPS:\n1. Find countries that border France\n2. For each neighbor, find its other bordering countries\n3. Return all such countries\n\nBYTELOGIC APPROACH:\n- Declare borders relation\n- Add facts about country-country borders\n- Create rule to find countries with common neighbors\n- Query for countries bordering France's neighbors\n</thinking>"
+    },
+    {
+      "id": 25,
+      "input": "Who are the researchers collaborating with the same institutions as Dr. Smith?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for researchers affiliated with institutions where Dr. Smith also collaborates\n- This is a researcher-institution collaboration problem\n- Need to find institutions Dr. Smith works with, then other researchers there\n\nLOGICAL STEPS:\n1. Find institutions where Dr. Smith collaborates\n2. For each institution, find other researchers\n3. Return all such researchers\n\nBYTELOGIC APPROACH:\n- Declare affiliated_with relation\n- Add facts about researcher-institution relationships\n- Create rule to find researchers at common institutions\n- Query for researchers at Smith's institutions\n</thinking>"
+    },
+    {
+      "id": 26,
+      "input": "Which software packages depend on the same libraries as package X?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for packages that share library dependencies with package X\n- This is a software dependency graph problem\n- Need to find libraries that X depends on, then other packages depending on those\n\nLOGICAL STEPS:\n1. Find libraries that package X depends on\n2. For each library, find other packages that depend on it\n3. Return all such packages\n\nBYTELOGIC APPROACH:\n- Declare depends_on relation\n- Add facts about package-library dependencies\n- Create rule to find packages with common dependencies\n- Query for packages depending on X's libraries\n</thinking>"
+    },
+    {
+      "id": 27,
+      "input": "Who are the teachers in the same department as Professor Johnson?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for teachers in Professor Johnson's department\n- This is an organizational structure problem\n- Need to find Johnson's department, then other teachers in that department\n\nLOGICAL STEPS:\n1. Find which department Professor Johnson belongs to\n2. Find all teachers in that same department\n3. Return those teachers\n\nBYTELOGIC APPROACH:\n- Declare teacher_in_dept relation\n- Add facts about teacher-department assignments\n- Query for teachers in Johnson's department\n</thinking>"
+    },
+    {
+      "id": 28,
+      "input": "Which genes regulate the same target genes as transcription factor TF1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for transcription factors that regulate genes regulated by TF1\n- This is a gene regulatory network problem\n- Need to find target genes of TF1, then other regulators of those genes\n\nLOGICAL STEPS:\n1. Find genes regulated by transcription factor TF1\n2. For each target gene, find other transcription factors regulating it\n3. Return all such transcription factors\n\nBYTELOGIC APPROACH:\n- Declare regulates relation\n- Add facts about TF-target gene relationships\n- Create rule to find TFs regulating common targets\n- Query for TFs regulating TF1's targets\n</thinking>"
+    },
+    {
+      "id": 29,
+      "input": "Who are the players on teams that compete in the same league as Team A?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for players on teams in the same league as Team A\n- This is a sports league hierarchy problem\n- Need to find Team A's league, then other teams in that league, then their players\n\nLOGICAL STEPS:\n1. Find which league Team A competes in\n2. Find all teams in that same league\n3. For each team, find all players\n4. Return all such players\n\nBYTELOGIC APPROACH:\n- Declare team_in_league and player_on_team relations\n- Add facts about team-league and player-team relationships\n- Create rule to find players via league connection\n- Query for players on teams in Team A's league\n</thinking>"
+    },
+    {
+      "id": 30,
+      "input": "Which compounds have similar molecular pathways to compound C123?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for compounds that affect the same biological pathways as C123\n- This is a bioinformatics similarity problem\n- Need to find pathways affected by C123, then other compounds affecting those\n\nLOGICAL STEPS:\n1. Find biological pathways affected by compound C123\n2. For each pathway, find other compounds that affect it\n3. Return all such compounds\n\nBYTELOGIC APPROACH:\n- Declare affects_pathway relation\n- Add facts about compound-pathway relationships\n- Create rule to find compounds affecting common pathways\n- Query for compounds affecting C123's pathways\n</thinking>"
+    },
+    {
+      "id": 31,
+      "input": "Who are the users that belong to the same groups as user U456?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for users in the same groups as user U456\n- This is a user-group membership problem\n- Need to find groups U456 belongs to, then other users in those groups\n\nLOGICAL STEPS:\n1. Find groups that user U456 belongs to\n2. For each group, find other members\n3. Return all such users\n\nBYTELOGIC APPROACH:\n- Declare member_of_group relation\n- Add facts about user-group memberships\n- Create rule to find users in common groups\n- Query for users in U456's groups\n</thinking>"
+    },
+    {
+      "id": 32,
+      "input": "Which proteins are expressed in the same tissues as protein ACTN1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for proteins expressed in tissues where ACTN1 is also expressed\n- This is a proteomics co-expression problem\n- Need to find tissues where ACTN1 is expressed, then other proteins there\n\nLOGICAL STEPS:\n1. Find tissues where protein ACTN1 is expressed\n2. For each tissue, find other proteins expressed there\n3. Return all such proteins\n\nBYTELOGIC APPROACH:\n- Declare expressed_in relation\n- Add facts about protein-tissue expressions\n- Create rule to find proteins in common tissues\n- Query for proteins expressed in ACTN1's tissues\n</thinking>"
+    },
+    {
+      "id": 33,
+      "input": "Who are the vendors that supply to the same clients as vendor V789?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for vendors that share clients with vendor V789\n- This is a business relationship problem\n- Need to find clients of V789, then other vendors serving those clients\n\nLOGICAL STEPS:\n1. Find clients that vendor V789 supplies to\n2. For each client, find other vendors\n3. Return all such vendors\n\nBYTELOGIC APPROACH:\n- Declare supplies_to_client relation\n- Add facts about vendor-client relationships\n- Create rule to find vendors with common clients\n- Query for vendors supplying V789's clients\n</thinking>"
+    },
+    {
+      "id": 34,
+      "input": "Which diseases are associated with the same symptoms as disease D001?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for diseases that share symptoms with D001\n- This is a medical symptom-disease association problem\n- Need to find symptoms of D001, then other diseases with those symptoms\n\nLOGICAL STEPS:\n1. Find symptoms associated with disease D001\n2. For each symptom, find other diseases that have it\n3. Return all such diseases\n\nBYTELOGIC APPROACH:\n- Declare has_symptom relation\n- Add facts about disease-symptom associations\n- Create rule to find diseases with common symptoms\n- Query for diseases with D001's symptoms\n</thinking>"
+    },
+    {
+      "id": 35,
+      "input": "Who are the developers that contribute to the same repositories as dev X?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for developers who contribute to repositories where dev X contributes\n- This is a software collaboration network problem\n- Need to find repos dev X contributes to, then other contributors to those repos\n\nLOGICAL STEPS:\n1. Find repositories that developer X contributes to\n2. For each repository, find other contributors\n3. Return all such developers\n\nBYTELOGIC APPROACH:\n- Declare contributes_to_repo relation\n- Add facts about developer-repository contributions\n- Create rule to find developers contributing to common repos\n- Query for developers contributing to X's repos\n</thinking>"
+    },
+    {
+      "id": 36,
+      "input": "Which drugs target the same receptors as drug DRUG001?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for drugs that target the same receptors as DRUG001\n- This is a pharmacology target prediction problem\n- Need to find receptors targeted by DRUG001, then other drugs targeting those\n\nLOGICAL STEPS:\n1. Find receptors that drug DRUG001 targets\n2. For each receptor, find other drugs that target it\n3. Return all such drugs\n\nBYTELOGIC APPROACH:\n- Declare targets_receptor relation\n- Add facts about drug-receptor interactions\n- Create rule to find drugs targeting common receptors\n- Query for drugs targeting DRUG001's receptors\n</thinking>"
+    },
+    {
+      "id": 37,
+      "input": "Who are the artists featured on albums with artist ARTIST01?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for artists who appear on albums with ARTIST01\n- This is a music collaboration problem\n- Need to find albums ARTIST01 is on, then other artists on those albums\n\nLOGICAL STEPS:\n1. Find albums that feature artist ARTIST01\n2. For each album, find other featured artists\n3. Return all such artists\n\nBYTELOGIC APPROACH:\n- Declare featured_on_album relation\n- Add facts about artist-album relationships\n- Create rule to find artists on common albums\n- Query for artists featured on ARTIST01's albums\n</thinking>"
+    },
+    {
+      "id": 38,
+      "input": "Which companies operate in the same markets as company COMP01?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for companies operating in markets where COMP01 also operates\n- This is a business competition analysis problem\n- Need to find markets of COMP01, then other companies in those markets\n\nLOGICAL STEPS:\n1. Find markets where company COMP01 operates\n2. For each market, find other operating companies\n3. Return all such companies\n\nBYTELOGIC APPROACH:\n- Declare operates_in_market relation\n- Add facts about company-market relationships\n- Create rule to find companies in common markets\n- Query for companies in COMP01's markets\n</thinking>"
+    },
+    {
+      "id": 39,
+      "input": "Who are the authors that have written for the same publishers as author AUTHOR01?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for authors who publish with the same publishers as AUTHOR01\n- This is a publishing industry relationship problem\n- Need to find publishers of AUTHOR01, then other authors published there\n\nLOGICAL STEPS:\n1. Find publishers that have published AUTHOR01's works\n2. For each publisher, find other authors they publish\n3. Return all such authors\n\nBYTELOGIC APPROACH:\n- Declare published_by relation\n- Add facts about author-publisher relationships\n- Create rule to find authors with common publishers\n- Query for authors published by AUTHOR01's publishers\n</thinking>"
+    },
+    {
+      "id": 40,
+      "input": "Which enzymes participate in the same metabolic pathways as enzyme ENZ001?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for enzymes in the same metabolic pathways as ENZ001\n- This is a biochemical pathway analysis problem\n- Need to find pathways ENZ001 participates in, then other enzymes in those\n\nLOGICAL STEPS:\n1. Find metabolic pathways that enzyme ENZ001 participates in\n2. For each pathway, find other participating enzymes\n3. Return all such enzymes\n\nBYTELOGIC APPROACH:\n- Declare participates_in_pathway relation\n- Add facts about enzyme-pathway relationships\n- Create rule to find enzymes in common pathways\n- Query for enzymes in ENZ001's pathways\n</thinking>"
+    },
+    {
+      "id": 41,
+      "input": "Who are the pilots that fly for the same airlines as pilot PILOT01?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for pilots who work for the same airlines as PILOT01\n- This is an employment relationship problem\n- Need to find airlines PILOT01 works for, then other pilots there\n\nLOGICAL STEPS:\n1. Find airlines that employ pilot PILOT01\n2. For each airline, find other pilots employed there\n3. Return all such pilots\n\nBYTELOGIC APPROACH:\n- Declare pilot_for_airline relation\n- Add facts about pilot-airline employment\n- Create rule to find pilots with common employers\n- Query for pilots flying for PILOT01's airlines\n</thinking>"
+    },
+    {
+      "id": 42,
+      "input": "Which diseases have the same genetic causes as disease GENETIC01?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for diseases with the same genetic causes as GENETIC01\n- This is a genetic disease association problem\n- Need to find genetic causes of GENETIC01, then other diseases with those\n\nLOGICAL STEPS:\n1. Find genetic causes associated with disease GENETIC01\n2. For each genetic cause, find other diseases caused by it\n3. Return all such diseases\n\nBYTELOGIC APPROACH:\n- Declare caused_by_gene relation\n- Add facts about disease-genetic cause relationships\n- Create rule to find diseases with common genetic causes\n- Query for diseases caused by GENETIC01's genes\n</thinking>"
+    },
+    {
+      "id": 43,
+      "input": "Who are the designers that work for the same fashion houses as designer FASH01?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for designers working at fashion houses where FASH01 also works\n- This is a creative industry employment problem\n- Need to find fashion houses employing FASH01, then other designers there\n\nLOGICAL STEPS:\n1. Find fashion houses that employ designer FASH01\n2. For each house, find other designers employed there\n3. Return all such designers\n\nBYTELOGIC APPROACH:\n- Declare designer_for_house relation\n- Add facts about designer-fashion house employment\n- Create rule to find designers with common employers\n- Query for designers working at FASH01's houses\n</thinking>"
+    },
+    {
+      "id": 44,
+      "input": "Which proteins have similar domain structures to protein DOM001?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for proteins with similar domain structures to DOM001\n- This is a structural bioinformatics problem\n- Need to find domains of DOM001, then other proteins with those domains\n\nLOGICAL STEPS:\n1. Find protein domains present in protein DOM001\n2. For each domain, find other proteins containing it\n3. Return all such proteins\n\nBYTELOGIC APPROACH:\n- Declare has_domain relation\n- Add facts about protein-domain compositions\n- Create rule to find proteins with common domains\n- Query for proteins containing DOM001's domains\n</thinking>"
+    },
+    {
+      "id": 45,
+      "input": "Who are the athletes competing in the same sports as athlete ATH001?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for athletes in the same sports as ATH001\n- This is a sports participation problem\n- Need to find sports ATH001 competes in, then other athletes in those sports\n\nLOGICAL STEPS:\n1. Find sports that athlete ATH001 competes in\n2. For each sport, find other competing athletes\n3. Return all such athletes\n\nBYTELOGIC APPROACH:\n- Declare competes_in_sport relation\n- Add facts about athlete-sport relationships\n- Create rule to find athletes in common sports\n- Query for athletes competing in ATH001's sports\n</thinking>"
+    },
+    {
+      "id": 46,
+      "input": "Which drugs have similar side effects to drug SIDE001?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for drugs with similar side effects to SIDE001\n- This is a pharmaceutical similarity problem\n- Need to find side effects of SIDE001, then other drugs causing those\n\nLOGICAL STEPS:\n1. Find side effects associated with drug SIDE001\n2. For each side effect, find other drugs that cause it\n3. Return all such drugs\n\nBYTELOGIC APPROACH:\n- Declare causes_side_effect relation\n- Add facts about drug-side effect relationships\n- Create rule to find drugs with common side effects\n- Query for drugs causing SIDE001's side effects\n</thinking>"
+    },
+    {
+      "id": 47,
+      "input": "Who are the musicians that perform in the same genres as musician MUS001?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for musicians performing in genres where MUS001 also performs\n- This is a music genre classification problem\n- Need to find genres of MUS001, then other musicians in those genres\n\nLOGICAL STEPS:\n1. Find musical genres that musician MUS001 performs in\n2. For each genre, find other musicians performing in it\n3. Return all such musicians\n\nBYTELOGIC APPROACH:\n- Declare performs_in_genre relation\n- Add facts about musician-genre relationships\n- Create rule to find musicians in common genres\n- Query for musicians performing in MUS001's genres\n</thinking>"
+    },
+    {
+      "id": 48,
+      "input": "Which plants are found in the same ecosystems as plant PLANT001?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for plants in the same ecosystems as PLANT001\n- This is an ecological co-occurrence problem\n- Need to find ecosystems where PLANT001 grows, then other plants there\n\nLOGICAL STEPS:\n1. Find ecosystems where plant PLANT001 is found\n2. For each ecosystem, find other plants growing there\n3. Return all such plants\n\nBYTELOGIC APPROACH:\n- Declare found_in_ecosystem relation\n- Add facts about plant-ecosystem relationships\n- Create rule to find plants in common ecosystems\n- Query for plants in PLANT001's ecosystems\n</thinking>"
+    },
+    {
+      "id": 49,
+      "input": "Who are the writers that have collaborated with the same editors as writer WRITE001?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for writers who collaborate with editors that WRITE001 also works with\n- This is a publishing collaboration problem\n- Need to find editors of WRITE001, then other writers they edit\n\nLOGICAL STEPS:\n1. Find editors that have worked with writer WRITE001\n2. For each editor, find other writers they work with\n3. Return all such writers\n\nBYTELOGIC APPROACH:\n- Declare edited_by relation\n- Add facts about writer-editor collaborations\n- Create rule to find writers with common editors\n- Query for writers edited by WRITE001's editors\n</thinking>"
+    },
+    {
+      "id": 50,
+      "input": "Which bacteria share the same antibiotic resistances as bacterium BAC001?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for bacteria with the same antibiotic resistances as BAC001\n- This is a microbiology resistance profile problem\n- Need to find resistances of BAC001, then other bacteria with those resistances\n\nLOGICAL STEPS:\n1. Find antibiotic resistances possessed by bacterium BAC001\n2. For each resistance, find other bacteria that have it\n3. Return all such bacteria\n\nBYTELOGIC APPROACH:\n- Declare resistant_to_antibiotic relation\n- Add facts about bacteria-antibiotic resistance relationships\n- Create rule to find bacteria with common resistances\n- Query for bacteria resistant to BAC001's antibiotics\n</thinking>"
+    },
+    {
+      "id": 51,
+      "input": "How many children does Alice have?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for the count of Alice's children\n- This requires counting the number of people who have Alice as their parent\n- Need to find all parent-child relationships where Alice is the parent\n\nLOGICAL STEPS:\n1. Identify the parent-child relationship\n2. Find all facts where Alice is the parent\n3. Count the number of distinct children\n\nBYTELOGIC APPROACH:\n- Declare parent relation\n- Add facts about parent-child relationships\n- Query for all children where Alice is the parent\n- Count the results\n</thinking>"
+    },
+    {
+      "id": 52,
+      "input": "How many grandchildren does Alice have?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for the count of Alice's grandchildren\n- This requires finding children of Alice's children\n- Need to count the number of people who are grandchildren of Alice\n\nLOGICAL STEPS:\n1. Find Alice's children\n2. For each child, count their children (the grandchildren)\n3. Sum the total count\n\nBYTELOGIC APPROACH:\n- Declare parent and grandparent relations\n- Add facts about parent-child relationships\n- Create rule to derive grandparent-grandchild relationships\n- Query for Alice's grandchildren and count them\n</thinking>"
+    },
+    {
+      "id": 53,
+      "input": "Are Bob and Charlie siblings?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether Bob and Charlie are siblings\n- Siblings share the same parent(s)\n- Need to check if Bob and Charlie have any common parent\n\nLOGICAL STEPS:\n1. Find parents of Bob\n2. Find parents of Charlie\n3. Check if there's any overlap in their parents\n\nBYTELOGIC APPROACH:\n- Declare parent relation\n- Add facts about parent-child relationships\n- Create rule to identify sibling relationships\n- Query whether Bob and Charlie are siblings\n</thinking>"
+    },
+    {
+      "id": 54,
+      "input": "Does the path exist from city A to city D?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether there's a path from city A to city D\n- This is a graph connectivity problem\n- Need to check if D is reachable from A through connected routes\n\nLOGICAL STEPS:\n1. Identify the connection relation\n2. Find all cities reachable from A (transitive closure)\n3. Check if D is in that set\n\nBYTELOGIC APPROACH:\n- Declare connected relation\n- Add facts about city connections\n- Create rule for direct connections\n- Create rule for transitive connectivity\n- Query whether A connects to D\n</thinking>"
+    },
+    {
+      "id": 55,
+      "input": "Is there a cycle in the friendship network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether there's a cycle in the friendship network\n- This is a graph cycle detection problem\n- Need to find if there's a path that returns to its starting point\n\nLOGICAL STEPS:\n1. Identify the friendship relation\n2. Find all possible paths in the network\n3. Check if any path leads back to the starting person\n\nBYTELOGIC APPROACH:\n- Declare friend relation\n- Add facts about friendships\n- Create rule for direct friendships\n- Create rule for transitive friendship paths\n- Query for cycles in the network\n</thinking>"
+    },
+    {
+      "id": 56,
+      "input": "What is the shortest path from node X to node Y?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for the shortest path between two nodes\n- This is a shortest path graph algorithm problem\n- ByteLogic doesn't directly support path length optimization\n\nLOGICAL STEPS:\n1. This problem may not be suitable for direct ByteLogic solution\n2. Could find if a path exists, but not necessarily the shortest\n3. Consider reformulating as: 'Does a path exist from X to Y?'\n\nBYTELOGIC APPROACH:\n- Note: ByteLogic is not ideal for shortest path problems\n- Could implement path existence but not optimization\n- Consider if problem can be simplified\n</thinking>"
+    },
+    {
+      "id": 57,
+      "input": "How many people are in Alice's management tree?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of all people in Alice's management hierarchy\n- This includes direct and indirect reports\n- Need to count the transitive closure of the reports_to relation\n\nLOGICAL STEPS:\n1. Find Alice's direct reports\n2. For each level, find their reports recursively\n3. Count all people in the tree\n\nBYTELOGIC APPROACH:\n- Declare reports_to relation\n- Add facts about reporting relationships\n- Create rule for direct management\n- Create rule for transitive management\n- Query and count all people managed by Alice\n</thinking>"
+    },
+    {
+      "id": 58,
+      "input": "Do Alice and Bob have any mutual friends?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether Alice and Bob share any friends\n- This is an intersection problem\n- Need to find if the intersection of their friend sets is non-empty\n\nLOGICAL STEPS:\n1. Find all friends of Alice\n2. Find all friends of Bob\n3. Check if there's any overlap\n\nBYTELOGIC APPROACH:\n- Declare friend relation\n- Add facts about friendship relationships\n- Create rule to find mutual friends\n- Query whether Alice and Bob have mutual friends\n</thinking>"
+    },
+    {
+      "id": 59,
+      "input": "How many courses can be taken after completing CS101?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of courses available after completing CS101\n- This involves prerequisite relationships\n- Need to count courses that have CS101 as a prerequisite\n\nLOGICAL STEPS:\n1. Identify the prerequisite relation\n2. Find all courses that have CS101 as a prerequisite\n3. Count those courses\n\nBYTELOGIC APPROACH:\n- Declare prerequisite relation\n- Add facts about course prerequisites\n- Query for courses where CS101 is a prerequisite and count\n</thinking>"
+    },
+    {
+      "id": 60,
+      "input": "Is the graph of city connections connected?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether all cities in the network are mutually reachable\n- This is a graph connectivity problem\n- Need to check if there's a path between every pair of cities\n\nLOGICAL STEPS:\n1. This is a complex global property to check in ByteLogic\n2. Would need to check connectivity from one node to all others\n3. Or check if all nodes are in the same connected component\n\nBYTELOGIC APPROACH:\n- Declare connected relation\n- Add facts about city connections\n- Create rule for transitive connectivity\n- Query for connected components\n- Note: Global connectivity check is complex in ByteLogic\n</thinking>"
+    },
+    {
+      "id": 61,
+      "input": "How many descendants does Eve have?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of all descendants of Eve\n- This is a full transitive closure count of the parent relation\n- Need to count children, grandchildren, great-grandchildren, etc.\n\nLOGICAL STEPS:\n1. Find Eve's children\n2. For each child, find their children\n3. Continue recursively through all generations\n4. Count all descendants\n\nBYTELOGIC APPROACH:\n- Declare parent relation\n- Add facts about parent-child relationships\n- Create rule for direct parent-child\n- Create rule for transitive descendant relationship\n- Query and count all descendants of Eve\n</thinking>"
+    },
+    {
+      "id": 62,
+      "input": "Are there any circular dependencies in the software packages?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether there are circular dependencies among packages\n- This is a cycle detection problem in a dependency graph\n- Need to find if any package ultimately depends on itself\n\nLOGICAL STEPS:\n1. Identify the depends_on relation\n2. Find transitive dependencies\n3. Check if any package appears in its own dependency chain\n\nBYTELOGIC APPROACH:\n- Declare depends_on relation\n- Add facts about package dependencies\n- Create rule for direct dependencies\n- Create rule for transitive dependencies\n- Query for circular dependencies\n</thinking>"
+    },
+    {
+      "id": 63,
+      "input": "How many employees work in the same department as John?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of employees in John's department\n- This is an organizational structure counting problem\n- Need to find John's department, then count all employees there\n\nLOGICAL STEPS:\n1. Find which department John belongs to\n2. Count all employees in that same department\n\nBYTELOGIC APPROACH:\n- Declare employee_in_dept relation\n- Add facts about employee-department assignments\n- Query for employees in John's department and count\n</thinking>"
+    },
+    {
+      "id": 64,
+      "input": "Is there a path of collaborations between researcher A and researcher Z?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether researcher A and Z are connected through collaboration\n- This is a graph connectivity problem in the collaboration network\n- Need to check if Z is reachable from A through co-authorship\n\nLOGICAL STEPS:\n1. Identify the collaborates_with relation\n2. Find all researchers reachable from A (transitive closure)\n3. Check if Z is in that set\n\nBYTELOGIC APPROACH:\n- Declare collaborates_with relation\n- Add facts about research collaborations\n- Create rule for direct collaborations\n- Create rule for transitive collaboration paths\n- Query whether A connects to Z\n</thinking>"
+    },
+    {
+      "id": 65,
+      "input": "How many mutual friends do Alice and Bob have?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for the count of mutual friends between Alice and Bob\n- This is an intersection counting problem\n- Need to count the size of the intersection of their friend sets\n\nLOGICAL STEPS:\n1. Find all friends of Alice\n2. Find all friends of Bob\n3. Find the intersection of these two sets\n4. Count the elements in the intersection\n\nBYTELOGIC APPROACH:\n- Declare friend relation\n- Add facts about friendship relationships\n- Create rule to find mutual friends\n- Query and count mutual friends of Alice and Bob\n</thinking>"
+    },
+    {
+      "id": 66,
+      "input": "Are there any isolated nodes in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether there are nodes with no connections\n- This is a node degree problem\n- Need to find nodes that don't appear in any connection relation\n\nLOGICAL STEPS:\n1. Identify all nodes in the network\n2. Find all nodes that appear in connection relations\n3. Identify nodes that are not in the connected set\n\nBYTELOGIC APPROACH:\n- Declare connected relation\n- Add facts about connections\n- Create rule to identify connected nodes\n- Query for nodes that are not connected to anything\n</thinking>"
+    },
+    {
+      "id": 67,
+      "input": "How many connected components are in the graph?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for the number of disconnected subgraphs\n- This is a graph component counting problem\n- ByteLogic doesn't directly support component counting\n\nLOGICAL STEPS:\n1. This is a complex global property to determine in ByteLogic\n2. Would need to identify all components and count them\n3. This requires more advanced graph algorithms than ByteLogic supports\n\nBYTELOGIC APPROACH:\n- Note: Component counting is difficult in ByteLogic\n- Could identify if nodes are in same component\n- But counting total components is not straightforward\n- Consider simplifying the problem\n</thinking>"
+    },
+    {
+      "id": 68,
+      "input": "Do Alice and Charlie share any common ancestors?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether Alice and Charlie have any common ancestors\n- This is an intersection problem in the ancestry graph\n- Need to find ancestors of Alice, ancestors of Charlie, and check intersection\n\nLOGICAL STEPS:\n1. Find all ancestors of Alice (transitive parent closure)\n2. Find all ancestors of Charlie (transitive parent closure)\n3. Check if there's any overlap in their ancestor sets\n\nBYTELOGIC APPROACH:\n- Declare parent relation\n- Add facts about parent-child relationships\n- Create rule for transitive ancestor relationship\n- Query for ancestors of both Alice and Charlie\n- Check for intersection\n</thinking>"
+    },
+    {
+      "id": 69,
+      "input": "How many steps are in the inheritance chain from class A to class Z?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for the length of inheritance path from A to Z\n- This is a path length problem in inheritance hierarchy\n- ByteLogic doesn't directly support path length counting\n\nLOGICAL STEPS:\n1. This problem may not be suitable for direct ByteLogic solution\n2. Could find if inheritance exists, but not the path length\n3. Consider reformulating as: 'Does Z inherit from A?'\n\nBYTELOGIC APPROACH:\n- Note: Path length counting is not ideal for ByteLogic\n- Could implement inheritance existence check\n- But path length counting is not straightforward\n- Consider if problem can be simplified\n</thinking>"
+    },
+    {
+      "id": 70,
+      "input": "Is the gene regulatory network acyclic?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether the gene regulation graph has cycles\n- This is a cycle detection problem in a directed graph\n- Need to check if any gene ultimately regulates itself\n\nLOGICAL STEPS:\n1. Identify the regulates relation\n2. Find transitive regulatory relationships\n3. Check if any gene appears in its own regulation chain\n\nBYTELOGIC APPROACH:\n- Declare regulates relation\n- Add facts about gene regulation\n- Create rule for direct regulation\n- Create rule for transitive regulation\n- Query for regulatory cycles\n</thinking>"
+    },
+    {
+      "id": 71,
+      "input": "How many people are in the same study group as Mary?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of people in Mary's study groups\n- This is a group membership counting problem\n- Need to find groups Mary belongs to, then count other members\n\nLOGICAL STEPS:\n1. Find study groups that Mary is a member of\n2. For each group, count all members\n3. Sum the counts appropriately\n\nBYTELOGIC APPROACH:\n- Declare member_of relation\n- Add facts about student-group memberships\n- Create rule to find group members\n- Query and count members in Mary's groups\n</thinking>"
+    },
+    {
+      "id": 72,
+      "input": "Are there any self-loops in the friendship network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether anyone is friends with themselves\n- This is a self-relation check\n- Need to find if any person appears as both sides of a friendship\n\nLOGICAL STEPS:\n1. Check the friend relation for cases where both arguments are the same\n2. Look for facts like 'FACT friend alice alice'\n\nBYTELOGIC APPROACH:\n- Declare friend relation\n- Add facts about friendships\n- Query for cases where the same person appears twice in a friend fact\n</thinking>"
+    },
+    {
+      "id": 73,
+      "input": "How many different paths exist from node A to node B?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for the count of all distinct paths from A to B\n- This is a path counting problem\n- ByteLogic doesn't directly support path counting\n\nLOGICAL STEPS:\n1. This problem is not suitable for direct ByteLogic solution\n2. ByteLogic can check if a path exists, but not count all paths\n3. This requires path enumeration which is beyond ByteLogic's capabilities\n\nBYTELOGIC APPROACH:\n- Note: Path counting is not feasible in ByteLogic\n- Could check if any path exists\n- But counting all paths is not supported\n- Consider simplifying to path existence\n</thinking>"
+    },
+    {
+      "id": 74,
+      "input": "Do any two departments share the same manager?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether any manager oversees multiple departments\n- This is a one-to-many relationship check\n- Need to find if any person manages more than one department\n\nLOGICAL STEPS:\n1. Identify the manages_dept relation\n2. Find all department-manager pairs\n3. Check if any manager appears with multiple departments\n\nBYTELOGIC APPROACH:\n- Declare manages_dept relation\n- Add facts about management relationships\n- Create rule to identify managers of multiple departments\n- Query for managers overseeing multiple departments\n</thinking>"
+    },
+    {
+      "id": 75,
+      "input": "How many proteins interact with protein P directly or indirectly?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of proteins connected to P in interaction network\n- This includes direct and indirect interactions\n- Need to count the transitive closure of the interaction relation\n\nLOGICAL STEPS:\n1. Find proteins that directly interact with P\n2. Find proteins that interact with those proteins (indirect)\n3. Continue for full transitive closure\n4. Count all connected proteins\n\nBYTELOGIC APPROACH:\n- Declare interacts_with relation\n- Add facts about protein interactions\n- Create rule for direct interactions\n- Create rule for transitive interactions\n- Query and count all proteins connected to P\n</thinking>"
+    },
+    {
+      "id": 76,
+      "input": "Is the supply chain network acyclic?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether the supply chain has cycles\n- This is a cycle detection problem in a directed graph\n- Need to check if any entity ultimately supplies to itself\n\nLOGICAL STEPS:\n1. Identify the supplies_to relation\n2. Find transitive supply relationships\n3. Check if any entity appears in its own supply chain\n\nBYTELOGIC APPROACH:\n- Declare supplies_to relation\n- Add facts about supply relationships\n- Create rule for direct supplies\n- Create rule for transitive supplies\n- Query for supply cycles\n</thinking>"
+    },
+    {
+      "id": 77,
+      "input": "How many actors have worked with Tom Hanks?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of actors who co-starred with Tom Hanks\n- This is a collaboration counting problem\n- Need to find movies Tom Hanks appeared in, then count other actors\n\nLOGICAL STEPS:\n1. Find movies that Tom Hanks appeared in\n2. For each movie, find other actors\n3. Count all unique co-actors\n\nBYTELOGIC APPROACH:\n- Declare acted_in relation\n- Add facts about actor-movie relationships\n- Create rule to find co-actors\n- Query and count actors in Tom Hanks' movies\n</thinking>"
+    },
+    {
+      "id": 78,
+      "input": "Are there any bidirectional connections in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether any two nodes have connections in both directions\n- This is a mutual relationship check\n- Need to find if A connects to B AND B connects to A\n\nLOGICAL STEPS:\n1. Identify the connection relation\n2. Find all directed connections\n3. Check for pairs where both directions exist\n\nBYTELOGIC APPROACH:\n- Declare connected relation\n- Add facts about directed connections\n- Create rule to find mutual connections\n- Query for bidirectional connections\n</thinking>"
+    },
+    {
+      "id": 79,
+      "input": "How many genes are regulated by the same transcription factors as gene G1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of genes regulated by TFs that regulate G1\n- This is a regulatory network expansion problem\n- Need to find TFs of G1, then other genes regulated by those TFs\n\nLOGICAL STEPS:\n1. Find transcription factors that regulate gene G1\n2. For each TF, find other genes it regulates\n3. Count all such genes\n\nBYTELOGIC APPROACH:\n- Declare regulates relation\n- Add facts about TF-gene regulations\n- Create rule to find genes regulated by common TFs\n- Query and count genes regulated by G1's TFs\n</thinking>"
+    },
+    {
+      "id": 80,
+      "input": "Is there a Hamiltonian path in the city network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether there's a path visiting each city exactly once\n- This is an NP-complete graph problem\n- ByteLogic is not suitable for such complex combinatorial problems\n\nLOGICAL STEPS:\n1. This problem is computationally infeasible in ByteLogic\n2. Hamiltonian path requires complex constraint satisfaction\n3. Not appropriate for the logical inference model\n\nBYTELOGIC APPROACH:\n- Note: This problem is too complex for ByteLogic\n- Consider simpler graph problems\n- Focus on reachability rather than optimization\n</thinking>"
+    },
+    {
+      "id": 81,
+      "input": "How many customers bought the same products as customer C1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of customers who bought products that C1 bought\n- This is a market basket similarity problem\n- Need to find products of C1, then count customers who bought those\n\nLOGICAL STEPS:\n1. Find products purchased by customer C1\n2. For each product, find other customers who bought it\n3. Count all such customers\n\nBYTELOGIC APPROACH:\n- Declare purchased relation\n- Add facts about customer-product purchases\n- Create rule to find customers with common purchases\n- Query and count customers buying C1's products\n</thinking>"
+    },
+    {
+      "id": 82,
+      "input": "Are there any cliques of size 3 in the friendship network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether there are triangles in the friendship graph\n- This is a clique detection problem\n- Need to find three people who are all mutually friends\n\nLOGICAL STEPS:\n1. Identify the friend relation\n2. Look for three nodes where each is connected to the other two\n3. This requires complex pattern matching\n\nBYTELOGIC APPROACH:\n- Declare friend relation\n- Add facts about friendships\n- Create rule to find triangular relationships\n- Query for 3-cliques in the network\n</thinking>"
+    },
+    {
+      "id": 83,
+      "input": "How many packages depend on the same libraries as package PKG1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of packages sharing dependencies with PKG1\n- This is a dependency graph similarity problem\n- Need to find libraries of PKG1, then count packages depending on those\n\nLOGICAL STEPS:\n1. Find libraries that package PKG1 depends on\n2. For each library, find other packages that depend on it\n3. Count all such packages\n\nBYTELOGIC APPROACH:\n- Declare depends_on relation\n- Add facts about package-library dependencies\n- Create rule to find packages with common dependencies\n- Query and count packages depending on PKG1's libraries\n</thinking>"
+    },
+    {
+      "id": 84,
+      "input": "Is the academic advisor network acyclic?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether the advisor-advisee relationship has cycles\n- This is a cycle detection problem in a mentorship graph\n- Need to check if anyone is eventually their own advisor\n\nLOGICAL STEPS:\n1. Identify the advises relation\n2. Find transitive advisor relationships\n3. Check if any person appears in their own advisor chain\n\nBYTELOGIC APPROACH:\n- Declare advises relation\n- Add facts about advisor-advisee relationships\n- Create rule for direct advising\n- Create rule for transitive advising\n- Query for advisor cycles\n</thinking>"
+    },
+    {
+      "id": 85,
+      "input": "How many proteins share the same cellular location as protein LOC1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of proteins in locations where LOC1 is also found\n- This is a subcellular localization similarity problem\n- Need to find locations of LOC1, then count proteins in those locations\n\nLOGICAL STEPS:\n1. Find cellular locations where protein LOC1 is present\n2. For each location, find other proteins present there\n3. Count all such proteins\n\nBYTELOGIC APPROACH:\n- Declare located_in relation\n- Add facts about protein-location relationships\n- Create rule to find proteins in common locations\n- Query and count proteins in LOC1's locations\n</thinking>"
+    },
+    {
+      "id": 86,
+      "input": "Are there any redundant paths in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether multiple paths exist between some node pairs\n- This is a path multiplicity problem\n- ByteLogic doesn't directly support path enumeration\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require path enumeration and comparison\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Path redundancy detection is complex in ByteLogic\n- Could check for alternative paths between nodes\n- But identifying redundant ones is not straightforward\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 87,
+      "input": "How many diseases share the same genetic basis as disease DIS1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of diseases with the same genetic causes as DIS1\n- This is a genetic disease clustering problem\n- Need to find genes of DIS1, then count diseases caused by those genes\n\nLOGICAL STEPS:\n1. Find genetic causes associated with disease DIS1\n2. For each genetic cause, find other diseases caused by it\n3. Count all such diseases\n\nBYTELOGIC APPROACH:\n- Declare caused_by_gene relation\n- Add facts about disease-genetic cause relationships\n- Create rule to find diseases with common genetic causes\n- Query and count diseases caused by DIS1's genes\n</thinking>"
+    },
+    {
+      "id": 88,
+      "input": "Is the course prerequisite network acyclic?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether the prerequisite graph has cycles\n- This is a cycle detection problem in educational planning\n- Need to check if any course is a prerequisite of itself\n\nLOGICAL STEPS:\n1. Identify the prerequisite relation\n2. Find transitive prerequisite relationships\n3. Check if any course appears in its own prerequisite chain\n\nBYTELOGIC APPROACH:\n- Declare prerequisite relation\n- Add facts about course prerequisites\n- Create rule for direct prerequisites\n- Create rule for transitive prerequisites\n- Query for prerequisite cycles\n</thinking>"
+    },
+    {
+      "id": 89,
+      "input": "How many users belong to the same groups as user U1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of users in the same groups as U1\n- This is a group membership similarity problem\n- Need to find groups of U1, then count users in those groups\n\nLOGICAL STEPS:\n1. Find groups that user U1 belongs to\n2. For each group, find other members\n3. Count all such users\n\nBYTELOGIC APPROACH:\n- Declare member_of_group relation\n- Add facts about user-group memberships\n- Create rule to find users in common groups\n- Query and count users in U1's groups\n</thinking>"
+    },
+    {
+      "id": 90,
+      "input": "Are there any strongly connected components of size > 1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether there are groups of nodes mutually reachable\n- This is a strong connectivity problem\n- ByteLogic doesn't directly support component identification\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require identifying mutual reachability\n3. Then grouping nodes into components\n\nBYTELOGIC APPROACH:\n- Note: Strong component identification is complex in ByteLogic\n- Could check mutual reachability between pairs\n- But identifying full components is not straightforward\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 91,
+      "input": "How many drugs have similar therapeutic effects to drug DRUG1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of drugs with similar therapeutic effects to DRUG1\n- This is a drug similarity problem\n- Need to find effects of DRUG1, then count drugs with those effects\n\nLOGICAL STEPS:\n1. Find therapeutic effects associated with drug DRUG1\n2. For each effect, find other drugs that have it\n3. Count all such drugs\n\nBYTELOGIC APPROACH:\n- Declare has_effect relation\n- Add facts about drug-therapeutic effect relationships\n- Create rule to find drugs with common effects\n- Query and count drugs having DRUG1's effects\n</thinking>"
+    },
+    {
+      "id": 92,
+      "input": "Is the protein interaction network bipartite?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether the network can be divided into two sets with connections only between sets\n- This is a graph partitioning problem\n- ByteLogic doesn't directly support such global properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require partitioning the node set\n3. Then verifying the bipartite property\n\nBYTELOGIC APPROACH:\n- Note: Bipartiteness checking is complex in ByteLogic\n- Could check for odd-length cycles (which violate bipartiteness)\n- But full bipartiteness verification is not straightforward\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 93,
+      "input": "How many artists have collaborated with the same producers as artist ART1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of artists who worked with producers of ART1\n- This is a music collaboration similarity problem\n- Need to find producers of ART1, then count artists with those producers\n\nLOGICAL STEPS:\n1. Find producers that artist ART1 has worked with\n2. For each producer, find other artists they've worked with\n3. Count all such artists\n\nBYTELOGIC APPROACH:\n- Declare collaborates_with relation\n- Add facts about artist-producer collaborations\n- Create rule to find artists with common producers\n- Query and count artists working with ART1's producers\n</thinking>"
+    },
+    {
+      "id": 94,
+      "input": "Are there any articulation points in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether removing any node would disconnect the graph\n- This is a network robustness problem\n- Requires checking connectivity after hypothetical node removal\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require simulating node removal\n3. Then checking connectivity changes\n\nBYTELOGIC APPROACH:\n- Note: Articulation point detection is complex in ByteLogic\n- Requires counterfactual reasoning (what if node removed?)\n- Not straightforward in logical inference framework\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 95,
+      "input": "How many companies compete in the same markets as company COMP1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of companies in markets where COMP1 also operates\n- This is a business competition counting problem\n- Need to find markets of COMP1, then count companies in those markets\n\nLOGICAL STEPS:\n1. Find markets where company COMP1 operates\n2. For each market, find other operating companies\n3. Count all such companies\n\nBYTELOGIC APPROACH:\n- Declare operates_in_market relation\n- Add facts about company-market relationships\n- Create rule to find companies in common markets\n- Query and count companies in COMP1's markets\n</thinking>"
+    },
+    {
+      "id": 96,
+      "input": "Is the citation network acyclic?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether papers cite each other in cycles\n- This is a cycle detection problem in academic citations\n- Need to check if any paper cites itself directly or indirectly\n\nLOGICAL STEPS:\n1. Identify the cites relation\n2. Find transitive citation relationships\n3. Check if any paper appears in its own citation chain\n\nBYTELOGIC APPROACH:\n- Declare cites relation\n- Add facts about paper citations\n- Create rule for direct citations\n- Create rule for transitive citations\n- Query for citation cycles\n</thinking>"
+    },
+    {
+      "id": 97,
+      "input": "How many authors have published in the same journals as author AUTH1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of authors who publish in journals where AUTH1 also publishes\n- This is an academic collaboration problem\n- Need to find journals of AUTH1, then count authors in those journals\n\nLOGICAL STEPS:\n1. Find journals where author AUTH1 has published\n2. For each journal, find other authors who published there\n3. Count all such authors\n\nBYTELOGIC APPROACH:\n- Declare published_in_journal relation\n- Add facts about author-journal publications\n- Create rule to find authors in common journals\n- Query and count authors publishing in AUTH1's journals\n</thinking>"
+    },
+    {
+      "id": 98,
+      "input": "Are there any bridges in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether any edge is critical for connectivity\n- This is a network robustness problem\n- Requires checking connectivity after hypothetical edge removal\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require simulating edge removal\n3. Then checking connectivity changes\n\nBYTELOGIC APPROACH:\n- Note: Bridge detection is complex in ByteLogic\n- Requires counterfactual reasoning (what if edge removed?)\n- Not straightforward in logical inference framework\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 99,
+      "input": "How many enzymes participate in the same pathways as enzyme ENZ1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of enzymes in the same metabolic pathways as ENZ1\n- This is a biochemical pathway similarity problem\n- Need to find pathways of ENZ1, then count enzymes in those pathways\n\nLOGICAL STEPS:\n1. Find metabolic pathways that enzyme ENZ1 participates in\n2. For each pathway, find other participating enzymes\n3. Count all such enzymes\n\nBYTELOGIC APPROACH:\n- Declare participates_in_pathway relation\n- Add facts about enzyme-pathway relationships\n- Create rule to find enzymes in common pathways\n- Query and count enzymes in ENZ1's pathways\n</thinking>"
+    },
+    {
+      "id": 100,
+      "input": "Is the employee supervision network acyclic?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether the supervision hierarchy has cycles\n- This is a cycle detection problem in organizational structure\n- Need to check if anyone supervises themselves directly or indirectly\n\nLOGICAL STEPS:\n1. Identify the supervises relation\n2. Find transitive supervision relationships\n3. Check if any person appears in their own supervision chain\n\nBYTELOGIC APPROACH:\n- Declare supervises relation\n- Add facts about supervision relationships\n- Create rule for direct supervision\n- Create rule for transitive supervision\n- Query for supervision cycles\n</thinking>"
+    },
+    {
+      "id": 101,
+      "input": "What is the depth of the management hierarchy under Alice?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for the maximum number of levels in Alice's management tree\n- This is a tree depth problem\n- ByteLogic doesn't directly support depth measurement\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require measuring longest path in hierarchy\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Depth measurement is complex in ByteLogic\n- Could find all levels but measuring maximum depth is not direct\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 102,
+      "input": "How many proteins share the same functional domains as protein PROT1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of proteins with similar domain composition to PROT1\n- This is a protein functional similarity problem\n- Need to find domains of PROT1, then count proteins with those domains\n\nLOGICAL STEPS:\n1. Find protein domains present in protein PROT1\n2. For each domain, find other proteins containing it\n3. Count all such proteins\n\nBYTELOGIC APPROACH:\n- Declare has_domain relation\n- Add facts about protein-domain compositions\n- Create rule to find proteins with common domains\n- Query and count proteins containing PROT1's domains\n</thinking>"
+    },
+    {
+      "id": 103,
+      "input": "Are there any cut vertices in the collaboration network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether removing any vertex would disconnect the graph\n- This is equivalent to articulation point detection\n- Requires checking connectivity after hypothetical vertex removal\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require simulating vertex removal\n3. Then checking connectivity changes\n\nBYTELOGIC APPROACH:\n- Note: Cut vertex detection is complex in ByteLogic\n- Requires counterfactual reasoning (what if vertex removed?)\n- Not straightforward in logical inference framework\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 104,
+      "input": "How many diseases have overlapping symptoms with disease DISEASE1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of diseases sharing symptoms with DISEASE1\n- This is a medical symptom overlap problem\n- Need to find symptoms of DISEASE1, then count diseases with those symptoms\n\nLOGICAL STEPS:\n1. Find symptoms associated with disease DISEASE1\n2. For each symptom, find other diseases that have it\n3. Count all such diseases\n\nBYTELOGIC APPROACH:\n- Declare has_symptom relation\n- Add facts about disease-symptom associations\n- Create rule to find diseases with common symptoms\n- Query and count diseases with DISEASE1's symptoms\n</thinking>"
+    },
+    {
+      "id": 105,
+      "input": "Is the drug-target network balanced?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about balance in a signed network (positive/negative interactions)\n- This is a complex network property\n- ByteLogic doesn't directly support signed network analysis\n\nLOGICAL STEPS:\n1. This problem requires signed graph concepts\n2. Balance involves cycles with even number of negative edges\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Balance checking is complex in ByteLogic\n- Requires signed graph concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 106,
+      "input": "How many developers contribute to the same projects as developer DEV1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of developers who contribute to projects where DEV1 contributes\n- This is a software collaboration counting problem\n- Need to find projects of DEV1, then count developers on those projects\n\nLOGICAL STEPS:\n1. Find projects that developer DEV1 contributes to\n2. For each project, find other contributors\n3. Count all such developers\n\nBYTELOGIC APPROACH:\n- Declare contributes_to_project relation\n- Add facts about developer-project contributions\n- Create rule to find developers contributing to common projects\n- Query and count developers contributing to DEV1's projects\n</thinking>"
+    },
+    {
+      "id": 107,
+      "input": "Are there any chordal subgraphs in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about chordal graph properties\n- This is a complex graph theoretical concept\n- ByteLogic doesn't directly support such advanced properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require identifying chordal substructures\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Chordal subgraph detection is complex in ByteLogic\n- Requires advanced graph theory concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 108,
+      "input": "How many compounds target the same biological pathways as compound CMP1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of compounds affecting pathways where CMP1 also acts\n- This is a pharmacological pathway similarity problem\n- Need to find pathways of CMP1, then count compounds affecting those\n\nLOGICAL STEPS:\n1. Find biological pathways affected by compound CMP1\n2. For each pathway, find other compounds that affect it\n3. Count all such compounds\n\nBYTELOGIC APPROACH:\n- Declare affects_pathway relation\n- Add facts about compound-pathway relationships\n- Create rule to find compounds affecting common pathways\n- Query and count compounds affecting CMP1's pathways\n</thinking>"
+    },
+    {
+      "id": 109,
+      "input": "Is the protein complex formation network acyclic?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether the complex formation graph has cycles\n- This is a cycle detection problem in protein interactions\n- Need to check if any complex formation cycle exists\n\nLOGICAL STEPS:\n1. Identify the forms_complex_with relation\n2. Find transitive complex formation relationships\n3. Check if any cycle exists in the formation process\n\nBYTELOGIC APPROACH:\n- Declare forms_complex_with relation\n- Add facts about protein complex formations\n- Create rule for direct complex formation\n- Create rule for transitive complex formation\n- Query for complex formation cycles\n</thinking>"
+    },
+    {
+      "id": 110,
+      "input": "How many vendors supply to the same distributors as vendor VENDOR1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of vendors sharing distributors with VENDOR1\n- This is a supply chain similarity problem\n- Need to find distributors of VENDOR1, then count vendors for those distributors\n\nLOGICAL STEPS:\n1. Find distributors that vendor VENDOR1 supplies to\n2. For each distributor, find other vendors supplying to it\n3. Count all such vendors\n\nBYTELOGIC APPROACH:\n- Declare supplies_to_distributor relation\n- Add facts about vendor-distributor relationships\n- Create rule to find vendors with common distributors\n- Query and count vendors supplying to VENDOR1's distributors\n</thinking>"
+    },
+    {
+      "id": 111,
+      "input": "Are there any perfect matchings in the bipartite network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about perfect matching existence in bipartite graphs\n- This is a complex graph matching problem\n- ByteLogic doesn't directly support matching algorithms\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require matching algorithm implementation\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Perfect matching detection is complex in ByteLogic\n- Requires matching algorithm concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 112,
+      "input": "How many genes are co-expressed with gene GENE1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of genes that are co-expressed with GENE1\n- This is a gene co-expression network problem\n- Need to find genes expressed in same conditions as GENE1\n\nLOGICAL STEPS:\n1. Find experimental conditions where gene GENE1 is expressed\n2. For each condition, find other genes expressed there\n3. Count all such genes\n\nBYTELOGIC APPROACH:\n- Declare expressed_in_condition relation\n- Add facts about gene-condition expressions\n- Create rule to find co-expressed genes\n- Query and count genes expressed in GENE1's conditions\n</thinking>"
+    },
+    {
+      "id": 113,
+      "input": "Is the metabolic reaction network reversible?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about reversibility of metabolic reactions\n- This is a biochemical property question\n- ByteLogic can represent but not determine thermodynamic properties\n\nLOGICAL STEPS:\n1. This requires domain-specific knowledge about reactions\n2. Not determinable from structure alone\n3. Requires thermodynamic data\n\nBYTELOGIC APPROACH:\n- Note: Thermodynamic reversibility requires domain knowledge\n- Can represent reaction directionality\n- But physical reversibility determination needs extra data\n- Consider focusing on structural properties\n</thinking>"
+    },
+    {
+      "id": 114,
+      "input": "How many researchers work on the same topics as researcher RES1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of researchers working on topics where RES1 also works\n- This is a research topic similarity problem\n- Need to find topics of RES1, then count researchers in those topics\n\nLOGICAL STEPS:\n1. Find research topics that researcher RES1 works on\n2. For each topic, find other researchers working on it\n3. Count all such researchers\n\nBYTELOGIC APPROACH:\n- Declare works_on_topic relation\n- Add facts about researcher-topic relationships\n- Create rule to find researchers with common topics\n- Query and count researchers working on RES1's topics\n</thinking>"
+    },
+    {
+      "id": 115,
+      "input": "Are there any Eulerian paths in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether there's a path using each edge exactly once\n- This is an Eulerian path problem\n- Requires checking vertex degrees and connectivity\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require degree counting and path verification\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Eulerian path detection is complex in ByteLogic\n- Requires degree counting and path verification\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 116,
+      "input": "How many drugs have similar molecular targets to drug MED1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of drugs targeting the same molecules as MED1\n- This is a pharmacological target similarity problem\n- Need to find targets of MED1, then count drugs targeting those\n\nLOGICAL STEPS:\n1. Find molecular targets of drug MED1\n2. For each target, find other drugs that target it\n3. Count all such drugs\n\nBYTELOGIC APPROACH:\n- Declare targets_molecule relation\n- Add facts about drug-target relationships\n- Create rule to find drugs with common targets\n- Query and count drugs targeting MED1's molecules\n</thinking>"
+    },
+    {
+      "id": 117,
+      "input": "Is the gene regulatory cascade monotonic?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about monotonicity in gene regulation\n- This is a complex biological property\n- Requires understanding activation/inhibition types\n\nLOGICAL STEPS:\n1. This requires signed regulatory relationships\n2. Monotonicity involves consistent sign propagation\n3. Not straightforward in basic logical framework\n\nBYTELOGIC APPROACH:\n- Note: Monotonicity requires signed relationships\n- Basic ByteLogic doesn't handle positive/negative regulation\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 118,
+      "input": "How many proteins are involved in the same cellular processes as protein CELL1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of proteins in processes where CELL1 is also involved\n- This is a cellular process similarity problem\n- Need to find processes of CELL1, then count proteins in those processes\n\nLOGICAL STEPS:\n1. Find cellular processes that protein CELL1 is involved in\n2. For each process, find other participating proteins\n3. Count all such proteins\n\nBYTELOGIC APPROACH:\n- Declare participates_in_process relation\n- Add facts about protein-process relationships\n- Create rule to find proteins in common processes\n- Query and count proteins in CELL1's processes\n</thinking>"
+    },
+    {
+      "id": 119,
+      "input": "Are there any dominating sets in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about dominating set existence\n- This is a complex graph theory problem\n- ByteLogic doesn't directly support such optimization problems\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require optimization and set verification\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Dominating set detection is complex in ByteLogic\n- Requires optimization concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 120,
+      "input": "How many diseases share the same treatment protocols as disease TREAT1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of diseases with similar treatment protocols to TREAT1\n- This is a medical treatment similarity problem\n- Need to find treatments of TREAT1, then count diseases with those treatments\n\nLOGICAL STEPS:\n1. Find treatment protocols associated with disease TREAT1\n2. For each protocol, find other diseases treated with it\n3. Count all such diseases\n\nBYTELOGIC APPROACH:\n- Declare treated_with_protocol relation\n- Add facts about disease-treatment protocol relationships\n- Create rule to find diseases with common treatments\n- Query and count diseases treated with TREAT1's protocols\n</thinking>"
+    },
+    {
+      "id": 121,
+      "input": "Is the software module dependency graph planar?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether the dependency graph can be drawn without crossing edges\n- This is a graph planarity problem\n- ByteLogic doesn't directly support geometric graph properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require geometric embedding concepts\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Planarity checking is complex in ByteLogic\n- Requires geometric concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 122,
+      "input": "How many authors have co-authored papers with the same co-authors as author COAUTH1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of authors with overlapping co-authorship networks\n- This is a collaboration network similarity problem\n- Need to find co-authors of COAUTH1, then count authors with those co-authors\n\nLOGICAL STEPS:\n1. Find co-authors that author COAUTH1 has worked with\n2. For each co-author, find other authors who worked with them\n3. Count all such authors\n\nBYTELOGIC APPROACH:\n- Declare coauthored_with relation\n- Add facts about author-coauthor relationships\n- Create rule to find authors with common co-authors\n- Query and count authors with COAUTH1's co-authors\n</thinking>"
+    },
+    {
+      "id": 123,
+      "input": "Are there any vertex covers of size k in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about vertex cover existence for specific size\n- This is a complex optimization problem\n- ByteLogic doesn't directly support such optimization problems\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require optimization and set verification\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Vertex cover detection is complex in ByteLogic\n- Requires optimization concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 124,
+      "input": "How many metabolites participate in the same reactions as metabolite META1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of metabolites in reactions where META1 participates\n- This is a metabolic network similarity problem\n- Need to find reactions of META1, then count metabolites in those reactions\n\nLOGICAL STEPS:\n1. Find metabolic reactions that metabolite META1 participates in\n2. For each reaction, find other participating metabolites\n3. Count all such metabolites\n\nBYTELOGIC APPROACH:\n- Declare participates_in_reaction relation\n- Add facts about metabolite-reaction relationships\n- Create rule to find metabolites in common reactions\n- Query and count metabolites in META1's reactions\n</thinking>"
+    },
+    {
+      "id": 125,
+      "input": "Is the ecological food web stable?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about ecological stability\n- This is a complex dynamical systems property\n- Requires population dynamics and interaction strength data\n\nLOGICAL STEPS:\n1. This requires quantitative data about populations\n2. Stability involves differential equations and dynamics\n3. Not determinable from structure alone\n\nBYTELOGIC APPROACH:\n- Note: Ecological stability requires quantitative data\n- Basic ByteLogic handles only structural relationships\n- Consider focusing on simpler structural properties\n</thinking>"
+    },
+    {
+      "id": 126,
+      "input": "How many companies have partnerships with the same organizations as company PARTNER1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of companies with overlapping partnerships\n- This is a business partnership similarity problem\n- Need to find partners of PARTNER1, then count companies with those partners\n\nLOGICAL STEPS:\n1. Find business partners that company PARTNER1 has\n2. For each partner, find other companies partnered with it\n3. Count all such companies\n\nBYTELOGIC APPROACH:\n- Declare partnered_with relation\n- Add facts about company-partner relationships\n- Create rule to find companies with common partners\n- Query and count companies partnered with PARTNER1's partners\n</thinking>"
+    },
+    {
+      "id": 127,
+      "input": "Are there any independent sets of size k in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about independent set existence for specific size\n- This is a complex optimization problem\n- ByteLogic doesn't directly support such optimization problems\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require optimization and set verification\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Independent set detection is complex in ByteLogic\n- Requires optimization concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 128,
+      "input": "How many proteins have similar expression patterns to protein EXPR1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of proteins with similar expression patterns to EXPR1\n- This is a gene expression similarity problem\n- Need to find expression conditions of EXPR1, then count proteins with similar patterns\n\nLOGICAL STEPS:\n1. Find experimental conditions where protein EXPR1 is expressed\n2. For each condition pattern, find other proteins with similar expression\n3. Count all such proteins\n\nBYTELOGIC APPROACH:\n- Declare expressed_under_condition relation\n- Add facts about protein-condition expressions\n- Create rule to find proteins with similar expression patterns\n- Query and count proteins with EXPR1's patterns\n</thinking>"
+    },
+    {
+      "id": 129,
+      "input": "Is the neural network connectivity symmetric?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether neural connections are bidirectional\n- This is a symmetry property check\n- Need to check if connection A->B implies B->A\n\nLOGICAL STEPS:\n1. Identify the connects_to relation\n2. For each connection A connects_to B, check if B connects_to A\n3. Verify symmetry across all connections\n\nBYTELOGIC APPROACH:\n- Declare connects_to relation\n- Add facts about neural connections\n- Create rule to check for mutual connections\n- Query for asymmetric connections\n</thinking>"
+    },
+    {
+      "id": 130,
+      "input": "How many diseases have similar genetic profiles to disease GENETIC1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of diseases with similar genetic profiles to GENETIC1\n- This is a genetic disease similarity problem\n- Need to find genetic markers of GENETIC1, then count diseases with those markers\n\nLOGICAL STEPS:\n1. Find genetic markers associated with disease GENETIC1\n2. For each marker, find other diseases associated with it\n3. Count all such diseases\n\nBYTELOGIC APPROACH:\n- Declare associated_with_marker relation\n- Add facts about disease-genetic marker relationships\n- Create rule to find diseases with common markers\n- Query and count diseases with GENETIC1's markers\n</thinking>"
+    },
+    {
+      "id": 131,
+      "input": "Are there any graph automorphisms in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about graph symmetries\n- This is a complex graph isomorphism problem\n- ByteLogic doesn't directly support such symmetry detection\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require isomorphism checking\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Automorphism detection is complex in ByteLogic\n- Requires isomorphism concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 132,
+      "input": "How many drugs have similar mechanisms of action to drug MECH1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of drugs with similar mechanisms to MECH1\n- This is a pharmacological mechanism similarity problem\n- Need to find mechanisms of MECH1, then count drugs with those mechanisms\n\nLOGICAL STEPS:\n1. Find mechanisms of action associated with drug MECH1\n2. For each mechanism, find other drugs with it\n3. Count all such drugs\n\nBYTELOGIC APPROACH:\n- Declare has_mechanism relation\n- Add facts about drug-mechanism relationships\n- Create rule to find drugs with common mechanisms\n- Query and count drugs with MECH1's mechanisms\n</thinking>"
+    },
+    {
+      "id": 133,
+      "input": "Is the protein folding network hierarchical?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about hierarchical structure in protein folding\n- This is a complex structural property\n- Requires understanding of folding pathways and intermediates\n\nLOGICAL STEPS:\n1. This requires domain-specific knowledge about folding\n2. Hierarchy involves temporal and energetic ordering\n3. Not straightforward in basic logical framework\n\nBYTELOGIC APPROACH:\n- Note: Folding hierarchy requires domain knowledge\n- Basic ByteLogic handles only static relationships\n- Consider focusing on simpler structural properties\n</thinking>"
+    },
+    {
+      "id": 134,
+      "input": "How many researchers collaborate with the same institutions as researcher INST1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of researchers with overlapping institutional collaborations\n- This is a research collaboration similarity problem\n- Need to find institutions of INST1, then count researchers at those institutions\n\nLOGICAL STEPS:\n1. Find institutions that researcher INST1 collaborates with\n2. For each institution, find other researchers there\n3. Count all such researchers\n\nBYTELOGIC APPROACH:\n- Declare collaborates_with_inst relation\n- Add facts about researcher-institution relationships\n- Create rule to find researchers with common institutions\n- Query and count researchers at INST1's institutions\n</thinking>"
+    },
+    {
+      "id": 135,
+      "input": "Are there any treewidth-k subgraphs in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about treewidth properties\n- This is a complex graph structural property\n- ByteLogic doesn't directly support such advanced properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require tree decomposition concepts\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Treewidth detection is complex in ByteLogic\n- Requires advanced graph theory concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 136,
+      "input": "How many compounds have similar therapeutic areas to compound THER1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of compounds in similar therapeutic areas to THER1\n- This is a pharmaceutical therapeutic similarity problem\n- Need to find therapeutic areas of THER1, then count compounds in those areas\n\nLOGICAL STEPS:\n1. Find therapeutic areas associated with compound THER1\n2. For each area, find other compounds associated with it\n3. Count all such compounds\n\nBYTELOGIC APPROACH:\n- Declare associated_with_area relation\n- Add facts about compound-therapeutic area relationships\n- Create rule to find compounds with common therapeutic areas\n- Query and count compounds in THER1's areas\n</thinking>"
+    },
+    {
+      "id": 137,
+      "input": "Is the ecological network resilient to perturbations?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about network resilience\n- This is a complex dynamical systems property\n- Requires understanding of system dynamics and stability\n\nLOGICAL STEPS:\n1. This requires quantitative data about interactions\n2. Resilience involves system dynamics and recovery\n3. Not determinable from structure alone\n\nBYTELOGIC APPROACH:\n- Note: Ecological resilience requires quantitative data\n- Basic ByteLogic handles only structural relationships\n- Consider focusing on simpler structural properties\n</thinking>"
+    },
+    {
+      "id": 138,
+      "input": "How many proteins share the same post-translational modifications as protein MOD1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of proteins with similar modifications to MOD1\n- This is a protein modification similarity problem\n- Need to find modifications of MOD1, then count proteins with those modifications\n\nLOGICAL STEPS:\n1. Find post-translational modifications of protein MOD1\n2. For each modification, find other proteins with it\n3. Count all such proteins\n\nBYTELOGIC APPROACH:\n- Declare has_modification relation\n- Add facts about protein-modification relationships\n- Create rule to find proteins with common modifications\n- Query and count proteins with MOD1's modifications\n</thinking>"
+    },
+    {
+      "id": 139,
+      "input": "Are there any perfect graphs in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about perfect graph properties\n- This is a complex graph theory concept\n- ByteLogic doesn't directly support such advanced properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require complex subgraph analysis\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Perfect graph detection is complex in ByteLogic\n- Requires advanced graph theory concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 140,
+      "input": "How many diseases have similar clinical presentations to disease CLIN1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of diseases with similar clinical presentations to CLIN1\n- This is a medical diagnostic similarity problem\n- Need to find presentations of CLIN1, then count diseases with those presentations\n\nLOGICAL STEPS:\n1. Find clinical presentations associated with disease CLIN1\n2. For each presentation, find other diseases with it\n3. Count all such diseases\n\nBYTELOGIC APPROACH:\n- Declare presents_as relation\n- Add facts about disease-clinical presentation relationships\n- Create rule to find diseases with common presentations\n- Query and count diseases with CLIN1's presentations\n</thinking>"
+    },
+    {
+      "id": 141,
+      "input": "Is the social influence network transitive?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks whether influence relationships are transitive\n- This is a property about social dynamics\n- Need to check if A influences B and B influences C implies A influences C\n\nLOGICAL STEPS:\n1. Identify the influences relation\n2. Check if the relation satisfies transitivity property\n3. Look for violations of transitivity\n\nBYTELOGIC APPROACH:\n- Declare influences relation\n- Add facts about influence relationships\n- Create rule to check transitivity violations\n- Query for transitivity in the influence network\n</thinking>"
+    },
+    {
+      "id": 142,
+      "input": "How many genes have similar expression regulation patterns to gene REG1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of genes with similar regulatory patterns to REG1\n- This is a gene regulation similarity problem\n- Need to find regulatory patterns of REG1, then count genes with those patterns\n\nLOGICAL STEPS:\n1. Find regulatory patterns associated with gene REG1\n2. For each pattern, find other genes regulated similarly\n3. Count all such genes\n\nBYTELOGIC APPROACH:\n- Declare regulated_by_pattern relation\n- Add facts about gene-regulatory pattern relationships\n- Create rule to find genes with common regulatory patterns\n- Query and count genes with REG1's patterns\n</thinking>"
+    },
+    {
+      "id": 143,
+      "input": "Are there any expander subgraphs in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about expander graph properties\n- This is a complex spectral graph theory concept\n- ByteLogic doesn't directly support such advanced properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require spectral analysis concepts\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Expander detection is complex in ByteLogic\n- Requires advanced graph theory concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 144,
+      "input": "How many drugs have similar side effect profiles to drug SIDE1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of drugs with similar side effect profiles to SIDE1\n- This is a pharmaceutical safety similarity problem\n- Need to find side effects of SIDE1, then count drugs with those effects\n\nLOGICAL STEPS:\n1. Find side effects associated with drug SIDE1\n2. For each side effect, find other drugs that cause it\n3. Count all such drugs\n\nBYTELOGIC APPROACH:\n- Declare causes_side_effect relation\n- Add facts about drug-side effect relationships\n- Create rule to find drugs with common side effects\n- Query and count drugs causing SIDE1's side effects\n</thinking>"
+    },
+    {
+      "id": 145,
+      "input": "Is the protein-protein interaction network scale-free?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about scale-free network properties\n- This is a statistical network property\n- Requires degree distribution analysis\n\nLOGICAL STEPS:\n1. This requires statistical analysis of degree distributions\n2. Scale-freeness involves power-law distribution\n3. Not straightforward in basic logical framework\n\nBYTELOGIC APPROACH:\n- Note: Scale-free property requires statistical analysis\n- Basic ByteLogic handles only structural relationships\n- Consider focusing on simpler structural properties\n</thinking>"
+    },
+    {
+      "id": 146,
+      "input": "How many researchers have similar publication patterns to researcher PUBL1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of researchers with similar publication patterns to PUBL1\n- This is a research activity similarity problem\n- Need to find publication patterns of PUBL1, then count researchers with those patterns\n\nLOGICAL STEPS:\n1. Find publication patterns associated with researcher PUBL1\n2. For each pattern, find other researchers with similar patterns\n3. Count all such researchers\n\nBYTELOGIC APPROACH:\n- Declare follows_pattern relation\n- Add facts about researcher-publication pattern relationships\n- Create rule to find researchers with common patterns\n- Query and count researchers with PUBL1's patterns\n</thinking>"
+    },
+    {
+      "id": 147,
+      "input": "Are there any Ramsey subgraphs in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about Ramsey theory properties\n- This is a complex combinatorial graph theory concept\n- ByteLogic doesn't directly support such advanced properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require complex combinatorial analysis\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Ramsey subgraph detection is complex in ByteLogic\n- Requires advanced combinatorics concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 148,
+      "input": "How many proteins have similar cellular functions to protein FUNC1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of proteins with similar cellular functions to FUNC1\n- This is a protein function similarity problem\n- Need to find functions of FUNC1, then count proteins with those functions\n\nLOGICAL STEPS:\n1. Find cellular functions associated with protein FUNC1\n2. For each function, find other proteins with it\n3. Count all such proteins\n\nBYTELOGIC APPROACH:\n- Declare has_function relation\n- Add facts about protein-function relationships\n- Create rule to find proteins with common functions\n- Query and count proteins with FUNC1's functions\n</thinking>"
+    },
+    {
+      "id": 149,
+      "input": "Is the gene co-expression network modular?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about modularity in gene networks\n- This is a complex network community structure property\n- Requires clustering coefficient and community detection\n\nLOGICAL STEPS:\n1. This requires community detection algorithms\n2. Modularity involves complex statistical measures\n3. Not straightforward in basic logical framework\n\nBYTELOGIC APPROACH:\n- Note: Modularity requires community detection\n- Basic ByteLogic handles only structural relationships\n- Consider focusing on simpler structural properties\n</thinking>"
+    },
+    {
+      "id": 150,
+      "input": "How many diseases have similar treatment responses to disease RESP1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of diseases with similar treatment responses to RESP1\n- This is a medical treatment response similarity problem\n- Need to find responses of RESP1, then count diseases with those responses\n\nLOGICAL STEPS:\n1. Find treatment responses associated with disease RESP1\n2. For each response, find other diseases with it\n3. Count all such diseases\n\nBYTELOGIC APPROACH:\n- Declare responds_to_treatment relation\n- Add facts about disease-treatment response relationships\n- Create rule to find diseases with common responses\n- Query and count diseases with RESP1's responses\n</thinking>"
+    },
+    {
+      "id": 151,
+      "input": "Are there any graph minors in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about graph minor relationships\n- This is a complex graph theory concept\n- ByteLogic doesn't directly support such advanced properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require subgraph and contraction operations\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Graph minor detection is complex in ByteLogic\n- Requires advanced graph theory concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 152,
+      "input": "How many compounds have similar ADMET properties to compound ADMET1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of compounds with similar ADMET properties to ADMET1\n- This is a pharmaceutical property similarity problem\n- Need to find ADMET properties of ADMET1, then count compounds with those properties\n\nLOGICAL STEPS:\n1. Find ADMET (Absorption, Distribution, Metabolism, Excretion, Toxicity) properties of compound ADMET1\n2. For each property, find other compounds with it\n3. Count all such compounds\n\nBYTELOGIC APPROACH:\n- Declare has_admet_property relation\n- Add facts about compound-ADMET property relationships\n- Create rule to find compounds with common ADMET properties\n- Query and count compounds with ADMET1's properties\n</thinking>"
+    },
+    {
+      "id": 153,
+      "input": "Is the metabolic network robust to knockouts?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about network robustness to node removal\n- This is a complex dynamical systems property\n- Requires understanding of metabolic flux and redundancy\n\nLOGICAL STEPS:\n1. This requires quantitative analysis of metabolic flux\n2. Robustness involves system dynamics and redundancy\n3. Not determinable from structure alone\n\nBYTELOGIC APPROACH:\n- Note: Metabolic robustness requires quantitative data\n- Basic ByteLogic handles only structural relationships\n- Consider focusing on simpler structural properties\n</thinking>"
+    },
+    {
+      "id": 154,
+      "input": "How many proteins have similar interaction partners to protein INTER1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of proteins with similar interaction partners to INTER1\n- This is a protein interaction similarity problem\n- Need to find partners of INTER1, then count proteins with those partners\n\nLOGICAL STEPS:\n1. Find interaction partners of protein INTER1\n2. For each partner, find other proteins that interact with it\n3. Count all such proteins\n\nBYTELOGIC APPROACH:\n- Declare interacts_with relation\n- Add facts about protein-protein interactions\n- Create rule to find proteins with common interaction partners\n- Query and count proteins with INTER1's partners\n</thinking>"
+    },
+    {
+      "id": 155,
+      "input": "Are there any strongly regular subgraphs in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about strongly regular graph properties\n- This is a complex algebraic graph theory concept\n- ByteLogic doesn't directly support such advanced properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require complex regularity analysis\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Strongly regular subgraph detection is complex in ByteLogic\n- Requires advanced graph theory concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 156,
+      "input": "How many diseases have similar genetic pathways to disease PATH1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of diseases with similar genetic pathways to PATH1\n- This is a genetic pathway similarity problem\n- Need to find pathways of PATH1, then count diseases in those pathways\n\nLOGICAL STEPS:\n1. Find genetic pathways associated with disease PATH1\n2. For each pathway, find other diseases involved in it\n3. Count all such diseases\n\nBYTELOGIC APPROACH:\n- Declare involved_in_pathway relation\n- Add facts about disease-pathway relationships\n- Create rule to find diseases in common pathways\n- Query and count diseases in PATH1's pathways\n</thinking>"
+    },
+    {
+      "id": 157,
+      "input": "Is the neural connectivity network small-world?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about small-world network properties\n- This is a statistical network property\n- Requires average path length and clustering coefficient analysis\n\nLOGICAL STEPS:\n1. This requires statistical analysis of network metrics\n2. Small-world involves path lengths and clustering\n3. Not straightforward in basic logical framework\n\nBYTELOGIC APPROACH:\n- Note: Small-world property requires statistical analysis\n- Basic ByteLogic handles only structural relationships\n- Consider focusing on simpler structural properties\n</thinking>"
+    },
+    {
+      "id": 158,
+      "input": "How many drugs have similar target binding profiles to drug BIND1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of drugs with similar target binding profiles to BIND1\n- This is a pharmacological binding similarity problem\n- Need to find binding targets of BIND1, then count drugs with those targets\n\nLOGICAL STEPS:\n1. Find target binding profiles of drug BIND1\n2. For each target, find other drugs that bind to it\n3. Count all such drugs\n\nBYTELOGIC APPROACH:\n- Declare binds_to_target relation\n- Add facts about drug-target binding relationships\n- Create rule to find drugs with common binding targets\n- Query and count drugs binding to BIND1's targets\n</thinking>"
+    },
+    {
+      "id": 159,
+      "input": "Are there any distance-regular subgraphs in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about distance-regular graph properties\n- This is a complex algebraic graph theory concept\n- ByteLogic doesn't directly support such advanced properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require complex distance analysis\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Distance-regular subgraph detection is complex in ByteLogic\n- Requires advanced graph theory concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 160,
+      "input": "How many proteins have similar subcellular localizations to protein LOCAL1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of proteins with similar localizations to LOCAL1\n- This is a protein localization similarity problem\n- Need to find localizations of LOCAL1, then count proteins with those localizations\n\nLOGICAL STEPS:\n1. Find subcellular localizations of protein LOCAL1\n2. For each location, find other proteins located there\n3. Count all such proteins\n\nBYTELOGIC APPROACH:\n- Declare located_in relation\n- Add facts about protein-subcellular location relationships\n- Create rule to find proteins with common localizations\n- Query and count proteins in LOCAL1's locations\n</thinking>"
+    },
+    {
+      "id": 161,
+      "input": "Is the ecological food web stable under species removal?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about food web stability under perturbations\n- This is a complex dynamical systems property\n- Requires understanding of population dynamics and interactions\n\nLOGICAL STEPS:\n1. This requires quantitative data about populations\n2. Stability involves differential equations and dynamics\n3. Not determinable from structure alone\n\nBYTELOGIC APPROACH:\n- Note: Food web stability requires quantitative data\n- Basic ByteLogic handles only structural relationships\n- Consider focusing on simpler structural properties\n</thinking>"
+    },
+    {
+      "id": 162,
+      "input": "How many compounds have similar molecular fingerprints to compound FINGER1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of compounds with similar molecular fingerprints to FINGER1\n- This is a cheminformatics similarity problem\n- Need to find fingerprint features of FINGER1, then count compounds with those features\n\nLOGICAL STEPS:\n1. Find molecular fingerprint features of compound FINGER1\n2. For each feature, find other compounds with it\n3. Count all such compounds\n\nBYTELOGIC APPROACH:\n- Declare has_fingerprint_feature relation\n- Add facts about compound-fingerprint feature relationships\n- Create rule to find compounds with common fingerprint features\n- Query and count compounds with FINGER1's features\n</thinking>"
+    },
+    {
+      "id": 163,
+      "input": "Are there any Cayley subgraphs in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about Cayley graph properties\n- This is a complex algebraic graph theory concept\n- ByteLogic doesn't directly support such advanced properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require group theory concepts\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Cayley subgraph detection is complex in ByteLogic\n- Requires advanced algebraic concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 164,
+      "input": "How many diseases have similar progression patterns to disease PROG1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of diseases with similar progression patterns to PROG1\n- This is a medical progression similarity problem\n- Need to find progression patterns of PROG1, then count diseases with those patterns\n\nLOGICAL STEPS:\n1. Find disease progression patterns associated with PROG1\n2. For each pattern, find other diseases with similar progression\n3. Count all such diseases\n\nBYTELOGIC APPROACH:\n- Declare progresses_by_pattern relation\n- Add facts about disease-progression pattern relationships\n- Create rule to find diseases with common progression patterns\n- Query and count diseases with PROG1's patterns\n</thinking>"
+    },
+    {
+      "id": 165,
+      "input": "Is the protein structure network hierarchical?",
+      "pseudocode": "<highlight>\nPROBLEM ANALYSIS:\n- Query asks about hierarchical structure in protein structures\n- This is a complex structural property\n- Requires understanding of structural relationships and classifications\n\nLOGICAL STEPS:\n1. This requires domain-specific knowledge about protein structures\n2. Hierarchy involves structural classification and similarity\n3. Not straightforward in basic logical framework\n\nBYTELOGIC APPROACH:\n- Note: Structural hierarchy requires domain knowledge\n- Basic ByteLogic handles only basic relationships\n- Consider focusing on simpler structural properties\n</highlight>"
+    },
+    {
+      "id": 166,
+      "input": "How many drugs have similar efficacy profiles to drug EFFIC1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of drugs with similar efficacy profiles to EFFIC1\n- This is a pharmacological efficacy similarity problem\n- Need to find efficacy profiles of EFFIC1, then count drugs with those profiles\n\nLOGICAL STEPS:\n1. Find efficacy profiles associated with drug EFFIC1\n2. For each profile, find other drugs with similar efficacy\n3. Count all such drugs\n\nBYTELOGIC APPROACH:\n- Declare has_efficacy_profile relation\n- Add facts about drug-efficacy profile relationships\n- Create rule to find drugs with common efficacy profiles\n- Query and count drugs with EFFIC1's profiles\n</thinking>"
+    },
+    {
+      "id": 167,
+      "input": "Are there any expander graph properties in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about expander graph properties\n- This is a complex spectral graph theory concept\n- ByteLogic doesn't directly support such advanced properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require spectral analysis concepts\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Expander property detection is complex in ByteLogic\n- Requires advanced graph theory concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 168,
+      "input": "How many genes have similar regulatory networks to gene REGNET1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of genes with similar regulatory networks to REGNET1\n- This is a gene regulatory network similarity problem\n- Need to find regulatory networks of REGNET1, then count genes with those networks\n\nLOGICAL STEPS:\n1. Find regulatory networks associated with gene REGNET1\n2. For each network, find other genes involved in it\n3. Count all such genes\n\nBYTELOGIC APPROACH:\n- Declare part_of_network relation\n- Add facts about gene-regulatory network relationships\n- Create rule to find genes in common regulatory networks\n- Query and count genes in REGNET1's networks\n</thinking>"
+    },
+    {
+      "id": 169,
+      "input": "Is the social network assortative?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about assortativity in social networks\n- This is a statistical network property\n- Requires correlation analysis between node attributes\n\nLOGICAL STEPS:\n1. This requires statistical analysis of node attribute correlations\n2. Assortativity involves comparing attributes of connected nodes\n3. Not straightforward in basic logical framework\n\nBYTELOGIC APPROACH:\n- Note: Assortativity requires statistical analysis\n- Basic ByteLogic handles only structural relationships\n- Consider focusing on simpler structural properties\n</thinking>"
+    },
+    {
+      "id": 170,
+      "input": "How many proteins have similar binding domains to protein BINDOM1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of proteins with similar binding domains to BINDOM1\n- This is a protein domain similarity problem\n- Need to find binding domains of BINDOM1, then count proteins with those domains\n\nLOGICAL STEPS:\n1. Find binding domains present in protein BINDOM1\n2. For each domain, find other proteins containing it\n3. Count all such proteins\n\nBYTELOGIC APPROACH:\n- Declare has_binding_domain relation\n- Add facts about protein-binding domain relationships\n- Create rule to find proteins with common binding domains\n- Query and count proteins containing BINDOM1's domains\n</thinking>"
+    },
+    {
+      "id": 171,
+      "input": "Are there any Ramanujan subgraphs in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about Ramanujan graph properties\n- This is a complex spectral graph theory concept\n- ByteLogic doesn't directly support such advanced properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require complex eigenvalue analysis\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Ramanujan subgraph detection is complex in ByteLogic\n- Requires advanced spectral graph theory\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 172,
+      "input": "How many diseases have similar biomarkers to disease BIO1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of diseases with similar biomarkers to BIO1\n- This is a medical biomarker similarity problem\n- Need to find biomarkers of BIO1, then count diseases with those biomarkers\n\nLOGICAL STEPS:\n1. Find biomarkers associated with disease BIO1\n2. For each biomarker, find other diseases associated with it\n3. Count all such diseases\n\nBYTELOGIC APPROACH:\n- Declare associated_with_biomarker relation\n- Add facts about disease-biomarker relationships\n- Create rule to find diseases with common biomarkers\n- Query and count diseases with BIO1's biomarkers\n</thinking>"
+    },
+    {
+      "id": 173,
+      "input": "Is the metabolic control network controllable?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about controllability of metabolic networks\n- This is a complex control theory property\n- Requires understanding of system dynamics and control inputs\n\nLOGICAL STEPS:\n1. This requires quantitative analysis of metabolic flux\n2. Controllability involves system dynamics and control theory\n3. Not determinable from structure alone\n\nBYTELOGIC APPROACH:\n- Note: Metabolic controllability requires quantitative data\n- Basic ByteLogic handles only structural relationships\n- Consider focusing on simpler structural properties\n</thinking>"
+    },
+    {
+      "id": 174,
+      "input": "How many compounds have similar activity profiles to compound ACT1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of compounds with similar activity profiles to ACT1\n- This is a cheminformatics activity similarity problem\n- Need to find activity profiles of ACT1, then count compounds with those profiles\n\nLOGICAL STEPS:\n1. Find biological activity profiles of compound ACT1\n2. For each activity, find other compounds with it\n3. Count all such compounds\n\nBYTELOGIC APPROACH:\n- Declare has_activity_profile relation\n- Add facts about compound-activity profile relationships\n- Create rule to find compounds with common activity profiles\n- Query and count compounds with ACT1's profiles\n</thinking>"
+    },
+    {
+      "id": 175,
+      "input": "Are there any distance-transitive subgraphs in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about distance-transitive graph properties\n- This is a complex algebraic graph theory concept\n- ByteLogic doesn't directly support such advanced properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require complex automorphism analysis\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Distance-transitive subgraph detection is complex in ByteLogic\n- Requires advanced graph theory concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 176,
+      "input": "How many proteins have similar post-translational modification sites to protein SITE1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of proteins with similar modification sites to SITE1\n- This is a protein modification site similarity problem\n- Need to find modification sites of SITE1, then count proteins with those sites\n\nLOGICAL STEPS:\n1. Find post-translational modification sites of protein SITE1\n2. For each site, find other proteins with similar sites\n3. Count all such proteins\n\nBYTELOGIC APPROACH:\n- Declare has_modification_site relation\n- Add facts about protein-modification site relationships\n- Create rule to find proteins with common modification sites\n- Query and count proteins with SITE1's sites\n</thinking>"
+    },
+    {
+      "id": 177,
+      "input": "Is the gene regulatory network stable?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about stability of gene regulatory networks\n- This is a complex dynamical systems property\n- Requires understanding of regulatory strengths and feedback loops\n\nLOGICAL STEPS:\n1. This requires quantitative data about regulation strengths\n2. Stability involves differential equations and dynamics\n3. Not determinable from structure alone\n\nBYTELOGIC APPROACH:\n- Note: Regulatory network stability requires quantitative data\n- Basic ByteLogic handles only structural relationships\n- Consider focusing on simpler structural properties\n</thinking>"
+    },
+    {
+      "id": 178,
+      "input": "How many drugs have similar resistance profiles to drug RESIST1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of drugs with similar resistance profiles to RESIST1\n- This is a pharmacological resistance similarity problem\n- Need to find resistance profiles of RESIST1, then count drugs with those profiles\n\nLOGICAL STEPS:\n1. Find drug resistance profiles associated with RESIST1\n2. For each resistance pattern, find other drugs with similar resistance\n3. Count all such drugs\n\nBYTELOGIC APPROACH:\n- Declare has_resistance_profile relation\n- Add facts about drug-resistance profile relationships\n- Create rule to find drugs with common resistance profiles\n- Query and count drugs with RESIST1's profiles\n</thinking>"
+    },
+    {
+      "id": 179,
+      "input": "Are there any integral graphs in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about integral graph properties\n- This is a complex spectral graph theory concept\n- ByteLogic doesn't directly support such advanced properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require complex eigenvalue analysis\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Integral graph detection is complex in ByteLogic\n- Requires advanced spectral graph theory\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 180,
+      "input": "How many diseases have similar comorbidity patterns to disease COMORB1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of diseases with similar comorbidity patterns to COMORB1\n- This is a medical comorbidity similarity problem\n- Need to find comorbidity patterns of COMORB1, then count diseases with those patterns\n\nLOGICAL STEPS:\n1. Find comorbidity patterns associated with disease COMORB1\n2. For each pattern, find other diseases with similar comorbidities\n3. Count all such diseases\n\nBYTELOGIC APPROACH:\n- Declare has_comorbidity_pattern relation\n- Add facts about disease-comorbidity pattern relationships\n- Create rule to find diseases with common comorbidity patterns\n- Query and count diseases with COMORB1's patterns\n</thinking>"
+    },
+    {
+      "id": 181,
+      "input": "Is the protein folding landscape funnel-like?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about funnel properties in protein folding\n- This is a complex biophysical property\n- Requires understanding of energy landscapes and folding kinetics\n\nLOGICAL STEPS:\n1. This requires quantitative data about energy landscapes\n2. Funnel properties involve thermodynamics and kinetics\n3. Not determinable from structure alone\n\nBYTELOGIC APPROACH:\n- Note: Folding landscape properties require quantitative data\n- Basic ByteLogic handles only structural relationships\n- Consider focusing on simpler structural properties\n</thinking>"
+    },
+    {
+      "id": 182,
+      "input": "How many compounds have similar toxicity profiles to compound TOX1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of compounds with similar toxicity profiles to TOX1\n- This is a toxicological similarity problem\n- Need to find toxicity profiles of TOX1, then count compounds with those profiles\n\nLOGICAL STEPS:\n1. Find toxicity profiles associated with compound TOX1\n2. For each toxicity type, find other compounds with similar toxicity\n3. Count all such compounds\n\nBYTELOGIC APPROACH:\n- Declare has_toxicity_profile relation\n- Add facts about compound-toxicity profile relationships\n- Create rule to find compounds with common toxicity profiles\n- Query and count compounds with TOX1's profiles\n</thinking>"
+    },
+    {
+      "id": 183,
+      "input": "Are there any perfect matching subgraphs in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about perfect matching properties\n- This is a complex graph matching problem\n- ByteLogic doesn't directly support such optimization problems\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require matching algorithm implementation\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Perfect matching detection is complex in ByteLogic\n- Requires matching algorithm concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 184,
+      "input": "How many genes have similar expression correlation patterns to gene CORR1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of genes with similar expression correlation patterns to CORR1\n- This is a gene expression correlation similarity problem\n- Need to find correlation patterns of CORR1, then count genes with those patterns\n\nLOGICAL STEPS:\n1. Find expression correlation patterns of gene CORR1\n2. For each pattern, find other genes with similar correlations\n3. Count all such genes\n\nBYTELOGIC APPROACH:\n- Declare correlates_with_pattern relation\n- Add facts about gene-correlation pattern relationships\n- Create rule to find genes with common correlation patterns\n- Query and count genes with CORR1's patterns\n</thinking>"
+    },
+    {
+      "id": 185,
+      "input": "Is the neural network sparse?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about sparsity in neural networks\n- This is a statistical network property\n- Requires density analysis of connections\n\nLOGICAL STEPS:\n1. This requires statistical analysis of connection density\n2. Sparsity involves comparing actual to possible connections\n3. Not straightforward in basic logical framework\n\nBYTELOGIC APPROACH:\n- Note: Sparsity requires statistical analysis\n- Basic ByteLogic handles only structural relationships\n- Consider focusing on simpler structural properties\n</thinking>"
+    },
+    {
+      "id": 186,
+      "input": "How many proteins have similar functional annotations to protein ANNO1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of proteins with similar functional annotations to ANNO1\n- This is a protein function annotation similarity problem\n- Need to find annotations of ANNO1, then count proteins with those annotations\n\nLOGICAL STEPS:\n1. Find functional annotations associated with protein ANNO1\n2. For each annotation, find other proteins with it\n3. Count all such proteins\n\nBYTELOGIC APPROACH:\n- Declare has_annotation relation\n- Add facts about protein-functional annotation relationships\n- Create rule to find proteins with common annotations\n- Query and count proteins with ANNO1's annotations\n</thinking>"
+    },
+    {
+      "id": 187,
+      "input": "Are there any strongly chordal subgraphs in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about strongly chordal graph properties\n- This is a complex graph theory concept\n- ByteLogic doesn't directly support such advanced properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require complex subgraph analysis\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Strongly chordal subgraph detection is complex in ByteLogic\n- Requires advanced graph theory concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 188,
+      "input": "How many diseases have similar pathological mechanisms to disease PATHMECH1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of diseases with similar pathological mechanisms to PATHMECH1\n- This is a medical pathology similarity problem\n- Need to find mechanisms of PATHMECH1, then count diseases with those mechanisms\n\nLOGICAL STEPS:\n1. Find pathological mechanisms associated with disease PATHMECH1\n2. For each mechanism, find other diseases with similar mechanisms\n3. Count all such diseases\n\nBYTELOGIC APPROACH:\n- Declare operates_by_mechanism relation\n- Add facts about disease-pathological mechanism relationships\n- Create rule to find diseases with common mechanisms\n- Query and count diseases with PATHMECH1's mechanisms\n</thinking>"
+    },
+    {
+      "id": 189,
+      "input": "Is the ecological network stable under environmental changes?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about ecological stability under environmental changes\n- This is a complex dynamical systems property\n- Requires understanding of population dynamics and environmental responses\n\nLOGICAL STEPS:\n1. This requires quantitative data about populations and environments\n2. Stability involves differential equations and environmental responses\n3. Not determinable from structure alone\n\nBYTELOGIC APPROACH:\n- Note: Ecological stability requires quantitative data\n- Basic ByteLogic handles only structural relationships\n- Consider focusing on simpler structural properties\n</thinking>"
+    },
+    {
+      "id": 190,
+      "input": "How many drugs have similar absorption profiles to drug ABSORB1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of drugs with similar absorption profiles to ABSORB1\n- This is a pharmacokinetic similarity problem\n- Need to find absorption profiles of ABSORB1, then count drugs with those profiles\n\nLOGICAL STEPS:\n1. Find absorption profiles associated with drug ABSORB1\n2. For each profile, find other drugs with similar absorption\n3. Count all such drugs\n\nBYTELOGIC APPROACH:\n- Declare has_absorption_profile relation\n- Add facts about drug-absorption profile relationships\n- Create rule to find drugs with common absorption profiles\n- Query and count drugs with ABSORB1's profiles\n</thinking>"
+    },
+    {
+      "id": 191,
+      "input": "Are there any distance-balanced subgraphs in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about distance-balanced graph properties\n- This is a complex algebraic graph theory concept\n- ByteLogic doesn't directly support such advanced properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require complex distance analysis\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Distance-balanced subgraph detection is complex in ByteLogic\n- Requires advanced graph theory concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 192,
+      "input": "How many proteins have similar evolutionary conservation patterns to protein EVOL1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of proteins with similar evolutionary conservation patterns to EVOL1\n- This is a protein evolution similarity problem\n- Need to find conservation patterns of EVOL1, then count proteins with those patterns\n\nLOGICAL STEPS:\n1. Find evolutionary conservation patterns of protein EVOL1\n2. For each pattern, find other proteins with similar conservation\n3. Count all such proteins\n\nBYTELOGIC APPROACH:\n- Declare has_conservation_pattern relation\n- Add facts about protein-conservation pattern relationships\n- Create rule to find proteins with common conservation patterns\n- Query and count proteins with EVOL1's patterns\n</thinking>"
+    },
+    {
+      "id": 193,
+      "input": "Is the gene co-regulation network modular?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about modularity in gene co-regulation networks\n- This is a complex network community structure property\n- Requires clustering coefficient and community detection\n\nLOGICAL STEPS:\n1. This requires community detection algorithms\n2. Modularity involves complex statistical measures\n3. Not straightforward in basic logical framework\n\nBYTELOGIC APPROACH:\n- Note: Co-regulation modularity requires community detection\n- Basic ByteLogic handles only structural relationships\n- Consider focusing on simpler structural properties\n</thinking>"
+    },
+    {
+      "id": 194,
+      "input": "How many compounds have similar solubility profiles to compound SOL1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of compounds with similar solubility profiles to SOL1\n- This is a physicochemical property similarity problem\n- Need to find solubility profiles of SOL1, then count compounds with those profiles\n\nLOGICAL STEPS:\n1. Find solubility profiles associated with compound SOL1\n2. For each profile, find other compounds with similar solubility\n3. Count all such compounds\n\nBYTELOGIC APPROACH:\n- Declare has_solubility_profile relation\n- Add facts about compound-solubility profile relationships\n- Create rule to find compounds with common solubility profiles\n- Query and count compounds with SOL1's profiles\n</thinking>"
+    },
+    {
+      "id": 195,
+      "input": "Are there any symmetric subgraphs in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about symmetric graph properties\n- This is a complex graph automorphism concept\n- ByteLogic doesn't directly support such symmetry detection\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require isomorphism checking\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Symmetric subgraph detection is complex in ByteLogic\n- Requires advanced graph theory concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 196,
+      "input": "How many diseases have similar temporal progression patterns to disease TEMP1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of diseases with similar temporal progression patterns to TEMP1\n- This is a medical temporal similarity problem\n- Need to find temporal patterns of TEMP1, then count diseases with those patterns\n\nLOGICAL STEPS:\n1. Find temporal progression patterns associated with disease TEMP1\n2. For each pattern, find other diseases with similar temporal progression\n3. Count all such diseases\n\nBYTELOGIC APPROACH:\n- Declare progresses_over_time relation\n- Add facts about disease-temporal progression pattern relationships\n- Create rule to find diseases with common temporal patterns\n- Query and count diseases with TEMP1's patterns\n</thinking>"
+    },
+    {
+      "id": 197,
+      "input": "Is the protein-protein interaction network dense?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about density in protein interaction networks\n- This is a statistical network property\n- Requires density analysis of interactions\n\nLOGICAL STEPS:\n1. This requires statistical analysis of interaction density\n2. Density involves comparing actual to possible interactions\n3. Not straightforward in basic logical framework\n\nBYTELOGIC APPROACH:\n- Note: Density requires statistical analysis\n- Basic ByteLogic handles only structural relationships\n- Consider focusing on simpler structural properties\n</thinking>"
+    },
+    {
+      "id": 198,
+      "input": "How many drugs have similar distribution profiles to drug DIST1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of drugs with similar distribution profiles to DIST1\n- This is a pharmacokinetic similarity problem\n- Need to find distribution profiles of DIST1, then count drugs with those profiles\n\nLOGICAL STEPS:\n1. Find distribution profiles associated with drug DIST1\n2. For each profile, find other drugs with similar distribution\n3. Count all such drugs\n\nBYTELOGIC APPROACH:\n- Declare has_distribution_profile relation\n- Add facts about drug-distribution profile relationships\n- Create rule to find drugs with common distribution profiles\n- Query and count drugs with DIST1's profiles\n</thinking>"
+    },
+    {
+      "id": 199,
+      "input": "Are there any vertex-transitive subgraphs in the network?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks about vertex-transitive graph properties\n- This is a complex algebraic graph theory concept\n- ByteLogic doesn't directly support such advanced properties\n\nLOGICAL STEPS:\n1. This problem is complex to express in ByteLogic\n2. Would require complex automorphism analysis\n3. Not straightforward in logical inference framework\n\nBYTELOGIC APPROACH:\n- Note: Vertex-transitive subgraph detection is complex in ByteLogic\n- Requires advanced graph theory concepts\n- Consider focusing on simpler properties\n</thinking>"
+    },
+    {
+      "id": 200,
+      "input": "How many proteins have similar degradation patterns to protein DEGRAD1?",
+      "pseudocode": "<thinking>\nPROBLEM ANALYSIS:\n- Query asks for count of proteins with similar degradation patterns to DEGRAD1\n- This is a protein turnover similarity problem\n- Need to find degradation patterns of DEGRAD1, then count proteins with those patterns\n\nLOGICAL STEPS:\n1. Find protein degradation patterns associated with DEGRAD1\n2. For each pattern, find other proteins with similar degradation\n3. Count all such proteins\n\nBYTELOGIC APPROACH:\n- Declare degrades_by_pattern relation\n- Add facts about protein-degradation pattern relationships\n- Create rule to find proteins with common degradation patterns\n- Query and count proteins with DEGRAD1's patterns\n</thinking>"
+    }
+  ]
+}

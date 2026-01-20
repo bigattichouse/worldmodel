@@ -1,0 +1,175 @@
+; Logic Deduction Grid Problem in ByteLog
+; ========================================
+; 
+; PROBLEM: From the clues, determine each person's age and birth month:
+; 1. Peter's birthday is in April.
+; 2. Eric is 7.
+; 3. Arnold's birthday is in September.  
+; 4. Peter is 8.
+;
+; This demonstrates ByteLog's strength in constraint-based logic programming
+
+; Relations for our deduction grid
+REL person          ; person IDs: 1=Peter, 2=Eric, 3=Arnold
+REL age            ; (person_id, age)
+REL birth_month    ; (person_id, month) where 4=April, 9=September
+REL valid_age      ; valid ages in our domain
+REL valid_month    ; valid months in our domain
+
+; Define our domain
+REL persons
+FACT persons 1 "Peter"
+FACT persons 2 "Eric" 
+FACT persons 3 "Arnold"
+
+; Age domain (let's say ages 6-10 are possible)
+FACT valid_age 6 6
+FACT valid_age 7 7
+FACT valid_age 8 8
+FACT valid_age 9 9
+FACT valid_age 10 10
+
+; Month domain (1-12, but we'll focus on relevant months)
+FACT valid_month 4 4    ; April
+FACT valid_month 9 9    ; September
+FACT valid_month 1 1    ; January (for Eric, to be determined)
+FACT valid_month 2 2    ; February
+FACT valid_month 3 3    ; March
+FACT valid_month 5 5    ; May
+FACT valid_month 6 6    ; June
+FACT valid_month 7 7    ; July
+FACT valid_month 8 8    ; August
+FACT valid_month 10 10  ; October
+FACT valid_month 11 11  ; November
+FACT valid_month 12 12  ; December
+
+; ============================================================================
+; CONSTRAINT FACTS (Given clues)
+; ============================================================================
+
+; Clue 1: Peter's birthday is in April (Peter=1, April=4)
+FACT birth_month 1 4
+
+; Clue 2: Eric is 7 (Eric=2, Age=7)
+FACT age 2 7
+
+; Clue 3: Arnold's birthday is in September (Arnold=3, September=9)  
+FACT birth_month 3 9
+
+; Clue 4: Peter is 8 (Peter=1, Age=8)
+FACT age 1 8
+
+; ============================================================================
+; DEDUCTION RULES - Fill in missing information
+; ============================================================================
+
+; Rule 1: Every person must have exactly one age
+; If we know some ages, deduce the remaining ones
+RULE deduce_missing_ages:
+  SCAN persons,
+  SCAN valid_age,
+  ; Make sure this person doesn't already have an age assigned
+  WHERE NOT EXISTS (QUERY age $0 ?),
+  ; Make sure this age isn't already taken by someone else
+  WHERE NOT EXISTS (QUERY age ? $1),
+  EMIT age $0 $1
+END
+
+; Rule 2: Every person must have exactly one birth month
+; If we know some months, deduce the remaining ones
+RULE deduce_missing_months:
+  SCAN persons,
+  SCAN valid_month,
+  ; Make sure this person doesn't already have a month assigned
+  WHERE NOT EXISTS (QUERY birth_month $0 ?),
+  ; Make sure this month isn't already taken (if we assume no shared months)
+  WHERE NOT EXISTS (QUERY birth_month ? $1),
+  EMIT birth_month $0 $1
+END
+
+; ============================================================================
+; CONSTRAINT VALIDATION RULES
+; ============================================================================
+
+; Check for conflicts - each person should have exactly one age
+RULE validate_unique_ages:
+  SCAN age,
+  SCAN age,
+  ; Same person, different ages = conflict
+  WHERE $0 == $2 AND $1 != $3,
+  EMIT conflict_age $0 $1 $3
+END
+
+; Check for conflicts - each person should have exactly one birth month
+RULE validate_unique_months:
+  SCAN birth_month,
+  SCAN birth_month, 
+  ; Same person, different months = conflict
+  WHERE $0 == $2 AND $1 != $3,
+  EMIT conflict_month $0 $1 $3
+END
+
+; ============================================================================
+; SOLUTION EXTRACTION
+; ============================================================================
+
+; Combine age and birth month information for complete solution
+RULE complete_solution:
+  SCAN age,
+  SCAN birth_month,
+  ; Same person
+  WHERE $0 == $2,
+  EMIT solution $0 $1 $3
+END
+
+; Named solution for easy reading
+RULE named_solution:
+  SCAN persons,
+  SCAN solution,
+  ; Same person
+  WHERE $0 == $2,
+  EMIT final_answer $1 $3 $4  ; person_name, age, birth_month
+END
+
+; ============================================================================
+; ADVANCED CONSTRAINT SOLVING (Optional enhancement)
+; ============================================================================
+
+; CALC function to validate no duplicate ages
+CALC has_unique_ages
+  LET $peter_age = 0
+  LET $eric_age = 0  
+  LET $arnold_age = 0
+  
+  ; Extract each person's age (simplified - in full implementation 
+  ; we'd scan the relations)
+  ; For now, based on our facts:
+  LET $peter_age = 8   ; From clue 4
+  LET $eric_age = 7    ; From clue 2
+  
+  ; Arnold's age needs to be different from Peter's and Eric's
+  FOR $candidate_age IN RANGE(6, 11)
+    IF $candidate_age != $peter_age AND $candidate_age != $eric_age THEN
+      RESULT $candidate_age  ; Return first valid age for Arnold
+    END
+  END
+  
+  RESULT -1  ; No valid age found
+END
+
+; Generate Arnold's age using computation
+RULE arnold_age_deduction:
+  LET $arnold_age = CALC has_unique_ages(),
+  WHERE $arnold_age != -1,
+  EMIT age 3 $arnold_age
+END
+
+SOLVE
+
+; Query the final solution
+QUERY solution ? ? ?
+QUERY final_answer ? ? ?
+
+; Check for any conflicts
+QUERY conflict_age ? ? ?  
+QUERY conflict_month ? ? ?

@@ -1,0 +1,25 @@
+REL parent
+REL grandparent
+REL sibling
+REL ancestor
+
+FACT parent alice bob
+FACT parent alice charlie
+FACT parent bob david
+FACT parent charlie eve
+FACT parent david frank
+FACT parent eve george
+
+RULE grandparent: SCAN parent MATCH $0, JOIN parent $0, EMIT grandparent $1 $2
+
+RULE sibling: SCAN parent MATCH $0, JOIN parent $0, EMIT sibling $1 $2
+
+RULE ancestor: SCAN parent MATCH $0, EMIT ancestor $1 $0
+RULE ancestor: SCAN ancestor MATCH $0, JOIN parent $0, EMIT ancestor $1 $2
+
+SOLVE
+
+QUERY parent alice ?
+QUERY grandparent alice ?
+QUERY sibling bob ?
+QUERY ancestor alice ?

@@ -1,0 +1,222 @@
+; Mental Calculation Examples - ByteLog as LLM Computational Assistant
+; Real-world problems an LLM might need to solve step by step
+
+REL numbers 
+REL calculations
+REL word_analysis
+
+; Sample data for testing
+FACT numbers 1 "strawberry"
+FACT numbers 2 "hello"
+FACT numbers 3 "computation"
+
+; ============================================================================
+; ARITHMETIC MENTAL CALCULATIONS
+; ============================================================================
+
+; "What's 15% of 240?"
+CALC percentage
+  INPUT $value $percent
+  LET $decimal = $percent / 100
+  RESULT $value * $decimal
+END
+
+; "If I buy 3 items at $12.50 each, what's the total with 8.5% tax?"
+CALC shopping_total
+  INPUT $items $price $tax_rate
+  LET $subtotal = $items * $price
+  LET $tax_amount = CALC percentage($subtotal, $tax_rate)
+  RESULT $subtotal + $tax_amount
+END
+
+; "How many different ways can I arrange 5 books?" (5! = factorial)
+CALC arrangements
+  INPUT $items
+  RESULT CALC factorial($items)
+END
+
+; ============================================================================
+; TIME AND SEQUENCE CALCULATIONS  
+; ============================================================================
+
+; "If it's 2:30 PM and I need to be somewhere in 45 minutes..."
+CALC time_calculation
+  INPUT $current_hour $current_min $add_minutes
+  LET $total_minutes = $current_hour * 60 + $current_min + $add_minutes
+  LET $new_hour = $total_minutes / 60
+  LET $new_min = $total_minutes MOD 60
+  RESULT $new_hour * 100 + $new_min  ; Encode as HHMM
+END
+
+; "What's the 10th number in the Fibonacci sequence?"
+CALC fib_mental
+  INPUT $position
+  LET $a = 0
+  LET $b = 1
+  LET $count = 0
+  
+  FOR WHILE $count < $position
+    LET $next = $a + $b
+    LET $a = $b
+    LET $b = $next
+    LET $count = $count + 1
+  END
+  
+  RESULT $a
+END
+
+; ============================================================================
+; WORD AND LETTER ANALYSIS
+; ============================================================================
+
+; "How many R's are in 'strawberry'?" - Classic mental calculation
+CALC count_rs_in_strawberry
+  INPUT $word
+  RESULT CALC count_letter($word, "r")
+END
+
+; Generic letter counting
+CALC count_letter
+  INPUT $word $letter
+  LET $count = 0
+  FOR $i IN RANGE(0, LENGTH($word))
+    LET $char = CHAR_AT($word, $i)
+    IF $char == $letter THEN
+      LET $count = $count + 1
+    END
+  END
+  RESULT $count
+END
+
+; "How many vowels vs consonants?"
+CALC vowel_analysis
+  INPUT $word
+  LET $vowels = 0
+  LET $consonants = 0
+  
+  FOR $pos IN RANGE(0, LENGTH($word))
+    LET $char = CHAR_AT($word, $pos)
+    
+    ; Count vowels
+    LET $is_vowel = 0
+    IF $char == "a" THEN LET $is_vowel = 1 END
+    IF $char == "e" THEN LET $is_vowel = 1 END  
+    IF $char == "i" THEN LET $is_vowel = 1 END
+    IF $char == "o" THEN LET $is_vowel = 1 END
+    IF $char == "u" THEN LET $is_vowel = 1 END
+    
+    IF $is_vowel == 1 THEN
+      LET $vowels = $vowels + 1
+    ELSE
+      LET $consonants = $consonants + 1
+    END
+  END
+  
+  ; Return ratio as percentage (vowels * 100 / total)
+  LET $total = $vowels + $consonants
+  IF $total > 0 THEN
+    LET $vowel_percentage = ($vowels * 100) / $total
+    RESULT $vowel_percentage
+  ELSE
+    RESULT 0
+  END
+END
+
+; ============================================================================
+; MATHEMATICAL PROBLEM SOLVING
+; ============================================================================
+
+; "What's the greatest common divisor of 48 and 18?"
+CALC gcd_euclidean
+  INPUT $a $b
+  FOR WHILE $b != 0
+    LET $temp = $b
+    LET $b = $a MOD $b
+    LET $a = $temp
+  END
+  RESULT ABS($a)
+END
+
+; "Is 97 a prime number?"
+CALC prime_check_optimized
+  INPUT $n
+  IF $n < 2 THEN
+    RESULT 0
+  END
+  IF $n == 2 THEN
+    RESULT 1
+  END
+  IF $n MOD 2 == 0 THEN
+    RESULT 0
+  END
+  
+  ; Check odd divisors up to sqrt(n)
+  LET $sqrt_n = SQRT($n)
+  FOR $i IN RANGE(3, $sqrt_n + 1)
+    IF $i * $i > $n THEN
+      BREAK  ; Optimization
+    END
+    IF $n MOD $i == 0 THEN
+      RESULT 0
+    END
+    LET $i = $i + 2  ; Skip even numbers
+  END
+  
+  RESULT 1
+END
+
+; ============================================================================
+; COMPOUND CALCULATIONS (Multiple Steps)
+; ============================================================================
+
+; "If I invest $1000 at 5% interest compounded annually for 10 years..."
+CALC compound_interest
+  INPUT $principal $rate $years
+  LET $amount = $principal
+  
+  FOR $year IN RANGE(1, $years + 1)
+    LET $interest = ($amount * $rate) / 100
+    LET $amount = $amount + $interest
+  END
+  
+  RESULT $amount
+END
+
+; "Distance between two points (x1,y1) and (x2,y2)"
+CALC distance_2d
+  INPUT $x1 $y1 $x2 $y2
+  LET $dx = $x2 - $x1
+  LET $dy = $y2 - $y1
+  LET $dx_squared = POW($dx, 2)
+  LET $dy_squared = POW($dy, 2)
+  LET $sum = $dx_squared + $dy_squared
+  RESULT SQRT($sum)
+END
+
+; ============================================================================
+; RULES FOR AUTOMATED ANALYSIS
+; ============================================================================
+
+; Process all words and analyze them
+RULE word_processing:
+  SCAN numbers,
+  LET $letter_count = LENGTH($1),
+  LET $vowel_percent = CALC vowel_analysis($1),
+  LET $r_count = CALC count_rs_in_strawberry($1),
+  EMIT word_analysis $0 $letter_count $vowel_percent $r_count
+END
+
+; Generate some mathematical results
+RULE math_examples:
+  SCAN numbers,
+  LET $factorial_result = CALC arrangements(5),
+  LET $fib_10 = CALC fib_mental(10),
+  LET $is_prime_97 = CALC prime_check_optimized(97),
+  EMIT calculations $0 $factorial_result $fib_10 $is_prime_97
+END
+
+SOLVE
+
+; Query results
+QUERY word_analysis ? ? ? ?
+QUERY calculations ? ? ? ?

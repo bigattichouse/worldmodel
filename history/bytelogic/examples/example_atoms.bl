@@ -1,0 +1,17 @@
+REL likes
+REL parent
+REL grandparent
+
+FACT likes alice pizza
+FACT likes bob pasta
+FACT likes charlie pizza
+
+FACT parent alice bob
+FACT parent bob charlie
+
+RULE grandparent: SCAN parent MATCH $0, JOIN parent $0, EMIT grandparent $1 $2
+
+SOLVE
+
+QUERY likes alice ?
+QUERY grandparent ? charlie

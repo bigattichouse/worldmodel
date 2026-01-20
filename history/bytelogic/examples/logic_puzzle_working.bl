@@ -1,0 +1,155 @@
+; Working Logic Puzzle in Current ByteLog Syntax
+; =============================================
+; 
+; PROBLEM: From clues, deduce missing ages and birth months
+; 1. Peter's birthday is in April.
+; 2. Eric is 7.  
+; 3. Arnold's birthday is in September.
+; 4. Peter is 8.
+;
+; QUESTION: What is Eric's birth month and Arnold's age?
+
+REL known_age         ; (person_id, age)
+REL known_month       ; (person_id, month) 
+REL deduced_age       ; (person_id, age) - our deductions
+REL deduced_month     ; (person_id, month) - our deductions
+REL final_solution    ; (person_id, age, month)
+
+; ============================================================================
+; INPUT: Given Facts from Clues
+; ============================================================================
+
+; Peter = 1, Eric = 2, Arnold = 3
+; April = 4, September = 9
+
+FACT known_month 1 4      ; Peter's birthday in April
+FACT known_age 2 7        ; Eric is 7
+FACT known_month 3 9      ; Arnold's birthday in September  
+FACT known_age 1 8        ; Peter is 8
+
+; ============================================================================
+; COMPUTATIONAL DEDUCTION (Using CALC functions)
+; ============================================================================
+
+; Find available age for Arnold (not 7 or 8)
+CALC find_arnold_age
+  FOR $age IN RANGE(6, 12)
+    IF $age != 7 AND $age != 8 THEN
+      RESULT $age  ; Return first available age
+    END
+  END
+  RESULT 9  ; Fallback
+END
+
+; Find available month for Eric (not April=4 or September=9)
+CALC find_eric_month
+  FOR $month IN RANGE(1, 13)
+    IF $month != 4 AND $month != 9 THEN
+      RESULT $month  ; Return first available month
+    END
+  END
+  RESULT 1  ; Fallback to January
+END
+
+; Apply our deductions
+RULE make_deductions:
+  LET $arnold_age = CALC find_arnold_age(),
+  LET $eric_month = CALC find_eric_month(),
+  EMIT deduced_age 3 $arnold_age,
+  EMIT deduced_month 2 $eric_month
+END
+
+; ============================================================================
+; SOLUTION ASSEMBLY
+; ============================================================================
+
+; Combine known and deduced information for Peter
+RULE peter_solution:
+  SCAN known_age,    ; Peter's age (1, 8)
+  SCAN known_month,  ; Peter's month (1, 4) 
+  WHERE $0 == 1 AND $2 == 1,  ; Both about Peter
+  EMIT final_solution 1 $1 $3   ; Peter: age 8, month April
+END
+
+; Combine known and deduced information for Eric  
+RULE eric_solution:
+  SCAN known_age,      ; Eric's age (2, 7)
+  SCAN deduced_month,  ; Eric's deduced month
+  WHERE $0 == 2 AND $2 == 2,  ; Both about Eric
+  EMIT final_solution 2 $1 $3   ; Eric: age 7, month (deduced)
+END
+
+; Combine known and deduced information for Arnold
+RULE arnold_solution:
+  SCAN deduced_age,    ; Arnold's deduced age
+  SCAN known_month,    ; Arnold's month (3, 9)
+  WHERE $0 == 3 AND $2 == 3,  ; Both about Arnold  
+  EMIT final_solution 3 $1 $3   ; Arnold: age (deduced), month September
+END
+
+; ============================================================================
+; CONSTRAINT VALIDATION (Optional)
+; ============================================================================
+
+; Check that all ages are unique
+RULE validate_no_duplicate_ages:
+  SCAN final_solution,  ; Person A
+  SCAN final_solution,  ; Person B
+  WHERE $0 != $3 AND $1 == $4,  ; Different people, same age
+  EMIT age_conflict $0 $3 $1     ; Report conflict
+END
+
+; Check that all birth months are unique (if that's a constraint)
+RULE validate_no_duplicate_months:
+  SCAN final_solution,  ; Person A  
+  SCAN final_solution,  ; Person B
+  WHERE $0 != $3 AND $2 == $5,  ; Different people, same month
+  EMIT month_conflict $0 $3 $2   ; Report conflict  
+END
+
+; ============================================================================
+; ALTERNATIVE: Pure Logic Programming Approach
+; ============================================================================
+
+; Generate all valid combinations and filter
+REL possible_age      ; (person, age)
+REL possible_month    ; (person, month)
+
+; Generate possible ages for each person
+RULE generate_ages:
+  FOR $person IN RANGE(1, 4)
+    FOR $age IN RANGE(6, 12)
+      EMIT possible_age $person $age
+    END
+  END
+END
+
+; Generate possible months for each person  
+RULE generate_months:
+  FOR $person IN RANGE(1, 4)
+    FOR $month IN RANGE(1, 13)
+      EMIT possible_month $person $month
+    END
+  END
+END
+
+; Filter based on known constraints
+RULE filter_by_known_facts:
+  SCAN possible_age,
+  SCAN known_age,
+  ; Keep only possibilities that match known facts OR are for different people
+  WHERE ($0 == $2 AND $1 == $3) OR $0 != $2,
+  EMIT valid_age $0 $1
+END
+
+SOLVE
+
+; ============================================================================
+; QUERY RESULTS
+; ============================================================================
+
+QUERY final_solution ? ? ?    ; Show complete solution
+QUERY deduced_age ? ?         ; Show Arnold's deduced age
+QUERY deduced_month ? ?       ; Show Eric's deduced month
+QUERY age_conflict ? ? ?      ; Check for conflicts
+QUERY month_conflict ? ? ?    ; Check for conflicts

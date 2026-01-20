@@ -1,0 +1,17 @@
+; Simple likes and friendship network
+REL likes
+REL friend
+
+; Who likes what
+FACT likes 0 10    ; alice likes pizza
+FACT likes 0 11    ; alice likes movies
+FACT likes 1 10    ; bob likes pizza
+FACT likes 1 12    ; bob likes games
+FACT likes 2 11    ; carol likes movies
+FACT likes 2 12    ; carol likes games
+
+; Friendship rule: if two people like the same thing, they become friends
+RULE friend: SCAN likes, JOIN likes $1, EMIT friend $0 $2
+
+SOLVE
+QUERY friend 0 ?   ; Who are alice's friends based on shared interests?

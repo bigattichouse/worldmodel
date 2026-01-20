@@ -1,0 +1,21 @@
+; Graph reachability problem
+; Find all nodes reachable from a starting node
+
+REL edge
+REL reachable
+
+; Define the graph with directed edges
+FACT edge 0 1    ; 0 -> 1
+FACT edge 0 2    ; 0 -> 2 
+FACT edge 1 3    ; 1 -> 3
+FACT edge 2 3    ; 2 -> 3
+FACT edge 3 4    ; 3 -> 4
+
+; Base case: direct edges are reachable
+RULE reachable: SCAN edge, EMIT reachable $0 $1
+
+; Transitive case: if A->B and B->C then A->C  
+RULE reachable: SCAN edge, JOIN reachable $1, EMIT reachable $0 $2
+
+SOLVE
+QUERY reachable 0 4    ; Can we reach 4 from 0? Should return 1 (yes)

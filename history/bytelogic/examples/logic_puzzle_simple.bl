@@ -1,0 +1,32 @@
+; Simple logic puzzle using basic ByteLog syntax only
+; Based on: Peter's birthday is April, Eric is 7, Arnold's birthday is September, Peter is 8
+
+REL birthday
+REL age
+REL person
+
+; Facts about birthdays (person, month)
+; April = 4, September = 9
+FACT birthday peter 4
+FACT birthday arnold 9
+
+; Facts about ages  
+FACT age eric 7
+FACT age peter 8
+
+; Facts about people (just to track them)
+FACT person peter peter
+FACT person eric eric
+FACT person arnold arnold
+
+; Inference rules
+RULE birthday_person: SCAN birthday MATCH $0, EMIT birthday_person $1 $2
+RULE age_person: SCAN age MATCH $0, EMIT age_person $1 $2
+
+SOLVE
+
+; Queries to extract information
+QUERY birthday peter ?
+QUERY birthday arnold ?
+QUERY age eric ?
+QUERY age peter ?

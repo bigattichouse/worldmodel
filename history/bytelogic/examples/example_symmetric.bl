@@ -1,0 +1,18 @@
+; Symmetric and transitive closure
+; Models friendship relationships
+
+REL friend     ; Direct friendships  
+REL knows      ; Extended social network
+
+; Direct friendships (not necessarily mutual)
+FACT friend 0 1    ; Alice knows Bob
+FACT friend 1 2    ; Bob knows Carol
+FACT friend 2 0    ; Carol knows Alice
+
+; Make friendship symmetric and transitive
+RULE knows: SCAN friend, EMIT knows $0 $1           ; Direct friends
+RULE knows: SCAN friend, EMIT knows $1 $0           ; Symmetric: if A->B then B->A
+RULE knows: SCAN knows, JOIN knows $1, EMIT knows $0 $2  ; Transitive: if A->B->C then A->C
+
+SOLVE
+QUERY knows ? ?    ; How many total "knows" relationships?

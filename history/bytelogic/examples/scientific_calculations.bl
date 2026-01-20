@@ -1,0 +1,252 @@
+; Scientific and Engineering Calculations in ByteLog
+; Complete Turing-Complete Language Demonstration
+; ================================================
+
+REL measurements
+REL results
+REL physics_data
+
+; Sample measurement data
+FACT measurements 1 45.0    ; Angle in degrees
+FACT measurements 2 90.0    ; Another angle
+FACT measurements 3 2.718    ; Approximation of e
+
+; ============================================================================
+; TRIGONOMETRIC AND SCIENTIFIC FUNCTIONS
+; ============================================================================
+
+; Convert degrees to radians and calculate trig functions
+CALC trig_analysis
+  INPUT $degrees
+  LET $pi = 3.14159265359
+  LET $radians = ($degrees * $pi) / 180
+  
+  LET $sine = SIN($radians)
+  LET $cosine = COS($radians)
+  LET $tangent = TAN($radians)
+  
+  ; Calculate some derived values
+  LET $sin_squared = POW($sine, 2)
+  LET $cos_squared = POW($cosine, 2)
+  LET $pythagorean = $sin_squared + $cos_squared  ; Should be ≈ 1
+  
+  RESULT $pythagorean
+END
+
+; Logarithmic and exponential calculations
+CALC log_exp_analysis
+  INPUT $value
+  LET $natural_log = LOG($value)
+  LET $log_base_10 = LOG10($value)
+  LET $exponential = EXP($value)
+  
+  ; Verify that log and exp are inverses
+  LET $verify = EXP(LOG($value))  ; Should equal $value
+  
+  RESULT $verify
+END
+
+; Advanced mathematical functions
+CALC advanced_scientific
+  INPUT $x $y
+  
+  ; Trigonometric calculations
+  LET $angle_sum = ASIN(SIN($x)) + ACOS(COS($y))
+  LET $angle_ratio = ATAN($x / $y)
+  
+  ; Power and root calculations  
+  LET $power_result = POW($x, $y)
+  LET $sqrt_sum = SQRT($x + $y)
+  
+  ; Floor and ceiling for discrete calculations
+  LET $floor_x = FLOOR($x)
+  LET $ceil_y = CEIL($y)
+  
+  ; Complex expression combining multiple functions
+  LET $complex_result = SIN($x) * COS($y) + LOG(ABS($x) + 1)
+  
+  RESULT $complex_result
+END
+
+; ============================================================================
+; PHYSICS SIMULATIONS
+; ============================================================================
+
+; Simple harmonic motion calculation
+CALC harmonic_motion
+  INPUT $amplitude $frequency $time
+  LET $pi = 3.14159265359
+  LET $angular_freq = 2 * $pi * $frequency
+  LET $phase = $angular_freq * $time
+  LET $displacement = $amplitude * SIN($phase)
+  RESULT $displacement
+END
+
+; Projectile motion calculation
+CALC projectile_trajectory
+  INPUT $initial_velocity $angle_degrees $time
+  LET $pi = 3.14159265359
+  LET $gravity = 9.81
+  LET $angle_rad = ($angle_degrees * $pi) / 180
+  
+  ; Velocity components
+  LET $v_x = $initial_velocity * COS($angle_rad)
+  LET $v_y = $initial_velocity * SIN($angle_rad)
+  
+  ; Position at time t
+  LET $x_pos = $v_x * $time
+  LET $y_pos = $v_y * $time - 0.5 * $gravity * POW($time, 2)
+  
+  ; Return maximum height reached
+  LET $max_height_time = $v_y / $gravity
+  LET $max_height = $v_y * $max_height_time - 0.5 * $gravity * POW($max_height_time, 2)
+  
+  RESULT $max_height
+END
+
+; ============================================================================
+; STATISTICAL CALCULATIONS
+; ============================================================================
+
+; Calculate statistical measures using loops
+CALC basic_statistics
+  INPUT $data_points
+  LET $sum = 0
+  LET $count = 0
+  LET $sum_squares = 0
+  
+  ; Simulate processing data points 1 to $data_points
+  FOR $i IN RANGE(1, $data_points + 1)
+    LET $sum = $sum + $i
+    LET $sum_squares = $sum_squares + POW($i, 2)
+    LET $count = $count + 1
+  END
+  
+  ; Calculate mean
+  LET $mean = $sum / $count
+  
+  ; Calculate variance (simplified)
+  LET $mean_squares = $sum_squares / $count
+  LET $variance = $mean_squares - POW($mean, 2)
+  LET $std_dev = SQRT($variance)
+  
+  RESULT $std_dev
+END
+
+; ============================================================================
+; NUMERICAL METHODS
+; ============================================================================
+
+; Newton-Raphson method for finding square root
+CALC sqrt_newton_raphson
+  INPUT $number
+  LET $guess = $number / 2  ; Initial guess
+  LET $iterations = 0
+  LET $tolerance = 0.0001
+  
+  FOR WHILE $iterations < 10
+    LET $new_guess = 0.5 * ($guess + $number / $guess)
+    LET $difference = ABS($new_guess - $guess)
+    
+    IF $difference < $tolerance THEN
+      BREAK  ; Converged
+    END
+    
+    LET $guess = $new_guess
+    LET $iterations = $iterations + 1
+  END
+  
+  RESULT $guess
+END
+
+; Factorial using recursion (mathematical function)
+CALC factorial_math
+  INPUT $n
+  IF $n <= 1 THEN
+    RESULT 1
+  ELSE
+    LET $prev = CALC factorial_math($n - 1)
+    RESULT $n * $prev
+  END
+END
+
+; Fibonacci with memoization concept
+CALC fibonacci_optimized
+  INPUT $n
+  IF $n <= 1 THEN
+    RESULT $n
+  END
+  
+  LET $a = 0
+  LET $b = 1
+  
+  FOR $i IN RANGE(2, $n + 1)
+    LET $temp = $a + $b
+    LET $a = $b
+    LET $b = $temp
+  END
+  
+  RESULT $b
+END
+
+; ============================================================================
+; RULES FOR AUTOMATED SCIENTIFIC ANALYSIS
+; ============================================================================
+
+; Process measurement data and apply scientific functions
+RULE scientific_analysis:
+  SCAN measurements,
+  LET $trig_result = CALC trig_analysis($1),
+  LET $log_result = CALC log_exp_analysis($1),
+  LET $projectile_height = CALC projectile_trajectory(50, $1, 2.0),
+  EMIT results $0 $trig_result $log_result $projectile_height
+END
+
+; Generate physics simulation data
+RULE physics_simulation:
+  FOR $time_step IN RANGE(1, 11)
+    LET $time = $time_step / 10.0  ; Convert to decimal seconds
+    LET $harmonic_pos = CALC harmonic_motion(5.0, 2.0, $time),
+    LET $sqrt_result = CALC sqrt_newton_raphson($time_step * 4),
+    EMIT physics_data $time_step $harmonic_pos $sqrt_result
+  END
+END
+
+; ============================================================================
+; MATHEMATICAL CONSTANT CALCULATIONS
+; ============================================================================
+
+; Approximate π using Leibniz formula (partial)
+CALC approximate_pi
+  LET $pi_approx = 0
+  
+  FOR $n IN RANGE(0, 1000)
+    LET $term_sign = POW(-1, $n)
+    LET $term_denom = 2 * $n + 1
+    LET $term = $term_sign / $term_denom
+    LET $pi_approx = $pi_approx + $term
+  END
+  
+  LET $pi_result = 4 * $pi_approx
+  RESULT $pi_result
+END
+
+; Calculate e using series expansion (partial)
+CALC approximate_e
+  LET $e_approx = 1  ; 0! term
+  LET $factorial = 1
+  
+  FOR $n IN RANGE(1, 20)
+    LET $factorial = $factorial * $n
+    LET $term = 1.0 / $factorial
+    LET $e_approx = $e_approx + $term
+  END
+  
+  RESULT $e_approx
+END
+
+SOLVE
+
+; Query the scientific results
+QUERY results ? ? ? ?
+QUERY physics_data ? ? ?
