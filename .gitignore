@@ -1,0 +1,77 @@
+integrated_worldmodel_output
+integrated_worldmodel_output/*
+worldmodel_rocm_output
+worldmodel_rocm_output/*
+worldmodel_production_training
+worldmodel_production_training/*
+qwen3_0.6b_rocm_conservative
+qwen3_0.6b_rocm_conservative/*
+wasm/wasm_worldmodel_output
+wasm/wasm_worldmodel_output/*
+worldmodel_rocm_output_stable
+worldmodel_rocm_output_stable/
+wasm/wasm_worldmodel_final_trained
+wasm/wasm_worldmodel_final_trained/*
+
+bytelogic_worldmodel_output
+bytelogic_worldmodel_output/*
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+
+# Training outputs
+training_output/
+sft_checkpoints/
+logs/
+*.log
+checkpoints/
+
+# Model files (too large for git)
+*.gguf
+*.bin
+*.safetensors
+
+# Cache
+.pytest_cache/
+.cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary
+tmp/
+temp/
+debug_*
+test_*
+quick_test/
+*_test/
+*_finetuned/
+
+# ROCm specific
+rocblas_*
+.rocm/
+
+# Checkpoint directories (moved to root)
+wasm_worldmodel_output/
+wasm_worldmodel_output/*
+
+# All checkpoint patterns
+*checkpoint*/
+checkpoint-*/
+final_model/
+failed_model/
+interrupted_model/
