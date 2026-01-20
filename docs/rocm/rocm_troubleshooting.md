@@ -119,6 +119,32 @@ The `train_rocm_optimized.py` script has been configured for 32GB memory with:
 
 This should work once the memory access fault is resolved.
 
+## Training Stability Issues
+
+### "Too Many Open Files" Error
+**Problem**: Training crashes with file descriptor limit reached, especially on long runs.
+
+**Root Cause**: Evaluation dataloaders accumulate file descriptors with:
+- `dataloader_num_workers=4` (multiple processes)
+- `dataloader_persistent_workers=True` (workers stay alive)
+- Frequent evaluation (every 50 steps)
+
+**Fix**: Modify training script dataloader settings:
+```python
+# Before (problematic):
+dataloader_num_workers=4,           # Too many parallel workers
+dataloader_persistent_workers=True, # Workers accumulate file descriptors
+
+# After (stable):
+dataloader_num_workers=2,           # Reduced to prevent fd leaks  
+dataloader_persistent_workers=False, # Clean shutdown prevents fd leaks
+```
+
+**Additional Stability Measures**:
+- Increase evaluation interval (every 200 steps vs 50)
+- Monitor system file descriptor usage: `lsof | wc -l`
+- Check system limits: `ulimit -n`
+
 ## Hardware Considerations
 
 - MI50 is an older generation GPU (2018)
