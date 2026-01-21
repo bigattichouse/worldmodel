@@ -1,20 +1,6 @@
-integrated_worldmodel_output
-integrated_worldmodel_output/*
-worldmodel_rocm_output
-worldmodel_rocm_output/*
-worldmodel_production_training
-worldmodel_production_training/*
-qwen3_0.6b_rocm_conservative
-qwen3_0.6b_rocm_conservative/*
-wasm/wasm_worldmodel_output
-wasm/wasm_worldmodel_output/*
-worldmodel_rocm_output_stable
-worldmodel_rocm_output_stable/
-wasm/wasm_worldmodel_final_trained
-wasm/wasm_worldmodel_final_trained/*
+blueprint_model_output
+blueprint_model_output/*
 
-bytelogic_worldmodel_output
-bytelogic_worldmodel_output/*
 # Python
 __pycache__/
 *.py[cod]

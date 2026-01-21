@@ -92,14 +92,15 @@ def test_generation(model_path: str, test_query: str = "Design a temperature con
     # Format input
     input_text = f"User: {test_query}\n\nAssistant: "
     
-    # Tokenize
+    # Tokenize and move to device
     inputs = tokenizer(input_text, return_tensors="pt")
+    inputs = {k: v.to(model.device) for k, v in inputs.items()}
     
     # Generate
     with torch.no_grad():
         outputs = model.generate(
-            inputs.input_ids,
-            attention_mask=inputs.attention_mask,
+            inputs['input_ids'],
+            attention_mask=inputs['attention_mask'],
             max_new_tokens=512,
             temperature=0.7,
             do_sample=True,
