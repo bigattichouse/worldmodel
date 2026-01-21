@@ -61,7 +61,7 @@ class BluePrintDatasetScanner:
         }
     
     def _load_jsonl_file(self, file_path: Path) -> List[Dict]:
-        """Load examples from a JSONL file."""
+        """Load examples from a JSONL file. Handles both structured and simple text formats."""
         examples = []
         
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -73,17 +73,47 @@ class BluePrintDatasetScanner:
                 try:
                     example = json.loads(line)
                     
-                    # Validate required fields
-                    required_fields = ['id', 'user_query', 'response']
-                    if not all(field in example for field in required_fields):
-                        continue  # Skip without warning for now
+                    # Handle structured format: {id, user_query, response}
+                    structured_fields = ['id', 'user_query', 'response']
+                    if all(field in example for field in structured_fields):
+                        # Validate BluePrint format
+                        if self._validate_blueprint_format(example['response']):
+                            examples.append(example)
+                        continue
                     
-                    # Validate BluePrint format
-                    if not self._validate_blueprint_format(example['response']):
-                        continue  # Skip without warning for now
+                    # Handle simple text format: {"text": "User: ... <thinking>..."}
+                    if 'text' in example:
+                        text = example['text']
+                        # Check if it's a valid blueprint format with User: prefix
+                        if self._validate_blueprint_format(text) and text.startswith('User:'):
+                            # Convert to structured format
+                            try:
+                                # Handle format: "User: query\n\n<thinking>...<blueprint>..."
+                                if 'Assistant:' in text:
+                                    # Format: "User: ... Assistant: ..."
+                                    parts = text.split('Assistant:', 1)
+                                    user_part = parts[0].replace('User:', '').strip()
+                                    response_part = parts[1].strip()
+                                else:
+                                    # Format: "User: query\n\n<thinking>..." (no explicit Assistant:)
+                                    user_match = text.split('\n\n', 1)
+                                    if len(user_match) == 2:
+                                        user_part = user_match[0].replace('User:', '').strip()
+                                        response_part = user_match[1].strip()
+                                    else:
+                                        continue
+                                
+                                converted_example = {
+                                    'id': f"converted_{len(examples)}",
+                                    'user_query': user_part,
+                                    'response': response_part,
+                                    'category': file_path.parent.name
+                                }
+                                examples.append(converted_example)
+                            except Exception:
+                                continue  # Skip conversion errors
+                        continue
                         
-                    examples.append(example)
-                    
                 except json.JSONDecodeError as e:
                     # Skip malformed JSON silently to reduce noise
                     continue
