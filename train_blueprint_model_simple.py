@@ -98,13 +98,24 @@ def test_generation(model_path: str, test_query: str = "Design a temperature con
     
     # Generate
     with torch.no_grad():
+        # Add custom stop tokens
+        stop_tokens = ["</blueprint>", "<blueprint>"]
+        stop_token_ids = []
+        for stop_token in stop_tokens:
+            token_ids = tokenizer.encode(stop_token, add_special_tokens=False)
+            if token_ids:
+                stop_token_ids.extend(token_ids)
+        
         outputs = model.generate(
             inputs['input_ids'],
             attention_mask=inputs['attention_mask'],
-            max_new_tokens=512,
-            temperature=0.7,
+            max_new_tokens=1536,  # Full context usage - generous limit
+            temperature=0.7,      # Balanced creativity/consistency
             do_sample=True,
-            pad_token_id=tokenizer.eos_token_id
+            pad_token_id=tokenizer.eos_token_id,
+            eos_token_id=tokenizer.eos_token_id,
+            repetition_penalty=1.1,  # Light repetition penalty
+            no_repeat_ngram_size=3   # Moderate n-gram prevention
         )
     
     # Decode
