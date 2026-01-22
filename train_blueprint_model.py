@@ -159,7 +159,7 @@ class BluePrintDataset(Dataset):
         example = self.examples[idx]
         
         # Format the training text
-        text = f"Query: {example['user_query']}\n\nResponse: {example['response']}"
+        text = f"Query: {example['user_query']}\n\nResponse: {example['response']}{self.tokenizer.eos_token}"
         
         # Tokenize
         encoded = self.tokenizer(

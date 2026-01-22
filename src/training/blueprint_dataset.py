@@ -168,7 +168,7 @@ class BluePrintDataset(Dataset):
         example = self.examples[idx]
         
         # Format the training text as conversation
-        conversation = f"User: {example['user_query']}\n\nAssistant: {example['response']}"
+        conversation = f"User: {example['user_query']}\n\nAssistant: {example['response']}{self.tokenizer.eos_token}"
         
         # Tokenize
         encoding = self.tokenizer(
