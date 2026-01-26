@@ -27,6 +27,7 @@ from transformers import (
     Trainer,
     DataCollatorForLanguageModeling
 )
+from peft import PeftModel, LoraConfig, get_peft_model
 
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
@@ -131,21 +132,35 @@ def setup_model_and_tokenizer(model_path: str):
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
     
-    # Load model - ROCm optimized settings from proven script
+    # Load model 
     model = AutoModelForCausalLM.from_pretrained(
         model_path,
         trust_remote_code=True,
-        torch_dtype=torch.float32,  # Stable FP32 for ROCm
+        torch_dtype=torch.float16,  # Use float16 for LoRA
         low_cpu_mem_usage=True,
         device_map={"": 0}  # Direct device mapping
     )
 
-    # Disable gradient checkpointing for speedup
+    # LoRA config
+    lora_config = LoraConfig(
+        r=16,
+        lora_alpha=32,
+        target_modules=["q_proj", "v_proj"], # Specific to Qwen models, may need adjustment for others
+        lora_dropout=0.05,
+        bias="none",
+        task_type="CAUSAL_LM"
+    )
+
+    # Wrap the model with PEFT
+    model = get_peft_model(model, lora_config)
+
+    # Disable gradient checkpointing to resolve the RuntimeError with LoRA
     if hasattr(model, 'gradient_checkpointing_disable'):
         model.gradient_checkpointing_disable()
-        logger.info("✅ Gradient checkpointing: DISABLED (30-40% speedup)")
+        logger.info("✅ Gradient checkpointing: DISABLED to be compatible with LoRA")
     
     logger.info(f"✅ Model loaded with {sum(p.numel() for p in model.parameters()):,} parameters")
+    model.print_trainable_parameters()
     
     return model, tokenizer
 
@@ -230,12 +245,12 @@ def main():
             dataloader_persistent_workers=True, # Reuse workers
             dataloader_drop_last=True,         # Consistent batch sizes
             
-            # STABLE: FP32 training (no precision issues)
-            fp16=False,                         # Disabled for ROCm stability
+            # STABLE: FP16 training is recommended for LoRA
+            fp16=True,
             bf16=False,                         # Disabled for ROCm stability
             
-            # Features that speed up training
-            gradient_checkpointing=False,       # Disabled for speed
+            # Gradient checkpointing is disabled to be compatible with LoRA
+            gradient_checkpointing=False,
             
             # ROCm compatibility
             report_to=None,                    # Disable wandb/tensorboard
