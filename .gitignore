@@ -1,5 +1,7 @@
 blueprint_model_output
 blueprint_model_output/*
+Blueprint-Qwen3-0.6B
+Blueprint-Qwen3-0.6B/*
 
 # Python
 __pycache__/
