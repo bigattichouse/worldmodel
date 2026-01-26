@@ -153,7 +153,7 @@ def main():
     """Main training function."""
     parser = argparse.ArgumentParser(description="Simple BluePrint WorldModel Training")
     parser.add_argument("--model", required=True, help="Path to base model (e.g., Qwen/Qwen1.5-0.5B-Chat)")
-    parser.add_argument("--datasets_dir", default="training/datasets", help="Path to datasets directory")
+    parser.add_argument("--datasets_dir", default="training/blueprint/datasets", help="Path to datasets directory")
     parser.add_argument("--output_dir", default="blueprint_model_output", help="Output directory")
     parser.add_argument("--epochs", type=int, default=15, help="Number of epochs")
     parser.add_argument("--batch_size", type=int, default=1, help="Batch size")
@@ -265,15 +265,14 @@ def main():
         trainer.train()
         
         # Save final model
-        final_model_path = f"{args.output_dir}/final_blueprint_model"
-        trainer.save_model(final_model_path)
-        tokenizer.save_pretrained(final_model_path)
+        trainer.save_model(args.output_dir)
+        tokenizer.save_pretrained(args.output_dir)
         
         logger.info(f"🎉 Training completed!")
-        logger.info(f"   Final model saved to: {final_model_path}")
+        logger.info(f"   Final model saved to: {args.output_dir}")
         
         # Test the model
-        test_generation(final_model_path)
+        test_generation(args.output_dir)
         
         return True
     except Exception as e:
