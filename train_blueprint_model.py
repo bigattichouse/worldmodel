@@ -26,12 +26,17 @@ from transformers import (
     AutoModelForCausalLM,
     TrainingArguments,
     Trainer,
-    DataCollatorForLanguageModeling
+    DataCollatorForLanguageModeling,
+    TrainerCallback,
+    TrainerControl,
+    TrainerState
 )
 from peft import PeftModel, LoraConfig, get_peft_model
 from torch.utils.data import DataLoader
 import time
-from typing import List
+import subprocess
+import json
+from typing import List, Dict, Optional
 
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
@@ -123,6 +128,209 @@ def test_generation(model_path: str, test_query: str = "Design a temperature con
     if errors:
         for error in errors:
             logger.info(f"   ❌ {error}")
+
+
+class ThermalMonitor:
+    """Monitor GPU temperature and provide thermal throttling capabilities."""
+    
+    def __init__(self, max_temp: float = 99.0, throttle_temp: float = 85.0, cooldown_temp: float = 80.0):
+        """
+        Initialize thermal monitor.
+        
+        Args:
+            max_temp: Maximum temperature before emergency stop (°C)
+            throttle_temp: Temperature to start throttling (°C) 
+            cooldown_temp: Temperature to resume normal operation (°C)
+        """
+        self.max_temp = max_temp
+        self.throttle_temp = throttle_temp
+        self.cooldown_temp = cooldown_temp
+        self.is_throttled = False
+        self.throttle_start_time = None
+        
+        # Detect GPU type
+        self.gpu_type = self._detect_gpu_type()
+        logger.info(f"🌡️ Thermal monitor initialized for {self.gpu_type} GPU")
+        logger.info(f"   Max temp: {max_temp}°C | Throttle: {throttle_temp}°C | Cooldown: {cooldown_temp}°C")
+    
+    def _detect_gpu_type(self) -> str:
+        """Detect if using NVIDIA or AMD GPU."""
+        try:
+            # Try ROCm first
+            result = subprocess.run(['rocm-smi', '--showtemp'], 
+                                  capture_output=True, text=True, timeout=5)
+            if result.returncode == 0:
+                return "AMD"
+        except:
+            pass
+        
+        try:
+            # Try nvidia-smi
+            result = subprocess.run(['nvidia-smi', '--query-gpu=temperature.gpu', '--format=csv,noheader,nounits'], 
+                                  capture_output=True, text=True, timeout=5)
+            if result.returncode == 0:
+                return "NVIDIA"
+        except:
+            pass
+        
+        logger.warning("⚠️ Could not detect GPU type, thermal monitoring disabled")
+        return "UNKNOWN"
+    
+    def get_gpu_temperature(self) -> Optional[float]:
+        """Get current GPU temperature in Celsius."""
+        try:
+            if self.gpu_type == "AMD":
+                result = subprocess.run(['rocm-smi', '--showtemp', '--json'], 
+                                      capture_output=True, text=True, timeout=5)
+                if result.returncode == 0:
+                    data = json.loads(result.stdout)
+                    # Extract junction temperature as it's typically the hottest
+                    temp_str = data.get("card0", {}).get("Temperature (Sensor junction) (C)", "0.0")
+                    return float(temp_str.strip())
+            
+            elif self.gpu_type == "NVIDIA":
+                result = subprocess.run(['nvidia-smi', '--query-gpu=temperature.gpu', 
+                                       '--format=csv,noheader,nounits'], 
+                                      capture_output=True, text=True, timeout=5)
+                if result.returncode == 0:
+                    return float(result.stdout.strip())
+                    
+        except Exception as e:
+            logger.warning(f"⚠️ Failed to get GPU temperature: {e}")
+        
+        return None
+    
+    def check_thermal_state(self) -> Dict[str, any]:
+        """
+        Check thermal state and return throttling recommendations.
+        
+        Returns:
+            dict with keys: temperature, should_throttle, should_pause, emergency_stop
+        """
+        temp = self.get_gpu_temperature()
+        
+        if temp is None:
+            return {
+                "temperature": None,
+                "should_throttle": False, 
+                "should_pause": False,
+                "emergency_stop": False,
+                "status": "monitoring_disabled"
+            }
+        
+        # Emergency stop
+        if temp >= self.max_temp:
+            return {
+                "temperature": temp,
+                "should_throttle": True,
+                "should_pause": True,
+                "emergency_stop": True,
+                "status": f"emergency_stop_temp_{temp:.1f}C"
+            }
+        
+        # Start throttling
+        if temp >= self.throttle_temp and not self.is_throttled:
+            self.is_throttled = True
+            self.throttle_start_time = time.time()
+            return {
+                "temperature": temp,
+                "should_throttle": True,
+                "should_pause": False,
+                "emergency_stop": False,
+                "status": f"throttling_started_{temp:.1f}C"
+            }
+        
+        # Continue throttling
+        if self.is_throttled and temp > self.cooldown_temp:
+            return {
+                "temperature": temp,
+                "should_throttle": True,
+                "should_pause": False,
+                "emergency_stop": False,
+                "status": f"throttling_active_{temp:.1f}C"
+            }
+        
+        # Stop throttling
+        if self.is_throttled and temp <= self.cooldown_temp:
+            throttle_duration = time.time() - self.throttle_start_time if self.throttle_start_time else 0
+            self.is_throttled = False
+            self.throttle_start_time = None
+            logger.info(f"🌡️ Thermal throttling ended after {throttle_duration:.1f}s - temp: {temp:.1f}°C")
+            return {
+                "temperature": temp,
+                "should_throttle": False,
+                "should_pause": False,
+                "emergency_stop": False,
+                "status": f"throttling_ended_{temp:.1f}C"
+            }
+        
+        # Normal operation
+        return {
+            "temperature": temp,
+            "should_throttle": False,
+            "should_pause": False,
+            "emergency_stop": False,
+            "status": f"normal_{temp:.1f}C"
+        }
+    
+    def wait_for_cooldown(self, check_interval: float = 5.0) -> None:
+        """Wait for GPU to cool down below throttle temperature."""
+        logger.info(f"🌡️ Waiting for GPU to cool down below {self.cooldown_temp}°C...")
+        
+        while True:
+            temp = self.get_gpu_temperature()
+            if temp is None:
+                logger.warning("⚠️ Cannot monitor temperature during cooldown")
+                break
+                
+            if temp <= self.cooldown_temp:
+                logger.info(f"🌡️ GPU cooled down to {temp:.1f}°C - resuming training")
+                break
+                
+            logger.info(f"🌡️ GPU temp: {temp:.1f}°C - waiting {check_interval}s...")
+            time.sleep(check_interval)
+
+
+class ThermalCallback(TrainerCallback):
+    """Thermal monitoring callback for HuggingFace trainer."""
+    
+    def __init__(self, thermal_monitor: ThermalMonitor):
+        self.thermal_monitor = thermal_monitor
+        self.last_temp_check = 0
+        self.check_interval = 10  # Check temperature every 10 steps
+    
+    def on_step_begin(self, args, state: TrainerState, control: TrainerControl, **kwargs):
+        """Check thermal state at the beginning of each training step."""
+        # Only check temperature every N steps to avoid overhead
+        if state.global_step % self.check_interval != 0:
+            return
+            
+        thermal_state = self.thermal_monitor.check_thermal_state()
+        
+        if thermal_state["emergency_stop"]:
+            logger.error(f"🚨 EMERGENCY STOP: GPU temperature {thermal_state['temperature']:.1f}°C exceeds maximum {self.thermal_monitor.max_temp}°C")
+            logger.error("Training stopped to prevent hardware damage!")
+            control.should_training_stop = True
+            return control
+        
+        if thermal_state["should_throttle"]:
+            if thermal_state["status"].startswith("throttling_started"):
+                logger.warning(f"🌡️ THERMAL THROTTLING: GPU temperature {thermal_state['temperature']:.1f}°C - reducing training intensity")
+            
+            # Add a small delay during throttling
+            time.sleep(1.0)
+            
+            if thermal_state["should_pause"]:
+                logger.info("🌡️ Pausing training for thermal cooldown...")
+                self.thermal_monitor.wait_for_cooldown()
+    
+    def on_log(self, args, state: TrainerState, control: TrainerControl, logs=None, **kwargs):
+        """Add temperature info to training logs."""
+        if logs is not None:
+            thermal_state = self.thermal_monitor.check_thermal_state()
+            if thermal_state["temperature"] is not None:
+                logs["gpu_temp"] = thermal_state["temperature"]
+                logs["thermal_throttling"] = thermal_state["should_throttle"]
 
 
 class GeometricOptimizer:
@@ -304,12 +512,16 @@ class GeometricOptimizer:
         return loss.item()
 
 
-def geometric_training_loop(model, train_dataloader, val_dataloader, epochs, learning_rate, device):
-    """Custom training loop with geometric optimization."""
+def geometric_training_loop(model, train_dataloader, val_dataloader, epochs, learning_rate, device, thermal_monitor=None):
+    """Custom training loop with geometric optimization and thermal monitoring."""
     logger.info("🚀 Starting geometric optimization training loop...")
 
     # Initialize geometric optimizer
     geo_optimizer = GeometricOptimizer(model, learning_rate=learning_rate)
+
+    # Initialize thermal monitor if not provided
+    if thermal_monitor is None:
+        thermal_monitor = ThermalMonitor()
 
     # Loss function
     loss_fn = torch.nn.CrossEntropyLoss(ignore_index=-100)
@@ -333,6 +545,26 @@ def geometric_training_loop(model, train_dataloader, val_dataloader, epochs, lea
         total_steps_in_epoch = len(train_dataloader)
 
         for step, batch in enumerate(train_dataloader):
+            # Thermal monitoring - check every step
+            thermal_state = thermal_monitor.check_thermal_state()
+            
+            if thermal_state["emergency_stop"]:
+                logger.error(f"🚨 EMERGENCY STOP: GPU temperature {thermal_state['temperature']:.1f}°C exceeds maximum {thermal_monitor.max_temp}°C")
+                logger.error("Training stopped to prevent hardware damage!")
+                return False
+            
+            if thermal_state["should_throttle"]:
+                if thermal_state["status"].startswith("throttling_started"):
+                    logger.warning(f"🌡️ THERMAL THROTTLING: GPU temperature {thermal_state['temperature']:.1f}°C - reducing training intensity")
+                
+                # Throttling: wait 2 seconds between steps
+                if step > 0:  # Don't wait on first step
+                    time.sleep(2.0)
+                
+                # Check if we need to pause for cooldown
+                if thermal_state["should_pause"]:
+                    thermal_monitor.wait_for_cooldown()
+
             # Move batch to device
             batch = {k: v.to(device) if isinstance(v, torch.Tensor) else v for k, v in batch.items()}
 
@@ -375,10 +607,14 @@ def geometric_training_loop(model, train_dataloader, val_dataloader, epochs, lea
             sphere_rate = accepted_spheres / total_sphere_attempts if total_sphere_attempts > 0 else 0
 
             # Print live progress to stdout using \r to overwrite the same line
+            temp_display = f"{thermal_state['temperature']:.1f}°C" if thermal_state['temperature'] else "N/A"
+            throttle_indicator = " 🔥" if thermal_state['should_throttle'] else ""
+            
             progress_msg = f"\rEpoch {epoch+1}/{epochs}, Step {step+1}/{total_steps_in_epoch}, " \
                           f"Loss: {final_loss:.6f}, Avg Loss: {avg_loss:.6f}, " \
                           f"Jump Rate: {jump_rate:.3f}, " \
-                          f"Sphere Rate: {sphere_rate:.3f}"
+                          f"Sphere Rate: {sphere_rate:.3f}, " \
+                          f"GPU: {temp_display}{throttle_indicator}"
             print(progress_msg, end='', flush=True)
 
         # Calculate epoch statistics
@@ -558,6 +794,10 @@ def main():
     parser.add_argument("--curriculum", choices=["foundation", "business", "technical", "domain", "advanced", "security", "complete", "all"],
                        default="all", help="Curriculum stage (default: all - trains on everything)")
     parser.add_argument("--use_geometric", action="store_true", help="Use geometric optimization techniques")
+    parser.add_argument("--max_temp", type=float, default=99.0, help="Maximum GPU temperature before emergency stop (°C)")
+    parser.add_argument("--throttle_temp", type=float, default=85.0, help="GPU temperature to start throttling (°C)")
+    parser.add_argument("--cooldown_temp", type=float, default=80.0, help="GPU temperature to resume normal operation (°C)")
+    parser.add_argument("--disable_thermal", action="store_true", help="Disable thermal monitoring")
 
     args = parser.parse_args()
 
@@ -575,6 +815,16 @@ def main():
     logger.info(f"   Output: {args.output_dir}")
     logger.info(f"   Curriculum: {args.curriculum}")
     logger.info(f"   Use Geometric: {args.use_geometric}")
+    logger.info(f"   Thermal Monitoring: {'Disabled' if args.disable_thermal else 'Enabled'}")
+
+    # Initialize thermal monitor
+    thermal_monitor = None
+    if not args.disable_thermal:
+        thermal_monitor = ThermalMonitor(
+            max_temp=args.max_temp,
+            throttle_temp=args.throttle_temp, 
+            cooldown_temp=args.cooldown_temp
+        )
 
     # Run training
     try:
@@ -593,18 +843,23 @@ def main():
         model.resize_token_embeddings(len(tokenizer))
 
         if args.use_geometric:
-            # Custom geometric training loop
+            # Custom geometric training loop with thermal monitoring
             train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
             val_dataloader = DataLoader(val_dataset, batch_size=args.batch_size, shuffle=False)
 
-            geometric_training_loop(
+            success = geometric_training_loop(
                 model=model,
                 train_dataloader=train_dataloader,
                 val_dataloader=val_dataloader,
                 epochs=args.epochs,
                 learning_rate=args.learning_rate,
-                device=device
+                device=device,
+                thermal_monitor=thermal_monitor
             )
+            
+            if not success:
+                logger.error("❌ Training stopped due to thermal emergency!")
+                return False
 
             # For geometric training, save the model properly with PEFT
             model.save_pretrained(args.output_dir)
@@ -663,7 +918,11 @@ def main():
                 return_tensors="pt"
             )
 
-            # Initialize trainer
+            # Initialize trainer with thermal callback
+            callbacks = []
+            if thermal_monitor is not None:
+                callbacks.append(ThermalCallback(thermal_monitor))
+            
             trainer = Trainer(
                 model=model,
                 args=training_args,
@@ -671,6 +930,7 @@ def main():
                 eval_dataset=val_dataset,
                 data_collator=data_collator,
                 tokenizer=tokenizer,
+                callbacks=callbacks,
             )
 
             # Run training
