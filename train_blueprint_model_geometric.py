@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
-BluePrint WorldModel Training Script with Geometric Optimization Option
+BluePrint WorldModel Training Script with Geometric Optimization
 ===================================
 
 Trains a model on BluePrint methodology using the thinking → blueprint token pattern.
-Automatically scans training/datasets/ for JSONL files and creates progressive curriculum.
-Optionally implements geometric optimization techniques from ShapeOfThought to accelerate training.
+Implements geometric optimization techniques from ShapeOfThought to accelerate training.
 
 This creates a model that:
 1. Generates <thinking> tokens for problem understanding
@@ -31,7 +30,7 @@ from transformers import (
 from peft import PeftModel, LoraConfig, get_peft_model
 from torch.utils.data import DataLoader
 import time
-from typing import List
+from typing import List, Tuple
 
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
@@ -44,7 +43,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Hardware detection
-print("=== BluePrint WorldModel Training with Geometric Optimization Option ===")
+print("=== BluePrint WorldModel Training with Geometric Optimization ===")
 print(f"PyTorch version: {torch.__version__}")
 print(f"CUDA available: {torch.cuda.is_available()}")
 
@@ -60,6 +59,171 @@ else:
     print("❌ Using CPU")
 
 
+class GeometricOptimizer:
+    """
+    Implements geometric optimization techniques from ShapeOfThought:
+    1. Vector space jumps (extrapolation along gradient direction)
+    2. Hypersphere search (neighborhood exploration)
+    """
+    
+    def __init__(self, model, learning_rate=1e-4):
+        self.model = model
+        self.learning_rate = learning_rate
+        self.previous_params = None
+        self.jump_factor = 10.0
+        self.sphere_radius = 1.0
+        self.optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
+        
+    def to_vector(self):
+        """Convert model parameters to a single flattened vector."""
+        params = []
+        for param in self.model.parameters():
+            if param.requires_grad:  # Only include trainable parameters
+                params.append(param.data.flatten())
+        return torch.cat(params) if params else torch.tensor([])
+    
+    def from_vector(self, vector):
+        """Load parameters from a flattened vector back to the model."""
+        if len(vector) == 0:
+            return
+            
+        vector = vector.to(device)
+        idx = 0
+        for param in self.model.parameters():
+            if param.requires_grad:  # Only update trainable parameters
+                param_size = param.numel()
+                param.data = vector[idx:idx + param_size].reshape(param.shape)
+                idx += param_size
+    
+    def capture_gradient_direction(self, batch_inputs, batch_labels, loss_fn):
+        """Capture the gradient direction from a training step."""
+        # Store current parameters
+        current_params = self.to_vector().clone()
+        
+        # Perform a training step to compute gradient
+        self.optimizer.zero_grad()
+        
+        # Forward pass
+        outputs = self.model(**batch_inputs)
+        loss = loss_fn(outputs.logits, batch_labels)
+        
+        # Backward pass
+        loss.backward()
+        
+        # Apply optimizer step (but store the direction)
+        self.optimizer.step()
+        
+        # Calculate gradient direction
+        new_params = self.to_vector()
+        gradient_direction = new_params - current_params
+        
+        # Restore original parameters for geometric optimization
+        self.from_vector(current_params)
+        
+        return gradient_direction
+    
+    def vector_jump_step(self, batch_inputs, batch_labels, loss_fn, gradient_direction):
+        """Perform a vector space jump along the gradient direction."""
+        if torch.norm(gradient_direction) < 1e-10:  # Skip if gradient is too small
+            return False, 0.0
+            
+        # Store current parameters
+        original_params = self.to_vector().clone()
+        current_loss = self._evaluate_loss(batch_inputs, batch_labels, loss_fn)
+        
+        # Generate candidates
+        candidates = []
+        
+        # Gradient direction candidate
+        jump_candidate = original_params + self.jump_factor * gradient_direction
+        candidates.append(jump_candidate)
+        
+        # Random direction candidates (based on gradient magnitude)
+        grad_norm = torch.norm(gradient_direction)
+        for i in range(2):  # Fewer random candidates to save computation
+            random_dir = torch.randn_like(original_params)
+            random_dir = random_dir / torch.norm(random_dir)  # Normalize
+            random_candidate = original_params + grad_norm * self.jump_factor * random_dir
+            candidates.append(random_candidate)
+        
+        # Evaluate candidates
+        best_loss = current_loss
+        best_candidate = None
+        jump_accepted = False
+        
+        for candidate in candidates:
+            self.from_vector(candidate)
+            candidate_loss = self._evaluate_loss(batch_inputs, batch_labels, loss_fn)
+            
+            if candidate_loss < best_loss:
+                best_loss = candidate_loss
+                best_candidate = candidate
+                jump_accepted = True
+        
+        # Apply best candidate or restore original
+        if jump_accepted and best_candidate is not None:
+            self.from_vector(best_candidate)
+        else:
+            self.from_vector(original_params)
+            # Reduce jump factor if jump was rejected
+            self.jump_factor = max(0.05, self.jump_factor * 0.99)
+        
+        return jump_accepted, best_loss
+    
+    def hypersphere_step(self, batch_inputs, batch_labels, loss_fn, gradient_direction):
+        """Perform a hypersphere search around current parameters."""
+        # Store current parameters
+        original_params = self.to_vector().clone()
+        current_loss = self._evaluate_loss(batch_inputs, batch_labels, loss_fn)
+        
+        # Generate candidates on hypersphere
+        candidates = []
+        
+        # Gradient direction candidate on hypersphere
+        if torch.norm(gradient_direction) > 1e-10:
+            gradient_unit = gradient_direction / torch.norm(gradient_direction)
+            gradient_candidate = original_params + self.sphere_radius * gradient_unit
+            candidates.append(gradient_candidate)
+        
+        # Random directions on hypersphere
+        for i in range(4):  # Fewer candidates to save computation
+            random_dir = torch.randn_like(original_params)
+            random_dir = random_dir / torch.norm(random_dir)  # Normalize to unit vector
+            random_candidate = original_params + self.sphere_radius * random_dir
+            candidates.append(random_candidate)
+        
+        # Evaluate candidates
+        best_loss = current_loss
+        best_candidate = None
+        sphere_accepted = False
+        
+        for candidate in candidates:
+            self.from_vector(candidate)
+            candidate_loss = self._evaluate_loss(batch_inputs, batch_labels, loss_fn)
+            
+            if candidate_loss < best_loss:
+                best_loss = candidate_loss
+                best_candidate = candidate
+                sphere_accepted = True
+        
+        # Apply best candidate or restore original
+        if sphere_accepted and best_candidate is not None:
+            self.from_vector(best_candidate)
+        else:
+            self.from_vector(original_params)
+            # Reduce sphere radius if sphere search was rejected
+            self.sphere_radius = max(0.01, self.sphere_radius * 0.995)
+        
+        return sphere_accepted, best_loss
+    
+    def _evaluate_loss(self, batch_inputs, batch_labels, loss_fn):
+        """Evaluate loss without gradients."""
+        self.model.eval()
+        with torch.no_grad():
+            outputs = self.model(**batch_inputs)
+            loss = loss_fn(outputs.logits, batch_labels)
+        self.model.train()
+        return loss.item()
 
 
 def test_generation(model_path: str, test_query: str = "Design a temperature conversion service"):
@@ -67,7 +231,7 @@ def test_generation(model_path: str, test_query: str = "Design a temperature con
     logger.info(f"🧪 Testing model generation from {model_path}...")
 
     # Load model and tokenizer
-    model, tokenizer = setup_model_and_tokenizer_test(model_path)
+    model, tokenizer = setup_model_and_tokenizer(model_path)
 
     # Format input
     input_text = f"User: {test_query}\n\nAssistant: "
@@ -125,317 +289,8 @@ def test_generation(model_path: str, test_query: str = "Design a temperature con
             logger.info(f"   ❌ {error}")
 
 
-class GeometricOptimizer:
-    """
-    Implements geometric optimization techniques from ShapeOfThought:
-    1. Vector space jumps (extrapolation along gradient direction)
-    2. Hypersphere search (neighborhood exploration)
-    """
-
-    def __init__(self, model, learning_rate=1e-4):
-        self.model = model
-        self.learning_rate = learning_rate
-        self.previous_params = None
-        self.jump_factor = 10.0
-        self.sphere_radius = 1.0
-        self.optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
-
-    def to_vector(self):
-        """Convert model parameters to a single flattened vector."""
-        params = []
-        for param in self.model.parameters():
-            if param.requires_grad:  # Only include trainable parameters
-                params.append(param.data.flatten())
-        return torch.cat(params) if params else torch.tensor([])
-
-    def from_vector(self, vector):
-        """Load parameters from a flattened vector back to the model."""
-        if len(vector) == 0:
-            return
-
-        vector = vector.to(device)
-        idx = 0
-        for param in self.model.parameters():
-            if param.requires_grad:  # Only update trainable parameters
-                param_size = param.numel()
-                param.data = vector[idx:idx + param_size].reshape(param.shape)
-                idx += param_size
-
-    def capture_gradient_direction(self, batch_inputs, batch_labels, loss_fn):
-        """Capture the gradient direction from a training step."""
-        # Store current parameters
-        current_params = self.to_vector().clone()
-
-        # Perform a training step to compute gradient
-        self.optimizer.zero_grad()
-
-        # Forward pass
-        outputs = self.model(**batch_inputs)
-
-        # Reshape logits and labels for loss calculation
-        # outputs.logits shape: [batch_size, seq_len, vocab_size]
-        # Need to reshape for cross entropy: [batch_size*seq_len, vocab_size] and [batch_size*seq_len]
-        shift_logits = outputs.logits.view(-1, outputs.logits.size(-1))  # [batch*seq, vocab]
-        shift_labels = batch_labels.view(-1)  # [batch*seq]
-
-        loss = loss_fn(shift_logits, shift_labels)
-
-        # Backward pass
-        loss.backward()
-
-        # Apply optimizer step (but store the direction)
-        self.optimizer.step()
-
-        # Calculate gradient direction
-        new_params = self.to_vector()
-        gradient_direction = new_params - current_params
-
-        # Restore original parameters for geometric optimization
-        self.from_vector(current_params)
-
-        return gradient_direction
-
-    def vector_jump_step(self, batch_inputs, batch_labels, loss_fn, gradient_direction):
-        """Perform a vector space jump along the gradient direction."""
-        if torch.norm(gradient_direction) < 1e-10:  # Skip if gradient is too small
-            return False, 0.0
-
-        # Store current parameters
-        original_params = self.to_vector().clone()
-        current_loss = self._evaluate_loss(batch_inputs, batch_labels, loss_fn)
-
-        # Generate candidates
-        candidates = []
-
-        # Gradient direction candidate
-        jump_candidate = original_params + self.jump_factor * gradient_direction
-        candidates.append(jump_candidate)
-
-        # Random direction candidates (based on gradient magnitude)
-        grad_norm = torch.norm(gradient_direction)
-        for i in range(2):  # Fewer random candidates to save computation
-            random_dir = torch.randn_like(original_params)
-            random_dir = random_dir / torch.norm(random_dir)  # Normalize
-            random_candidate = original_params + grad_norm * self.jump_factor * random_dir
-            candidates.append(random_candidate)
-
-        # Evaluate candidates
-        best_loss = current_loss
-        best_candidate = None
-        jump_accepted = False
-
-        for candidate in candidates:
-            self.from_vector(candidate)
-            candidate_loss = self._evaluate_loss(batch_inputs, batch_labels, loss_fn)
-
-            if candidate_loss < best_loss:
-                best_loss = candidate_loss
-                best_candidate = candidate
-                jump_accepted = True
-
-        # Apply best candidate or restore original
-        if jump_accepted and best_candidate is not None:
-            self.from_vector(best_candidate)
-        else:
-            self.from_vector(original_params)
-            # Reduce jump factor if jump was rejected
-            self.jump_factor = max(0.05, self.jump_factor * 0.99)
-
-        return jump_accepted, best_loss
-
-    def hypersphere_step(self, batch_inputs, batch_labels, loss_fn, gradient_direction):
-        """Perform a hypersphere search around current parameters."""
-        # Store current parameters
-        original_params = self.to_vector().clone()
-        current_loss = self._evaluate_loss(batch_inputs, batch_labels, loss_fn)
-
-        # Generate candidates on hypersphere
-        candidates = []
-
-        # Gradient direction candidate on hypersphere
-        if torch.norm(gradient_direction) > 1e-10:
-            gradient_unit = gradient_direction / torch.norm(gradient_direction)
-            gradient_candidate = original_params + self.sphere_radius * gradient_unit
-            candidates.append(gradient_candidate)
-
-        # Random directions on hypersphere
-        for i in range(4):  # Fewer candidates to save computation
-            random_dir = torch.randn_like(original_params)
-            random_dir = random_dir / torch.norm(random_dir)  # Normalize to unit vector
-            random_candidate = original_params + self.sphere_radius * random_dir
-            candidates.append(random_candidate)
-
-        # Evaluate candidates
-        best_loss = current_loss
-        best_candidate = None
-        sphere_accepted = False
-
-        for candidate in candidates:
-            self.from_vector(candidate)
-            candidate_loss = self._evaluate_loss(batch_inputs, batch_labels, loss_fn)
-
-            if candidate_loss < best_loss:
-                best_loss = candidate_loss
-                best_candidate = candidate
-                sphere_accepted = True
-
-        # Apply best candidate or restore original
-        if sphere_accepted and best_candidate is not None:
-            self.from_vector(best_candidate)
-        else:
-            self.from_vector(original_params)
-            # Reduce sphere radius if sphere search was rejected
-            self.sphere_radius = max(0.01, self.sphere_radius * 0.995)
-
-        return sphere_accepted, best_loss
-
-    def _evaluate_loss(self, batch_inputs, batch_labels, loss_fn):
-        """Evaluate loss without gradients."""
-        self.model.eval()
-        with torch.no_grad():
-            outputs = self.model(**batch_inputs)
-            # Reshape logits and labels for loss calculation
-            # outputs.logits shape: [batch_size, seq_len, vocab_size]
-            # Need to reshape for cross entropy: [batch_size*seq_len, vocab_size] and [batch_size*seq_len]
-            shift_logits = outputs.logits.view(-1, outputs.logits.size(-1))  # [batch*seq, vocab]
-            shift_labels = batch_labels.view(-1)  # [batch*seq]
-            loss = loss_fn(shift_logits, shift_labels)
-        self.model.train()
-        return loss.item()
-
-
-def geometric_training_loop(model, train_dataloader, val_dataloader, epochs, learning_rate, device):
-    """Custom training loop with geometric optimization."""
-    logger.info("🚀 Starting geometric optimization training loop...")
-
-    # Initialize geometric optimizer
-    geo_optimizer = GeometricOptimizer(model, learning_rate=learning_rate)
-
-    # Loss function
-    loss_fn = torch.nn.CrossEntropyLoss(ignore_index=-100)
-
-    # Training statistics
-    jump_acceptance_rate = 0.0
-    sphere_acceptance_rate = 0.0
-    total_jump_attempts = 0
-    total_sphere_attempts = 0
-    accepted_jumps = 0
-    accepted_spheres = 0
-
-    for epoch in range(epochs):
-        model.train()
-        total_loss = 0
-        step_count = 0
-
-        start_time = time.time()
-
-        # Calculate total steps in epoch for progress tracking
-        total_steps_in_epoch = len(train_dataloader)
-
-        for step, batch in enumerate(train_dataloader):
-            # Move batch to device
-            batch = {k: v.to(device) if isinstance(v, torch.Tensor) else v for k, v in batch.items()}
-
-            # For causal language modeling, inputs and labels are typically the same
-            # The model shifts the input internally to create labels
-            batch_inputs = {k: v for k, v in batch.items() if k != 'labels'}
-            batch_labels = batch['labels']
-
-            # Capture gradient direction using standard backprop
-            gradient_direction = geo_optimizer.capture_gradient_direction(
-                batch_inputs, batch_labels, loss_fn
-            )
-
-            # Step 1: Vector space jump (tries to improve on standard backprop)
-            jump_accepted, loss_after_jump = geo_optimizer.vector_jump_step(
-                batch_inputs, batch_labels, loss_fn, gradient_direction
-            )
-
-            # Update statistics
-            total_jump_attempts += 1
-            if jump_accepted:
-                accepted_jumps += 1
-
-            # Step 2: Hypersphere search (tries to improve on vector jump)
-            sphere_accepted, final_loss = geo_optimizer.hypersphere_step(
-                batch_inputs, batch_labels, loss_fn, gradient_direction
-            )
-
-            # Update statistics
-            total_sphere_attempts += 1
-            if sphere_accepted:
-                accepted_spheres += 1
-
-            total_loss += final_loss
-            step_count += 1
-
-            # Print progress for every step using carriage return for live updates
-            avg_loss = total_loss / step_count
-            jump_rate = accepted_jumps / total_jump_attempts if total_jump_attempts > 0 else 0
-            sphere_rate = accepted_spheres / total_sphere_attempts if total_sphere_attempts > 0 else 0
-
-            # Print live progress to stdout using \r to overwrite the same line
-            progress_msg = f"\rEpoch {epoch+1}/{epochs}, Step {step+1}/{total_steps_in_epoch}, " \
-                          f"Loss: {final_loss:.6f}, Avg Loss: {avg_loss:.6f}, " \
-                          f"Jump Rate: {jump_rate:.3f}, " \
-                          f"Sphere Rate: {sphere_rate:.3f}"
-            print(progress_msg, end='', flush=True)
-
-        # Calculate epoch statistics
-        avg_loss = total_loss / step_count
-        epoch_time = time.time() - start_time
-
-        # Update acceptance rates
-        jump_acceptance_rate = accepted_jumps / total_jump_attempts if total_jump_attempts > 0 else 0
-        sphere_acceptance_rate = accepted_spheres / total_sphere_attempts if total_sphere_attempts > 0 else 0
-
-        # Print newline to move to next line after the live progress updates
-        print()  # This moves to a new line after the \r progress updates
-        logger.info(f"Epoch {epoch+1}/{epochs} completed - "
-                   f"Avg Loss: {avg_loss:.6f}, "
-                   f"Time: {epoch_time:.2f}s, "
-                   f"Jump Acceptance: {jump_acceptance_rate:.3f}, "
-                   f"Sphere Acceptance: {sphere_acceptance_rate:.3f}")
-
-        # Validation every few epochs
-        if (epoch + 1) % 5 == 0:
-            val_loss = evaluate_model(model, val_dataloader, loss_fn, device)
-            logger.info(f"Validation Loss after Epoch {epoch+1}: {val_loss:.6f}")
-
-    logger.info("✅ Geometric optimization training completed!")
-
-
-def evaluate_model(model, dataloader, loss_fn, device):
-    """Evaluate model on validation set."""
-    model.eval()
-    total_loss = 0
-    total_samples = 0
-
-    with torch.no_grad():
-        for batch_idx, batch in enumerate(dataloader):
-            batch = {k: v.to(device) if isinstance(v, torch.Tensor) else v for k, v in batch.items()}
-
-            batch_inputs = {k: v for k, v in batch.items() if k != 'labels'}
-            batch_labels = batch['labels']
-
-            outputs = model(**batch_inputs)
-            # Reshape logits and labels for loss calculation
-            shift_logits = outputs.logits.view(-1, outputs.logits.size(-1))  # [batch*seq, vocab]
-            shift_labels = batch_labels.view(-1)  # [batch*seq]
-            loss = loss_fn(shift_logits, shift_labels)
-
-            total_loss += loss.item()
-            total_samples += 1
-
-            # Report progress every 10 validation batches
-            if batch_idx % 10 == 0:
-                logger.debug(f"Validation batch {batch_idx}, Loss: {loss.item():.6f}")
-
-    return total_loss / total_samples if total_samples > 0 else float('inf')
-
-
 def setup_model_and_tokenizer(model_path: str):
-    """Load and prepare model and tokenizer for training."""
+    """Load and prepare model and tokenizer."""
     logger.info(f"🧠 Loading model from {model_path}")
 
     # Load tokenizer
@@ -478,69 +333,121 @@ def setup_model_and_tokenizer(model_path: str):
     return model, tokenizer
 
 
-def setup_model_and_tokenizer_test(model_path: str):
-    """Load and prepare model and tokenizer for testing/inference."""
-    logger.info(f"🧠 Loading model from {model_path} for testing...")
-
-    # Load tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(model_path)
-
-    # Add pad token if missing
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
-
-    # Try to load as a PEFT model first
-    import os
-    from peft import PeftModel, PeftConfig
-    from transformers import AutoModelForCausalLM
-
-    adapter_config_path = os.path.join(model_path, "adapter_config.json")
-
-    if os.path.exists(adapter_config_path):
-        try:
-            # Load the PEFT configuration to get the base model
-            config = PeftConfig.from_pretrained(model_path)
-            base_model_name = config.base_model_name_or_path
-
-            # Load the base model with the correct parameters
-            base_model = AutoModelForCausalLM.from_pretrained(
-                base_model_name,
-                trust_remote_code=True,
-                torch_dtype=torch.float16,
-                low_cpu_mem_usage=True,
-                device_map={"": 0},
-                ignore_mismatched_sizes=True  # Important for resized embeddings
+def geometric_training_loop(model, train_dataloader, val_dataloader, epochs, learning_rate, device):
+    """Custom training loop with geometric optimization."""
+    logger.info("🚀 Starting geometric optimization training loop...")
+    
+    # Initialize geometric optimizer
+    geo_optimizer = GeometricOptimizer(model, learning_rate=learning_rate)
+    
+    # Loss function
+    loss_fn = torch.nn.CrossEntropyLoss(ignore_index=-100)
+    
+    # Training statistics
+    jump_acceptance_rate = 0.0
+    sphere_acceptance_rate = 0.0
+    total_jump_attempts = 0
+    total_sphere_attempts = 0
+    accepted_jumps = 0
+    accepted_spheres = 0
+    
+    for epoch in range(epochs):
+        model.train()
+        total_loss = 0
+        step_count = 0
+        
+        start_time = time.time()
+        
+        for step, batch in enumerate(train_dataloader):
+            # Move batch to device
+            batch = {k: v.to(device) if isinstance(v, torch.Tensor) else v for k, v in batch.items()}
+            
+            # Separate inputs and labels for the model
+            batch_inputs = {k: v for k, v in batch.items() if k != 'labels'}
+            batch_labels = batch['labels']
+            
+            # Capture gradient direction using standard backprop
+            gradient_direction = geo_optimizer.capture_gradient_direction(
+                batch_inputs, batch_labels, loss_fn
             )
-
-            # Load the PEFT adapter on top
-            model = PeftModel.from_pretrained(base_model, model_path)
-        except Exception as e:
-            logger.warning(f"Failed to load as PEFT model: {e}")
-            # Fallback: try loading directly (might work if it's a merged model)
-            model = AutoModelForCausalLM.from_pretrained(
-                model_path,
-                trust_remote_code=True,
-                torch_dtype=torch.float16,
-                low_cpu_mem_usage=True,
-                device_map={"": 0},
-                ignore_mismatched_sizes=True
+            
+            # Step 1: Vector space jump (tries to improve on standard backprop)
+            jump_accepted, loss_after_jump = geo_optimizer.vector_jump_step(
+                batch_inputs, batch_labels, loss_fn, gradient_direction
             )
-    else:
-        # Not a PEFT model, load directly
-        model = AutoModelForCausalLM.from_pretrained(
-            model_path,
-            trust_remote_code=True,
-            torch_dtype=torch.float16,
-            low_cpu_mem_usage=True,
-            device_map={"": 0},
-            ignore_mismatched_sizes=True
-        )
+            
+            # Update statistics
+            total_jump_attempts += 1
+            if jump_accepted:
+                accepted_jumps += 1
+            
+            # Step 2: Hypersphere search (tries to improve on vector jump)
+            sphere_accepted, final_loss = geo_optimizer.hypersphere_step(
+                batch_inputs, batch_labels, loss_fn, gradient_direction
+            )
+            
+            # Update statistics
+            total_sphere_attempts += 1
+            if sphere_accepted:
+                accepted_spheres += 1
+            
+            total_loss += final_loss
+            step_count += 1
+            
+            # Print progress every 100 steps
+            if step % 100 == 0:
+                avg_loss = total_loss / step_count
+                jump_rate = accepted_jumps / total_jump_attempts if total_jump_attempts > 0 else 0
+                sphere_rate = accepted_spheres / total_sphere_attempts if total_sphere_attempts > 0 else 0
+                
+                logger.info(f"Epoch {epoch+1}/{epochs}, Step {step}, "
+                           f"Loss: {avg_loss:.6f}, "
+                           f"Jump Rate: {jump_rate:.3f}, "
+                           f"Sphere Rate: {sphere_rate:.3f}")
+        
+        # Calculate epoch statistics
+        avg_loss = total_loss / step_count
+        epoch_time = time.time() - start_time
+        
+        # Update acceptance rates
+        jump_acceptance_rate = accepted_jumps / total_jump_attempts if total_jump_attempts > 0 else 0
+        sphere_acceptance_rate = accepted_spheres / total_sphere_attempts if total_sphere_attempts > 0 else 0
+        
+        logger.info(f"Epoch {epoch+1}/{epochs} completed - "
+                   f"Avg Loss: {avg_loss:.6f}, "
+                   f"Time: {epoch_time:.2f}s, "
+                   f"Jump Acceptance: {jump_acceptance_rate:.3f}, "
+                   f"Sphere Acceptance: {sphere_acceptance_rate:.3f}")
+        
+        # Validation every few epochs
+        if (epoch + 1) % 5 == 0:
+            val_loss = evaluate_model(model, val_dataloader, loss_fn, device)
+            logger.info(f"Validation Loss after Epoch {epoch+1}: {val_loss:.6f}")
+    
+    logger.info("✅ Geometric optimization training completed!")
 
-    logger.info(f"✅ Model loaded with {sum(p.numel() for p in model.parameters()):,} parameters")
-    if hasattr(model, 'print_trainable_parameters'):
-        model.print_trainable_parameters()
 
-    return model, tokenizer
+def evaluate_model(model, dataloader, loss_fn, device):
+    """Evaluate model on validation set."""
+    model.eval()
+    total_loss = 0
+    total_samples = 0
+    
+    with torch.no_grad():
+        for batch in dataloader:
+            batch = {k: v.to(device) if isinstance(v, torch.Tensor) else v for k, v in batch.items()}
+            
+            batch_inputs = {k: v for k, v in batch.items() if k != 'labels'}
+            batch_labels = batch['labels']
+            
+            outputs = model(**batch_inputs)
+            loss = loss_fn(outputs.logits, batch_labels)
+            
+            total_loss += loss.item()
+            total_samples += 1
+    
+    return total_loss / total_samples if total_samples > 0 else float('inf')
+
 
 def main():
     """Main training function."""
@@ -596,7 +503,7 @@ def main():
             # Custom geometric training loop
             train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
             val_dataloader = DataLoader(val_dataset, batch_size=args.batch_size, shuffle=False)
-
+            
             geometric_training_loop(
                 model=model,
                 train_dataloader=train_dataloader,
@@ -605,9 +512,6 @@ def main():
                 learning_rate=args.learning_rate,
                 device=device
             )
-
-            # For geometric training, save the model properly with PEFT
-            model.save_pretrained(args.output_dir)
         else:
             # Standard HuggingFace training
             # Calculate training parameters
@@ -677,10 +581,8 @@ def main():
             logger.info(f"🏋️ Starting standard training...")
             trainer.train()
 
-            # Save final model using trainer
-            trainer.save_model(args.output_dir)
-
-        # Always save tokenizer
+        # Save final model
+        model.save_pretrained(args.output_dir)
         tokenizer.save_pretrained(args.output_dir)
 
         logger.info(f"🎉 Training completed!")
@@ -695,7 +597,6 @@ def main():
         import traceback
         traceback.print_exc()
         return False
-
 
 
 if __name__ == "__main__":
