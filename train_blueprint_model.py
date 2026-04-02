@@ -317,12 +317,20 @@ class ThermalCallback(TrainerCallback):
             if thermal_state["status"].startswith("throttling_started"):
                 logger.warning(f"🌡️ THERMAL THROTTLING: GPU temperature {thermal_state['temperature']:.1f}°C - reducing training intensity")
             
-            # Add a small delay during throttling
-            time.sleep(1.0)
-            
-            if thermal_state["should_pause"]:
-                logger.info("🌡️ Pausing training for thermal cooldown...")
+            # Aggressive throttling based on temperature
+            current_temp = thermal_state['temperature']
+            if current_temp >= 95.0:
+                # Very hot - pause for cooldown
+                logger.warning(f"🌡️ HIGH TEMPERATURE: {current_temp:.1f}°C - pausing for cooldown")
                 self.thermal_monitor.wait_for_cooldown()
+            elif current_temp >= 90.0:
+                # Hot - long delay
+                logger.info(f"🌡️ Throttling heavily: {current_temp:.1f}°C - waiting 10s")
+                time.sleep(10.0)
+            elif current_temp >= 85.0:
+                # Warm - moderate delay
+                logger.info(f"🌡️ Throttling moderately: {current_temp:.1f}°C - waiting 5s")
+                time.sleep(5.0)
     
     def on_log(self, args, state: TrainerState, control: TrainerControl, logs=None, **kwargs):
         """Add temperature info to training logs."""
@@ -423,9 +431,11 @@ class GeometricOptimizer:
         grad_norm = torch.norm(gradient_direction)
         for i in range(2):  # Fewer random candidates to save computation
             random_dir = torch.randn_like(original_params)
-            random_dir = random_dir / torch.norm(random_dir)  # Normalize
-            random_candidate = original_params + grad_norm * self.jump_factor * random_dir
-            candidates.append(random_candidate)
+            random_norm = torch.norm(random_dir)
+            if random_norm > 1e-10:  # Prevent division by zero
+                random_dir = random_dir / random_norm  # Normalize
+                random_candidate = original_params + grad_norm * self.jump_factor * random_dir
+                candidates.append(random_candidate)
 
         # Evaluate candidates
         best_loss = current_loss
@@ -436,10 +446,12 @@ class GeometricOptimizer:
             self.from_vector(candidate)
             candidate_loss = self._evaluate_loss(batch_inputs, batch_labels, loss_fn)
 
-            if candidate_loss < best_loss:
-                best_loss = candidate_loss
-                best_candidate = candidate
-                jump_accepted = True
+            # Check for NaN or infinite loss
+            if not (torch.isnan(torch.tensor(candidate_loss)) or torch.isinf(torch.tensor(candidate_loss))):
+                if candidate_loss < best_loss:
+                    best_loss = candidate_loss
+                    best_candidate = candidate
+                    jump_accepted = True
 
         # Apply best candidate or restore original
         if jump_accepted and best_candidate is not None:
@@ -469,9 +481,11 @@ class GeometricOptimizer:
         # Random directions on hypersphere
         for i in range(4):  # Fewer candidates to save computation
             random_dir = torch.randn_like(original_params)
-            random_dir = random_dir / torch.norm(random_dir)  # Normalize to unit vector
-            random_candidate = original_params + self.sphere_radius * random_dir
-            candidates.append(random_candidate)
+            random_norm = torch.norm(random_dir)
+            if random_norm > 1e-10:  # Prevent division by zero
+                random_dir = random_dir / random_norm  # Normalize to unit vector
+                random_candidate = original_params + self.sphere_radius * random_dir
+                candidates.append(random_candidate)
 
         # Evaluate candidates
         best_loss = current_loss
@@ -482,10 +496,12 @@ class GeometricOptimizer:
             self.from_vector(candidate)
             candidate_loss = self._evaluate_loss(batch_inputs, batch_labels, loss_fn)
 
-            if candidate_loss < best_loss:
-                best_loss = candidate_loss
-                best_candidate = candidate
-                sphere_accepted = True
+            # Check for NaN or infinite loss
+            if not (torch.isnan(torch.tensor(candidate_loss)) or torch.isinf(torch.tensor(candidate_loss))):
+                if candidate_loss < best_loss:
+                    best_loss = candidate_loss
+                    best_candidate = candidate
+                    sphere_accepted = True
 
         # Apply best candidate or restore original
         if sphere_accepted and best_candidate is not None:
@@ -557,13 +573,23 @@ def geometric_training_loop(model, train_dataloader, val_dataloader, epochs, lea
                 if thermal_state["status"].startswith("throttling_started"):
                     logger.warning(f"🌡️ THERMAL THROTTLING: GPU temperature {thermal_state['temperature']:.1f}°C - reducing training intensity")
                 
-                # Throttling: wait 2 seconds between steps
-                if step > 0:  # Don't wait on first step
-                    time.sleep(2.0)
-                
-                # Check if we need to pause for cooldown
-                if thermal_state["should_pause"]:
+                # Aggressive throttling based on temperature
+                current_temp = thermal_state['temperature']
+                if current_temp >= 95.0:
+                    # Very hot - pause for cooldown
+                    print()  # Add newline before warning
+                    logger.warning(f"🌡️ HIGH TEMPERATURE: {current_temp:.1f}°C - pausing for cooldown")
                     thermal_monitor.wait_for_cooldown()
+                elif current_temp >= 90.0:
+                    # Hot - long delay
+                    print()  # Add newline before warning
+                    logger.info(f"🌡️ Throttling heavily: {current_temp:.1f}°C - waiting 10s")
+                    time.sleep(10.0)
+                elif current_temp >= 85.0:
+                    # Warm - moderate delay
+                    print()  # Add newline before warning
+                    logger.info(f"🌡️ Throttling moderately: {current_temp:.1f}°C - waiting 5s")
+                    time.sleep(5.0)
 
             # Move batch to device
             batch = {k: v.to(device) if isinstance(v, torch.Tensor) else v for k, v in batch.items()}
@@ -859,6 +885,14 @@ def main():
             
             if not success:
                 logger.error("❌ Training stopped due to thermal emergency!")
+                # Save model anyway to preserve training progress
+                logger.info("💾 Saving model progress before exit...")
+                try:
+                    model.save_pretrained(args.output_dir)
+                    tokenizer.save_pretrained(args.output_dir)
+                    logger.info("✅ Model saved successfully despite thermal emergency")
+                except Exception as save_error:
+                    logger.error(f"❌ Failed to save model: {save_error}")
                 return False
 
             # For geometric training, save the model properly with PEFT

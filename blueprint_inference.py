@@ -30,21 +30,80 @@ def setup_model_and_tokenizer(model_path: str):
     """Load and prepare model and tokenizer."""
     logger.info(f"🧠 Loading model from {model_path}")
 
-    # Load tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(model_path)
+    # Check if this is a PEFT model
+    import os
+    from peft import PeftModel, PeftConfig
+    from transformers import AutoModelForCausalLM
+
+    adapter_config_path = os.path.join(model_path, "adapter_config.json")
+
+    if os.path.exists(adapter_config_path):
+        # This is a PEFT model
+        logger.info("🔧 Detected PEFT model, loading base model and adapter...")
+        try:
+            # Load the PEFT configuration to get the base model
+            config = PeftConfig.from_pretrained(model_path)
+            base_model_path = config.base_model_name_or_path
+            
+            # Handle relative paths - make sure we resolve relative to the current working directory
+            if not os.path.isabs(base_model_path):
+                # If it starts with ../, resolve relative to current directory
+                if base_model_path.startswith('../'):
+                    base_model_path = os.path.normpath(base_model_path)
+                else:
+                    # Otherwise, resolve relative to the adapter directory
+                    base_model_path = os.path.join(model_path, base_model_path)
+                    base_model_path = os.path.normpath(base_model_path)
+            
+            logger.info(f"📁 Loading base model from: {base_model_path}")
+
+            # Load tokenizer from the adapter directory (it has the updated vocab)
+            tokenizer = AutoTokenizer.from_pretrained(model_path)
+
+            # Load the base model
+            base_model = AutoModelForCausalLM.from_pretrained(
+                base_model_path,
+                trust_remote_code=True,
+                torch_dtype=torch.float16,
+                low_cpu_mem_usage=True,
+                device_map="auto"
+            )
+            
+            # Resize token embeddings if needed to match the tokenizer
+            if len(tokenizer) != base_model.config.vocab_size:
+                logger.info(f"🔧 Resizing token embeddings from {base_model.config.vocab_size} to {len(tokenizer)}")
+                base_model.resize_token_embeddings(len(tokenizer))
+
+            # Load the PEFT adapter on top
+            model = PeftModel.from_pretrained(base_model, model_path)
+            
+        except Exception as e:
+            logger.error(f"❌ Failed to load PEFT model: {e}")
+            logger.info("🔄 Falling back to direct loading...")
+            # Fallback to direct loading
+            tokenizer = AutoTokenizer.from_pretrained(model_path)
+            model = AutoModelForCausalLM.from_pretrained(
+                model_path,
+                trust_remote_code=True,
+                torch_dtype=torch.float16,
+                low_cpu_mem_usage=True,
+                device_map="auto"
+            )
+    else:
+        # Regular model
+        logger.info("📦 Loading regular model...")
+        tokenizer = AutoTokenizer.from_pretrained(model_path)
+        model = AutoModelForCausalLM.from_pretrained(
+            model_path,
+            trust_remote_code=True,
+            torch_dtype=torch.float16,
+            low_cpu_mem_usage=True,
+            device_map="auto"
+        )
 
     # Add pad token if missing
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
-    
-    # Load model
-    model = AutoModelForCausalLM.from_pretrained(
-        model_path,
-        trust_remote_code=True,
-        torch_dtype=torch.float32,
-        low_cpu_mem_usage=True,
-        device_map="auto"
-    )
     
     logger.info(f"✅ Model loaded with {sum(p.numel() for p in model.parameters()):,} parameters")
     
@@ -89,7 +148,8 @@ def chat(model, tokenizer, user_query: str):
 def main():
     """Main interactive chat loop."""
     parser = argparse.ArgumentParser(description="Interactive BluePrint WorldModel Chat")
-    parser.add_argument("--model_path", default="blueprint_model_output", help="Path to the trained model")
+    parser.add_argument("--model", "--model_path", dest="model_path", default="blueprint_model_output", help="Path to the trained model")
+    parser.add_argument("--test", help="Test with a single query (non-interactive)")
     args = parser.parse_args()
 
     # Hardware detection
@@ -106,6 +166,23 @@ def main():
         model, tokenizer = setup_model_and_tokenizer(args.model_path)
     except Exception as e:
         logger.error(f"❌ Failed to load model: {e}")
+        return
+
+    # Test mode
+    if args.test:
+        print(f"\n🧪 Testing with query: {args.test}")
+        response = chat(model, tokenizer, args.test)
+        print("\n🤖 Assistant:")
+        print(response)
+        
+        # Validate format
+        is_valid, errors = validate_blueprint_syntax(response)
+        if is_valid:
+            print("\n✅ Blueprint format is valid.")
+        else:
+            print("\n❌ Invalid Blueprint format:")
+            for error in errors:
+                print(f"   - {error}")
         return
 
     # Interactive loop
