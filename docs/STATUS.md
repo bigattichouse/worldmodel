@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-04-02
-**Phase:** 2 — Dataset expanded (928 examples), tool-request protocol added
+**Phase:** 2 — Dataset complete (1443 examples), training pipeline validated
 
 ---
 
@@ -81,13 +81,14 @@ Training Qwen3-1.7B (LoRA) to reason through problems by writing and executing P
 
 ## Immediate next steps (in order)
 
-1. **First training run** — `./train_rocm.sh --categories arithmetic,algebra,geometry,statistics` (smoke test on 590 core examples)
-2. **Generate physics dataset** — `generate_physics.py`: kinematics, projectile motion, forces, energy, circuits
-3. **Generate finance dataset** — `generate_finance.py`: NPV, amortization, portfolio returns
-4. **Generate programming dataset** — `generate_programming.py`: sorting, searching, string algorithms
-5. **Convert Blueprint → design examples** — `convert_blueprint_to_design.py`
-6. **Evaluate** — run `infer.py` against base model + trained model, compare outputs
-7. **Expand to full dataset** (~1500 examples) and retrain
+1. **Load GPU** — `sudo modprobe amdgpu` to bring the MI50 back online
+2. **Training run** — `./train_rocm.sh --categories arithmetic,algebra,geometry,statistics --epochs 3` (smoke test)
+   - Pipeline confirmed working on CPU: model loads, data tokenizes, LoRA attaches (17M/1.7B trainable)
+   - `train_rocm.sh` now auto-sets `LD_LIBRARY_PATH` for `/opt/rocm-7.2.0`
+3. **Full training** — `./train_rocm.sh` with all 1443 examples once smoke test passes
+4. **Evaluate** — run `infer.py` against base model + trained model, compare outputs
+5. **Science chemistry dataset** — `generate_chemistry.py` (stoichiometry, ideal gas, thermodynamics)
+6. **Multi-step dataset** — complex problems that chain many code/output cycles
 
 ---
 

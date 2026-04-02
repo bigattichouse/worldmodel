@@ -161,7 +161,7 @@ def load_tokenizer_and_model(cfg: TrainConfig):
     logger.info(f"Loading model: {cfg.model_name}")
     model = AutoModelForCausalLM.from_pretrained(
         cfg.model_name,
-        torch_dtype=torch.float32,   # float32 required for ROCm gfx906 stability
+        dtype=torch.float32,   # float32 required for ROCm gfx906 stability
         device_map="auto",
         trust_remote_code=True,
     )
