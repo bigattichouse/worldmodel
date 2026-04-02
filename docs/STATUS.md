@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-04-02
-**Phase:** 1 — Foundation complete, building dataset
+**Phase:** 2 — Core dataset built (590 examples), training script ready
 
 ---
 
@@ -22,17 +22,24 @@ Training Qwen3-1.7B (LoRA) to reason through problems by writing and executing P
 - `src/training/dataset.py` — JSONL loader for new format
 - `training/scripts/generate_arithmetic.py` — auto-generates verified arithmetic examples (tested, outputs correct)
 
-### Empty (needs filling)
-- `training/datasets/arithmetic/` — run `generate_arithmetic.py`
-- `training/datasets/algebra/`, `geometry/`, `statistics/` — need generators
-- `training/datasets/science/physics/`, `chemistry/` — need curated manual examples
+### Datasets (590 examples total, all validated)
+- `training/datasets/arithmetic/basic.jsonl` — 200 examples (basic/intermediate)
+- `training/datasets/algebra/basic.jsonl` — 150 examples (linear, quadratic, systems)
+- `training/datasets/geometry/basic.jsonl` — 120 examples (2D, 3D, trig, coordinate)
+- `training/datasets/statistics/basic.jsonl` — 120 examples (descriptive, probability, distributions)
+
+### Still empty (needs filling)
+- `training/datasets/science/physics/` — kinematics, forces, energy, waves
+- `training/datasets/science/chemistry/` — stoichiometry, ideal gas, thermodynamics
 - `training/datasets/design/` — convert from `history/blueprint/training/`
-- `training/datasets/multi_step/`, `logic/`, `finance/`, `programming/` — need work
+- `training/datasets/multi_step/` — complex multi-cycle problems
+- `training/datasets/logic/`, `finance/`, `programming/` — need generators
 
 ### Not yet written
-- `train.py` — main training entry point (LoRA on Qwen3-1.7B, ROCm)
-- `infer.py` — inference CLI using `generation_loop.py`
-- Dataset generators for algebra, geometry, statistics
+- `training/scripts/generate_physics.py`
+- `training/scripts/generate_finance.py`
+- `training/scripts/generate_programming.py`
+- `training/scripts/convert_blueprint_to_design.py` (convert old blueprint data)
 
 ### Archived (do not rebuild)
 - Everything in `history/` — ByteLogic/WASM and Blueprint-only era
@@ -49,14 +56,13 @@ Training Qwen3-1.7B (LoRA) to reason through problems by writing and executing P
 
 ## Immediate next steps (in order)
 
-1. **Generate arithmetic dataset** — run `generate_arithmetic.py --count 200`
-2. **Write algebra generator** — linear equations, quadratics, factoring
-3. **Write geometry generator** — 2D/3D shapes, trig, coordinate problems
-4. **Write statistics generator** — mean/median/std/distributions
-5. **Write `train.py`** — LoRA fine-tuning wired to ROCm; parameters in DESIGN.md §5.2
-6. **Write `infer.py`** — CLI wrapping `generation_loop.py`
-7. **Curated science examples** — physics (kinematics, forces, energy), chemistry (stoichiometry, ideal gas)
-8. **Convert design examples** from `history/blueprint/training/` — strip `<thinking>`/`<blueprint>` tags → `<think>`/`<model>` format, no code needed
+1. **Generate physics dataset** — `generate_physics.py`: kinematics, projectile motion, forces, energy, circuits
+2. **Generate finance dataset** — `generate_finance.py`: NPV, amortization, portfolio returns
+3. **Generate programming dataset** — `generate_programming.py`: sorting, searching, string algorithms
+4. **Convert Blueprint → design examples** — `convert_blueprint_to_design.py`: read `history/blueprint/training/`, strip old tags, write `<think>`/`<model>` format to `training/datasets/design/`
+5. **First training run** — `./train_rocm.sh --categories arithmetic,algebra,geometry,statistics` (590 examples, smoke test)
+6. **Evaluate** — run `infer.py` against base model + trained model, compare outputs
+7. **Expand to full dataset** (~1500 examples) and retrain
 
 ---
 
