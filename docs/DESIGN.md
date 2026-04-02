@@ -203,6 +203,41 @@ print(avg)
 
 State resets at the start of each new user turn.
 
+### 3.4 Tool Request Protocol
+
+Every code block executes with two built-ins in its namespace:
+
+- **`use_tool(name, **kwargs)`** — call an external tool by name
+- **`ToolNotAvailableError`** — raised when the tool is not registered
+
+```python
+# Model can call any named tool
+try:
+    result = use_tool("web_search", query="current EUR/USD rate")
+    # use result...
+except ToolNotAvailableError as e:
+    print(f"Need tool: {e}")
+    # fall back gracefully
+```
+
+**Runtime registers tools before execution:**
+
+```python
+executor = PythonExecutor()
+executor.register_tool("web_search", my_search_fn)
+executor.register_tool("sql_query",  my_db_fn)
+```
+
+**Default behaviour (no tools registered):** `ToolNotAvailableError` is raised with a clear message listing what is available. The model is trained to catch this, explain what it needs, and offer an alternative (fallback computation, sample data, or a description of the query it would run).
+
+**Why not a new token?** Using a Python call keeps everything inside the existing `<code>/<output>` execution flow. The runtime decides which tools to provide; the model decides when to use them. No new tokens, no extra parsing.
+
+**Training behaviour taught:**
+1. Probe tools when uncertain (`try: use_tool(...) except ToolNotAvailableError: ...`)
+2. Explain clearly what tool is needed and why
+3. Provide a useful fallback — never silently fail or hallucinate results
+4. Discover available tools at runtime when the capability set is unknown
+
 ### 3.4 Error Handling
 
 If code execution fails:

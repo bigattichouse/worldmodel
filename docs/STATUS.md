@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-04-02
-**Phase:** 2 — Core dataset built (590 examples), training script ready
+**Phase:** 2 — Dataset expanded (928 examples), tool-request protocol added
 
 ---
 
@@ -16,24 +16,49 @@ Training Qwen3-1.7B (LoRA) to reason through problems by writing and executing P
 ## Current state of the codebase
 
 ### Done and working
-- `src/executor/python_exec.py` — inline exec() with shared namespace, timeout, tested OK
+- `src/executor/python_exec.py` — inline exec() with shared namespace, timeout, `use_tool()` + `ToolNotAvailableError`
 - `src/executor/vm_exec.py` — scratchpad QEMU bridge (for complex tasks)
 - `src/inference/generation_loop.py` — custom generation loop that intercepts `</code>`
 - `src/training/dataset.py` — JSONL loader for new format
-- `training/scripts/generate_arithmetic.py` — auto-generates verified arithmetic examples (tested, outputs correct)
 
-### Datasets (590 examples total, all validated)
-- `training/datasets/arithmetic/basic.jsonl` — 200 examples (basic/intermediate)
-- `training/datasets/algebra/basic.jsonl` — 150 examples (linear, quadratic, systems)
-- `training/datasets/geometry/basic.jsonl` — 120 examples (2D, 3D, trig, coordinate)
-- `training/datasets/statistics/basic.jsonl` — 120 examples (descriptive, probability, distributions)
+### Datasets (928 examples total, all validated)
+
+| Dataset | Examples | Topics |
+|---------|----------|--------|
+| `arithmetic/basic.jsonl` | 200 | percentages, compound interest, area, conversions |
+| `algebra/basic.jsonl` | 150 | linear/quadratic, systems, polynomials, word problems |
+| `geometry/basic.jsonl` | 120 | 2D/3D shapes, trig, Pythagorean, coordinate |
+| `statistics/basic.jsonl` | 120 | descriptive, probability, distributions, correlation |
+| `logic/basic.jsonl` | 80 | graph reachability, family relations, set logic, topo sort |
+| `fourier/basic.jsonl` | 60 | FFT, Nyquist, Butterworth filter, Welch PSD, pipeline |
+| `bayesian/basic.jsonl` | 60 | Bayes theorem, Beta updates, Naive Bayes, A/B testing |
+| `montecarlo/basic.jsonl` | 70 | π estimation, integration, random walks, options, risk |
+| `taguchi/basic.jsonl` | 60 | L4/L9 arrays, S/N ratios, signal vs noise, parameter sweeps |
+| `tool_requests/basic.jsonl` | 8 | use_tool(), ToolNotAvailableError, graceful fallback |
+
+### Tool-request protocol (new)
+- `use_tool(name, **kwargs)` and `ToolNotAvailableError` are always in the executor namespace
+- `executor.register_tool(name, fn)` lets the runtime provide tools at run time
+- Training data teaches: try → catch ToolNotAvailableError → explain need → offer fallback
+- See `docs/DESIGN.md` §3.4 for full spec
+
+### Generators (all working)
+- `training/scripts/generate_arithmetic.py`
+- `training/scripts/generate_algebra.py`
+- `training/scripts/generate_geometry.py`
+- `training/scripts/generate_statistics.py`
+- `training/scripts/generate_logic.py`
+- `training/scripts/generate_fourier.py`
+- `training/scripts/generate_bayesian.py`
+- `training/scripts/generate_montecarlo.py`
+- `training/scripts/generate_taguchi.py`
+- `training/scripts/generate_tool_requests.py`
 
 ### Still empty (needs filling)
 - `training/datasets/science/physics/` — kinematics, forces, energy, waves
 - `training/datasets/science/chemistry/` — stoichiometry, ideal gas, thermodynamics
 - `training/datasets/design/` — convert from `history/blueprint/training/`
 - `training/datasets/multi_step/` — complex multi-cycle problems
-- `training/datasets/logic/`, `finance/`, `programming/` — need generators
 
 ### Not yet written
 - `training/scripts/generate_physics.py`
@@ -56,11 +81,11 @@ Training Qwen3-1.7B (LoRA) to reason through problems by writing and executing P
 
 ## Immediate next steps (in order)
 
-1. **Generate physics dataset** — `generate_physics.py`: kinematics, projectile motion, forces, energy, circuits
-2. **Generate finance dataset** — `generate_finance.py`: NPV, amortization, portfolio returns
-3. **Generate programming dataset** — `generate_programming.py`: sorting, searching, string algorithms
-4. **Convert Blueprint → design examples** — `convert_blueprint_to_design.py`: read `history/blueprint/training/`, strip old tags, write `<think>`/`<model>` format to `training/datasets/design/`
-5. **First training run** — `./train_rocm.sh --categories arithmetic,algebra,geometry,statistics` (590 examples, smoke test)
+1. **First training run** — `./train_rocm.sh --categories arithmetic,algebra,geometry,statistics` (smoke test on 590 core examples)
+2. **Generate physics dataset** — `generate_physics.py`: kinematics, projectile motion, forces, energy, circuits
+3. **Generate finance dataset** — `generate_finance.py`: NPV, amortization, portfolio returns
+4. **Generate programming dataset** — `generate_programming.py`: sorting, searching, string algorithms
+5. **Convert Blueprint → design examples** — `convert_blueprint_to_design.py`
 6. **Evaluate** — run `infer.py` against base model + trained model, compare outputs
 7. **Expand to full dataset** (~1500 examples) and retrain
 
@@ -89,6 +114,8 @@ Multi-step: repeat `<think>`/`<code>`/`<output>` cycles. Python state persists a
 | `<code>` | Model | Python to execute; must print() to produce output |
 | `<output>` | **Runtime** (injected) | Execution result; model never generates this |
 
+`use_tool(name, **kwargs)` is always available in code blocks. Raises `ToolNotAvailableError` if the tool isn't registered. Model is trained to handle this gracefully.
+
 ---
 
 ## Key files
@@ -97,7 +124,7 @@ Multi-step: repeat `<think>`/`<code>`/`<output>` cycles. Python state persists a
 |------|---------|
 | `docs/DESIGN.md` | Full architecture spec |
 | `docs/STATUS.md` | This file — current state |
-| `src/executor/python_exec.py` | Run Python code in managed namespace |
+| `src/executor/python_exec.py` | Run Python code; provides use_tool() |
 | `src/inference/generation_loop.py` | Custom generation with code interception |
 | `src/training/dataset.py` | Load JSONL training data |
-| `training/scripts/generate_arithmetic.py` | Generate verified arithmetic examples |
+| `training/scripts/validate_datasets.py` | Validate all JSONL files |
