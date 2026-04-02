@@ -81,14 +81,47 @@ Training Qwen3-1.7B (LoRA) to reason through problems by writing and executing P
 
 ## Immediate next steps (in order)
 
-1. **Load GPU** — `sudo modprobe amdgpu` to bring the MI50 back online
-2. **Training run** — `./train_rocm.sh --categories arithmetic,algebra,geometry,statistics --epochs 3` (smoke test)
-   - Pipeline confirmed working on CPU: model loads, data tokenizes, LoRA attaches (17M/1.7B trainable)
-   - `train_rocm.sh` now auto-sets `LD_LIBRARY_PATH` for `/opt/rocm-7.2.0`
-3. **Full training** — `./train_rocm.sh` with all 1443 examples once smoke test passes
-4. **Evaluate** — run `infer.py` against base model + trained model, compare outputs
-5. **Science chemistry dataset** — `generate_chemistry.py` (stoichiometry, ideal gas, thermodynamics)
-6. **Multi-step dataset** — complex problems that chain many code/output cycles
+### After power cycle (GPU recovery)
+The MI50 had a dirty AtomBIOS state — GPU POST was failing with
+`atombios stuck executing 4EC8`. This is transient; cold boot resets it.
+
+1. **Verify GPU is back**
+   ```bash
+   amd-smi list
+   # Should show: Instinct MI50 or similar
+   ```
+
+2. **Smoke-test training run** (3 epochs, core categories only)
+   ```bash
+   ./train_rocm.sh --categories arithmetic,algebra,geometry,statistics \
+                   --epochs 3 --output ./output/smoke_test
+   ```
+   Expected: GPU detected, loss decreasing, checkpoint saved in `output/smoke_test/`
+
+3. **Full training run** (all 1443 examples, 10 epochs)
+   ```bash
+   ./train_rocm.sh --output ./output/worldmodel_v1
+   ```
+   - ROCm env vars + LD_LIBRARY_PATH auto-set by train_rocm.sh
+   - Float32 only (no fp16/bf16/quantization) — required for gfx906 stability
+   - Saves best checkpoint; EarlyStopping patience=3
+
+4. **Evaluate trained model vs base**
+   ```bash
+   python infer.py --model ./output/worldmodel_v1
+   # Compare responses to base: python infer.py --model ~/workspace/model/Qwen3-1.7B
+   ```
+
+5. **Generate chemistry dataset** (not yet written)
+   - File: `training/scripts/generate_chemistry.py`
+   - Topics: stoichiometry, ideal gas law, thermodynamics (ΔH, ΔG), equilibrium
+   - Target: ~80 examples → `training/datasets/science/chemistry/basic.jsonl`
+
+6. **Generate multi-step dataset** (not yet written)
+   - File: `training/scripts/generate_multistep.py`
+   - Purpose: problems that genuinely require 3+ code/output cycles, with state
+     passed between blocks (e.g. simulate → analyse → optimise)
+   - Target: ~60 examples → `training/datasets/multi_step/basic.jsonl`
 
 ---
 
