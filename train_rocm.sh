@@ -63,9 +63,63 @@ echo "GPU info:"
 rocm-smi 2>/dev/null | head -20 || echo "(rocm-smi not found, continuing)"
 echo ""
 
+# ─── Pre-training temperature check ─────────────────────────────────────────
+echo "Checking GPU temperature before training..."
+TEMP_OUTPUT=$(rocm-smi --showtemp 2>/dev/null)
+if [ $? -eq 0 ]; then
+    # Extract junction temperature (hottest sensor)
+    JUNCTION_TEMP=$(echo "$TEMP_OUTPUT" | grep "junction" | grep -oP '[\d.]+(?=\s*$)')
+    if [ -n "$JUNCTION_TEMP" ]; then
+        echo "Current GPU junction temp: ${JUNCTION_TEMP}°C"
+        # Check if already too hot (using bc for float comparison)
+        TOO_HOT=$(echo "$JUNCTION_TEMP > 85" | bc -l 2>/dev/null)
+        if [ "$TOO_HOT" = "1" ]; then
+            echo "WARNING: GPU temperature too high (${JUNCTION_TEMP}°C). Waiting to cool down..."
+            while true; do
+                sleep 30
+                NEW_TEMP=$(rocm-smi --showtemp 2>/dev/null | grep "junction" | grep -oP '[\d.]+(?=\s*$)')
+                if [ -z "$NEW_TEMP" ]; then
+                    echo "Lost temperature reading, proceeding anyway..."
+                    break
+                fi
+                echo "Current temp: ${NEW_TEMP}°C"
+                COOLED=$(echo "$NEW_TEMP < 75" | bc -l 2>/dev/null)
+                if [ "$COOLED" = "1" ]; then
+                    echo "GPU cooled down to ${NEW_TEMP}°C. Starting training."
+                    break
+                fi
+                echo "Still cooling... (${NEW_TEMP}°C)"
+            done
+        else
+            echo "GPU temperature OK. Starting training."
+        fi
+    else
+        echo "Could not parse GPU temperature, proceeding anyway..."
+    fi
+else
+    echo "rocm-smi not available, skipping temperature check."
+fi
+echo ""
+
 # ─── Run training ────────────────────────────────────────────────────────────
 echo "Starting training..."
 echo "Args: $@"
 echo ""
 
-python3 "$SCRIPT_DIR/train.py" "$@"
+# Determine log directory from --output arg or default
+LOG_DIR="./output/worldmodel"
+for arg in "$@"; do
+    case "$arg" in
+        --output) LOG_DIR="$2"; shift 2 ;;
+        --output=*) LOG_DIR="${arg#--output=}" ;;
+    esac
+done
+mkdir -p "$LOG_DIR"
+LOG_FILE="$LOG_DIR/shell.log"
+
+echo "Shell log: $LOG_FILE"
+echo "Started: $(date)" >> "$LOG_FILE"
+echo "Args: $@" >> "$LOG_FILE"
+echo "---" >> "$LOG_FILE"
+
+python3 "$SCRIPT_DIR/train.py" "$@" 2>&1 | tee -a "$LOG_FILE"

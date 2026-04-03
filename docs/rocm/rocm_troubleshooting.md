@@ -151,3 +151,71 @@ dataloader_persistent_workers=False, # Clean shutdown prevents fd leaks
 - May have compatibility issues with newer ROCm 7.x
 - Consider testing with ROCm 5.x or 6.x for better MI50 support
 - Memory access faults often indicate hardware/driver issues rather than software configuration problems
+
+## GPU Overheating Protection
+
+### Problem
+**Issue**: Training causes GPU to overheat, triggering hardware alarms and forcing system resets.
+
+**Symptoms**:
+- System forces reboot during long training runs
+- `rocm-smi` shows temperatures > 85°C
+- Hardware thermal alarms in system logs
+
+### Solution: Thermal Throttling
+
+The training script now includes automatic thermal monitoring and throttling:
+
+1. **Automatic Monitoring**: GPU temperature is checked periodically during training
+2. **Automatic Pause**: Training pauses when temperature exceeds threshold (default: 85°C)
+3. **Automatic Resume**: Training resumes when GPU cools to safe level (default: 75°C)
+4. **Pre-training Check**: Shell script checks temperature before starting training
+
+### Configuration
+
+Command-line options for `train_rocm.sh`:
+
+```bash
+# Default thresholds
+./train_rocm.sh --max-temp 85 --safe-temp 75 --cooldown-interval 30
+
+# More conservative (pause earlier, wait longer)
+./train_rocm.sh --max-temp 80 --safe-temp 70 --cooldown-interval 60
+
+# More aggressive (higher thresholds, faster checks)
+./train_rocm.sh --max-temp 90 --safe-temp 80 --cooldown-interval 15
+```
+
+### Monitoring
+
+Temperature is logged automatically:
+- At training start
+- Every 100 steps (via `ProgressCallback`)
+- At each epoch end
+- During cooldown waits
+
+Monitor in real-time with:
+```bash
+watch -n 5 rocm-smi --showtemp
+```
+
+### If Overheating Persists
+
+1. **Reduce batch size**: Lower `--batch-size` reduces GPU load
+2. **Increase gradient accumulation**: Maintain effective batch with `--grad-accum`
+3. **Better cooling**: Ensure adequate case ventilation
+4. **Reduce max_length**: Shorter sequences use less memory bandwidth
+5. **Add cooling breaks**: Use conservative thresholds to trigger more frequent pauses
+
+```bash
+# Conservative settings for thermal management
+./train_rocm.sh --batch-size 1 --grad-accum 16 --max-temp 80 --safe-temp 70
+```
+
+### Emergency Actions
+
+If GPU overheats during training:
+1. Training will automatically pause and attempt to cool down
+2. If cooldown timeout is reached, training stops with error message
+3. You can manually interrupt with `Ctrl+C` - checkpoint is saved periodically
+4. Resume from last checkpoint: `./train_rocm.sh --resume ./output/worldmodel/checkpoint-XXX`

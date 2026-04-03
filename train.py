@@ -62,12 +62,40 @@ from peft import LoraConfig, get_peft_model, TaskType
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent))
 from src.training.dataset import load_all_datasets, WorldModelDataset
+from src.training.gpu_monitor import (
+    get_gpu_temp_celsius,
+    wait_for_cooldown,
+    check_and_throttle,
+    log_gpu_status,
+    DEFAULT_MAX_TEMP,
+    DEFAULT_SAFE_TEMP,
+    DEFAULT_CHECK_INTERVAL,
+)
 
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    handlers=[
+        logging.StreamHandler(),
+    ],
 )
 logger = logging.getLogger(__name__)
+
+
+def setup_logfile(output_dir: str):
+    """Add a FileHandler so all training output is captured to a logfile."""
+    log_path = Path(output_dir) / "training.log"
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    fh = logging.FileHandler(str(log_path))
+    fh.setLevel(logging.INFO)
+    fh.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(name)s: %(message)s"))
+    logging.getLogger().addHandler(fh)
+    # Also redirect stdout/stderr to companion files
+    stdout_path = Path(output_dir) / "stdout.log"
+    stderr_path = Path(output_dir) / "stderr.log"
+    sys.stdout = open(str(stdout_path), "a", buffering=1)
+    sys.stderr = open(str(stderr_path), "a", buffering=1)
+    logger.info(f"Training log: {log_path}")
 
 
 # ─── Configuration ────────────────────────────────────────────────────────────
@@ -108,6 +136,12 @@ class TrainConfig:
     fp16: bool = False
     bf16: bool = False
 
+    # GPU temperature thresholds
+    max_temp: float = DEFAULT_MAX_TEMP      # Pause training above this
+    safe_temp: float = DEFAULT_SAFE_TEMP    # Resume training below this
+    cooldown_check_interval: int = DEFAULT_CHECK_INTERVAL  # Seconds between temp checks
+    cooldown_timeout: int = 600  # Max seconds to wait for cooldown
+
     # Checkpointing
     save_steps: int = 200
     eval_steps: int = 200
@@ -138,6 +172,7 @@ def setup_environment():
         vram = torch.cuda.get_device_properties(0).total_memory / 1e9
         print(f"GPU: {gpu}  VRAM: {vram:.1f}GB")
         torch.cuda.empty_cache()
+        log_gpu_status()
     else:
         print("WARNING: No CUDA/ROCm device found — training on CPU will be very slow")
     print()
@@ -217,7 +252,7 @@ def build_datasets(cfg: TrainConfig, tokenizer):
 # ─── Callbacks ────────────────────────────────────────────────────────────────
 
 class ProgressCallback(TrainerCallback):
-    """Log epoch progress and memory usage."""
+    """Log epoch progress, memory usage, and GPU temperature."""
 
     def on_epoch_end(self, args, state: TrainerState, control: TrainerControl, **kwargs):
         if torch.cuda.is_available():
@@ -228,6 +263,7 @@ class ProgressCallback(TrainerCallback):
                 f"Loss: {state.log_history[-1].get('loss', '?'):.4f} | "
                 f"GPU: {used:.1f}GB used / {reserved:.1f}GB reserved"
             )
+        log_gpu_status()
 
     def on_log(self, args, state: TrainerState, control: TrainerControl, logs=None, **kwargs):
         if logs and "loss" in logs:
@@ -237,10 +273,55 @@ class ProgressCallback(TrainerCallback):
                 logger.info(f"Step {step} | loss={loss:.4f}")
 
 
+class ThermalThrottleCallback(TrainerCallback):
+    """Monitor GPU temperature and pause training if it gets too hot."""
+
+    def __init__(self, cfg: TrainConfig):
+        self.cfg = cfg
+        self.last_check_step = 0
+
+    def on_step_end(self, args, state: TrainerState, control: TrainerControl, **kwargs):
+        """Check temperature periodically and throttle if needed."""
+        step = state.global_step
+        
+        # Only check every N steps to avoid overhead
+        check_every = max(1, self.cfg.cooldown_check_interval // max(1, args.logging_steps))
+        if step - self.last_check_step < check_every:
+            return
+        
+        self.last_check_step = step
+
+        if check_and_throttle(
+            max_temp=self.cfg.max_temp,
+            safe_temp=self.cfg.safe_temp,
+        ):
+            # Clear cache and wait for cooldown
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+            
+            success = wait_for_cooldown(
+                max_temp=self.cfg.max_temp,
+                safe_temp=self.cfg.safe_temp,
+                check_interval=self.cfg.cooldown_check_interval,
+                timeout=self.cfg.cooldown_timeout,
+            )
+            
+            if not success:
+                logger.error(
+                    "GPU cooldown failed - temperature still high. "
+                    "Consider reducing batch size or stopping training."
+                )
+
+    def on_epoch_end(self, args, state: TrainerState, control: TrainerControl, **kwargs):
+        """Log temperature at epoch end."""
+        log_gpu_status()
+
+
 # ─── Training ─────────────────────────────────────────────────────────────────
 
 def train(cfg: TrainConfig):
     setup_environment()
+    setup_logfile(cfg.output_dir)
 
     tokenizer, model = load_tokenizer_and_model(cfg)
     train_dataset, eval_dataset = build_datasets(cfg, tokenizer)
@@ -286,6 +367,7 @@ def train(cfg: TrainConfig):
         data_collator=data_collator,
         callbacks=[
             ProgressCallback(),
+            ThermalThrottleCallback(cfg),
             EarlyStoppingCallback(early_stopping_patience=3),
         ],
     )
@@ -320,6 +402,12 @@ def parse_args():
                    help="Comma-separated list of dataset categories to include")
     p.add_argument("--test-split", type=float, default=0.05)
     p.add_argument("--resume", type=str, default=None)
+    p.add_argument("--max-temp", type=float, default=DEFAULT_MAX_TEMP,
+                   help=f"Pause training if GPU exceeds this temp (°C, default: {DEFAULT_MAX_TEMP})")
+    p.add_argument("--safe-temp", type=float, default=DEFAULT_SAFE_TEMP,
+                   help=f"Resume training when GPU drops below this temp (°C, default: {DEFAULT_SAFE_TEMP})")
+    p.add_argument("--cooldown-interval", type=int, default=DEFAULT_CHECK_INTERVAL,
+                   help=f"Seconds between temp checks during cooldown (default: {DEFAULT_CHECK_INTERVAL})")
     return p.parse_args()
 
 
@@ -339,6 +427,9 @@ if __name__ == "__main__":
         categories=args.categories.split(",") if args.categories else None,
         test_split=args.test_split,
         resume_from_checkpoint=args.resume,
+        max_temp=args.max_temp,
+        safe_temp=args.safe_temp,
+        cooldown_check_interval=args.cooldown_interval,
     )
 
     train(cfg)
