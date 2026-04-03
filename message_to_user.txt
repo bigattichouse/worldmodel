@@ -1,1 +1,7 @@
-The inference script, `blueprint_inference.py`, is prepared and ready to use.
+1. Reboot → press F2 to enter Dell BIOS setup                                                                                                               
+  2. Look under: General → Advanced Boot Options or System Configuration → SATA/PCIe Settings or Secure Boot section
+  3. Find "CSM" / "Legacy Option ROMs" / "Boot Mode"                                                                                                          
+  4. Set to UEFI only (disable CSM/Legacy)                                                                                                                    
+  5. Also confirm: Above 4G Memory / Crypto PMEM is enabled (needed for 32GB VRAM card)                                                                       
+  6. Save (F10) → cold boot                                                                                                                                   
+                                          

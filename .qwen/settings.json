@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rocm-smi *)",
+      "Bash(python3 *)",
+      "Bash(./train_rocm.sh *)",
+      "Bash(sleep *)",
+      "Bash(tail *)",
+      "Bash(git add *)",
+      "Bash(git commit)"
+    ]
+  },
+  "$version": 3
+}

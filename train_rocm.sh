@@ -72,7 +72,7 @@ if [ $? -eq 0 ]; then
     if [ -n "$JUNCTION_TEMP" ]; then
         echo "Current GPU junction temp: ${JUNCTION_TEMP}°C"
         # Check if already too hot (using bc for float comparison)
-        TOO_HOT=$(echo "$JUNCTION_TEMP > 85" | bc -l 2>/dev/null)
+        TOO_HOT=$(echo "$JUNCTION_TEMP > 99" | bc -l 2>/dev/null)
         if [ "$TOO_HOT" = "1" ]; then
             echo "WARNING: GPU temperature too high (${JUNCTION_TEMP}°C). Waiting to cool down..."
             while true; do
@@ -83,7 +83,7 @@ if [ $? -eq 0 ]; then
                     break
                 fi
                 echo "Current temp: ${NEW_TEMP}°C"
-                COOLED=$(echo "$NEW_TEMP < 75" | bc -l 2>/dev/null)
+                COOLED=$(echo "$NEW_TEMP < 85" | bc -l 2>/dev/null)
                 if [ "$COOLED" = "1" ]; then
                     echo "GPU cooled down to ${NEW_TEMP}°C. Starting training."
                     break

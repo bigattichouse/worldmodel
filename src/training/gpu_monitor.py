@@ -4,14 +4,17 @@ GPU Temperature Monitor for ROCm
 Monitors AMD GPU temperatures via rocm-smi and provides throttling
 capabilities to prevent overheating during training.
 
+Throttling strategy (progressive):
+  1. Reduce power cap (step down by 25W)
+  2. Lower GPU performance level to manual/low
+  3. If still too hot after all soft steps → hard pause
+
 Usage:
-    from src.training.gpu_monitor import get_gpu_temp, wait_for_cooldown
+    from src.training.gpu_monitor import GPUThermalController
     
-    # Check current temperature
-    temp = get_gpu_temp()
-    
-    # Wait if too hot
-    wait_for_cooldown(max_temp=85.0)
+    controller = GPUThermalController(max_temp=99.0, safe_temp=85.0)
+    controller.check_and_throttle()  # Call periodically during training
+    controller.restore()             # Call at end of training
 """
 
 import os
@@ -20,14 +23,19 @@ import logging
 import subprocess
 from typing import Optional, Dict
 from pathlib import Path
+from enum import Enum
 
 logger = logging.getLogger(__name__)
 
 # Default thresholds
-DEFAULT_MAX_TEMP = 85.0       # Celsius - pause training above this
-DEFAULT_SAFE_TEMP = 75.0      # Celsius - resume training below this
+DEFAULT_MAX_TEMP = 99.0       # Celsius - start throttling above this
+DEFAULT_SAFE_TEMP = 85.0      # Celsius - resume normal operation below this
 DEFAULT_CHECK_INTERVAL = 30   # Seconds between temperature checks
 DEFAULT_COOLDOWN_TIMEOUT = 600  # Max seconds to wait for cooldown
+
+# Throttling steps (progressive)
+POWER_STEP_WATTS = 25         # Reduce power cap by 25W per step
+MIN_POWER_WATTS = 100         # Don't go below 100W
 
 
 def run_rocm_smi(command: str) -> Optional[str]:
@@ -46,6 +54,269 @@ def run_rocm_smi(command: str) -> Optional[str]:
         logger.debug(f"rocm-smi {command} failed: {e}")
         return None
 
+
+class ThrottleState(Enum):
+    """Current throttling level applied to the GPU."""
+    NORMAL = "normal"           # Full power, no throttling
+    POWER_REDUCED = "reduced_power"  # Power cap lowered
+    PERFORMANCE_LOW = "perf_low"      # Perf level set to low
+    HARD_PAUSE = "hard_pause"         # Training must stop
+
+
+class GPUThermalController:
+    """
+    Progressive GPU thermal controller.
+    
+    Escalates through soft throttling steps before resorting to hard pause:
+      NORMAL → POWER_REDUCED → PERFORMANCE_LOW → HARD_PAUSE
+    """
+
+    def __init__(
+        self,
+        gpu_id: int = 0,
+        max_temp: float = DEFAULT_MAX_TEMP,
+        safe_temp: float = DEFAULT_SAFE_TEMP,
+        check_interval: int = DEFAULT_CHECK_INTERVAL,
+        cooldown_timeout: int = DEFAULT_COOLDOWN_TIMEOUT,
+    ):
+        self.gpu_id = gpu_id
+        self.max_temp = max_temp
+        self.safe_temp = safe_temp
+        self.check_interval = check_interval
+        self.cooldown_timeout = cooldown_timeout
+
+        # Track original settings for restore
+        self._original_power: Optional[float] = None
+        self._original_perf: Optional[str] = None
+        self._throttle_state = ThrottleState.NORMAL
+        self._current_power_cap: Optional[float] = None
+
+        # Save original state on init
+        self._save_original_state()
+
+    def _save_original_state(self):
+        """Read and store original power cap and perf level."""
+        # Get max power
+        output = run_rocm_smi("--showmaxpower")
+        if output:
+            for line in output.splitlines():
+                if f"GPU[{self.gpu_id}]" in line and "Power" in line:
+                    try:
+                        self._original_power = float(line.split(":")[-1].strip())
+                    except ValueError:
+                        pass
+
+        # Get perf level
+        output = run_rocm_smi("--showperflevel")
+        if output:
+            for line in output.splitlines():
+                if f"GPU[{self.gpu_id}]" in line and "Performance" in line:
+                    try:
+                        self._original_perf = line.split(":")[-1].strip()
+                    except ValueError:
+                        pass
+
+        self._current_power_cap = self._original_power
+
+    @property
+    def state(self) -> ThrottleState:
+        return self._throttle_state
+
+    def check_and_throttle(self) -> bool:
+        """
+        Check GPU temp and apply progressive throttling.
+        
+        Returns:
+            True if training should pause, False if OK to continue.
+        """
+        current_temp = get_gpu_temp_celsius(self.gpu_id)
+        if current_temp is None:
+            return False  # Can't read temp, assume OK
+
+        # If we're below safe temp, restore towards normal
+        if current_temp <= self.safe_temp and self._throttle_state != ThrottleState.NORMAL:
+            self._relax_throttle(current_temp)
+            return False
+
+        # If above max temp, escalate throttling
+        if current_temp >= self.max_temp:
+            return self._escalate_throttle(current_temp)
+
+        return False
+
+    def _escalate_throttle(self, current_temp: float) -> bool:
+        """Progressively increase throttling until temp is managed."""
+        logger.warning(
+            f"GPU at {current_temp:.1f}°C — escalating throttle from {self._throttle_state.value}"
+        )
+
+        if self._throttle_state == ThrottleState.NORMAL:
+            # Step 1: Reduce power cap
+            self._reduce_power()
+            return False
+
+        elif self._throttle_state == ThrottleState.POWER_REDUCED:
+            # Step 2: Lower perf level (try again with even less power)
+            new_power = (self._current_power_cap or MIN_POWER_WATTS) - POWER_STEP_WATTS
+            if new_power >= MIN_POWER_WATTS:
+                self._reduce_power()
+                return False
+            else:
+                # Can't reduce power further, switch to low perf
+                self._set_perf_low()
+                return False
+
+        elif self._throttle_state == ThrottleState.PERFORMANCE_LOW:
+            # Step 3: Nothing left to try — hard pause
+            self._throttle_state = ThrottleState.HARD_PAUSE
+            logger.error(
+                f"GPU still at {current_temp:.1f}°C with max throttling. "
+                f"Pausing training until GPU cools to {self.safe_temp:.1f}°C."
+            )
+            return True
+
+        # Already in hard pause
+        return True
+
+    def _relax_throttle(self, current_temp: float):
+        """Gradually restore throttling as GPU cools."""
+        logger.info(
+            f"GPU cooled to {current_temp:.1f}°C — relaxing throttle from {self._throttle_state.value}"
+        )
+
+        if self._throttle_state == ThrottleState.HARD_PAUSE:
+            # Drop back to performance low first
+            self._throttle_state = ThrottleState.PERFORMANCE_LOW
+            # Keep perf_low active, don't restore yet
+        elif self._throttle_state == ThrottleState.PERFORMANCE_LOW:
+            self._restore_perf_level()
+            self._throttle_state = ThrottleState.POWER_REDUCED
+        elif self._throttle_state == ThrottleState.POWER_REDUCED:
+            self._restore_power_cap()
+            self._throttle_state = ThrottleState.NORMAL
+
+    def _reduce_power(self):
+        """Lower power cap by POWER_STEP_WATTS."""
+        if self._current_power_cap is None:
+            logger.warning("Cannot reduce power — original power unknown")
+            return
+
+        new_power = self._current_power_cap - POWER_STEP_WATTS
+        if new_power < MIN_POWER_WATTS:
+            new_power = MIN_POWER_WATTS
+
+        try:
+            result = subprocess.run(
+                ["rocm-smi", "--setpoweroverdrive", str(int(new_power))],
+                capture_output=True, text=True, timeout=10
+            )
+            if result.returncode == 0:
+                self._current_power_cap = new_power
+                self._throttle_state = ThrottleState.POWER_REDUCED
+                logger.info(
+                    f"GPU power cap reduced to {new_power:.0f}W "
+                    f"(was {self._original_power:.0f}W)"
+                )
+            else:
+                logger.warning(f"Failed to set power overdrive: {result.stderr}")
+        except Exception as e:
+            logger.warning(f"Error setting power overdrive: {e}")
+
+    def _set_perf_low(self):
+        """Set GPU performance level to low (minimum clocks)."""
+        try:
+            result = subprocess.run(
+                ["rocm-smi", "--setperflevel", "low"],
+                capture_output=True, text=True, timeout=10
+            )
+            if result.returncode == 0:
+                self._throttle_state = ThrottleState.PERFORMANCE_LOW
+                logger.info("GPU performance level set to 'low' (minimum clocks)")
+            else:
+                logger.warning(f"Failed to set perf level: {result.stderr}")
+        except Exception as e:
+            logger.warning(f"Error setting perf level: {e}")
+
+    def _restore_power_cap(self):
+        """Restore original power cap."""
+        if self._original_power is None:
+            return
+        try:
+            result = subprocess.run(
+                ["rocm-smi", "--setpoweroverdrive", str(int(self._original_power))],
+                capture_output=True, text=True, timeout=10
+            )
+            if result.returncode == 0:
+                self._current_power_cap = self._original_power
+                logger.info(f"GPU power cap restored to {self._original_power:.0f}W")
+            else:
+                logger.warning(f"Failed to restore power: {result.stderr}")
+        except Exception as e:
+            logger.warning(f"Error restoring power cap: {e}")
+
+    def _restore_perf_level(self):
+        """Restore original performance level."""
+        if self._original_perf is None:
+            return
+        try:
+            result = subprocess.run(
+                ["rocm-smi", "--setperflevel", self._original_perf],
+                capture_output=True, text=True, timeout=10
+            )
+            if result.returncode == 0:
+                logger.info(f"GPU perf level restored to '{self._original_perf}'")
+            else:
+                logger.warning(f"Failed to restore perf: {result.stderr}")
+        except Exception as e:
+            logger.warning(f"Error restoring perf level: {e}")
+
+    def restore(self):
+        """Fully restore GPU to original state. Call at end of training."""
+        logger.info("Restoring GPU to original settings...")
+        self._restore_power_cap()
+        self._restore_perf_level()
+        self._throttle_state = ThrottleState.NORMAL
+        self._current_power_cap = self._original_power
+
+    def wait_for_cooldown(self) -> bool:
+        """
+        Wait until GPU temperature drops to safe level.
+        Used when hard pause is triggered.
+        """
+        import torch
+
+        start_time = time.time()
+        while True:
+            elapsed = time.time() - start_time
+            if elapsed > self.cooldown_timeout:
+                logger.error(
+                    f"GPU cooldown timed out after {self.cooldown_timeout}s. "
+                    f"Consider stopping training."
+                )
+                return False
+
+            time.sleep(self.check_interval)
+
+            # Clear CUDA cache to help with cooling
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+
+            current_temp = get_gpu_temp_celsius(self.gpu_id)
+            if current_temp is None:
+                continue
+
+            if current_temp <= self.safe_temp:
+                wait_time = time.time() - start_time
+                logger.info(
+                    f"GPU cooled to {current_temp:.1f}°C after {wait_time:.0f}s. Resuming."
+                )
+                return True
+
+            if int(elapsed) % 60 == 0:
+                logger.info(f"Still cooling... {current_temp:.1f}°C ({int(elapsed)}s)")
+
+
+# ─── Backwards-compatible convenience functions ─────────────────────────────
 
 def get_gpu_temp(gpu_id: int = 0) -> Optional[Dict[str, float]]:
     """

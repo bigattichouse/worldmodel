@@ -63,9 +63,8 @@ from peft import LoraConfig, get_peft_model, TaskType
 sys.path.insert(0, str(Path(__file__).parent))
 from src.training.dataset import load_all_datasets, WorldModelDataset
 from src.training.gpu_monitor import (
-    get_gpu_temp_celsius,
-    wait_for_cooldown,
-    check_and_throttle,
+    GPUThermalController,
+    ThrottleState,
     log_gpu_status,
     DEFAULT_MAX_TEMP,
     DEFAULT_SAFE_TEMP,
@@ -274,47 +273,56 @@ class ProgressCallback(TrainerCallback):
 
 
 class ThermalThrottleCallback(TrainerCallback):
-    """Monitor GPU temperature and pause training if it gets too hot."""
+    """Monitor GPU temperature and apply progressive soft throttling."""
 
     def __init__(self, cfg: TrainConfig):
         self.cfg = cfg
+        self.controller = GPUThermalController(
+            max_temp=cfg.max_temp,
+            safe_temp=cfg.safe_temp,
+            check_interval=cfg.cooldown_check_interval,
+        )
         self.last_check_step = 0
 
     def on_step_end(self, args, state: TrainerState, control: TrainerControl, **kwargs):
-        """Check temperature periodically and throttle if needed."""
+        """Check temperature and apply progressive throttling."""
         step = state.global_step
-        
+
         # Only check every N steps to avoid overhead
         check_every = max(1, self.cfg.cooldown_check_interval // max(1, args.logging_steps))
         if step - self.last_check_step < check_every:
             return
-        
+
         self.last_check_step = step
 
-        if check_and_throttle(
-            max_temp=self.cfg.max_temp,
-            safe_temp=self.cfg.safe_temp,
-        ):
-            # Clear cache and wait for cooldown
+        should_pause = self.controller.check_and_throttle()
+
+        if should_pause and self.controller.state == ThrottleState.HARD_PAUSE:
+            # Soft throttling exhausted — hard pause with cooldown wait
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
-            
-            success = wait_for_cooldown(
-                max_temp=self.cfg.max_temp,
-                safe_temp=self.cfg.safe_temp,
-                check_interval=self.cfg.cooldown_check_interval,
-                timeout=self.cfg.cooldown_timeout,
-            )
-            
+
+            success = self.controller.wait_for_cooldown()
             if not success:
                 logger.error(
-                    "GPU cooldown failed - temperature still high. "
+                    "GPU cooldown failed after max soft throttling. "
                     "Consider reducing batch size or stopping training."
                 )
 
+        # Log throttle state periodically
+        if step % (args.logging_steps * 5) == 0 and self.controller.state != ThrottleState.NORMAL:
+            logger.info(f"Step {step} | Throttle state: {self.controller.state.value}")
+
     def on_epoch_end(self, args, state: TrainerState, control: TrainerControl, **kwargs):
-        """Log temperature at epoch end."""
+        """Log temperature and throttle state at epoch end."""
         log_gpu_status()
+        if self.controller.state != ThrottleState.NORMAL:
+            logger.info(f"Current throttle state: {self.controller.state.value}")
+
+    def on_train_end(self, args, state: TrainerState, control: TrainerControl, **kwargs):
+        """Restore GPU to original settings when training finishes."""
+        logger.info("Training complete — restoring GPU to original settings")
+        self.controller.restore()
 
 
 # ─── Training ─────────────────────────────────────────────────────────────────

@@ -162,22 +162,32 @@ dataloader_persistent_workers=False, # Clean shutdown prevents fd leaks
 - `rocm-smi` shows temperatures > 85°C
 - Hardware thermal alarms in system logs
 
-### Solution: Thermal Throttling
+### Solution: Progressive Thermal Throttling
 
-The training script now includes automatic thermal monitoring and throttling:
+The training script now includes **soft throttling** that reduces GPU power/clocks before resorting to a hard pause:
 
-1. **Automatic Monitoring**: GPU temperature is checked periodically during training
-2. **Automatic Pause**: Training pauses when temperature exceeds threshold (default: 85°C)
-3. **Automatic Resume**: Training resumes when GPU cools to safe level (default: 75°C)
-4. **Pre-training Check**: Shell script checks temperature before starting training
+1. **Power Cap Reduction**: Lowers GPU power limit by 25W steps (225W → 200W → 175W → ...)
+2. **Performance Level**: Sets GPU to minimum clocks if power cap hits floor (100W)
+3. **Hard Pause**: Training pauses only if GPU stays above 99°C despite all soft steps
+4. **Auto-Restore**: As GPU cools below 85°C, throttling is gradually removed
+5. **Training End**: Full GPU settings restored to original values
+
+### Throttle States
+
+| State | What's Happening | Training Continues? |
+|-------|-----------------|---------------------|
+| `normal` | Full power, no throttling | ✅ Yes |
+| `reduced_power` | Power cap lowered (e.g. 200W) | ✅ Yes |
+| `perf_low` | GPU at minimum clocks | ✅ Yes (slower) |
+| `hard_pause` | Training paused, waiting for cooldown | ⏸ No |
 
 ### Configuration
 
 Command-line options for `train_rocm.sh`:
 
 ```bash
-# Default thresholds
-./train_rocm.sh --max-temp 85 --safe-temp 75 --cooldown-interval 30
+# Default thresholds (110°C hardware alarm gives ~11°C headroom)
+./train_rocm.sh --max-temp 99 --safe-temp 85 --cooldown-interval 30
 
 # More conservative (pause earlier, wait longer)
 ./train_rocm.sh --max-temp 80 --safe-temp 70 --cooldown-interval 60
