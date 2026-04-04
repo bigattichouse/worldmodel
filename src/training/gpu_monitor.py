@@ -28,8 +28,9 @@ from enum import Enum
 logger = logging.getLogger(__name__)
 
 # Default thresholds
-DEFAULT_MAX_TEMP = 99.0       # Celsius - start throttling above this
-DEFAULT_SAFE_TEMP = 85.0      # Celsius - resume normal operation below this
+DEFAULT_MAX_TEMP = 99.0       # Celsius - start soft throttling above this
+DEFAULT_SAFE_TEMP = 90.0      # Celsius - ease off throttling below this
+DEFAULT_HARD_PAUSE_TEMP = 107.0  # Celsius - emergency hard stop (3C below 110C alarm)
 DEFAULT_CHECK_INTERVAL = 30   # Seconds between temperature checks
 DEFAULT_COOLDOWN_TIMEOUT = 600  # Max seconds to wait for cooldown
 
@@ -76,12 +77,14 @@ class GPUThermalController:
         gpu_id: int = 0,
         max_temp: float = DEFAULT_MAX_TEMP,
         safe_temp: float = DEFAULT_SAFE_TEMP,
+        hard_pause_temp: float = DEFAULT_HARD_PAUSE_TEMP,
         check_interval: int = DEFAULT_CHECK_INTERVAL,
         cooldown_timeout: int = DEFAULT_COOLDOWN_TIMEOUT,
     ):
         self.gpu_id = gpu_id
         self.max_temp = max_temp
         self.safe_temp = safe_temp
+        self.hard_pause_temp = hard_pause_temp
         self.check_interval = check_interval
         self.cooldown_timeout = cooldown_timeout
 
@@ -125,7 +128,7 @@ class GPUThermalController:
     def check_and_throttle(self) -> bool:
         """
         Check GPU temp and apply progressive throttling.
-        
+
         Returns:
             True if training should pause, False if OK to continue.
         """
@@ -133,49 +136,56 @@ class GPUThermalController:
         if current_temp is None:
             return False  # Can't read temp, assume OK
 
+        # Emergency hard stop — immediate pause regardless of current state
+        if current_temp >= self.hard_pause_temp:
+            self._throttle_state = ThrottleState.HARD_PAUSE
+            logger.error(
+                f"EMERGENCY: GPU at {current_temp:.1f}°C — hard pausing training "
+                f"(alarm threshold: {self.hard_pause_temp:.0f}°C)"
+            )
+            return True
+
         # If we're below safe temp, restore towards normal
         if current_temp <= self.safe_temp and self._throttle_state != ThrottleState.NORMAL:
             self._relax_throttle(current_temp)
             return False
 
-        # If above max temp, escalate throttling
+        # If above soft throttle temp, escalate throttling
         if current_temp >= self.max_temp:
             return self._escalate_throttle(current_temp)
 
         return False
 
     def _escalate_throttle(self, current_temp: float) -> bool:
-        """Progressively increase throttling until temp is managed."""
+        """Above max temp — try soft throttle, fall back to hard pause."""
         logger.warning(
             f"GPU at {current_temp:.1f}°C — escalating throttle from {self._throttle_state.value}"
         )
 
         if self._throttle_state == ThrottleState.NORMAL:
-            # Step 1: Reduce power cap
             self._reduce_power()
-            return False
+            # If power succeeded (state changed to POWER_REDUCED), keep training
+            if self._throttle_state == ThrottleState.POWER_REDUCED:
+                return False
+            # Power failed (state set to HARD_PAUSE) — proceed to pause below
 
-        elif self._throttle_state == ThrottleState.POWER_REDUCED:
-            # Step 2: Lower perf level (try again with even less power)
+        if self._throttle_state == ThrottleState.POWER_REDUCED:
             new_power = (self._current_power_cap or MIN_POWER_WATTS) - POWER_STEP_WATTS
             if new_power >= MIN_POWER_WATTS:
                 self._reduce_power()
-                return False
-            else:
-                # Can't reduce power further, switch to low perf
-                self._set_perf_low()
+                if self._throttle_state == ThrottleState.POWER_REDUCED:
+                    return False
+            # Can't go lower, try perf_low
+            self._set_perf_low()
+            if self._throttle_state == ThrottleState.PERFORMANCE_LOW:
                 return False
 
-        elif self._throttle_state == ThrottleState.PERFORMANCE_LOW:
-            # Step 3: Nothing left to try — hard pause
-            self._throttle_state = ThrottleState.HARD_PAUSE
-            logger.error(
-                f"GPU still at {current_temp:.1f}°C with max throttling. "
-                f"Pausing training until GPU cools to {self.safe_temp:.1f}°C."
-            )
-            return True
-
-        # Already in hard pause
+        # All soft options exhausted or unavailable (no sudo)
+        self._throttle_state = ThrottleState.HARD_PAUSE
+        logger.warning(
+            f"GPU at {current_temp:.1f}°C — pausing training until "
+            f"GPU cools to {self.safe_temp:.1f}°C."
+        )
         return True
 
     def _relax_throttle(self, current_temp: float):
@@ -185,9 +195,8 @@ class GPUThermalController:
         )
 
         if self._throttle_state == ThrottleState.HARD_PAUSE:
-            # Drop back to performance low first
+            # Emergency pause released — go back to fully throttled first
             self._throttle_state = ThrottleState.PERFORMANCE_LOW
-            # Keep perf_low active, don't restore yet
         elif self._throttle_state == ThrottleState.PERFORMANCE_LOW:
             self._restore_perf_level()
             self._throttle_state = ThrottleState.POWER_REDUCED
@@ -218,9 +227,14 @@ class GPUThermalController:
                     f"(was {self._original_power:.0f}W)"
                 )
             else:
-                logger.warning(f"Failed to set power overdrive: {result.stderr}")
+                logger.debug(
+                    f"Power overdrive failed (no sudo?): {result.stderr.strip()}"
+                )
+                # Mark that soft throttle is not available — escalate to hard pause
+                self._throttle_state = ThrottleState.HARD_PAUSE
         except Exception as e:
-            logger.warning(f"Error setting power overdrive: {e}")
+            logger.debug(f"Error setting power overdrive: {e}")
+            self._throttle_state = ThrottleState.HARD_PAUSE
 
     def _set_perf_low(self):
         """Set GPU performance level to low (minimum clocks)."""

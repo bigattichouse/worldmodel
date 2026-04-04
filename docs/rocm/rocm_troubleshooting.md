@@ -168,26 +168,30 @@ The training script now includes **soft throttling** that reduces GPU power/cloc
 
 1. **Power Cap Reduction**: Lowers GPU power limit by 25W steps (225W → 200W → 175W → ...)
 2. **Performance Level**: Sets GPU to minimum clocks if power cap hits floor (100W)
-3. **Hard Pause**: Training pauses only if GPU stays above 99°C despite all soft steps
-4. **Auto-Restore**: As GPU cools below 85°C, throttling is gradually removed
+3. **Emergency Hard Pause**: Training pauses only at 107°C+ (3°C below the 110°C hardware alarm)
+4. **Auto-Restore**: As GPU cools below 90°C, throttling is gradually removed
 5. **Training End**: Full GPU settings restored to original values
 
 ### Throttle States
 
 | State | What's Happening | Training Continues? |
 |-------|-----------------|---------------------|
-| `normal` | Full power, no throttling | ✅ Yes |
-| `reduced_power` | Power cap lowered (e.g. 200W) | ✅ Yes |
+| `normal` | Full 225W, auto perf | ✅ Yes |
+| `reduced_power` | Power cap lowered (200W → 100W) | ✅ Yes |
 | `perf_low` | GPU at minimum clocks | ✅ Yes (slower) |
-| `hard_pause` | Training paused, waiting for cooldown | ⏸ No |
+| `hard_pause` | Emergency pause at 107°C+ | ⏸ No |
+
+### Default Behavior
+
+Soft throttling kicks in at **95°C**, eases off at **90°C**. This keeps the GPU in the **90-95°C target band** during heavy training. The emergency hard stop at **107°C** is a safety net 3°C below the hardware alarm.
 
 ### Configuration
 
 Command-line options for `train_rocm.sh`:
 
 ```bash
-# Default thresholds (110°C hardware alarm gives ~11°C headroom)
-./train_rocm.sh --max-temp 99 --safe-temp 85 --cooldown-interval 30
+# Default — target 90-95°C band, emergency stop at 107°C
+./train_rocm.sh --max-temp 95 --safe-temp 90 --cooldown-interval 30
 
 # More conservative (pause earlier, wait longer)
 ./train_rocm.sh --max-temp 80 --safe-temp 70 --cooldown-interval 60

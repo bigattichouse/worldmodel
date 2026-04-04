@@ -83,7 +83,7 @@ if [ $? -eq 0 ]; then
                     break
                 fi
                 echo "Current temp: ${NEW_TEMP}°C"
-                COOLED=$(echo "$NEW_TEMP < 85" | bc -l 2>/dev/null)
+                COOLED=$(echo "$NEW_TEMP < 90" | bc -l 2>/dev/null)
                 if [ "$COOLED" = "1" ]; then
                     echo "GPU cooled down to ${NEW_TEMP}°C. Starting training."
                     break
