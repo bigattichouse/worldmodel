@@ -1,7 +1,7 @@
 # Project Status
 
-**Last updated:** 2026-04-02
-**Phase:** 2 — Dataset complete (1443 examples), training pipeline validated
+**Last updated:** 2026-04-05
+**Phase:** 2 — v1 trained and running; v2 training in progress (chat template + prompt masking)
 
 ---
 
@@ -79,49 +79,37 @@ Training Qwen3-1.7B (LoRA) to reason through problems by writing and executing P
 
 ---
 
-## Immediate next steps (in order)
+## Current model status
 
-### After power cycle (GPU recovery)
-The MI50 had a dirty AtomBIOS state — GPU POST was failing with
-`atombios stuck executing 4EC8`. This is transient; cold boot resets it.
+### v1 (`output/worldmodel/final`) — trained 2026-04-04
+- Execution loop working via guided generation (StoppingCriteria on `</think>`)
+- Root issue: model learned proxy tokens instead of `<code>` tags — caused by
+  training without prompt masking and without Qwen3 chat template
+- Chat works via compatibility path in `generation_loop.py`
 
-1. **Verify GPU is back**
-   ```bash
-   amd-smi list
-   # Should show: Instinct MI50 or similar
-   ```
+### v2 (`output/worldmodel_v2/`) — **training now**
+- Same 1443 examples, 10 epochs
+- Fixes applied: Qwen3 chat template + prompt-masked labels
+- Expected: model generates `<code>` tags natively, no guided-generation fallback needed
+- ETA: ~midnight 2026-04-05
 
-2. **Smoke-test training run** (3 epochs, core categories only)
-   ```bash
-   ./train_rocm.sh --categories arithmetic,algebra,geometry,statistics \
-                   --epochs 3 --output ./output/smoke_test
-   ```
-   Expected: GPU detected, loss decreasing, checkpoint saved in `output/smoke_test/`
+## Immediate next steps (after v2 completes)
 
-3. **Full training run** (all 1443 examples, 10 epochs)
-   ```bash
-   ./train_rocm.sh --output ./output/worldmodel_v1
-   ```
-   - ROCm env vars + LD_LIBRARY_PATH auto-set by train_rocm.sh
-   - Float32 only (no fp16/bf16/quantization) — required for gfx906 stability
-   - Saves best checkpoint; EarlyStopping patience=3
+1. **Test v2** — `python chat.py` auto-detects the latest model
+   - Check that `<code>` tags are generated natively (not proxy tokens)
+   - If working, the guided-generation fallback path in `generation_loop.py` will be unused
 
-4. **Evaluate trained model vs base**
-   ```bash
-   python infer.py --model ./output/worldmodel_v1
-   # Compare responses to base: python infer.py --model ~/workspace/model/Qwen3-1.7B
-   ```
+2. **Generate multi-step dataset**
+   - File: `training/scripts/generate_multistep.py`
+   - Problems requiring 3+ code/output cycles with shared state
+   - Target: ~60 examples → `training/datasets/multi_step/basic.jsonl`
 
-5. **Generate chemistry dataset** (not yet written)
+3. **Generate chemistry dataset**
    - File: `training/scripts/generate_chemistry.py`
    - Topics: stoichiometry, ideal gas law, thermodynamics (ΔH, ΔG), equilibrium
    - Target: ~80 examples → `training/datasets/science/chemistry/basic.jsonl`
 
-6. **Generate multi-step dataset** (not yet written)
-   - File: `training/scripts/generate_multistep.py`
-   - Purpose: problems that genuinely require 3+ code/output cycles, with state
-     passed between blocks (e.g. simulate → analyse → optimise)
-   - Target: ~60 examples → `training/datasets/multi_step/basic.jsonl`
+4. **v3 training run** — incorporate multi-step + chemistry datasets
 
 ---
 
