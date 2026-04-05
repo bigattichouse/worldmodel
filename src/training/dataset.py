@@ -1,12 +1,9 @@
 """
 Dataset loading for WorldModel training.
 
-Loads JSONL examples from training/datasets/ and formats them for
-causal language model training. Each example has:
-  - query: the user question
-  - response: full response with <think>/<model>/<code>/<output> tags
-
-Training format: "User: {query}\n\nAssistant: {response}"
+Loads JSONL examples from training/datasets/ and formats them using
+Qwen3's chat template. Labels are masked for prompt tokens so the
+model only learns to generate the assistant response.
 """
 
 import json
@@ -51,7 +48,6 @@ def load_all_datasets(root: Optional[Path] = None, categories: Optional[List[str
     all_examples = []
 
     for jsonl_path in sorted(root.rglob("*.jsonl")):
-        # Filter by category if requested
         if categories:
             parts = jsonl_path.relative_to(root).parts
             if not any(c in parts for c in categories):
@@ -70,26 +66,18 @@ def validate_example(example: Dict) -> bool:
         return False
     if not example["query"].strip() or not example["response"].strip():
         return False
-    # If it has code, it must also have output (pre-executed)
     if "<code>" in example["response"] and "<output>" not in example["response"]:
         logger.warning(f"Example {example.get('id', '?')} has <code> but no <output>")
         return False
     return True
 
 
-def format_for_training(example: Dict) -> str:
-    """Format a single example as the full text the model will train on."""
-    query = example["query"].strip()
-    response = example["response"].strip()
-    return f"User: {query}\n\nAssistant: {response}"
-
-
 class WorldModelDataset(Dataset):
     """
     PyTorch Dataset for WorldModel training.
 
-    Tokenizes examples and returns input_ids with attention_mask.
-    Uses standard causal LM format (labels = input_ids, predict all tokens).
+    Uses Qwen3's chat template and masks prompt tokens in labels so loss
+    is only computed on the assistant response (the tags + code + reasoning).
     """
 
     def __init__(
@@ -101,26 +89,53 @@ class WorldModelDataset(Dataset):
     ):
         self.tokenizer = tokenizer
         self.max_length = max_length
-        self.texts = []
+        self.examples = []
 
         skipped = 0
         for ex in examples:
             if skip_invalid and not validate_example(ex):
                 skipped += 1
                 continue
-            self.texts.append(format_for_training(ex))
+            self.examples.append(ex)
 
         if skipped:
             logger.warning(f"Skipped {skipped} invalid examples")
-        logger.info(f"Dataset ready: {len(self.texts)} examples")
+        logger.info(f"Dataset ready: {len(self.examples)} examples")
 
     def __len__(self):
-        return len(self.texts)
+        return len(self.examples)
 
     def __getitem__(self, idx):
-        text = self.texts[idx]
+        ex = self.examples[idx]
+        query = ex["query"].strip()
+        response = ex["response"].strip()
+
+        # Format with Qwen3 chat template to match pre-training format
+        prompt_text = self.tokenizer.apply_chat_template(
+            [{"role": "user", "content": query}],
+            tokenize=False,
+            add_generation_prompt=True,
+        )
+        full_text = self.tokenizer.apply_chat_template(
+            [
+                {"role": "user", "content": query},
+                {"role": "assistant", "content": response},
+            ],
+            tokenize=False,
+            add_generation_prompt=False,
+        )
+
+        # Tokenize prompt alone to find its token length
+        prompt_len = len(
+            self.tokenizer(
+                prompt_text,
+                add_special_tokens=False,
+            ).input_ids
+        )
+
+        # Tokenize full sequence
         encoding = self.tokenizer(
-            text,
+            full_text,
             max_length=self.max_length,
             truncation=True,
             padding="max_length",
@@ -128,8 +143,14 @@ class WorldModelDataset(Dataset):
         )
         input_ids = encoding["input_ids"].squeeze(0)
         attention_mask = encoding["attention_mask"].squeeze(0)
+
+        # Labels: -100 for prompt tokens and padding — only predict the response
+        labels = input_ids.clone()
+        labels[:min(prompt_len, len(labels))] = -100
+        labels[attention_mask == 0] = -100
+
         return {
             "input_ids": input_ids,
             "attention_mask": attention_mask,
-            "labels": input_ids.clone(),
+            "labels": labels,
         }

@@ -83,6 +83,12 @@ def load_model(model_path: str, base_only: bool = False):
             device_map="auto",
             trust_remote_code=True,
         )
+        # Training resized embeddings to fit the extended tokenizer; match that here.
+        adapter_vocab_size = len(tokenizer)
+        base_vocab_size = base_model.get_input_embeddings().weight.shape[0]
+        if adapter_vocab_size != base_vocab_size:
+            base_model.resize_token_embeddings(adapter_vocab_size)
+            print(f"  Resized embeddings: {base_vocab_size} → {adapter_vocab_size}")
         model = PeftModel.from_pretrained(base_model, model_path)
         model = model.merge_and_unload()
         print("  LoRA adapter merged")
