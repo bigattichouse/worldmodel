@@ -41,6 +41,7 @@ import json
 import logging
 import argparse
 import random
+import time
 from pathlib import Path
 from dataclasses import dataclass
 from typing import Optional, List
@@ -294,7 +295,7 @@ class ProgressCallback(TrainerCallback):
 
 
 class ThermalThrottleCallback(TrainerCallback):
-    """Monitor GPU temperature and apply progressive soft throttling."""
+    """Monitor GPU temperature and pause training when it gets too hot."""
 
     def __init__(self, cfg: TrainConfig):
         self.cfg = cfg
@@ -303,23 +304,12 @@ class ThermalThrottleCallback(TrainerCallback):
             safe_temp=cfg.safe_temp,
             check_interval=cfg.cooldown_check_interval,
         )
-        self.last_check_step = 0
 
-    def on_step_end(self, args, state: TrainerState, control: TrainerControl, **kwargs):
-        """Check temperature and apply progressive throttling."""
-        step = state.global_step
-
-        # Only check every N steps to avoid overhead
-        check_every = max(1, self.cfg.cooldown_check_interval // max(1, args.logging_steps))
-        if step - self.last_check_step < check_every:
-            return
-
-        self.last_check_step = step
-
+    def on_step_begin(self, args, state: TrainerState, control: TrainerControl, **kwargs):
+        """Check temperature before running a step — hard-pause if too hot."""
         should_pause = self.controller.check_and_throttle()
 
         if should_pause:
-            # Emergency hard pause — wait for cooldown
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
 
@@ -329,10 +319,8 @@ class ThermalThrottleCallback(TrainerCallback):
                     "GPU emergency cooldown failed. "
                     "Consider reducing batch size or stopping training."
                 )
-
-        # Log throttle state periodically
-        if step % (args.logging_steps * 5) == 0 and self.controller.state != ThrottleState.NORMAL:
-            logger.info(f"Step {step} | Throttle state: {self.controller.state.value}")
+            # Buffer sleep after cooldown to prevent immediate re-spike
+            time.sleep(10)
 
     def on_epoch_end(self, args, state: TrainerState, control: TrainerControl, **kwargs):
         """Log temperature and throttle state at epoch end."""
@@ -341,8 +329,8 @@ class ThermalThrottleCallback(TrainerCallback):
             logger.info(f"Current throttle state: {self.controller.state.value}")
 
     def on_train_end(self, args, state: TrainerState, control: TrainerControl, **kwargs):
-        """Restore GPU to original settings when training finishes."""
-        logger.info("Training complete — restoring GPU to original settings")
+        """Reset controller when training finishes."""
+        logger.info("Training complete — resetting thermal controller")
         self.controller.restore()
 
 

@@ -8,7 +8,24 @@
       "Bash(tail *)",
       "Bash(git add *)",
       "Bash(git commit)",
-      "Bash(ls *)"
+      "Bash(ls *)",
+      "Bash(source *)",
+      "Bash(cd *)",
+      "Bash(echo *)",
+      "Bash(timeout *)",
+      "Bash(tee *)",
+      "Bash(wc *)",
+      "Bash(head *)",
+      "Bash(cat *)",
+      "Bash(pip uninstall *)",
+      "Bash(rm *)",
+      "Bash(pip install *)",
+      "Bash(nvidia-smi)",
+      "Bash(bash *)",
+      "Bash(find *)",
+      "Bash(do *)",
+      "Bash(done)",
+      "Bash(grep *)"
     ]
   },
   "$version": 3
