@@ -20,6 +20,10 @@ sft_checkpoints/
 logs/
 *.log
 checkpoints/
+output/
+
+# Editor / tool config
+.qwen/
 
 # Model files (too large for git)
 *.gguf
