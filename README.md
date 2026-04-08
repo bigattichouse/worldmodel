@@ -96,11 +96,63 @@ Developed and tested on:
 
 Training runs at float32 (required for gfx906 stability). A full 10-epoch run takes ~14 hours on the MI50.
 
+## Geometric vector-space training
+
+After standard LoRA fine-tuning, a second training pass (`train_geometric.py`) applies geometric exploration on top of gradient descent. Instead of following gradients alone, it periodically:
+
+1. **Extrapolates** further along the gradient direction (vector jump)
+2. **Probes random directions** on a hypersphere around the current position
+3. Accepts a candidate only if it strictly improves the scoring function
+
+This escapes shallow local minima that gradient descent alone settles into. Only the LoRA adapter parameters (~17M) are explored — the base model weights are never touched.
+
+```bash
+# Run geometric training starting from the latest LoRA checkpoint
+python train_geometric.py
+
+# Enable execution-based reward signal (recommended)
+python train_geometric.py --exec-reward
+
+# Resume a previous geometric run
+python train_geometric.py --resume output/worldmodel_geometric/step_900
+```
+
+### Execution-based reward (`--exec-reward`)
+
+With `--exec-reward`, geometric candidate evaluation scores candidates not just on token loss but on whether the generated code is **syntactically valid and executes correctly**. Candidates that produce working code are preferred over candidates with marginally lower loss that produce broken code.
+
+The reward function is a composite score (lower = better):
+
+```
+score = token_loss
+      − 0.2  (if generated code has valid syntax)
+      − 0.1  (if code executes successfully)
+      + 0.5  (if no code block found in response)
+```
+
+Both the baseline and every candidate are scored identically for a fair comparison. The baseline score is computed fresh at each geometric step so the comparison is always apples-to-apples.
+
+#### Observed results at epoch 4
+
+| Metric | Epoch 0 | Epoch 4 |
+|---|---|---|
+| Code extracted | 0% | 95% |
+| Syntax valid | 0% | 90% |
+| Execution success | 0% | 85% |
+| Output match | 0% | 70% |
+| Jump acceptance | 22% | 80% |
+| Sphere acceptance | 0% | 62% |
+
+The geometric optimizer's acceptance rates rise dramatically with exec-reward because candidates that generate working code beat the baseline even with slightly higher token loss — creating selection pressure toward code correctness beyond what cross-entropy captures.
+
+See `docs/GEOMETRIC_TRAINING.md` for algorithm details and hyperparameter reference.
+
 ## Project layout
 
 ```
 chat.py                     ← start here for interactive use
-train.py                    ← training entry point
+train.py                    ← standard LoRA fine-tuning entry point
+train_geometric.py          ← geometric vector-space training (run after train.py)
 train_rocm.sh               ← training launcher (sets ROCm env vars)
 src/
   inference/
@@ -110,11 +162,14 @@ src/
     vm_exec.py              ← QEMU scratchpad bridge (for sandboxed execution)
   training/
     dataset.py              ← JSONL loader, chat-template formatting, prompt masking
+    execution_validator.py  ← code extraction, syntax check, execution, reward scoring
+    gpu_monitor.py          ← thermal monitoring and hard-pause throttle
 training/
   datasets/                 ← JSONL training data by category
   scripts/                  ← dataset generators
 docs/
   DESIGN.md                 ← full architecture and token spec
+  GEOMETRIC_TRAINING.md     ← geometric training algorithm and hyperparameter reference
   STATUS.md                 ← current project state and next steps
   rocm/                     ← ROCm setup, troubleshooting, performance notes
 history/                    ← archived earlier phases (ByteLogic, Blueprint)
